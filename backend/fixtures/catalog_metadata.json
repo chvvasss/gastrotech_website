@@ -1,0 +1,212 @@
+{
+  "categories": [
+    {
+      "name": "Bulaşık",
+      "slug": "bulasik",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    },
+    {
+      "name": "Fırınlar",
+      "slug": "firinlar",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    },
+    {
+      "name": "Hazırlık",
+      "slug": "hazirlik",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    },
+    {
+      "name": "Kafeterya",
+      "slug": "kafeterya",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    },
+    {
+      "name": "Pişirme",
+      "slug": "pisirme",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    },
+    {
+      "name": "Soğutma",
+      "slug": "sogutma",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    },
+    {
+      "name": "Tamamlayıcı",
+      "slug": "tamamlayici",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    },
+    {
+      "name": "Çamaşırhane",
+      "slug": "camasirhane",
+      "menu_label": "",
+      "description_short": "",
+      "order": 0,
+      "is_featured": true,
+      "parent_slug": null,
+      "series_mode": "disabled"
+    }
+  ],
+  "category_catalogs": [
+    {
+      "category_slug": "bulasik",
+      "title_tr": "Bulasik Yikama",
+      "title_en": "",
+      "description": "",
+      "media_filename": "bulasik-yikama.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "camasirhane",
+      "title_tr": "Camasir",
+      "title_en": "",
+      "description": "",
+      "media_filename": "camasir.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "firinlar",
+      "title_tr": "Firinlar",
+      "title_en": "",
+      "description": "",
+      "media_filename": "firinlar.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "hazirlik",
+      "title_tr": "Hazirlik Ekipmanlari",
+      "title_en": "",
+      "description": "",
+      "media_filename": "hazirlik-ekipmanlari.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "kafeterya",
+      "title_tr": "Kafeterya",
+      "title_en": "",
+      "description": "",
+      "media_filename": "kafeterya.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "pisirme",
+      "title_tr": "Pisirme 600",
+      "title_en": "",
+      "description": "",
+      "media_filename": "pisirme-600.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "pisirme",
+      "title_tr": "Pisirme 700",
+      "title_en": "",
+      "description": "",
+      "media_filename": "pisirme-700.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "pisirme",
+      "title_tr": "Pisirme 900",
+      "title_en": "",
+      "description": "",
+      "media_filename": "pisirme-900.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "pisirme",
+      "title_tr": "Pisirme Diger",
+      "title_en": "",
+      "description": "",
+      "media_filename": "pisirme-diger.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "pisirme",
+      "title_tr": "Pisirme Dropin",
+      "title_en": "",
+      "description": "",
+      "media_filename": "pisirme-dropin.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "pisirme",
+      "title_tr": "Pisirme Electrolux 700",
+      "title_en": "",
+      "description": "",
+      "media_filename": "pisirme-electrolux-700.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "pisirme",
+      "title_tr": "Pisirme Electrolux 900",
+      "title_en": "",
+      "description": "",
+      "media_filename": "pisirme-electrolux-900.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "sogutma",
+      "title_tr": "Sogutma",
+      "title_en": "",
+      "description": "",
+      "media_filename": "sogutma.pdf",
+      "order": 0,
+      "published": true
+    },
+    {
+      "category_slug": "tamamlayici",
+      "title_tr": "Tamamlayici",
+      "title_en": "",
+      "description": "",
+      "media_filename": "tamamlayici.pdf",
+      "order": 0,
+      "published": true
+    }
+  ]
+}
