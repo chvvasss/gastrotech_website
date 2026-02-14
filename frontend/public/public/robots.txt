@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/*
+Disallow: /sepet
+Disallow: /teklif*
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://gastrotech.com.tr/sitemap.xml

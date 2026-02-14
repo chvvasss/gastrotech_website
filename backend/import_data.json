@@ -1,0 +1,3658 @@
+[
+  {
+    "slug": "gtech-sym2500-sebze-yikama-makinesi",
+    "name": "SYM2500 Sebze Yıkama Makinesi",
+    "title_tr": "SYM2500 Sebze Yıkama Makinesi",
+    "title_en": "SYM2500 Vegetable Washing Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-yikama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-yikama-makineleri",
+    "general_features": [
+      "Paslanmaz çelikten imal edilmiştir.",
+      "Non-toxic plastik konveyör bantlı yıkama sistemli.",
+      "Ayarlanabilir bant hızı.",
+      "Yapraklı sebzeleri, ağır sebzeleri ve balıkları yıkamaya uygundur.",
+      "Ergonomik kullanımının yanısıra, uzun ömürlü, kolay temizlenebilir ve hijyeniktir."
+    ],
+    "short_specs": [
+      "Hafif Sebzeler 200/300 kg",
+      "Ağır Sebzeler 400/500 kg",
+      "Paslanmaz Çelik"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "SYM2500",
+        "name_tr": "SYM2500 Sebze Yıkama Makinesi",
+        "sku": "",
+        "dimensions": "2500x1070x1510",
+        "weight_kg": 2.57,
+        "list_price": 27.29,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite_hafif": "200/300 kg",
+          "kapasite_agir": "400/500 kg",
+          "guc": "380 W",
+          "voltaj": "348 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "SYM2500 SYM2500 Sebze Yıkama Makinesi"
+  },
+  {
+    "slug": "gtech-sym3000-sebze-yikama-makinesi",
+    "name": "SYM3000 Sebze Yıkama Makinesi",
+    "title_tr": "SYM3000 Sebze Yıkama Makinesi",
+    "title_en": "SYM3000 Vegetable Washing Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-yikama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-yikama-makineleri",
+    "general_features": [
+      "Paslanmaz çelikten imal edilmiştir.",
+      "Non-toxic plastik konveyör bantlı yıkama sistemli.",
+      "Ayarlanabilir bant hızı.",
+      "Yapraklı sebzeleri, ağır sebzeleri ve balıkları yıkamaya uygundur.",
+      "Ergonomik kullanımının yanısıra, uzun ömürlü, kolay temizlenebilir ve hijyeniktir."
+    ],
+    "short_specs": [
+      "Hafif Sebzeler 300/400 kg",
+      "Ağır Sebzeler 600/800 kg",
+      "Paslanmaz Çelik"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "SYM3000",
+        "name_tr": "SYM3000 Sebze Yıkama Makinesi",
+        "sku": "",
+        "dimensions": "3000x1300x1600",
+        "weight_kg": 3.67,
+        "list_price": 29.69,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite_hafif": "300/400 kg",
+          "kapasite_agir": "600/800 kg",
+          "guc": "380 W",
+          "voltaj": "478 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "SYM3000 SYM3000 Sebze Yıkama Makinesi"
+  },
+  {
+    "slug": "gtech-devrilir-sebze-yikama-makinesi",
+    "name": "Devrilir Sebze Yıkama Makinesi",
+    "title_tr": "Devrilir Sebze Yıkama Makinesi",
+    "title_en": "Tilting Vegetable Washing Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-yikama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-yikama-makineleri",
+    "general_features": [
+      "İç ve dış bileşenleri AISI 304 kalite paslanmaz çelik",
+      "Yapraklı ve ağır sebzeler, meyve, vb. yiyecekler hızlı ve hijyenik olarak yıkanabilir",
+      "2 farklı yıkama programı",
+      "Kök ve yapraklı sebzeler için su sirkülasyon ayarı",
+      "90 dereceye kadar otomatik devirme mekanizması"
+    ],
+    "short_specs": [
+      "Hafif Sebzeler 10/15 kg",
+      "Ağır Sebzeler 30/40 kg",
+      "Otomatik Devirme"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "DEV-SYM",
+        "name_tr": "Devrilir Sebze Yıkama Makinesi",
+        "sku": "",
+        "dimensions": "1600x950x900",
+        "weight_kg": 3.0,
+        "list_price": 15.56,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite_hafif": "10/15 kg",
+          "kapasite_agir": "30/40 kg",
+          "guc": "3.000 W",
+          "voltaj": "380 V",
+          "agirlik": "230 kg"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "DEV-SYM Devrilir Sebze Yıkama Makinesi"
+  },
+  {
+    "slug": "gtech-mod-serisi-gida-dilimleme-makinesi",
+    "name": "MOD Serisi Gıda Dilimleme Makinesi",
+    "title_tr": "MOD Serisi Gıda Dilimleme Makinesi",
+    "title_en": "MOD Series Slicers",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "gida-dilimleme-makineleri",
+    "brand": "gtech",
+    "primary_node": "gida-dilimleme-makineleri",
+    "general_features": [
+      "Alüminyum gövde.",
+      "Paslanmaz çelik bıçak.",
+      "Kendinden bileylemeli.",
+      "15 Farklı dilimleme aralığı"
+    ],
+    "short_specs": [
+      "Alüminyum Gövde",
+      "Paslanmaz Çelik Bıçak",
+      "15 Dilim Aralığı"
+    ],
+    "notes": [
+      "Made in Italy"
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [
+      {
+        "url": "https://witcdn.cafemarkt.com/gtech-gida-dilimleme-makinesi-250-mm-gida-dilimleme-makineleri-gtech-23164-13-B.jpg",
+        "is_primary": true,
+        "alt_tr": "MOD Serisi Gıda Dilimleme Makinesi",
+        "source": {
+          "page": null,
+          "verified": true
+        }
+      }
+    ],
+    "variants": [
+      {
+        "model_code": "MOD250AF",
+        "name_tr": "MOD250AF Gıda Dilimleme Makinesi",
+        "sku": "",
+        "dimensions": "510x380x370",
+        "weight_kg": 17.0,
+        "list_price": 1.579,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 250 mm",
+          "guc": "170 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "MOD275AF",
+        "name_tr": "MOD275AF Gıda Dilimleme Makinesi",
+        "sku": "",
+        "dimensions": "580x470x390",
+        "weight_kg": 17.0,
+        "list_price": 1.12,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 275 mm",
+          "guc": "170 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "MOD300C",
+        "name_tr": "MOD300C Gıda Dilimleme Makinesi",
+        "sku": "",
+        "dimensions": "690x560x440",
+        "weight_kg": 21.0,
+        "list_price": 1.27,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 300 mm",
+          "guc": "170 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "MOD300V",
+        "name_tr": "MOD300V Gıda Dilimleme Makinesi/Dikey",
+        "sku": "",
+        "dimensions": "650x520x490",
+        "weight_kg": 24.0,
+        "list_price": 2.15,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 300 mm",
+          "guc": "210 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "found",
+    "image_search_query": "MOD250AF MOD Serisi Gıda Dilimleme Makinesi"
+  },
+  {
+    "slug": "gtech-ms-serisi-gida-dilimleme-makinesi",
+    "name": "MS Serisi Gıda Dilimleme Makinesi",
+    "title_tr": "MS Serisi Gıda Dilimleme Makinesi",
+    "title_en": "MS Series Slicers",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "gida-dilimleme-makineleri",
+    "brand": "gtech",
+    "primary_node": "gida-dilimleme-makineleri",
+    "general_features": [
+      "Sertleştirilmiş paslanmaz çelikten mamül İtalyan menşeili bıçak",
+      "Adonize alüminyum gövde",
+      "MS2205T-U ve MS2505T-U modellerinde 0-11mm dilimleme aralığı",
+      "MS3005T-U modellerinde 0-13mm dilimleme aralığı",
+      "Kendinden bileylemeli"
+    ],
+    "short_specs": [
+      "İtalyan Bıçak",
+      "Adonize Alüminyum Gövde",
+      "Kendinden Bileylemeli"
+    ],
+    "notes": [
+      "İtalyan Bıçak"
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "MS2205T-U",
+        "name_tr": "MS2205T-U Gıda Dilimleme Makinesi",
+        "sku": "",
+        "dimensions": "520x460x380",
+        "weight_kg": 12.0,
+        "list_price": 1.569,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 220 mm",
+          "guc": "120 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "MS2505T-U",
+        "name_tr": "MS2505T-U Gıda Dilimleme Makinesi",
+        "sku": "",
+        "dimensions": "520x460x380",
+        "weight_kg": 15.0,
+        "list_price": 1.674,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 250 mm",
+          "guc": "150 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "MS3005T-U",
+        "name_tr": "MS3005T-U Gıda Dilimleme Makinesi",
+        "sku": "",
+        "dimensions": "650x530x460",
+        "weight_kg": 25.0,
+        "list_price": 1.115,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 300 mm",
+          "guc": "250 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "MS300AS",
+        "name_tr": "MS300AS Otomatik Gıda Dilimleme Makinesi",
+        "sku": "",
+        "dimensions": "660x600x700",
+        "weight_kg": 30.0,
+        "list_price": 2.9,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "bicak_capi": "Ø 300 mm",
+          "guc": "300 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "MS2205T-U MS Serisi Gıda Dilimleme Makinesi"
+  },
+  {
+    "slug": "gtech-c-254-vakum-makinesi",
+    "name": "C-254 Vakum Makinesi",
+    "title_tr": "C-254 Vakum Makinesi",
+    "title_en": "C-254 Vacuum Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "vakum-makineleri",
+    "brand": "gtech",
+    "primary_node": "vakum-makineleri",
+    "general_features": [
+      "Otomatik vakum paketleme makinesi",
+      "Dijital kumanda panosu.",
+      "10 program seçenekli",
+      "Tamamen paslanmaz çelik vakum odası ile temizliği kolaylaştırmak için yuvarlatılmış iç köşelere sahiptir.",
+      "Opsiyonel çift yönlü yapıştırma bandı (C420 ve daha büyükleri için)."
+    ],
+    "short_specs": [
+      "4 m³ Kapasite",
+      "Paslanmaz Çelik Hazne",
+      "10 Program"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "C-254",
+        "name_tr": "C-254 Vakum Makinesi",
+        "sku": "",
+        "dimensions": "357x475x335",
+        "weight_kg": 35.0,
+        "list_price": 2.99,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4 m³",
+          "guc": "350 W",
+          "voltaj": "220 V",
+          "hazne_olculeri": "270x352x150 mm",
+          "yapistirma_agzi": "250 mm",
+          "yapistirma_agzi_adedi": "1"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "C-254 C-254 Vakum Makinesi"
+  },
+  {
+    "slug": "gtech-c-308-vakum-makinesi",
+    "name": "C-308 Vakum Makinesi",
+    "title_tr": "C-308 Vakum Makinesi",
+    "title_en": "C-308 Vacuum Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "vakum-makineleri",
+    "brand": "gtech",
+    "primary_node": "vakum-makineleri",
+    "general_features": [
+      "Otomatik vakum paketleme makinesi",
+      "Dijital kumanda panosu.",
+      "10 program seçenekli",
+      "Tamamen paslanmaz çelik vakum odası ile temizliği kolaylaştırmak için yuvarlatılmış iç köşelere sahiptir.",
+      "Opsiyonel çift yönlü yapıştırma bandı (C420 ve daha büyükleri için)."
+    ],
+    "short_specs": [
+      "8 m³ Kapasite",
+      "Paslanmaz Çelik Hazne",
+      "10 Program"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "C-308",
+        "name_tr": "C-308 Vakum Makinesi",
+        "sku": "",
+        "dimensions": "385x470x370",
+        "weight_kg": 45.0,
+        "list_price": 3.65,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "8 m³",
+          "guc": "450 W",
+          "voltaj": "220 V",
+          "hazne_olculeri": "332x335x170 mm",
+          "yapistirma_agzi": "310 mm",
+          "yapistirma_agzi_adedi": "1"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "C-308 C-308 Vakum Makinesi"
+  },
+  {
+    "slug": "gtech-c-312-vakum-makinesi",
+    "name": "C-312 Vakum Makinesi",
+    "title_tr": "C-312 Vakum Makinesi",
+    "title_en": "C-312 Vacuum Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "vakum-makineleri",
+    "brand": "gtech",
+    "primary_node": "vakum-makineleri",
+    "general_features": [
+      "Otomatik vakum paketleme makinesi",
+      "Dijital kumanda panosu.",
+      "10 program seçenekli",
+      "Tamamen paslanmaz çelik vakum odası ile temizliği kolaylaştırmak için yuvarlatılmış iç köşelere sahiptir.",
+      "Opsiyonel çift yönlü yapıştırma bandı (C420 ve daha büyükleri için)."
+    ],
+    "short_specs": [
+      "12 m³ Kapasite",
+      "Paslanmaz Çelik Hazne",
+      "10 Program"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "C-312",
+        "name_tr": "C-312 Vakum Makinesi",
+        "sku": "",
+        "dimensions": "415x585x400",
+        "weight_kg": 75.0,
+        "list_price": 4.09,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "12 m³",
+          "guc": "750 W",
+          "voltaj": "220 V",
+          "hazne_olculeri": "343x434x175 mm",
+          "yapistirma_agzi": "310 mm",
+          "yapistirma_agzi_adedi": "1"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "C-312 C-312 Vakum Makinesi"
+  },
+  {
+    "slug": "gtech-c420-vakum-makinesi",
+    "name": "C420 Vakum Makinesi",
+    "title_tr": "C420 Vakum Makinesi",
+    "title_en": "C420 Vacuum Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "vakum-makineleri",
+    "brand": "gtech",
+    "primary_node": "vakum-makineleri",
+    "general_features": [
+      "Otomatik vakum paketleme makinesi",
+      "Dijital kumanda panosu.",
+      "10 program seçenekli",
+      "Tamamen paslanmaz çelik vakum odası ile temizliği kolaylaştırmak için yuvarlatılmış iç köşelere sahiptir.",
+      "Opsiyonel çift yönlü yapıştırma bandı (C420 ve daha büyükleri için)."
+    ],
+    "short_specs": [
+      "20 m³ Kapasite",
+      "Paslanmaz Çelik Hazne",
+      "Opsiyonel Çift Yapıştırma"
+    ],
+    "notes": [
+      "Opsiyonel: Çift Yönlü Yapıştırma Ağzı (+1.000 EUR)"
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "C420",
+        "name_tr": "C420 Vakum Makinesi",
+        "sku": "",
+        "dimensions": "510x585x435",
+        "weight_kg": 75.0,
+        "list_price": 5.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "20 m³",
+          "guc": "750 W",
+          "voltaj": "220 V",
+          "hazne_olculeri": "435x435x180 mm",
+          "yapistirma_agzi": "410 mm",
+          "yapistirma_agzi_adedi": "1 (Option x 2)"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "C420 C420 Vakum Makinesi"
+  },
+  {
+    "slug": "gtech-levac-c-62-vakum-makinesi",
+    "name": "LEVAC C-62 Vakum Makinesi",
+    "title_tr": "LEVAC C-62 Vakum Makinesi",
+    "title_en": "LEVAC C-62 Vacuum Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "vakum-makineleri",
+    "brand": "gtech",
+    "primary_node": "vakum-makineleri",
+    "general_features": [
+      "Otomatik vakum paketleme makinesi",
+      "Dijital kumanda panosu.",
+      "10 program seçenekli",
+      "Tamamen paslanmaz çelik vakum odası ile temizliği kolaylaştırmak için yuvarlatılmış iç köşelere sahiptir.",
+      "Opsiyonel çift yönlü yapıştırma bandı (C420 ve daha büyükleri için)."
+    ],
+    "short_specs": [
+      "60 m³ Kapasite",
+      "Çift Yapıştırma Ağzı",
+      "Yüksek Kapasite"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "LEVAC C-62",
+        "name_tr": "LEVAC C-62 Vakum Makinesi",
+        "sku": "",
+        "dimensions": "772x682x1034",
+        "weight_kg": 150.0,
+        "list_price": 12.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "60 m³",
+          "guc": "1.500 W",
+          "voltaj": "400 V",
+          "hazne_olculeri": "650x535x200 mm",
+          "yapistirma_agzi": "620 mm x 2",
+          "yapistirma_agzi_adedi": "2"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "LEVAC C-62 LEVAC C-62 Vakum Makinesi"
+  },
+  {
+    "slug": "gtech-tc500-kruvasan-kesme-cihazi",
+    "name": "TC500 Kruvasan Kesme Cihazı",
+    "title_tr": "TC500 Kruvasan Kesme Cihazı",
+    "title_en": "TC500 Croissant Cutter",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri",
+      "Opsiyonel donanımlar: pedal, standart kruvasan kesim sistemi, boyutlandırma kesim sistemi"
+    ],
+    "short_specs": [
+      "3 Sıra Kesim",
+      "Kompakt Tasarım",
+      "Kruvasan Kesme"
+    ],
+    "notes": [
+      "*** 3 sıralı TC500 kruvasan kesme cihazı sadece çift hızlı GP 500 / 1000 modeli ile uyumludur."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "TC500",
+        "name_tr": "TC500 Kruvasan Kesme Cihazı",
+        "sku": "",
+        "dimensions": "255x600x25",
+        "weight_kg": null,
+        "list_price": 3.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kesim_sira": "3 SIRA",
+          "uyum": "GP 500/1000"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "TC500 TC500 Kruvasan Kesme Cihazı"
+  },
+  {
+    "slug": "gtech-tc600-kruvasan-kesme-cihazi",
+    "name": "TC600 Kruvasan Kesme Cihazı",
+    "title_tr": "TC600 Kruvasan Kesme Cihazı",
+    "title_en": "TC600 Croissant Cutter",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri",
+      "Opsiyonel donanımlar: pedal, standart kruvasan kesim sistemi, boyutlandırma kesim sistemi"
+    ],
+    "short_specs": [
+      "4 Sıra Kesim",
+      "Kompakt Tasarım",
+      "Kruvasan Kesme"
+    ],
+    "notes": [
+      "**** 4 sıralı TC600 kruvasan kesme cihazı sadece çift hızlı GP 600 / 1000 ve GP 600 / 1200 modelleri ile uyumludur."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "TC600",
+        "name_tr": "TC600 Kruvasan Kesme Cihazı",
+        "sku": "",
+        "dimensions": "255x700x255",
+        "weight_kg": null,
+        "list_price": 3.3,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kesim_sira": "4 SIRA",
+          "uyum": "GP 600/1000, GP 600/1200"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "TC600 TC600 Kruvasan Kesme Cihazı"
+  },
+  {
+    "slug": "gtech-easy-400-m-set-ustu-hamur-acma-makinesi",
+    "name": "EASY 400 M Set Üstü Hamur Açma Makinesi",
+    "title_tr": "EASY 400 M Set Üstü Hamur Açma Makinesi (Manuel Kontrol)",
+    "title_en": "EASY 400 M Countertop Dough Sheeter (Manual Control)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "400mm Genişlik",
+      "Set Üstü",
+      "Manuel Kontrol"
+    ],
+    "notes": [
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "EASY 400 M",
+        "name_tr": "EASY 400 M Set Üstü Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "682x972x405",
+        "weight_kg": 30.0,
+        "list_price": 2.7,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "genislik": "400 mm",
+          "tip": "Set Üstü",
+          "kontrol": "Manuel",
+          "guc": "370 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "EASY 400 M EASY 400 M Set Üstü Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-easy-500-sm-set-ustu-hamur-acma-makinesi",
+    "name": "EASY 500 SM Set Üstü Hamur Açma Makinesi",
+    "title_tr": "EASY 500 SM Set Üstü Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "EASY 500 SM Countertop Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "500mm Genişlik",
+      "Set Üstü",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "EASY 500 SM",
+        "name_tr": "EASY 500 SM Set Üstü Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "827x972x477",
+        "weight_kg": 37.0,
+        "list_price": 4.5,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "genislik": "500 mm",
+          "tip": "Set Üstü",
+          "kontrol": "Tek Hızlı",
+          "guc": "370 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "EASY 500 SM EASY 500 SM Set Üstü Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-b-500-800-set-ustu-hamur-acma-makinesi",
+    "name": "GP-B 500-800 Set Üstü Hamur Açma Makinesi",
+    "title_tr": "GP-B 500-800 Set Üstü Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP-B 500-800 Countertop Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "500x800mm Çalışma Alanı",
+      "Set Üstü",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP-B 500-800",
+        "name_tr": "GP-B 500-800 Set Üstü Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "955x2450x555",
+        "weight_kg": 55.0,
+        "list_price": 7.85,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "500x800 mm",
+          "tip": "Set Üstü",
+          "kontrol": "Tek Hızlı",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP-B 500-800 GP-B 500-800 Set Üstü Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-b-500-1000-set-ustu-hamur-acma-makinesi",
+    "name": "GP-B 500-1000 Set Üstü Hamur Açma Makinesi",
+    "title_tr": "GP-B 500-1000 Set Üstü Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP-B 500-1000 Countertop Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "500x1000mm Çalışma Alanı",
+      "Set Üstü",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP-B 500-1000",
+        "name_tr": "GP-B 500-1000 Set Üstü Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "955x2450x555",
+        "weight_kg": 55.0,
+        "list_price": 8.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "500x1000 mm",
+          "tip": "Set Üstü",
+          "kontrol": "Tek Hızlı",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP-B 500-1000 GP-B 500-1000 Set Üstü Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-b-600-1000-set-ustu-hamur-acma-makinesi",
+    "name": "GP-B 600-1000 Set Üstü Hamur Açma Makinesi",
+    "title_tr": "GP-B 600-1000 Set Üstü Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP-B 600-1000 Countertop Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "600x1000mm Çalışma Alanı",
+      "Set Üstü",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP-B 600-1000",
+        "name_tr": "GP-B 600-1000 Set Üstü Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "1055x2450x555",
+        "weight_kg": 55.0,
+        "list_price": 8.2,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "600x1000 mm",
+          "tip": "Set Üstü",
+          "kontrol": "Tek Hızlı",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP-B 600-1000 GP-B 600-1000 Set Üstü Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-b-600-1200-set-ustu-hamur-acma-makinesi",
+    "name": "GP-B 600-1200 Set Üstü Hamur Açma Makinesi",
+    "title_tr": "GP-B 600-1200 Set Üstü Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP-B 600-1200 Countertop Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "600x1200mm Çalışma Alanı",
+      "Set Üstü",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP-B 600-1200",
+        "name_tr": "GP-B 600-1200 Set Üstü Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "1055x2850x555",
+        "weight_kg": 55.0,
+        "list_price": 8.3,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "600x1200 mm",
+          "tip": "Set Üstü",
+          "kontrol": "Tek Hızlı",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP-B 600-1200 GP-B 600-1200 Set Üstü Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-500-800-standli-hamur-acma-makinesi",
+    "name": "GP 500-800 Standlı Hamur Açma Makinesi",
+    "title_tr": "GP 500-800 Standlı Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP 500-800 Stand Type Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "500x800mm Çalışma Alanı",
+      "Standlı",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP 500-800",
+        "name_tr": "GP 500-800 Standlı Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "955x2050x1280",
+        "weight_kg": 55.0,
+        "list_price": 8.5,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "500x800 mm",
+          "tip": "Standlı",
+          "kontrol": "Tek Hızlı",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP 500-800 GP 500-800 Standlı Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-500-1000-standli-hamur-acma-makinesi",
+    "name": "GP 500-1000 Standlı Hamur Açma Makinesi",
+    "title_tr": "GP 500-1000 Standlı Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP 500-1000 Stand Type Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "500x1000mm Çalışma Alanı",
+      "Standlı",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP 500-1000",
+        "name_tr": "GP 500-1000 Standlı Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "955x2450x1280",
+        "weight_kg": 55.0,
+        "list_price": 8.6,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "500x1000 mm",
+          "tip": "Standlı",
+          "kontrol": "Tek Hızlí",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP 500-1000 GP 500-1000 Standlı Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-600-1000-standli-hamur-acma-makinesi",
+    "name": "GP 600-1000 Standlı Hamur Açma Makinesi",
+    "title_tr": "GP 600-1000 Standlı Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP 600-1000 Stand Type Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "600x1000mm Çalışma Alanı",
+      "Standlı",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP 600-1000",
+        "name_tr": "GP 600-1000 Standlı Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "1055x2450x1280",
+        "weight_kg": 55.0,
+        "list_price": 8.8,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "600x1000 mm",
+          "tip": "Standlı",
+          "kontrol": "Tek Hızlı",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP 600-1000 GP 600-1000 Standlı Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-gp-600-1200-standli-hamur-acma-makinesi",
+    "name": "GP 600-1200 Standlı Hamur Açma Makinesi",
+    "title_tr": "GP 600-1200 Standlı Hamur Açma Makinesi (Tek Hızlı)",
+    "title_en": "GP 600-1200 Stand Type Dough Sheeter (Single Speed)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-acma-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Rektifiye silindirler, son derece hassas transmisyon sistemi",
+      "Çizilmez beyaz boya kaplamalı çelik gövde",
+      "Tekerlekli taşıma sistemi",
+      "Yukarı kaldırılabilir çalışma yüzeyleri"
+    ],
+    "short_specs": [
+      "600x1200mm Çalışma Alanı",
+      "Standlı",
+      "Tek Hızlı"
+    ],
+    "notes": [
+      "* İki hızlı cihaz opsiyonu için hız varyatör farkı eklenecektir.",
+      "** Bütün cihazlar monofazedir. Trifaze cihazlar için lütfen sorunuz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "GP 600-1200",
+        "name_tr": "GP 600-1200 Standlı Hamur Açma Makinesi",
+        "sku": "",
+        "dimensions": "1055x2850x1280",
+        "weight_kg": 55.0,
+        "list_price": 9.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "calisma_alani": "600x1200 mm",
+          "tip": "Standlı",
+          "kontrol": "Tek Hızlı",
+          "guc": "550 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "GP 600-1200 GP 600-1200 Standlı Hamur Açma Makinesi"
+  },
+  {
+    "slug": "gtech-spa-m-manuel-hamur-bolme-yuvarlama-makinesi",
+    "name": "SPA-M Manuel Hamur Bölme Yuvarlama Makinesi",
+    "title_tr": "SPA-M Manuel Hamur Bölme Yuvarlama Makinesi",
+    "title_en": "SPA-M Manual Dough Divider and Rounder",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-bolme-yuvarlama-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Presleme için iki ve kesme için bir silindirli hidrolik makine.",
+      "Presleme ve şekillendirme bölümünün açılma zamanlamasını ayarlayabilen bir kontrol paneli.",
+      "Yuvarlama mekanik bir kol ile gerçekleştirilir.",
+      "Bıçak temizleme tuşu.",
+      "10 farklı programa kadar saklama ve dil seçeneği kullanıcının ihtiyacına göre değiştirilebilir.",
+      "Makine ile birlikte 3 adet levha verilir."
+    ],
+    "short_specs": [
+      "Hidrolik Sistem",
+      "10 Program Hafıza",
+      "Mekanik Yuvarlama"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "SPA-M11",
+        "name_tr": "SPA-M11 Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "11 Ad x 180/500gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-M15",
+        "name_tr": "SPA-M15 Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "15 Ad x 150/360gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-M18",
+        "name_tr": "SPA-M18 Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "18 Ad x 120/280gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-M22",
+        "name_tr": "SPA-M22 Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "22 Ad x 60/220gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-M30",
+        "name_tr": "SPA-M30 Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "30 Ad x 40/135gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-M30S",
+        "name_tr": "SPA-M30S Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "30 Ad x 25/90gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-M36",
+        "name_tr": "SPA-M36 Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "36 Ad x 34/110gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-M52",
+        "name_tr": "SPA-M52 Manuel Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 16.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "52 Ad x 12/30gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "SPA-M11 SPA-M Manuel Hamur Bölme Yuvarlama Makinesi"
+  },
+  {
+    "slug": "gtech-spa-a-otomatik-hamur-bolme-yuvarlama-makinesi",
+    "name": "SPA-A Otomatik Hamur Bölme Yuvarlama Makinesi",
+    "title_tr": "SPA-A Otomatik Hamur Bölme Yuvarlama Makinesi",
+    "title_en": "SPA-A Automatic Dough Divider and Rounder",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "hamur-bolme-yuvarlama-makineleri",
+    "brand": "gtech",
+    "primary_node": "hamur-isleme-makineleri",
+    "general_features": [
+      "Presleme için iki ve kesme için bir silindirli hidrolik makine.",
+      "Presleme ve şekillendirme bölümünün açılma zamanlamasını ayarlayabilen bir kontrol paneli.",
+      "Yuvarlama mekanik bir kol ile gerçekleştirilir.",
+      "Bıçak temizleme tuşu.",
+      "10 farklı programa kadar saklama ve dil seçeneği kullanıcının ihtiyacına göre değiştirilebilir.",
+      "Makine ile birlikte 3 adet levha verilir."
+    ],
+    "short_specs": [
+      "Hidrolik Sistem",
+      "10 Program Hafıza",
+      "Otomatik Yuvarlama"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "SPA-A11",
+        "name_tr": "SPA-A11 Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "11 Ad x 180/500gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-A15",
+        "name_tr": "SPA-A15 Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "15 Ad x 150/360gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-A18",
+        "name_tr": "SPA-A18 Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "18 Ad x 120/280gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-A22",
+        "name_tr": "SPA-A22 Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "22 Ad x 60/220gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-A30",
+        "name_tr": "SPA-A30 Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "30 Ad x 40/135gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-A30S",
+        "name_tr": "SPA-A30S Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "30 Ad x 25/90gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-A36",
+        "name_tr": "SPA-A36 Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "36 Ad x 34/110gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      },
+      {
+        "model_code": "SPA-A52",
+        "name_tr": "SPA-A52 Otomatik Hamur Bölme Yuvarlama Makinesi",
+        "sku": "",
+        "dimensions": "610x680x1450",
+        "weight_kg": 150.0,
+        "list_price": 26.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "52 Ad x 12/30gr Hamur",
+          "guc": "1500 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "SPA-A11 SPA-A Otomatik Hamur Bölme Yuvarlama Makinesi"
+  },
+  {
+    "slug": "gtech-vc-65ms-sebze-dograma-makinesi",
+    "name": "VC-65MS Sebze Doğrama Makinesi",
+    "title_tr": "VC-65MS Sebze Doğrama Makinesi",
+    "title_en": "VC-65MS Vegetable Cutting Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-dograma-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Her türlü sebze ve meyve hazırlığı için kullanın!",
+      "Tek hızlı yüksek performanslı motor bloğu",
+      "Gıda ile temas eden tüm parçalar bulaşık makinesinde yıkanabilir",
+      "Aşağıdaki 5 adet disk ürün aksesuarlarına dahildir: 2 Adet Dilimleyici: 2mm & 4mm, 3 Adet Rende: 3mm, 4.5mm & 7mm"
+    ],
+    "short_specs": [
+      "350 rpm/dk",
+      "5 Disk Dahil",
+      "Bulaşık Makinesinde Yıkanabilir"
+    ],
+    "notes": [
+      "Opsiyonel diskler ile ilgili iletişime geçiniz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "VC-65MS",
+        "name_tr": "VC-65MS Sebze Doğrama Makinesi",
+        "sku": "",
+        "dimensions": "325x620x535",
+        "weight_kg": 75.0,
+        "list_price": 1.42,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "350 rpm/dk",
+          "guc": "750 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "VC-65MS VC-65MS Sebze Doğrama Makinesi"
+  },
+  {
+    "slug": "gtech-fc-2mp-sebze-parcalama-makinesi",
+    "name": "FC-2MP Sebze Parçalama Makinesi",
+    "title_tr": "FC-2MP Sebze Parçalama Makinesi",
+    "title_en": "FC-2MP Vegetable Chopper",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-parcalama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Kolay kullanım ve kolay temizlik imkanı",
+      "Gıda ile temasa uygun polikarbon hazne",
+      "Paslanmaz çelik bıçak"
+    ],
+    "short_specs": [
+      "2.4 Lt Kapasite",
+      "1.500 rpm",
+      "Polikarbon Hazne"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "FC-2MP",
+        "name_tr": "FC-2MP Sebze Parçalama Makinesi",
+        "sku": "",
+        "dimensions": "240x260x320",
+        "weight_kg": 6.0,
+        "list_price": 0.9,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "2.4 Lt",
+          "hiz": "1.500 rpm",
+          "guc": "600 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "FC-2MP FC-2MP Sebze Parçalama Makinesi"
+  },
+  {
+    "slug": "gtech-fc-3mp-sebze-parcalama-makinesi",
+    "name": "FC-3MP Sebze Parçalama Makinesi",
+    "title_tr": "FC-3MP Sebze Parçalama Makinesi",
+    "title_en": "FC-3MP Vegetable Chopper",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-parcalama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Kolay kullanım ve kolay temizlik imkanı",
+      "Gıda ile temasa uygun polikarbon hazne",
+      "Paslanmaz çelik bıçak"
+    ],
+    "short_specs": [
+      "3.3 Lt Kapasite",
+      "1.500 rpm",
+      "Polikarbon Hazne"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "FC-3MP",
+        "name_tr": "FC-3MP Sebze Parçalama Makinesi",
+        "sku": "",
+        "dimensions": "240x260x370",
+        "weight_kg": 6.0,
+        "list_price": 0.94,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "3.3 Lt",
+          "hiz": "1.500 rpm",
+          "guc": "600 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "FC-3MP FC-3MP Sebze Parçalama Makinesi"
+  },
+  {
+    "slug": "gtech-fc-2mc-sebze-dograma-ve-parcalama-makinesi",
+    "name": "FC-2MC Sebze Doğrama ve Parçalama Makinesi",
+    "title_tr": "FC-2MC Sebze Doğrama ve Parçalama Makinesi",
+    "title_en": "FC-2MC Vegetable Cutting and Chopping Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-parcalama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Kolay kullanım ve kolay temizlik imkanı",
+      "Gıda ile temasa uygun polikarbon hazne",
+      "Paslanmaz çelik bıçak",
+      "2mm rende ve 4mm dilimleme bıçağı dahildir."
+    ],
+    "short_specs": [
+      "2.4 Lt + 2 Bıçaklı",
+      "1.500 rpm",
+      "2 Disk Dahil"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "FC-2MC",
+        "name_tr": "FC-2MC Sebze Doğrama ve Parçalama Makinesi",
+        "sku": "",
+        "dimensions": "240x260x440",
+        "weight_kg": 6.0,
+        "list_price": 1.0,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "2.4 Lt + 2 Bıçaklı",
+          "hiz": "1.500 rpm",
+          "guc": "600 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "FC-2MC FC-2MC Sebze Doğrama ve Parçalama Makinesi"
+  },
+  {
+    "slug": "gtech-fc-3mc-sebze-dograma-ve-parcalama-makinesi",
+    "name": "FC-3MC Sebze Doğrama ve Parçalama Makinesi",
+    "title_tr": "FC-3MC Sebze Doğrama ve Parçalama Makinesi",
+    "title_en": "FC-3MC Vegetable Cutting and Chopping Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-parcalama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Kolay kullanım ve kolay temizlik imkanı",
+      "Gıda ile temasa uygun polikarbon hazne",
+      "Paslanmaz çelik bıçak",
+      "2mm rende ve 4mm dilimleme bıçağı dahildir."
+    ],
+    "short_specs": [
+      "3.3 Lt + 2 Bıçaklı",
+      "1.500 rpm",
+      "2 Disk Dahil"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "FC-3MC",
+        "name_tr": "FC-3MC Sebze Doğrama ve Parçalama Makinesi",
+        "sku": "",
+        "dimensions": "240x260x460",
+        "weight_kg": 6.0,
+        "list_price": 1.04,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "3.3 Lt + 2 Bıçaklı",
+          "hiz": "1.500 rpm",
+          "guc": "600 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "FC-3MC FC-3MC Sebze Doğrama ve Parçalama Makinesi"
+  },
+  {
+    "slug": "gtech-vc-10mf-sebze-dograma-makinesi",
+    "name": "VC-10MF Sebze Doğrama Makinesi",
+    "title_tr": "VC-10MF Sebze Doğrama Makinesi",
+    "title_en": "VC-10MF Vegetable Cutting Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-parcalama-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Kolay kullanım ve kolay temizlik imkanı",
+      "Gıda ile temasa uygun polikarbon hazne",
+      "Paslanmaz çelik bıçak",
+      "2mm rende ve 4mm dilimleme bıçağı dahildir."
+    ],
+    "short_specs": [
+      "2 Bıçaklı",
+      "1.500 rpm",
+      "Polikarbon Hazne"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "VC-10MF",
+        "name_tr": "VC-10MF Sebze Doğrama Makinesi",
+        "sku": "",
+        "dimensions": "240x260x370",
+        "weight_kg": 6.0,
+        "list_price": 1.1,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "ozellik": "2 Bıçaklı",
+          "hiz": "1.500 rpm",
+          "guc": "600 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "VC-10MF VC-10MF Sebze Doğrama Makinesi"
+  },
+  {
+    "slug": "gtech-trs-sebze-kesme-makinesi",
+    "name": "TRS Sebze Kesme Makinesi",
+    "title_tr": "TRS Sebze Kesme Makinesi",
+    "title_en": "TRS Vegetable Cutting Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Dikey tasarım ve eğimli taban - Operatör ve çalışma ortamı için en yüksek düzeyde ergonomi.",
+      "Aynı yükleme silosu üzerinde hem büyük hem de uzun sebzeler için giriş bölümü bulunur.",
+      "Paslanmaz çelik kol, silo, kesme haznesi ve kesme diskleri bulaşık makinesinde yıkanabilir.",
+      "Demonte kesme haznesi: Yiyecekler motor tabanıyla temas etmez.",
+      "Kesintisiz yükleme yapılabilen model.",
+      "40'dan fazla farklı kesme diski (Çap: 205 mm)",
+      "Kapasite: 550 kg/s"
+    ],
+    "short_specs": [
+      "550 kg/s Kapasite",
+      "Bulaşık Makinesinde Yıkanabilir",
+      "40+ Kesme Diski"
+    ],
+    "notes": [],
+    "long_description": "TRS, 400 küvere kadar restoran ve catering işletmeleri için çok uygun bir sebze kesme makinesidir. Farklı kesme diskleri kullanılarak 70’den fazla farklı kesim biçimi elde edilebilir. Alt bazası 20° eğimlidir. Sebze doldurma ağzı yuvarlak tipte ve oldukça geniştir(215cm2). Boşaltma bölümünün altına 20cm yükseklikte GN küvetler girebilir. Kontrol paneli su sızdırmazdır. Hassas kesimler için darbeli çalıştırma olanağı vardır.",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "DTRS1V501",
+        "name_tr": "TRS Sebze kesme makinesi, 1-hızlı (340 rpm), 500 watt, paslanmaz çelik kollu silolu-1PH",
+        "sku": "",
+        "dimensions": "252x500x502",
+        "weight_kg": 24.0,
+        "list_price": 2.557,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "340 rpm",
+          "guc": "500 W",
+          "voltaj": "220..240V 1N 50 Hz",
+          "kapasite": "550 kg/s"
+        }
+      },
+      {
+        "model_code": "DTRS1V503",
+        "name_tr": "TRS Sebze kesme makinesi, 1-hızlı (340 rpm), 500 watt, paslanmaz çelik, kollu silolu-3PH",
+        "sku": "",
+        "dimensions": "252x500x502",
+        "weight_kg": 20.0,
+        "list_price": 2.518,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "340 rpm",
+          "guc": "500 W",
+          "voltaj": "200..240/380..440V 3 50/60 Hz",
+          "kapasite": "550 kg/s"
+        }
+      },
+      {
+        "model_code": "DTRS2V753",
+        "name_tr": "TRS Sebze kesme makinesi, 2-HİZLİ (340/680 rpm), 750 watt, paslanmaz çelik, kollu silolu-3PH",
+        "sku": "",
+        "dimensions": "252x500x502",
+        "weight_kg": 26.0,
+        "list_price": 2.403,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "340/680 rpm",
+          "guc": "750 W",
+          "voltaj": "380..440V 3 50/60 Hz",
+          "kapasite": "550 kg/s"
+        }
+      },
+      {
+        "model_code": "DTRSVV1",
+        "name_tr": "TRS Sebze kesme makinesi, hız varyatörlü (140-750 rpm), 750 watt, paslanmaz çelik, kollu silolu-1PH",
+        "sku": "",
+        "dimensions": "252x500x502",
+        "weight_kg": 24.0,
+        "list_price": 3.014,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "140-750 rpm",
+          "guc": "750 W",
+          "voltaj": "220..240V 1N 50/60 Hz",
+          "kapasite": "550 kg/s"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "DTRS1V501 TRS Sebze Kesme Makinesi"
+  },
+  {
+    "slug": "gtech-trs-aksesuar-disk-seti",
+    "name": "TRS Aksesuar Disk Seti",
+    "title_tr": "TRS Aksesuar Disk Seti",
+    "title_en": "TRS Accessory Disc Set",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [],
+    "short_specs": [
+      "TRS/TR210 Uyumlu",
+      "Paslanmaz Çelik Diskler"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "SCEQX",
+        "name_tr": "Bistro disk seti (C2S-2mm dilimleme diski, C5S-5mm dilimleme diski, J2X-2mm rende diski)",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": 6.0,
+        "list_price": 0.669,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "icerik": "C2S-2mm dilimleme, C5S-5mm dilimleme, J2X-2mm rende",
+          "uyum": "TRS, TR210"
+        }
+      },
+      {
+        "model_code": "SCREQX",
+        "name_tr": "Gastronomi disk seti (C2S-2mm dilimleme diski, C5S-5mm dilimleme diski, J2X-2mm rende diski, AS4X-4x4mm şerit biçiminde kesme diski, C10PS-10mm pres/dilimleme diski, MT10T-10x10mm küp için ızgara)",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": 6.0,
+        "list_price": 1.351,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "icerik": "C2S, C5S, J2X, AS4X, C10PS, MT10T",
+          "uyum": "TRS, TR210"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "SCEQX TRS Aksesuar Disk Seti"
+  },
+  {
+    "slug": "gtech-trs-ejektor",
+    "name": "TRS Ejektör",
+    "title_tr": "TRS Ejektör",
+    "title_en": "TRS Ejector",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [],
+    "short_specs": [
+      "TRS/TRK İçin",
+      "Paslanmaz Çelik"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "EJTRS",
+        "name_tr": "Ejektör -TRS/TRK",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": 1.0,
+        "list_price": 0.34,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "uyum": "TRS, TRK"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "EJTRS TRS Ejektör"
+  },
+  {
+    "slug": "gtech-trs-stand",
+    "name": "TRS/TR210 Stand",
+    "title_tr": "TRS/TR210 Stand",
+    "title_en": "TRS/TR210 Stand",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [],
+    "short_specs": [
+      "TRS ve TR210 İçin",
+      "Katlanır Raf",
+      "Bıçak Rafı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "WT",
+        "name_tr": "S/S Stand, TRS ve TR210 için - Katlanır raf ve bıçak rafı",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": 29.0,
+        "list_price": 2.645,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "uyum": "TRS, TR210",
+          "ozellik": "Katlanır raf, bıçak rafı"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "WT TRS/TR210 Stand"
+  },
+  {
+    "slug": "gtech-tr210-sebze-kesme-makinesi",
+    "name": "TR210 Sebze Kesme Makinesi",
+    "title_tr": "TR210 Sebze Kesme Makinesi",
+    "title_en": "TR210 Vegetable Cutting Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [
+      "Otomatik yükleme silosu sebzeleri aralıksız kesme haznesine aktararak verimliliği artırır.",
+      "Demonte kesme haznesi: yiyecekler motor tabanıyla temas etmez.",
+      "Paslanmaz çelik disk ve ızgaralar (Çap: 205 mm)",
+      "Kesintisiz yükleme yapılabilen model",
+      "Set üstü veya standlı modeller",
+      "Kapasite: 400-2100 kg/s"
+    ],
+    "short_specs": [
+      "Otomatik Silolu",
+      "800-2100 kg/s Kapasite",
+      "Paslanmaz Çelik Disk"
+    ],
+    "notes": [],
+    "long_description": "TR210, 400 küver ve daha fazla kapasiteye sahip tesisler için tasarlanmıştır. Otomatik yükleme silosu sebzeleri aralıksız kesme haznesine aktararak verimliliği artırır.",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "DTR2101V",
+        "name_tr": "Sebze kesme makinesi, 1-HIZLI (340 rpm), kapasite: 400-1100 Kg/s, otomatik silolu, 1PH-TR210",
+        "sku": "",
+        "dimensions": "416x490x690",
+        "weight_kg": 32.0,
+        "list_price": 3.415,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "340 rpm",
+          "kapasite": "400-1100 Kg/s",
+          "guc": "500 W",
+          "voltaj": "230...240V 1 50 Hz"
+        }
+      },
+      {
+        "model_code": "DTR210VV",
+        "name_tr": "Sebze kesme makinesi, HIZ VARYATÖRLÜ (140-750 rpm), kapasite: 800-2100 Kg/s, otomatik silolu, 1PH-TR210",
+        "sku": "",
+        "dimensions": "416x490x690",
+        "weight_kg": 32.0,
+        "list_price": 3.816,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "140-750 rpm",
+          "kapasite": "800-2100 Kg/s",
+          "guc": "500 W",
+          "voltaj": "208...240V 1 50/60 Hz"
+        }
+      },
+      {
+        "model_code": "DTR210VVTL",
+        "name_tr": "Sebze kesme makinesi, HIZ VARYATÖRLÜ (140-750 rpm), kapasite: 800-2100 Kg/s, otomatik ve manual silolu ve standlı, 1PH-TR210",
+        "sku": "",
+        "dimensions": "630x770x1250",
+        "weight_kg": 84.0,
+        "list_price": 5.976,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "140-750 rpm",
+          "kapasite": "800-2100 Kg/s",
+          "guc": "500 W",
+          "voltaj": "208...240V 1 50/60 Hz"
+        }
+      },
+      {
+        "model_code": "DTR2101V3",
+        "name_tr": "Sebze kesme makinesi, 2-HIZLI (340-680 rpm), kapasite: 800-2100 Kg/s, otomatik silolu, 3PH-TR210",
+        "sku": "",
+        "dimensions": "416x490x690",
+        "weight_kg": 34.0,
+        "list_price": 3.816,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "340-680 rpm",
+          "kapasite": "800-2100 Kg/s",
+          "guc": "750 W",
+          "voltaj": "230/400V 3 50/60 Hz"
+        }
+      },
+      {
+        "model_code": "DTR2102V3",
+        "name_tr": "Sebze kesme makinesi, 2-HIZLI-340/680rpm, kapasite: 800-2100 Kg/s, otomatik silolu ve standlı, 3PH-TR210",
+        "sku": "",
+        "dimensions": "630x770x1250",
+        "weight_kg": 82.0,
+        "list_price": 6.694,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "340/680 rpm",
+          "kapasite": "800-2100 Kg/s",
+          "guc": "750 W",
+          "voltaj": "380...440V 3 50/60 Hz"
+        }
+      },
+      {
+        "model_code": "DTR210VVT",
+        "name_tr": "Sebze kesme makinesi, HIZ VARYATÖRLÜ (140-750 rpm), kapasite: 800-2100 Kg/s, otomatik silolu ve standlı, 1PH-TR210",
+        "sku": "",
+        "dimensions": "630x770x1250",
+        "weight_kg": 80.0,
+        "list_price": 6.694,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "hiz": "140-750 rpm",
+          "kapasite": "800-2100 Kg/s",
+          "guc": "500 W",
+          "voltaj": "208...240V 1 50/60 Hz"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "DTR2101V TR210 Sebze Kesme Makinesi"
+  },
+  {
+    "slug": "gtech-tr210-uzun-sebze-silosu",
+    "name": "TR210 Uzun Sebze Yükleme Silosu",
+    "title_tr": "TR210 Uzun Sebze Yükleme Silosu",
+    "title_en": "TR210 Long Vegetable Loading Hopper",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [],
+    "short_specs": [
+      "TR210 İçin",
+      "4 Tüplü",
+      "İtme Kollu"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "LVH",
+        "name_tr": "TR210 için uzun sebze yükleme silosu, farklı çaplarda 4 tüplü, itme kollu",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": 10.0,
+        "list_price": 1.045,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "uyum": "TR210",
+          "ozellik": "4 tüplü, itme kollu",
+          "not": "kesme bölmesi ve ejektör dahil değildir"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "LVH TR210 Uzun Sebze Yükleme Silosu"
+  },
+  {
+    "slug": "gtech-tr210-kollu-sebze-doldurma-silosu",
+    "name": "TR210 Kollu Sebze Doldurma Silosu",
+    "title_tr": "TR210 Kollu Sebze Doldurma Silosu",
+    "title_en": "TR210 Hand-Operated Vegetable Filling Hopper",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [],
+    "short_specs": [
+      "TR210 İçin",
+      "Kollu",
+      "Paslanmaz Çelik"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "LEV-HOPPER",
+        "name_tr": "TR210 için kollu sebze doldurma silosu",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": 6.0,
+        "list_price": 0.899,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "uyum": "TR210",
+          "not": "kesme bölmesi ve ejektör dahil değildir"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "LEV-HOPPER TR210 Kollu Sebze Doldurma Silosu"
+  },
+  {
+    "slug": "gtech-tr210-araba",
+    "name": "TR210 Araba (GN2/1 Küvetler İçin)",
+    "title_tr": "TR210 Araba (GN2/1 Küvetler İçin)",
+    "title_en": "TR210 Trolley (for GN2/1 Pans)",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "sebze-kesme-makineleri",
+    "brand": "gtech",
+    "primary_node": "sebze-isleme-makineleri",
+    "general_features": [],
+    "short_specs": [
+      "TR210 İçin",
+      "GN2/1 Küvetler İçin",
+      "Mobil"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "TR210trolley",
+        "name_tr": "GN2/1 küvetler için araba",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": 37.0,
+        "list_price": 1.871,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "uyum": "TR210",
+          "amac": "GN2/1 küvetler için",
+          "not": "GN küvetler dahil değildir"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "TR210trolley TR210 Araba (GN2/1 Küvetler İçin)"
+  },
+  {
+    "slug": "vitella-603677-el-mikseri-parcalayici",
+    "name": "603677 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_tr": "603677 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_en": "603677 Hand Mixer - Chopper with Speed Control",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "250 W",
+      "15.000 rpm/dk",
+      "Hız Kontrollü"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "603677",
+        "name_tr": "603677 El Mikseri - Parçalayıcı Hız Kontrollü",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.714,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "250 W",
+          "hiz": "15.000 rpm/dk",
+          "kapasite": "25 Lt"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "603677 603677 El Mikseri - Parçalayıcı Hız Kontrollü"
+  },
+  {
+    "slug": "vitella-600392-el-mikseri-parcalayici",
+    "name": "600392 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_tr": "600392 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_en": "600392 Hand Mixer - Chopper with Speed Control",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "450 W",
+      "9.000 rpm/dk",
+      "Hız Kontrollü"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "600392",
+        "name_tr": "600392 El Mikseri - Parçalayıcı Hız Kontrollü",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.756,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "450 W",
+          "hiz": "9.000 rpm/dk",
+          "kapasite": "35 Lt"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "600392 600392 El Mikseri - Parçalayıcı Hız Kontrollü"
+  },
+  {
+    "slug": "vitella-600321-el-mikseri-parcalayici",
+    "name": "600321 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_tr": "600321 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_en": "600321 Hand Mixer - Chopper with Speed Control",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "450 W",
+      "9.000 rpm/dk",
+      "Hız Kontrollü"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "600321",
+        "name_tr": "600321 El Mikseri - Parçalayıcı Hız Kontrollü",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.798,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "450 W",
+          "hiz": "9.000 rpm/dk",
+          "kapasite": "45 Lt"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "600321 600321 El Mikseri - Parçalayıcı Hız Kontrollü"
+  },
+  {
+    "slug": "vitella-600330-el-mikseri-parcalayici",
+    "name": "600330 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_tr": "600330 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_en": "600330 Hand Mixer - Chopper with Speed Control",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "550 W",
+      "10.000 rpm/dk",
+      "Hız Kontrollü"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "600330",
+        "name_tr": "600330 El Mikseri - Parçalayıcı Hız Kontrollü",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.824,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "550 W",
+          "hiz": "10.000 rpm/dk",
+          "kapasite": "55 Lt"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "600330 600330 El Mikseri - Parçalayıcı Hız Kontrollü"
+  },
+  {
+    "slug": "vitella-600337-el-mikseri-parcalayici",
+    "name": "600337 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_tr": "600337 El Mikseri - Parçalayıcı Hız Kontrollü",
+    "title_en": "600337 Hand Mixer - Chopper with Speed Control",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "750 W",
+      "10.000 rpm/dk",
+      "Hız Kontrollü"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "600337",
+        "name_tr": "600337 El Mikseri - Parçalayıcı Hız Kontrollü",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.882,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "750 W",
+          "hiz": "10.000 rpm/dk",
+          "kapasite": "65 Lt"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "600337 600337 El Mikseri - Parçalayıcı Hız Kontrollü"
+  },
+  {
+    "slug": "vitella-ib350cv-bld250-el-mikseri",
+    "name": "IB350CV+BLD250 El Mikseri - Parçalayıcı",
+    "title_tr": "IB350CV+BLD250 El Mikseri - Parçalayıcı",
+    "title_en": "IB350CV+BLD250 Hand Mixer - Chopper",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "350 W",
+      "6.000/18.000 rpm/dk",
+      "250mm Uzunluk"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "IB350CV+BLD250",
+        "name_tr": "IB350CV+BLD250 El Mikseri - Parçalayıcı",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.33,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "350 W",
+          "hiz": "6.000/18.000 rpm/dk",
+          "uzunluk": "250 mm"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "IB350CV+BLD250 IB350CV+BLD250 El Mikseri - Parçalayıcı"
+  },
+  {
+    "slug": "vitella-ib350cv-bld250-wik250-el-mikseri-combi",
+    "name": "IB350CV+BLD250+WIK250 El Mikseri - Combi",
+    "title_tr": "IB350CV+BLD250+WIK250 El Mikseri - Combi",
+    "title_en": "IB350CV+BLD250+WIK250 Hand Mixer - Combi",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "350 W",
+      "6.000/18.000 rpm/dk",
+      "250mm Uzunluk",
+      "Çırpıcı Dahil"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "IB350CV+BLD250+WIK250",
+        "name_tr": "IB350CV+BLD250+WIK250 El Mikseri - Combi",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.515,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "350 W",
+          "hiz": "6.000/18.000 rpm/dk",
+          "uzunluk": "250 mm",
+          "tip": "Combi (Parçalayıcı + Çırpıcı)"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "IB350CV+BLD250+WIK250 IB350CV+BLD250+WIK250 El Mikseri - Combi"
+  },
+  {
+    "slug": "vitella-ib500cv-bld400-el-mikseri",
+    "name": "IB500CV+BLD400 El Mikseri - Parçalayıcı",
+    "title_tr": "IB500CV+BLD400 El Mikseri - Parçalayıcı",
+    "title_en": "IB500CV+BLD400 Hand Mixer - Chopper",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "500 W",
+      "6.000/18.000 rpm/dk",
+      "400mm Uzunluk"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "IB500CV+BLD400",
+        "name_tr": "IB500CV+BLD400 El Mikseri - Parçalayıcı",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.45,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "500 W",
+          "hiz": "6.000/18.000 rpm/dk",
+          "uzunluk": "400 mm"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "IB500CV+BLD400 IB500CV+BLD400 El Mikseri - Parçalayıcı"
+  },
+  {
+    "slug": "vitella-ib500cv-bld400-wik250-el-mikseri-combi",
+    "name": "IB500CV+BLD400+WIK250 El Mikseri - Combi",
+    "title_tr": "IB500CV+BLD400+WIK250 El Mikseri - Combi",
+    "title_en": "IB500CV+BLD400+WIK250 Hand Mixer - Combi",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "el-mikserleri",
+    "brand": "vitella",
+    "primary_node": "el-mikserleri",
+    "general_features": [
+      "Tüm modeller hız kontrollüdür.",
+      "Gıda ile temas eden tüm parçalar paslanmaz çeliktir.",
+      "Motor bloğu ve tüp bağlantısı alüminyumdur.",
+      "Uzun süre durdurulmadan çalışabilmesi için tasarlanmış özel ve güçlü motor sahiptir."
+    ],
+    "short_specs": [
+      "500 W",
+      "6.000/18.000 rpm/dk",
+      "400mm Uzunluk",
+      "Çırpıcı Dahil"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "IB500CV+BLD400+WIK250",
+        "name_tr": "IB500CV+BLD400+WIK250 El Mikseri - Combi",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 0.62,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "500 W",
+          "hiz": "6.000/18.000 rpm/dk",
+          "uzunluk": "400 mm",
+          "tip": "Combi (Parçalayıcı + Çırpıcı)"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "IB500CV+BLD400+WIK250 IB500CV+BLD400+WIK250 El Mikseri - Combi"
+  },
+  {
+    "slug": "vitella-ef708-professional-set-ustu-mikser",
+    "name": "EF708 Professional Set Üstü Mikser",
+    "title_tr": "EF708 Professional Set Üstü Mikser",
+    "title_en": "EF708 Professional Counter Type Mixer",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "set-ustu-mikserler",
+    "brand": "vitella",
+    "primary_node": "set-ustu-mikserler",
+    "general_features": [
+      "Die-Cast Alüminyum gövde",
+      "Komple metal iç aksam",
+      "8 farklı hız ile kontrol",
+      "Digital gösterge",
+      "Zamanlayıcı",
+      "Çırpıcı, Yoğurucu ve Hamur Kancası",
+      "Polikarbon şeffaf siperlik"
+    ],
+    "short_specs": [
+      "4.8 Lt Kapasite",
+      "8 Hız",
+      "Döküm Gövde"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [
+      {
+        "url": "https://witcdn.cafemarkt.com/gtech-ef708-professional-set-ustu-mikser-4-8-l-beyaz-stand-mikserler-gtech-49171-29-B.jpg",
+        "is_primary": true,
+        "alt_tr": "EF708 Professional Set Üstü Mikser",
+        "source": {
+          "page": null,
+          "verified": true
+        }
+      }
+    ],
+    "variants": [
+      {
+        "model_code": "EF708",
+        "name_tr": "EF708 Professional Set Üstü Mikser",
+        "sku": "",
+        "dimensions": "347x184x364",
+        "weight_kg": 10.0,
+        "list_price": 0.71,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4.8 Lt",
+          "guc": "1.000 W",
+          "voltaj": "220 V",
+          "govde": "Döküm"
+        }
+      }
+    ],
+    "image_status": "found",
+    "image_search_query": "EF708 EF708 Professional Set Üstü Mikser"
+  },
+  {
+    "slug": "vitella-ef708-s-professional-set-ustu-mikser",
+    "name": "EF708-S Professional Set Üstü Mikser",
+    "title_tr": "EF708-S Professional Set Üstü Mikser",
+    "title_en": "EF708-S Professional Counter Type Mixer",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "set-ustu-mikserler",
+    "brand": "vitella",
+    "primary_node": "set-ustu-mikserler",
+    "general_features": [
+      "Die-Cast Alüminyum gövde",
+      "Komple metal iç aksam",
+      "8 farklı hız ile kontrol",
+      "Digital gösterge",
+      "Zamanlayıcı",
+      "Çırpıcı, Yoğurucu ve Hamur Kancası",
+      "Polikarbon şeffaf siperlik"
+    ],
+    "short_specs": [
+      "4.8 Lt Kapasite",
+      "8 Hız",
+      "Krom Gövde"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "EF708-S",
+        "name_tr": "EF708-S Professional Set Üstü Mikser",
+        "sku": "",
+        "dimensions": "347x184x364",
+        "weight_kg": 10.0,
+        "list_price": 0.755,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4.8 Lt",
+          "guc": "1.000 W",
+          "voltaj": "220 V",
+          "govde": "Krom"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "EF708-S EF708-S Professional Set Üstü Mikser"
+  },
+  {
+    "slug": "kitchenaid-5k45ssewh-classic-stand-mikser",
+    "name": "5K45SSEWH Classic Stand Mikser - Beyaz",
+    "title_tr": "5K45SSEWH Classic Stand Mikser - Beyaz",
+    "title_en": "5K45SSEWH Classic Stand Mixer - White",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orijinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Klasik model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "4.3 Lt Kapasite",
+      "875 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5K45SSEWH",
+        "name_tr": "5K45SSEWH Classic Stand Mikser - Beyaz",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.087,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4.3 Lt",
+          "hamur_kapasitesi": "875 gr",
+          "guc": "275 W",
+          "voltaj": "220 V",
+          "renk": "Beyaz"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5K45SSEWH 5K45SSEWH Classic Stand Mikser - Beyaz"
+  },
+  {
+    "slug": "kitchenaid-5k45sseob-classic-stand-mikser",
+    "name": "5K45SSEOB Classic Stand Mikser - Siyah",
+    "title_tr": "5K45SSEOB Classic Stand Mikser - Siyah",
+    "title_en": "5K45SSEOB Classic Stand Mixer - Onyx Black",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orijinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Klasik model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "4.3 Lt Kapasite",
+      "875 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5K45SSEOB",
+        "name_tr": "5K45SSEOB Classic Stand Mikser - Siyah",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.087,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4.3 Lt",
+          "hamur_kapasitesi": "875 gr",
+          "guc": "275 W",
+          "voltaj": "220 V",
+          "renk": "Siyah (Onyx Black)"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5K45SSEOB 5K45SSEOB Classic Stand Mikser - Siyah"
+  },
+  {
+    "slug": "kitchenaid-5kpmsewh-heavy-duty-stand-mikser",
+    "name": "5KPMSEWH Heavy Duty Stand Mixer - White",
+    "title_tr": "5KPMSEWH Heavy Duty Stand Mikser - Beyaz",
+    "title_en": "5KPMSEWH Heavy Duty Stand Mixer - White",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "4.8 Lt Kapasite",
+      "1.000 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KPMSEWH",
+        "name_tr": "5KPMSEWH Heavy Duty Stand Mixer - White",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.4,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4.8 Lt",
+          "hamur_kapasitesi": "1.000 gr",
+          "guc": "315 W",
+          "voltaj": "220-240V",
+          "renk": "Beyaz"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KPMSEWH 5KPMSEWH Heavy Duty Stand Mixer - White"
+  },
+  {
+    "slug": "kitchenaid-5kpmseob-heavy-duty-stand-mikser",
+    "name": "5KPMSEOB Heavy Duty Stand Mixer - Onyx Black",
+    "title_tr": "5KPMSEOB Heavy Duty Stand Mikser - Onyx Black",
+    "title_en": "5KPMSEOB Heavy Duty Stand Mixer - Onyx Black",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "4.8 Lt Kapasite",
+      "1.000 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KPMSEOB",
+        "name_tr": "5KPMSEOB Heavy Duty Stand Mixer - Onyx Black",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.4,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4.8 Lt",
+          "hamur_kapasitesi": "1.000 gr",
+          "guc": "315 W",
+          "voltaj": "220-240V",
+          "renk": "Onyx Black"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KPMSEOB 5KPMSEOB Heavy Duty Stand Mixer - Onyx Black"
+  },
+  {
+    "slug": "kitchenaid-5kpmseer-heavy-duty-stand-mikser",
+    "name": "5KPMSEER Heavy Duty Stand Mixer - Empire Red",
+    "title_tr": "5KPMSEER Heavy Duty Stand Mikser - Empire Red",
+    "title_en": "5KPMSEER Heavy Duty Stand Mixer - Empire Red",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "4.8 Lt Kapasite",
+      "1.000 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KPMSEER",
+        "name_tr": "5KPMSEER Heavy Duty Stand Mixer - Empire Red",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.4,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "4.8 Lt",
+          "hamur_kapasitesi": "1.000 gr",
+          "guc": "315 W",
+          "voltaj": "220-240V",
+          "renk": "Empire Red"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KPMSEER 5KPMSEER Heavy Duty Stand Mixer - Empire Red"
+  },
+  {
+    "slug": "kitchenaid-5kms55sxebm-heavy-duty-stand-mikser",
+    "name": "5KMS55SXEBM Heavy Duty Stand Mixer - Matte Black",
+    "title_tr": "5KMS55SXEBM Heavy Duty Stand Mikser - Matte Black",
+    "title_en": "5KMS55SXEBM Heavy Duty Stand Mixer - Matte Black",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "5.2 Lt Kapasite",
+      "1.200 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KMS55SXEBM",
+        "name_tr": "5KMS55SXEBM Heavy Duty Stand Mixer - Matte Black",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.65,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "5.2 Lt",
+          "hamur_kapasitesi": "1.200 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "Matte Black"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KMS55SXEBM 5KMS55SXEBM Heavy Duty Stand Mixer - Matte Black"
+  },
+  {
+    "slug": "kitchenaid-5kms55sxecu-heavy-duty-stand-mikser",
+    "name": "5KMS55SXECU Heavy Duty Stand Mixer - Contour Silver",
+    "title_tr": "5KMS55SXECU Heavy Duty Stand Mikser - Contour Silver",
+    "title_en": "5KMS55SXECU Heavy Duty Stand Mixer - Contour Silver",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "5.2 Lt Kapasite",
+      "1.200 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KMS55SXECU",
+        "name_tr": "5KMS55SXECU Heavy Duty Stand Mixer - Contour Silver",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.65,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "5.2 Lt",
+          "hamur_kapasitesi": "1.200 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "Contour Silver"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KMS55SXECU 5KMS55SXECU Heavy Duty Stand Mixer - Contour Silver"
+  },
+  {
+    "slug": "kitchenaid-5kms55sxeeer-heavy-duty-stand-mikser",
+    "name": "5KMS55SXEEER Heavy Duty Stand Mixer - Empire Red",
+    "title_tr": "5KMS55SXEEER Heavy Duty Stand Mikser - Empire Red",
+    "title_en": "5KMS55SXEEER Heavy Duty Stand Mixer - Empire Red",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "5.2 Lt Kapasite",
+      "1.200 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KMS55SXEEER",
+        "name_tr": "5KMS55SXEEER Heavy Duty Stand Mixer - Empire Red",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.65,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "5.2 Lt",
+          "hamur_kapasitesi": "1.200 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "Empire Red"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KMS55SXEEER 5KMS55SXEEER Heavy Duty Stand Mixer - Empire Red"
+  },
+  {
+    "slug": "kitchenaid-5kms55sxeob-heavy-duty-stand-mikser",
+    "name": "5KMS55SXEOB Heavy Duty Stand Mixer - Onyx Black",
+    "title_tr": "5KMS55SXEOB Heavy Duty Stand Mikser - Onyx Black",
+    "title_en": "5KMS55SXEOB Heavy Duty Stand Mixer - Onyx Black",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "5.2 Lt Kapasite",
+      "1.200 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KMS55SXEOB",
+        "name_tr": "5KMS55SXEOB Heavy Duty Stand Mixer - Onyx Black",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 1.65,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "5.2 Lt",
+          "hamur_kapasitesi": "1.200 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "Onyx Black"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KMS55SXEOB 5KMS55SXEOB Heavy Duty Stand Mixer - Onyx Black"
+  },
+  {
+    "slug": "kitchenaid-5ksm70jpxecu-heavy-duty-stand-mikser",
+    "name": "5KSM70JPXECU Heavy Duty Stand Mixer - Contour Silver",
+    "title_tr": "5KSM70JPXECU Heavy Duty Stand Mikser - Contour Silver",
+    "title_en": "5KSM70JPXECU Heavy Duty Stand Mixer - Contour Silver",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "6.6 Lt Kapasite",
+      "2.000 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KSM70JPXECU",
+        "name_tr": "5KSM70JPXECU Heavy Duty Stand Mixer - Contour Silver",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 2.15,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "6.6 Lt",
+          "hamur_kapasitesi": "2.000 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "Contour Silver"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KSM70JPXECU 5KSM70JPXECU Heavy Duty Stand Mixer - Contour Silver"
+  },
+  {
+    "slug": "kitchenaid-5ksm70jpxeeer-heavy-duty-stand-mikser",
+    "name": "5KSM70JPXEEER Heavy Duty Stand Mixer - Empire Red",
+    "title_tr": "5KSM70JPXEEER Heavy Duty Stand Mikser - Empire Red",
+    "title_en": "5KSM70JPXEEER Heavy Duty Stand Mixer - Empire Red",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "6.6 Lt Kapasite",
+      "2.000 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KSM70JPXEEER",
+        "name_tr": "5KSM70JPXEEER Heavy Duty Stand Mixer - Empire Red",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 2.15,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "6.6 Lt",
+          "hamur_kapasitesi": "2.000 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "Empire Red"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KSM70JPXEEER 5KSM70JPXEEER Heavy Duty Stand Mixer - Empire Red"
+  },
+  {
+    "slug": "kitchenaid-5ksm70jpxeob-heavy-duty-stand-mikser",
+    "name": "5KSM70JPXEOB Heavy Duty Stand Mixer - Onyx Black",
+    "title_tr": "5KSM70JPXEOB Heavy Duty Stand Mikser - Onyx Black",
+    "title_en": "5KSM70JPXEOB Heavy Duty Stand Mixer - Onyx Black",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "6.6 Lt Kapasite",
+      "2.000 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KSM70JPXEOB",
+        "name_tr": "5KSM70JPXEOB Heavy Duty Stand Mixer - Onyx Black",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 2.15,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "6.6 Lt",
+          "hamur_kapasitesi": "2.000 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "Onyx Black"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KSM70JPXEOB 5KSM70JPXEOB Heavy Duty Stand Mixer - Onyx Black"
+  },
+  {
+    "slug": "kitchenaid-5ksm70jpxewh-heavy-duty-stand-mikser",
+    "name": "5KSM70JPXEWH Heavy Duty Stand Mixer - White",
+    "title_tr": "5KSM70JPXEWH Heavy Duty Stand Mikser - White",
+    "title_en": "5KSM70JPXEWH Heavy Duty Stand Mixer - White",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için alüminyum düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "6.6 Lt Kapasite",
+      "2.000 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KSM70JPXEWH",
+        "name_tr": "5KSM70JPXEWH Heavy Duty Stand Mixer - White",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 2.15,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "6.6 Lt",
+          "hamur_kapasitesi": "2.000 gr",
+          "guc": "375 W",
+          "voltaj": "220-240V",
+          "renk": "White"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KSM70JPXEWH 5KSM70JPXEWH Heavy Duty Stand Mixer - White"
+  },
+  {
+    "slug": "kitchenaid-5ksm7990xeer-professional-stand-mikser",
+    "name": "5KSM7990XEER Professional Stand Mixer - Empire Red",
+    "title_tr": "5KSM7990XEER Professional Stand Mixer - Empire Red",
+    "title_en": "5KSM7990XEER Professional Stand Mixer - Empire Red",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor ,",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için PASLANMAZ ÇELİK düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Acil stop düğmesi , paslanmaz çelik koruma kafesi ve düşük enerji tüketimi.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "6.9 Lt Kapasite",
+      "2.200 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı",
+      "Paslanmaz Çelik Çırpıcı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KSM7990XEER",
+        "name_tr": "5KSM7990XEER Professional Stand Mixer - Empire Red",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 2.35,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "6.9 Lt",
+          "hamur_kapasitesi": "2.200 gr",
+          "guc": "325 W",
+          "voltaj": "220-240V",
+          "renk": "Empire Red"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KSM7990XEER 5KSM7990XEER Professional Stand Mixer - Empire Red"
+  },
+  {
+    "slug": "kitchenaid-5ksm7990xewh-professional-stand-mikser",
+    "name": "5KSM7990XEWH Professional Stand Mixer - White",
+    "title_tr": "5KSM7990XEWH Professional Stand Mixer - White",
+    "title_en": "5KSM7990XEWH Professional Stand Mixer - White",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "planet-mikserler",
+    "brand": "kitchenaid",
+    "primary_node": "planet-mikserler",
+    "general_features": [
+      "Orjinal planet dönme hareketi.",
+      "10 hız ayarı , sessiz motor ,",
+      "Metal kasa ve paslanmaz çelik hazne.",
+      "Ağır hizmet tipi model mikser tüm pişirme ihtiyaçlarınız için PASLANMAZ ÇELİK düz bir çırpıcı, hamur kancası ve tel çırpma teli dahil olarak paketlenmiştir.",
+      "Acil stop düğmesi , paslanmaz çelik koruma kafesi ve düşük enerji tüketimi.",
+      "Opsiyonel mikser aksesuarlarından ihtiyacınıza göre tercih yapabilirsiniz."
+    ],
+    "short_specs": [
+      "6.9 Lt Kapasite",
+      "2.200 gr Hamur Kapasitesi",
+      "10 Hız Ayarlı",
+      "Paslanmaz Çelik Çırpıcı"
+    ],
+    "notes": [],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [],
+    "variants": [
+      {
+        "model_code": "5KSM7990XEWH",
+        "name_tr": "5KSM7990XEWH Professional Stand Mixer - White",
+        "sku": "",
+        "dimensions": "",
+        "weight_kg": null,
+        "list_price": 2.35,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "kapasite": "6.9 Lt",
+          "hamur_kapasitesi": "2.200 gr",
+          "guc": "325 W",
+          "voltaj": "220-240V",
+          "renk": "White"
+        }
+      }
+    ],
+    "image_status": "missing",
+    "image_search_query": "5KSM7990XEWH 5KSM7990XEWH Professional Stand Mixer - White"
+  },
+  {
+    "slug": "imperia-restaurant-otomatik-elektrikli-eriste-makarna-kesme-makinesi",
+    "name": "Restaurant Otomatik Elektrikli Erişte Makarna Kesme Makinesi",
+    "title_tr": "Restaurant Otomatik Elektrikli Erişte Makarna Kesme Makinesi",
+    "title_en": "Restaurant Automatic Electric Noodle Pasta Cutting Machine",
+    "status": "draft",
+    "is_featured": false,
+    "category": "hazirlik-ekipmanlari",
+    "series": "makarna-makineleri",
+    "brand": "imperia",
+    "primary_node": "makarna-makineleri",
+    "general_features": [
+      "Chef in casa makarna makinası ve erişte makinası İtalyan Imperia markalı küçük, kompakt, güvenilir, masaüstü bir makinadır.",
+      "Orta ölçekli restoranlar ve butik işletmeler için ugundur.",
+      "Her türlü un ile hamur yoğurma özelliğine sahiptir.",
+      "Kısa ve uzun makarna üretme özelliğine sahiptir, kısa makarnaları kendi bıçağı ile otomatik olarak keserken, uzun makarna ve erişteler istenilen uzunlukta manuel olarak kesilir.",
+      "Imperia restoran elektrikli makarna makinası ve erişte makinası restoran kullanımı için tasarlanmıştır ve çok yüksek kalite standartlarında üretilmiştir.",
+      "Özel, zarif ve kullanımı kolay imperia makarna makinası ve erişte makinasıdır."
+    ],
+    "short_specs": [
+      "Otomatik Kesim",
+      "Elektrikli",
+      "İtalyan İmalatı"
+    ],
+    "notes": [
+      "Diğer disk seçenekleri için iletişime geçiniz."
+    ],
+    "long_description": "",
+    "seo_title": "",
+    "seo_description": "",
+    "images": [
+      {
+        "url": "https://witcdn.cafemarkt.com/imperia-restaurant-type-pasta-machine-electric-en-pasta-making-machines-imperia-30521-16-B.jpg",
+        "is_primary": true,
+        "alt_tr": "Restaurant Otomatik Elektrikli Erişte Makarna Kesme Makinesi",
+        "source": {
+          "page": null,
+          "verified": true
+        }
+      }
+    ],
+    "variants": [
+      {
+        "model_code": "IMPERIA-RESTAURANT",
+        "name_tr": "Restaurant Otomatik Elektrikli Erişte Makarna Kesme Makinesi",
+        "sku": "",
+        "dimensions": "300x220x250",
+        "weight_kg": 29.0,
+        "list_price": 3.11,
+        "price_override": null,
+        "stock_qty": null,
+        "specs": {
+          "guc": "290 W",
+          "voltaj": "220 V"
+        }
+      }
+    ],
+    "image_status": "found",
+    "image_search_query": "IMPERIA-RESTAURANT Restaurant Otomatik Elektrikli Erişte Makarna Kesme Makinesi"
+  }
+]

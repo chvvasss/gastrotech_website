@@ -1,0 +1,31 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<p>You are about to apply a spec template to the following {{ products.count }} product(s):</p>
+
+<ul>
+{% for product in products %}
+    <li>{{ product.title_tr }} ({{ product.slug }})</li>
+{% endfor %}
+</ul>
+
+<form method="post">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    {% for product in products %}
+        <input type="hidden" name="{{ action_checkbox_name }}" value="{{ product.pk }}">
+    {% endfor %}
+    
+    <input type="hidden" name="action" value="apply_spec_template">
+    
+    <p>
+        <input type="submit" name="apply" value="Apply Template" class="default">
+        <a href="{% url opts|admin_urlname:'changelist' %}" class="button cancel-link">Cancel</a>
+    </p>
+</form>
+{% endblock %}

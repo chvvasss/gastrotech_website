@@ -1,0 +1,22 @@
+# Development dependencies for Gastrotech Backend
+# Install with: pip install -r requirements-dev.txt
+
+# Include production requirements
+-r requirements.txt
+
+# Code Quality
+ruff>=0.1.0
+black>=24.0.0
+
+# Security Scanning
+safety>=2.3.0
+bandit>=1.7.0
+
+# Testing (optional - if migrating to pytest)
+# pytest>=8.0.0
+# pytest-django>=4.5.0
+# pytest-cov>=4.0.0
+
+# Debug
+ipython>=8.0.0
+django-debug-toolbar>=4.2.0

@@ -1,0 +1,374 @@
+[
+    {
+        "proposed_name": "700 Serisi Ara Tezgahlar",
+        "base_name_raw": "Ara Tezgahlar",
+        "items": [
+            {
+                "slug": "ntr7010",
+                "model_code": "NTR7010"
+            },
+            {
+                "slug": "ntr7010c",
+                "model_code": "NTR7010C"
+            },
+            {
+                "slug": "ntr7010e",
+                "model_code": "NTR7010E"
+            },
+            {
+                "slug": "ntr7020",
+                "model_code": "NTR7020"
+            },
+            {
+                "slug": "ntr7020c",
+                "model_code": "NTR7020C"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Alt Stantlar",
+        "base_name_raw": "Alt Stantlar",
+        "items": [
+            {
+                "slug": "std7010",
+                "model_code": "STD7010"
+            },
+            {
+                "slug": "std7010c",
+                "model_code": "STD7010C"
+            },
+            {
+                "slug": "std7010d",
+                "model_code": "STD7010D"
+            },
+            {
+                "slug": "std7020",
+                "model_code": "STD7020"
+            },
+            {
+                "slug": "std7020c",
+                "model_code": "STD7020C"
+            },
+            {
+                "slug": "std7020d",
+                "model_code": "STD7020D"
+            },
+            {
+                "slug": "std7030",
+                "model_code": "STD7030"
+            },
+            {
+                "slug": "std7030c",
+                "model_code": "STD7030C"
+            },
+            {
+                "slug": "std7030d",
+                "model_code": "STD7030D"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Elektrikli Fritözler",
+        "base_name_raw": "Elektrikli Fritözler",
+        "items": [
+            {
+                "slug": "efp7010",
+                "model_code": "EFP7010"
+            },
+            {
+                "slug": "efp7020",
+                "model_code": "EFP7020"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Fritözler",
+        "base_name_raw": "Gazlı Fritözler",
+        "items": [
+            {
+                "slug": "gfp7010",
+                "model_code": "GFP7010"
+            },
+            {
+                "slug": "gfp7030",
+                "model_code": "GFP7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Elektrikli Makarna Pişiriciler",
+        "base_name_raw": "Elektrikli Makarna Pişiriciler",
+        "items": [
+            {
+                "slug": "emf7010",
+                "model_code": "EMF7010"
+            },
+            {
+                "slug": "emf7020",
+                "model_code": "EMF7020"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Izgaralar (Düz/Nervürlü)",
+        "base_name_raw": "Gazlı Izgaralar",
+        "items": [
+            {
+                "slug": "gpi7010r",
+                "model_code": "GPI7010R"
+            },
+            {
+                "slug": "gpi7010s",
+                "model_code": "GPI7010S"
+            },
+            {
+                "slug": "gpi7020r",
+                "model_code": "GPI7020R"
+            },
+            {
+                "slug": "gpi7020s",
+                "model_code": "GPI7020S"
+            },
+            {
+                "slug": "gpi7030r",
+                "model_code": "GPI7030R"
+            },
+            {
+                "slug": "gpi7030s",
+                "model_code": "GPI7030S"
+            },
+            {
+                "slug": "gpi7030sr",
+                "model_code": "GPI7030SR"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Elektrikli Izgaralar (Düz/Nervürlü)",
+        "base_name_raw": "Elektrikli Izgaralar",
+        "items": [
+            {
+                "slug": "epi7010r",
+                "model_code": "EPI7010R"
+            },
+            {
+                "slug": "epi7010s",
+                "model_code": "EPI7010S"
+            },
+            {
+                "slug": "epi7020r",
+                "model_code": "EPI7020R"
+            },
+            {
+                "slug": "epi7020s",
+                "model_code": "EPI7020S"
+            },
+            {
+                "slug": "epi7030r",
+                "model_code": "EPI7030R"
+            },
+            {
+                "slug": "epi7030s",
+                "model_code": "EPI7030S"
+            },
+            {
+                "slug": "epi7030sr",
+                "model_code": "EPI7030SR"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Lavataş Izgaralar",
+        "base_name_raw": "Gazlı Lavataş Izgaralar",
+        "items": [
+            {
+                "slug": "gli7010",
+                "model_code": "GLI7010"
+            },
+            {
+                "slug": "gli7020",
+                "model_code": "GLI7020"
+            },
+            {
+                "slug": "gli7030",
+                "model_code": "GLI7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Sulu Izgaralar",
+        "base_name_raw": "Gazlı Sulu Izgaralar",
+        "items": [
+            {
+                "slug": "gsi7010",
+                "model_code": "GSI7010"
+            },
+            {
+                "slug": "gsi7020",
+                "model_code": "GSI7020"
+            },
+            {
+                "slug": "gsi7030",
+                "model_code": "GSI7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Elektrikli Sulu Izgaralar",
+        "base_name_raw": "Elektrikli Sulu Izgaralar",
+        "items": [
+            {
+                "slug": "esi7010",
+                "model_code": "ESI7010"
+            },
+            {
+                "slug": "esi7020",
+                "model_code": "ESI7020"
+            },
+            {
+                "slug": "esi7030",
+                "model_code": "ESI7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Kapalı Ocaklar",
+        "base_name_raw": "Gazlı Kapalı Ocaklar",
+        "items": [
+            {
+                "slug": "gst7010",
+                "model_code": "GST7010"
+            },
+            {
+                "slug": "gst7020",
+                "model_code": "GST7020"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Elektrikli Kapalı Ocaklar",
+        "base_name_raw": "Elektrikli Kapalı Ocaklar",
+        "items": [
+            {
+                "slug": "est7010",
+                "model_code": "EST7010"
+            },
+            {
+                "slug": "est7020",
+                "model_code": "EST7020"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Wok Ocaklar",
+        "base_name_raw": "Gazlı Wok Ocaklar",
+        "items": [
+            {
+                "slug": "gkw7010",
+                "model_code": "GKW7010"
+            },
+            {
+                "slug": "gkw7020",
+                "model_code": "GKW7020"
+            },
+            {
+                "slug": "gkw7030",
+                "model_code": "GKW7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi İndüksiyon Ocaklar",
+        "base_name_raw": "İndüksiyon Ocaklar",
+        "items": [
+            {
+                "slug": "iko7010",
+                "model_code": "IKO7010"
+            },
+            {
+                "slug": "iko7020",
+                "model_code": "IKO7020"
+            },
+            {
+                "slug": "iko7030",
+                "model_code": "IKO7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Elektrikli Ocaklar (Yuvarlak)",
+        "base_name_raw": "Elektrikli Ocaklar",
+        "items": [
+            {
+                "slug": "eko7010",
+                "model_code": "EKO7010"
+            },
+            {
+                "slug": "eko7020",
+                "model_code": "EKO7020"
+            },
+            {
+                "slug": "eko7030",
+                "model_code": "EKO7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Elektrikli Ocaklar (Kare)",
+        "base_name_raw": "Elektrikli Ocaklar (Kare)",
+        "items": [
+            {
+                "slug": "eko7010k",
+                "model_code": "EKO7010K"
+            },
+            {
+                "slug": "eko7020k",
+                "model_code": "EKO7020K"
+            },
+            {
+                "slug": "eko7030k",
+                "model_code": "EKO7030K"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Ocaklar",
+        "base_name_raw": "Gazlı Ocaklar",
+        "items": [
+            {
+                "slug": "gko7010",
+                "model_code": "GKO7010"
+            },
+            {
+                "slug": "gko7020",
+                "model_code": "GKO7020"
+            },
+            {
+                "slug": "gko7030",
+                "model_code": "GKO7030"
+            }
+        ]
+    },
+    {
+        "proposed_name": "700 Serisi Gazlı Show Ocaklar",
+        "base_name_raw": "Gazlı Show Ocaklar",
+        "items": [
+            {
+                "slug": "gks7010",
+                "model_code": "GKS7010"
+            },
+            {
+                "slug": "gks7020",
+                "model_code": "GKS7020"
+            },
+            {
+                "slug": "gks7020b",
+                "model_code": "GKS7020B"
+            },
+            {
+                "slug": "gks7030",
+                "model_code": "GKS7030"
+            }
+        ]
+    }
+]

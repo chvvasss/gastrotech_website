@@ -1,0 +1,138 @@
+=== DETAILED DATABASE ANALYSIS ===
+
+1. SERIES THAT SHOULD BE IN AKSESUARLAR (from CSV):
+   - rational-aksesuarlar (e2ffcb4f-0056-4815-af0f-3e52cba4da2f)
+   - tepsiler-ve-tabletler (e355e069-049b-4026-93ed-72c06e782c95)
+
+   Current status in database:
+   - rational-aksesuarlar: EXISTS in category Fırınlar
+   - tepsiler-ve-tabletler: EXISTS in category Tamamlayıcı Ekipmanlar
+
+2. ALL SERIES WITH THEIR ACTUAL CATEGORIES:
+   devrilir -> Bulaşıkhane (1 products)
+   flight-tip-bulasik-yikama-makinesi -> Bulaşıkhane (1 products)
+   giyotin-tip-bulasik-makinesi -> Bulaşıkhane (1 products)
+   giyotin-tip-bulasik-makinesi-manuel -> Bulaşıkhane (1 products)
+   kazan-yikama-makinesi -> Bulaşıkhane (1 products)
+   konveyorlu-bulasik-makineleri -> Bulaşıkhane (1 products)
+   sym-serisi -> Bulaşıkhane (1 products)
+   tezgah-alti-bardak-yikama-makinesi -> Bulaşıkhane (1 products)
+   tezgah-alti-bulasik-makinesi -> Bulaşıkhane (1 products)
+   tezgah-alti-bulasik-makinesi-vby500-serisi -> Bulaşıkhane (1 products)
+   i-combi-aksesuarlar -> Fırınlar (1 products)
+   i-combi-classic-serisi -> Fırınlar (4 products)
+   i-vario -> Fırınlar (1 products)
+   i-vario-aksesuarlar -> Fırınlar (1 products)
+   i-vario-serisi -> Fırınlar (1 products)
+   maestro-e-touch -> Fırınlar (1 products)
+   maestro-elektrikli -> Fırınlar (1 products)
+   maestro-gazli -> Fırınlar (1 products)
+   maestro-serisi -> Fırınlar (3 products)
+   prime-ep -> Fırınlar (1 products)
+   prime-epm -> Fırınlar (1 products)
+   prime-gp -> Fırınlar (1 products)
+   prime-gpm -> Fırınlar (1 products)
+   prime-serisi -> Fırınlar (3 products)
+   rational-aksesuarlar -> Fırınlar (1 products)
+   skyline-premium-s-serisi -> Fırınlar (3 products)
+   thermospeed -> Fırınlar (1 products)
+   thermospeed-serisi -> Fırınlar (2 products)
+   bar-blender -> Hazırlık Ekipmanları (1 products)
+   bar-mikseri -> Hazırlık Ekipmanları (1 products)
+   bermixer-pro -> Hazırlık Ekipmanları (1 products)
+   bermixer-pro-serisi -> Hazırlık Ekipmanları (1 products)
+   c-serisi -> Hazırlık Ekipmanları (1 products)
+   dehidratör -> Hazırlık Ekipmanları (1 products)
+   dilimleme -> Hazırlık Ekipmanları (1 products)
+   dilimleme-2 -> Hazırlık Ekipmanları (1 products)
+   ef708-serisi -> Hazırlık Ekipmanları (1 products)
+   fc-vc-serisi -> Hazırlık Ekipmanları (1 products)
+   gurultu-onleyicili-bar-blender -> Hazırlık Ekipmanları (1 products)
+   hamur-acma-serisi -> Hazırlık Ekipmanları (1 products)
+   hamur-bolme-yuvarlama -> Hazırlık Ekipmanları (1 products)
+   heavy-duty-seri -> Hazırlık Ekipmanları (1 products)
+   kanatli-hamur-acma -> Hazırlık Ekipmanları (1 products)
+   kati-meyve-presi -> Hazırlık Ekipmanları (1 products)
+   kati-meyve-presi-ej-cj-serisi -> Hazırlık Ekipmanları (1 products)
+   kitchen-aid-heavy-duty -> Hazırlık Ekipmanları (1 products)
+   kitchen-aid-professional -> Hazırlık Ekipmanları (1 products)
+   klasik-seri -> Hazırlık Ekipmanları (1 products)
+   klasik-seri-stand-mikser -> Hazırlık Ekipmanları (1 products)
+   kruvasan-kesme -> Hazırlık Ekipmanları (1 products)
+   levac-serisi -> Hazırlık Ekipmanları (1 products)
+   mod-serisi -> Hazırlık Ekipmanları (1 products)
+   ms-serisi -> Hazırlık Ekipmanları (1 products)
+   premium-serisi-bar-blender -> Hazırlık Ekipmanları (1 products)
+   professional-seri -> Hazırlık Ekipmanları (1 products)
+   professional-serisi-bar-blender -> Hazırlık Ekipmanları (1 products)
+   sari-baslik -> Hazırlık Ekipmanları (1 products)
+   sebze-dograma -> Hazırlık Ekipmanları (1 products)
+   sebze-parcalama -> Hazırlık Ekipmanları (1 products)
+   sebze-yikama -> Hazırlık Ekipmanları (1 products)
+   set-ustu -> Hazırlık Ekipmanları (1 products)
+   spa-serisi -> Hazırlık Ekipmanları (1 products)
+   ss-serisi -> Hazırlık Ekipmanları (1 products)
+   trs -> Hazırlık Ekipmanları (1 products)
+   trs-serisi -> Hazırlık Ekipmanları (1 products)
+   vakum -> Hazırlık Ekipmanları (1 products)
+   buz-kirma-makinesi -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   devrilir-tip -> KWIK-CO Serisi Konveksiyonel Fırınlar (0 products)
+   dondurarak-kurutucu -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   dondurarak-kurutucu-fd -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   duslama-ekipmanlari -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   hava-perdeli-sistem -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   imperia-serisi -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   makarna -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   moduler -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   soguk-sikim-makinesi -> KWIK-CO Serisi Konveksiyonel Fırınlar (1 products)
+   all-ground-probrew -> Kafeterya Ekipmanları (1 products)
+   all-ground-sense -> Kafeterya Ekipmanları (1 products)
+   arcadia-de-brewing-profile -> Kafeterya Ekipmanları (1 products)
+   arcadia-de-pid-serisi -> Kafeterya Ekipmanları (1 products)
+   aria-serisi -> Kafeterya Ekipmanları (1 products)
+   aurora-serisi -> Kafeterya Ekipmanları (1 products)
+   b-serisi -> Kafeterya Ekipmanları (1 products)
+   b2013al-serisi -> Kafeterya Ekipmanları (1 products)
+   b2016-serisi -> Kafeterya Ekipmanları (1 products)
+   degirmen-bicaklari -> Kafeterya Ekipmanları (1 products)
+   eagle-dome-de-serisi -> Kafeterya Ekipmanları (1 products)
+   filtre-kahve-degirmenleri -> Kafeterya Ekipmanları (1 products)
+   gt-serisi -> Kafeterya Ekipmanları (1 products)
+   gtech-serisi -> Kafeterya Ekipmanları (1 products)
+   kahve-cekmecesi -> Kafeterya Ekipmanları (1 products)
+   kahve-degirmeni-cunill-serisi -> Kafeterya Ekipmanları (1 products)
+   kahve-degirmeni-ek43-serisi -> Kafeterya Ekipmanları (1 products)
+   kahve-degirmenleri-on-demand -> Kafeterya Ekipmanları (1 products)
+   kahve-degirmenleri-on-demand-tartili -> Kafeterya Ekipmanları (1 products)
+   m23-serisi -> Kafeterya Ekipmanları (1 products)
+   manuel-tamper-makineleri -> Kafeterya Ekipmanları (1 products)
+   matrix-serisi -> Kafeterya Ekipmanları (1 products)
+   moda-de-serisi -> Kafeterya Ekipmanları (1 products)
+   moda-pid-serisi -> Kafeterya Ekipmanları (1 products)
+
+3. PROBLEMATIC ASSIGNMENTS (series in wrong category):
+
+   KWIK-CO Serisi Konveksiyonel FÄ±rÄ±nlar has these series:
+   - buz-kirma-makinesi: 1 products
+       -> BUZ Kirma Makinesi
+   - devrilir-tip: 0 products
+   - dondurarak-kurutucu: 1 products
+       -> Dondurarak Kurutucu
+   - dondurarak-kurutucu-fd: 1 products
+       -> Dondurarak Kurutucu (Freeze Dryer)
+   - duslama-ekipmanlari: 1 products
+       -> Duslama Ekipmanlari
+   - hava-perdeli-sistem: 1 products
+       -> Soğuk Teşhir Ünitesi (Hava Perdeli Sistem)
+   - imperia-serisi: 1 products
+       -> Makarna ve Erişte Makinesi
+   - makarna: 1 products
+       -> Makarna Makineleri
+   - moduler: 1 products
+       -> Tam Modüler Soğuk Hava Depoları
+   - soguk-sikim-makinesi: 1 products
+       -> Soguk Sikim Makinesi
+
+4. PRODUCTS IN WRONG CATEGORY (analysis):
+   Makarna Makineleri: Currently in "KWIK-CO Serisi Konveksiyonel Fırınlar" - Should be in HazÄ±rlÄ±k EkipmanlarÄ±
+   Dondurarak Kurutucu (Freeze Dryer): Currently in "KWIK-CO Serisi Konveksiyonel Fırınlar" - Should be in HazÄ±rlÄ±k EkipmanlarÄ±

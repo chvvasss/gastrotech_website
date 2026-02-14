@@ -1,0 +1,30 @@
+{
+  "name": "GastroTech Admin",
+  "short_name": "GT Admin",
+  "description": "GastroTech B2B Admin Panel - Professional catalog and inquiry management",
+  "start_url": "/admin/dashboard",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#BE2328",
+  "orientation": "any",
+  "scope": "/admin/",
+  "lang": "tr",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "/admin/brand/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/admin/brand/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

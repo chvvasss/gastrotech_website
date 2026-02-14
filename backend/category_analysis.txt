@@ -1,0 +1,108 @@
+=== CATEGORY ANALYSIS ===
+
+Bulaşıkhane (bulasikhane):
+  Series: 10, Products: 10
+
+Elektrikli Fırınlar (elektrikli-firinlar):
+  Series: 0, Products: 0
+  Parent: Fırınlar
+
+Fırınlar (firinlar):
+  Series: 18, Products: 28
+
+Hazırlık Ekipmanları (hazirlik-ekipmanlari):
+  Series: 38, Products: 38
+
+KWIK Serisi Pro Wash Fırınlar (kwik-serisi-pro-wash-firinlar):
+  Series: 0, Products: 0
+  Parent: Fırınlar
+
+KWIK-CO Serisi Konveksiyonel Fırınlar (kwik-co-serisi-konveksiyonel-firinlar):
+  Series: 10, Products: 9
+  Parent: Fırınlar
+
+Kafeterya Ekipmanları (kafeterya-ekipmanlari):
+  Series: 31, Products: 31
+
+Pizza Fırınları (pizza-firinlari):
+  Series: 5, Products: 0
+  Parent: Fırınlar
+
+Pişirme Ekipmanları (pisirme-ekipmanlari):
+  Series: 6, Products: 89
+
+Soğutma Üniteleri (sogutma-uniteleri):
+  Series: 17, Products: 34
+
+Tamamlayıcı Ekipmanlar (tamamlayici-ekipmanlar):
+  Series: 5, Products: 5
+
+Taş Tabanlı Bakery Fırınlar (tas-tabanli-bakery-firinlar):
+  Series: 0, Products: 0
+  Parent: Fırınlar
+
+aksesuarlar (aksesuarlar):
+  Series: 0, Products: 0
+
+Çamaşırhane (camasirhane):
+  Series: 8, Products: 8
+
+=== AKSESUARLAR CATEGORY DETAIL ===
+Category ID: 86a2422a-1656-475e-aee1-5276006cef4a
+Series in aksesuarlar:
+
+Products in aksesuarlar:
+
+=== PRODUCTS WITH 0 VARIANTS ===
+Total products with 0 variants: 51
+  - Makarna Makineleri [KWIK-CO Serisi Konveksiyonel Fırınlar]
+  - Kitchen Aid Professional Seri Stand Mikserleri [Hazırlık Ekipmanları]
+  - Kitchen Aid Heavy Duty Seri Stand Mikserleri [Hazırlık Ekipmanları]
+  - Klasik Seri Stand Mikserler [Hazırlık Ekipmanları]
+  - Set Üstü Mikserler [Hazırlık Ekipmanları]
+  - Sarı Başlık El Mikseri [Hazırlık Ekipmanları]
+  - El Mikserleri (Bermixer PRO) [Hazırlık Ekipmanları]
+  - Sebze Kesme Makineleri (TRS) [Hazırlık Ekipmanları]
+  - Sebze Parçalama Makinesi [Hazırlık Ekipmanları]
+  - Sebze Doğrama Makinesi [Hazırlık Ekipmanları]
+  - Hamur Bölme ve Yuvarlama Makineleri [Hazırlık Ekipmanları]
+  - Kanatlı Hamur Açma Makineleri [Hazırlık Ekipmanları]
+  - Dondurarak Kurutucu (Freeze Dryer) [KWIK-CO Serisi Konveksiyonel Fırınlar]
+  - Sebze ve Meyve Kurutucular (Dehidratörler) [Hazırlık Ekipmanları]
+  - Vakum Makineleri [Hazırlık Ekipmanları]
+  - Gıda Dilimleme Makineleri (MS Serisi) [Hazırlık Ekipmanları]
+  - Gıda Dilimleme Makineleri [Hazırlık Ekipmanları]
+  - Sebze Yıkama Makineleri [Hazırlık Ekipmanları]
+  - Tam Modüler Soğuk Hava Depoları [KWIK-CO Serisi Konveksiyonel Fırınlar]
+  - Bar Altı Dondurucular [Soğutma Üniteleri]
+  - Dik Tip Şişe Soğutucular [Soğutma Üniteleri]
+  - Paslanmaz Çelik Kasa Şişe Soğutucular [Soğutma Üniteleri]
+  - DKP Kasa Şişe Soğutucular [Soğutma Üniteleri]
+  - B Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Scotsman DXN Serisi Dispenserli Buz & Buzlu Su Makineleri [Soğutma Üniteleri]
+  - Scotsman LEGACY Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Scotsman UBH Serisi Dikey Buz Hazneleri [Soğutma Üniteleri]
+  - Scotsman SB Serisi Buz Hazneleri [Soğutma Üniteleri]
+  - Scotsman MXF Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Scotsman AF/MF Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Scotsman NU/NW Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Scotsman MXG Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Scotsman AC Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Scotsman EC Serisi Buz Makineleri [Soğutma Üniteleri]
+  - Tezgah Tip Buzdolapları (CKT Seri) [Soğutma Üniteleri]
+  - Himalaya Tuzlu Dry Age Dolapları (Premium Seri) [Soğutma Üniteleri]
+  - Dry Age Buzdolapları (Premium Seri) [Soğutma Üniteleri]
+  - Şok Soğutucu/Dondurucular (Premium Seri) [Soğutma Üniteleri]
+  - Kombinasyon Soğutmalı Buzdolapları (Premium Seri) [Soğutma Üniteleri]
+  - Dik Tip Buzdolapları (Premium Seri) [Soğutma Üniteleri]
+  - Pizza Hazırlık Buzdolapları (Premium Seri) [Soğutma Üniteleri]
+  - Pizza/Salata Hazırlık Buzdolapları (Premium Seri) [Soğutma Üniteleri]
+  - Cihaz Altı Buzdolapları/Dondurucu (Premium Seri) [Soğutma Üniteleri]
+  - Tezgah Tip Buzdolapları/Dondurucu (Premium Seri) [Soğutma Üniteleri]
+  - Endüstriyel Ayak [Tamamlayıcı Ekipmanlar]
+  - Leke Çıkarma Makinası [Çamaşırhane]
+  - Kombi Konveksiyonel Fırınlar [Fırınlar]
+  - Konveksiyonel Fırınlar [Fırınlar]
+  - Çok Fonksiyonlu Pişirici [Fırınlar]
+  - Rational Fırın Aksesuarları [Fırınlar]
+  ... and 1 more

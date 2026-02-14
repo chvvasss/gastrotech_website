@@ -1,0 +1,124 @@
+# Gastrotech Production Docker Compose
+# 
+# Usage:
+#   docker compose -f docker-compose.prod.yml up -d
+#
+# Prerequisites:
+#   - Create .env.prod with required variables (see docs/DEPLOYMENT.md)
+#   - Create Docker volumes: docker volume create gastrotech_postgres_data
+#
+# One-time commands:
+#   - Migrate: docker compose -f docker-compose.prod.yml exec web python manage.py migrate
+#   - Create admin: docker compose -f docker-compose.prod.yml exec web python manage.py createsuperuser
+
+services:
+  # PostgreSQL Database (optional - use managed DB in production)
+  db:
+    image: postgres:16-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups  # For backup scripts
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-gastrotech}
+      POSTGRES_USER: ${POSTGRES_USER:-gastrotech}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-gastrotech} -d ${POSTGRES_DB:-gastrotech}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Don't expose ports in production - use internal network
+    networks:
+      - gastrotech_internal
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    restart: always
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    networks:
+      - gastrotech_internal
+
+  # Django Web Application (Gunicorn)
+  web:
+    build:
+      context: .
+      dockerfile: docker/web/Dockerfile.prod
+    restart: always
+    volumes:
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    expose:
+      - "8000"
+    environment:
+      - PYTHONPATH=/app
+      - DJANGO_SETTINGS_MODULE=config.settings.prod
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:?DJANGO_SECRET_KEY is required}
+      - DJANGO_DEBUG=0
+      - DJANGO_ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS:?DJANGO_ALLOWED_HOSTS is required}
+      - DATABASE_URL=postgres://${POSTGRES_USER:-gastrotech}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB:-gastrotech}
+      - REDIS_URL=redis://redis:6379/0
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS:-https://gastrotech.com}
+      - CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS:-https://gastrotech.com}
+      - SECURE_SSL_REDIRECT=${SECURE_SSL_REDIRECT:-1}
+      - APP_VERSION=${APP_VERSION:-1.0.0}
+      - SENTRY_DSN=${SENTRY_DSN:-}
+      - SENTRY_ENVIRONMENT=${SENTRY_ENVIRONMENT:-production}
+      # Gunicorn settings
+      - GUNICORN_WORKERS=${GUNICORN_WORKERS:-4}
+      - GUNICORN_THREADS=${GUNICORN_THREADS:-2}
+      - GUNICORN_TIMEOUT=${GUNICORN_TIMEOUT:-30}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - gastrotech_internal
+    # Health check for container orchestration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Nginx Reverse Proxy (optional - can use external LB)
+  nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d:ro
+      - static_volume:/app/staticfiles:ro
+      - media_volume:/app/media:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web
+    networks:
+      - gastrotech_internal
+    healthcheck:
+      test: ["CMD", "nginx", "-t"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  gastrotech_internal:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  media_volume:

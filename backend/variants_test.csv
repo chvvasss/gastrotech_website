@@ -1,0 +1,3 @@
+model_code;product_slug;name_tr;dimensions;list_price;weight_kg
+TEST-MOD-01;test-product-1;Test Model 1;100x200;1500.50;50.5
+TEST-MOD-02;test-product-missing;Test Model 2;200x300;;

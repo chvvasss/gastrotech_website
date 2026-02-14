@@ -1,0 +1,142 @@
+# === OS / Editor ===
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Security / Secrets ===
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+
+# === Windows reserved name ===
+nul
+**/nul
+
+# === Python / Django ===
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+venv/
+.venv/
+env/
+ENV/
+*.log
+local_settings.py
+staticfiles/
+media/
+*.sqlite3
+
+# === Node / Next.js ===
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+next-env.d.ts
+.vercel/
+
+# === Tooling / IDE caches ===
+.claude/
+.cursor/
+.cagent/
+.codex/
+.windsurf/
+
+# === Temp / breadcrumbs ===
+tmpclaude-*
+**/tmpclaude-*
+
+# === Logs ===
+logs/
+
+# === Data dumps / exports ===
+AAA/
+SABLON/
+fotolar1/
+referanslargorselleri/
+docs/_runs/
+sss/
+audit_output/
+*.backup
+*.rar
+*.zip
+*.dump
+
+# === Temp photo folders ===
+600SERISIFOTOLAR/
+700serisifotolar/
+ucuncufotolar/
+urunlerfotoupload/
+Yeni klasör/
+ceysonlar/
+ciktilar/
+assets/
+
+# === Root-level temp scripts & reports ===
+analyze_orphans.py
+audit_aaa_project.py
+inspect_aaa_headers.py
+inspect_categories.py
+inspect_excel.py
+repro_excel.py
+verify_api.py
+verify_public_series.py
+missing_images_report.txt
+nul
+
+# === Dev reports (root .md) ===
+AUDIT_SUMMARY_TR.md
+BRAND_CATEGORY_ADMIN_COMPLETE.md
+BRAND_CATEGORY_CRUD_COMPLETE.md
+BRAND_CATEGORY_FRONTEND_404_FIX.md
+BRAND_CATEGORY_FRONTEND_COMPLETE.md
+BRAND_CATEGORY_IMPLEMENTATION.md
+CATEGORIES_RESET_COMPLETE.md
+CRITICAL_AUDIT_REPORT.md
+DATABASE_MIGRATION_FIX.md
+DB_SCHEMA_ALIGNMENT_REPORT.md
+DB_UYUM_RAPORU.md
+DURUM_RAPORU.md
+ENV_ENCODING_FIX.md
+FINAL_ACCEPTANCE_CHECKLIST.md
+FINAL_STATUS_REPORT.md
+FIRINLAR_SUBCATEGORIES_COMPLETE.md
+FRONTEND_FIX.md
+HYDRATION_FIX.md
+IMPORT_SYSTEM_FINAL_REPORT.md
+IMPORT_TEMPLATE_GUIDE_V5.md
+MASTER_IMPLEMENTATION_STATUS.md
+PAGINATION_FIX.md
+PHASE_0_1_COMPLETE.md
+RELEASE_NOTES_IMPORT_V5.md
+RESTORE_GUIDE.md
+RUNBOOK_LOCAL_TEST_AND_BUILD.md
+SHIP_LOG.md
+SHIP_SUMMARY.md
+SNAPSHOT_DETERMINISM_IMPLEMENTED.md
+SUBCATEGORY_FIX_COMPLETE.md
+SUBCATEGORY_IMPLEMENTATION_COMPLETE.md
+SUBCATEGORY_NAV_COMPLETE.md
+TEMPLATE_CONTRACT.md
+UUID_VALIDATION_FIX.md
+V5_TEMPLATE_IMPLEMENTATION_COMPLETE.md
+
+# === Gemini / Agent dirs ===
+.gemini/
+.agent/

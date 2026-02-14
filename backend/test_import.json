@@ -1,0 +1,32 @@
+[
+    {
+        "slug": "json-import-test-product-no-series",
+        "name": "JSON Import Test Ürünü (No Series)",
+        "title_tr": "JSON Import Test Ürünü (No Series)",
+        "title_en": "JSON Import Test Product (No Series)",
+        "status": "draft",
+        "category": "pisirme-uniteleri",
+        "brand": "gastrotech-test",
+        "general_features": [
+            "Test Özellik 1"
+        ],
+        "short_specs": [
+            "10 kW"
+        ],
+        "variants": [
+            {
+                "model_code": "JSON-TEST-003",
+                "name_tr": "Varyant 3",
+                "price_override": 150.00,
+                "stock_qty": 10
+            }
+        ],
+        "images": [
+            {
+                "url": "https://placehold.co/600x400.png",
+                "is_primary": true,
+                "alt": "Test Görsel"
+            }
+        ]
+    }
+]

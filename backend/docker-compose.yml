@@ -1,0 +1,88 @@
+# Gastrotech Docker Compose Configuration
+# Development and local testing environment
+#
+# IMPORTANT: No container_name entries - let Docker Compose manage names
+# This prevents conflicts when running multiple instances or after orphaned containers
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:16-alpine
+    # No container_name - use service DNS name "db"
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: gastrotech
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d gastrotech"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    # No container_name - use service DNS name "redis"
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: redis-server --appendonly yes
+
+  # Django Web Application
+  web:
+    build:
+      context: .
+      dockerfile: docker/web/Dockerfile
+    # No container_name - use service DNS name "web"
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - DJANGO_SETTINGS_MODULE=config.settings.dev
+      - DJANGO_SECRET_KEY=dev-secret-key-change-in-production
+      - DJANGO_DEBUG=1
+      # Ngrok ve localhost için ALLOWED_HOSTS
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,.ngrok-free.dev,nonrecalcitrant-pluggingly-phillis.ngrok-free.dev
+      # Use service DNS names (db, redis) - NOT container names
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/gastrotech
+      - REDIS_URL=redis://redis:6379/0
+      # Ngrok ve localhost için CORS
+      - CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:3001,https://nonrecalcitrant-pluggingly-phillis.ngrok-free.dev
+      - JWT_ACCESS_LIFETIME_MIN=30
+      - JWT_REFRESH_LIFETIME_DAYS=7
+      # Dev mode for ensure_dev_admin
+      - DEBUG=True
+      - DJANGO_ENV=dev
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # Development command - use runserver for hot reload
+    command: python manage.py runserver 0.0.0.0:8000
+
+# Named volumes with explicit names to avoid conflicts
+# These are namespaced to the project to prevent collisions
+# Using external: true since they already exist from root project
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  media_volume:

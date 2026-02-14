@@ -1,0 +1,237 @@
+[
+    {
+        "slug": "vdrp-gko-gazli-ocak",
+        "name": "VDRP-GKO Gazlı Ocak",
+        "title_tr": "VDRP-GKO Gazlı Ocak",
+        "title_en": "VDRP-GKO Gas Burner Top",
+        "status": "active",
+        "is_featured": false,
+        "category": "pisirme-uniteleri",
+        "series": "drop-in-seri",
+        "brand": "vital",
+        "primary_node": "gazli-ocaklar",
+        "general_features": [
+            "Paslanmaz çelik gövde",
+            "Pres baskı yekpare üst tabla",
+            "Gaz emniyet tertibatı ve termokupl",
+            "Pilot alevli brülörler",
+            "Pik döküm çıkarılabilir üst ocak ızgarası",
+            "Yüksek verimli ve düşük gaz emisyonlu brülörler",
+            "Set üstü veya alt stand ile kullanılabilir",
+            "Kolay temizlenebilir yuvarlak köşeli üst tabla",
+            "Lpg veya doğalgaz ile çalışabilir"
+        ],
+        "short_specs": [
+            "Gazlı ocak",
+            "Drop-in seri",
+            "1 mm üst tabla"
+        ],
+        "images": [
+            "https://vital.b-cdn.net/wp-content/uploads/2024/12/01VTL-VDRP-GKO10.jpg",
+            "https://vital.b-cdn.net/wp-content/uploads/2024/12/01VTL-VDRP-GKO10-1.jpg"
+        ],
+        "variants": [
+            {
+                "model_code": "VDRP-GKO10",
+                "name_tr": "400x625x250 Model",
+                "dimensions": "400x625x250",
+                "specs": {}
+            },
+            {
+                "model_code": "VDRP-GKO20",
+                "name_tr": "800x625x250 Model",
+                "dimensions": "800x625x250",
+                "specs": {}
+            }
+        ]
+    },
+    {
+        "slug": "vdrp-eko-elektrikli-ocak",
+        "name": "VDRP-EKO Elektrikli Ocak",
+        "title_tr": "VDRP-EKO Elektrikli Ocak, Yuvarlak Pleyt",
+        "title_en": "VDRP-EKO Electric Round Hot Plate Range",
+        "status": "active",
+        "is_featured": false,
+        "category": "pisirme-uniteleri",
+        "series": "drop-in-seri",
+        "brand": "vital",
+        "primary_node": "elektrikli-ocaklar",
+        "general_features": [
+            "Paslanmaz çelik gövde",
+            "Pres baskı yekpare üst tabla",
+            "6 kademeli ısı anahtarlı",
+            "Set üstü veya alt stand ile kullanılabilir",
+            "Kolay temizlenebilir yuvarlak köşeli üst tabla"
+        ],
+        "short_specs": [
+            "Elektrikli ocak",
+            "Yuvarlak pleyt",
+            "6 kademeli ısı kontrolü"
+        ],
+        "images": [
+            "https://vital.b-cdn.net/wp-content/uploads/2024/12/03VTL-VDRP-EKO10.jpg",
+            "https://vital.b-cdn.net/wp-content/uploads/2024/12/03VTL-VDRP-EKO10-1.jpg"
+        ],
+        "variants": [
+            {
+                "model_code": "VDRP-EKO10",
+                "name_tr": "400x625x250 Model",
+                "dimensions": "400x625x250",
+                "specs": {}
+            },
+            {
+                "model_code": "VDRP-EKO20",
+                "name_tr": "800x625x250 Model",
+                "dimensions": "800x625x250",
+                "specs": {}
+            }
+        ]
+    },
+    {
+        "slug": "vdrp-iko-induksiyon-ocak",
+        "name": "VDRP-IKO İndüksiyon Ocak",
+        "title_tr": "VDRP-IKO İndüksiyon Ocak",
+        "title_en": "VDRP-IKO Induction Cooking Range",
+        "status": "active",
+        "is_featured": false,
+        "category": "pisirme-uniteleri",
+        "series": "drop-in-seri",
+        "brand": "vital",
+        "primary_node": "induksiyon-ocaklar",
+        "general_features": [
+            "Paslanmaz çelik dış gövde",
+            "Pres baskı yekpare üst tabla",
+            "Cam pişirme yüzeyi",
+            "Dokunmatik kontrol paneli",
+            "10 farklı güç ayarlama fonksiyonu",
+            "Dijital zaman ayarı",
+            "Aşırı ısınma, düşük ve yüksek gerilim koruması",
+            "Set üstü veya alt stant ile birlikte kullanılabilir",
+            "Kolay temizlenebilir yuvarlak köşeli üst tabla"
+        ],
+        "short_specs": [
+            "İndüksiyon ocak",
+            "Dokunmatik panel",
+            "10 güç ayarı"
+        ],
+        "images": [
+            "https://vital.b-cdn.net/wp-content/uploads/2024/12/05VTL-VDRP-IKO10.jpg",
+            "https://vital.b-cdn.net/wp-content/uploads/2024/12/05VTL-VDRP-IKO10-1.jpg"
+        ],
+        "variants": [
+            {
+                "model_code": "VDRP-IKO10",
+                "name_tr": "400x625x250 Model",
+                "dimensions": "400x625x250",
+                "specs": {}
+            },
+            {
+                "model_code": "VDRP-IKO20",
+                "name_tr": "800x625x250 Model",
+                "dimensions": "800x625x250",
+                "specs": {}
+            }
+        ]
+    },
+    {
+        "slug": "vdrp-efp-elektrikli-fritoz",
+        "name": "VDRP-EFP Elektrikli Fritöz",
+        "title_tr": "VDRP-EFP Elektrikli Fritöz",
+        "title_en": "VDRP-EFP Electric Fryer",
+        "status": "active",
+        "is_featured": false,
+        "category": "pisirme-uniteleri",
+        "series": "drop-in-seri",
+        "brand": "vital",
+        "primary_node": "elektrikli-fritozler",
+        "general_features": [
+            "Paslanmaz çelik dış gövde",
+            "Pres baskı yekpare üst tabla",
+            "Yağın aşırı ısınmaması için emniyet limit termostatlı",
+            "İç hazne temizliği için emniyet siviçli hareketli ısıtıcılar",
+            "Yağ boşaltma vanası",
+            "Yağın süzülmesi için sepet askı mekanizması",
+            "E.G.O. emniyet limit termostatlı 180 °C'ye kadar ayarlanabilir E.G.O. termostat",
+            "Yüksek ısıya, kireç korozyonuna, kimyasal kullanımına karşı dayanıklı incoloy 800 kalite uzun ömürlü rezistanslar",
+            "Kolay temizlenebilir yuvarlak köşeli üst tabla"
+        ],
+        "short_specs": [
+            "Elektrikli fritöz",
+            "Emniyet limit termostatlı",
+            "180°C'ye kadar ayarlanabilir"
+        ],
+        "images": [
+            "https://vital.b-cdn.net/01VTL-VDRP-EFP10/P0001VTL-VDRP-EFP101.png?class=web750",
+            "https://vital.b-cdn.net/01VTL-VDRP-EFP10/P0001VTL-VDRP-EFP102.png?class=web750"
+        ],
+        "variants": [
+            {
+                "model_code": "VDRP-EFP10",
+                "name_tr": "400x625x250 Model",
+                "dimensions": "400x625x250",
+                "specs": {
+                    "guc": "12000",
+                    "gerilim": "380",
+                    "akim": "13",
+                    "toplam_guc": "1.360"
+                }
+            },
+            {
+                "model_code": "VDRP-EFP20",
+                "name_tr": "800x625x250 Model",
+                "dimensions": "800x625x250",
+                "specs": {
+                    "guc": "24000",
+                    "gerilim": "380",
+                    "akim": "13+13",
+                    "toplam_guc": "2.258"
+                }
+            }
+        ]
+    },
+    {
+        "slug": "vdrp-emf-elektrikli-makarna-pisirici",
+        "name": "VDRP-EMF Elektrikli Makarna Pişirici",
+        "title_tr": "VDRP-EMF Elektrikli Makarna Pişirici",
+        "title_en": "VDRP-EMF Electric Pasta Cooker",
+        "status": "active",
+        "is_featured": false,
+        "category": "pisirme-uniteleri",
+        "series": "drop-in-seri",
+        "brand": "vital",
+        "primary_node": "elektrikli-makarna-pisiriciler",
+        "general_features": [],
+        "short_specs": [
+            "Elektrikli makarna pişirici",
+            "Drop-in seri"
+        ],
+        "images": [
+            "https://vital.b-cdn.net/01VTL-VDRP-EMF10/P0001VTL-VDRP-EMF101.png?class=web750",
+            "https://vital.b-cdn.net/01VTL-VDRP-EMF10/P0001VTL-VDRP-EMF102.png?class=web750"
+        ],
+        "variants": [
+            {
+                "model_code": "VDRP-EMF10",
+                "name_tr": "400x625x250 Model",
+                "dimensions": "400x625x250",
+                "specs": {
+                    "guc": "7500",
+                    "gerilim": "380",
+                    "akim": "13",
+                    "toplam_guc": "1.529"
+                }
+            },
+            {
+                "model_code": "VDRP-EMF20",
+                "name_tr": "800x625x250 Model",
+                "dimensions": "800x625x250",
+                "specs": {
+                    "guc": "15000",
+                    "gerilim": "380",
+                    "akim": "13+13",
+                    "toplam_guc": "2.578"
+                }
+            }
+        ]
+    }
+]
