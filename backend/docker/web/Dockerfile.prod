@@ -70,7 +70,7 @@ COPY --chown=django:django . .
 
 # Copy entrypoint scripts
 COPY --chown=django:django docker/web/entrypoint.prod.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN sed -i 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh
 
 # Switch to non-root user
 USER django
