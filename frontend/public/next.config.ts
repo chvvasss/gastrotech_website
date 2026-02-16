@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
   // Disable source maps in production for security
   productionBrowserSourceMaps: false,
 
+  // Enable standalone output for Docker
+  output: "standalone",
+
   images: {
     remotePatterns: [
       {

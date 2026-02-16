@@ -20,6 +20,9 @@ const nextConfig: NextConfig = {
   // Disable source maps in production for security
   productionBrowserSourceMaps: false,
 
+  // Enable standalone output for Docker
+  output: "standalone",
+
   // CRITICAL: Prevent Next.js from stripping trailing slashes
   // Without this, POST requests to /api/v1/auth/login/ become /api/v1/auth/login
   // which causes Django 404 (APPEND_SLASH=False) or RuntimeError (APPEND_SLASH=True)
