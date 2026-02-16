@@ -135,7 +135,7 @@ export default function HomePage() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white rounded-none h-12 px-8 text-base font-semibold tracking-wide"
+                className="bg-primary hover:bg-primary/90 text-white rounded-sm h-12 px-8 text-base font-semibold tracking-wide shadow-lg shadow-primary/20"
               >
                 <Link href="/iletisim">
                   Hemen Teklif Al
@@ -146,7 +146,7 @@ export default function HomePage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-none h-12 px-8 text-base font-semibold tracking-wide"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-sm h-12 px-8 text-base font-semibold tracking-wide"
               >
                 <Link href="/kategori">
                   Ürünleri İncele
@@ -157,17 +157,17 @@ export default function HomePage() {
         </Container>
 
         {/* Bottom Section: Indicators & Stats */}
-        <div className="relative z-10 w-full border-t border-white/10 bg-black/20 backdrop-blur-sm">
+        <div className="relative z-10 w-full border-t border-white/10 bg-black/30 backdrop-blur-md">
           <Container>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_auto] items-center gap-6 py-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-5">
 
-              {/* Square Indicators  */}
-              <div className="flex justify-center md:justify-start gap-3 order-2 md:order-1">
+              {/* Square Indicators */}
+              <div className="flex gap-2.5 order-2 sm:order-1">
                 {HERO_BACKGROUND_IMAGES.map((_, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentImageIndex(idx)}
-                    className={`h-3 w-3 transition-all duration-300 border border-white/50 ${idx === currentImageIndex ? "bg-primary border-primary scale-110" : "bg-transparent hover:bg-white/20"
+                    className={`h-2.5 transition-all duration-300 rounded-sm ${idx === currentImageIndex ? "bg-primary w-8" : "bg-white/30 hover:bg-white/50 w-2.5"
                       }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
@@ -175,14 +175,14 @@ export default function HomePage() {
               </div>
 
               {/* Stats - Linear Layout with Dividers */}
-              <div className="flex flex-wrap justify-center md:justify-end gap-x-8 gap-y-4 order-1 md:order-2">
+              <div className="flex items-center gap-6 sm:gap-8 order-1 sm:order-2">
                 {HERO_STATS.map((stat, i) => (
-                  <div key={i} className={`flex items-center gap-4 ${i !== 0 ? "border-l border-white/20 pl-8" : ""}`}>
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-white leading-none">{stat.value}</div>
-                      <div className="text-xs text-gray-300 uppercase tracking-wider mt-1">{stat.label}</div>
+                  <div key={i} className={`flex items-center gap-3 ${i !== 0 ? "border-l border-white/20 pl-6 sm:pl-8" : ""}`}>
+                    <stat.icon className="h-6 w-6 sm:h-7 sm:w-7 text-primary/90 stroke-[1.5]" />
+                    <div>
+                      <div className="text-xl sm:text-2xl font-bold text-white leading-none tracking-tight">{stat.value}</div>
+                      <div className="text-[10px] sm:text-xs text-gray-300 uppercase tracking-wider mt-0.5">{stat.label}</div>
                     </div>
-                    <stat.icon className="h-8 w-8 text-primary opacity-80 stroke-1" />
                   </div>
                 ))}
               </div>
@@ -314,7 +314,7 @@ export default function HomePage() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white rounded-none h-12 px-8 text-base font-semibold shadow-lg shadow-primary/25"
+                  className="bg-primary hover:bg-primary/90 text-white rounded-sm h-12 px-8 text-base font-semibold shadow-lg shadow-primary/20"
                 >
                   <Link href="/iletisim">
                     Hemen Teklif İste
@@ -324,7 +324,7 @@ export default function HomePage() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="bg-transparent border-2 border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/50 rounded-none h-12 px-8"
+                  className="bg-transparent border-2 border-primary/20 text-primary hover:bg-primary/5 hover:border-primary/40 rounded-sm h-12 px-8 font-semibold"
                 >
                   <Link href="/referanslar">Referanslarımız</Link>
                 </Button>

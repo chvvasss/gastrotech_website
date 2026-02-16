@@ -8,9 +8,16 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 """
 
 import os
+import sys
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.prod")
+if "DJANGO_SETTINGS_MODULE" not in os.environ:
+    print(
+        "ERROR: DJANGO_SETTINGS_MODULE environment variable is not set.\n"
+        "Set it to 'config.settings.dev' or 'config.settings.prod'.",
+        file=sys.stderr,
+    )
+    sys.exit(1)
 
 application = get_wsgi_application()

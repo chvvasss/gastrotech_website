@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/layout";
-import { RefreshCcw, Home } from "lucide-react";
+import { RefreshCcw, Home, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 
 export default function Error({
@@ -23,7 +23,7 @@ export default function Error({
             <Container className="text-center">
                 <div className="relative inline-block mb-4">
                     <div className="h-24 w-24 rounded-sm bg-red-100 flex items-center justify-center mx-auto">
-                        <span className="text-5xl">⚠️</span>
+                        <AlertTriangle className="h-12 w-12 text-red-500" />
                     </div>
                 </div>
 

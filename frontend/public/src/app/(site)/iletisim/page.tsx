@@ -72,31 +72,20 @@ export default function ContactPage() {
           : undefined,
       };
 
-      console.log("[Inquiry] Form data:", data);
-      console.log("[Inquiry] Cart items:", hasCartItems ? cart.items : "none");
-      console.log("[Inquiry] Final inquiry data:", inquiryData);
-
       const result = await createInquiry(inquiryData);
-
-      console.log("[Inquiry] Success! Result:", result);
 
       // Clear cart after successful inquiry
       if (hasCartItems) {
-        console.log("[Inquiry] Clearing cart...");
         clear();
       }
 
       // Redirect to success page
-      console.log("[Inquiry] Redirecting to success page...");
       router.push(`/teklif-basarili?id=${result.id}`);
     } catch (error) {
-      console.error("[Inquiry] Full error object:", error);
-
       let errorMessage = "Teklif gönderilirken bir hata oluştu. Lütfen tekrar deneyin.";
       let errorTitle = "Hata";
 
       if (error instanceof ApiError) {
-        console.error(`[Inquiry] API Error ${error.status}: ${error.body}`);
 
         if (error.status === 400) {
           errorTitle = "Form Hatası";
@@ -109,7 +98,6 @@ export default function ContactPage() {
           errorMessage = "Teknisel bir sorun oluştu. Lütfen daha sonra tekrar deneyin.";
         }
       } else if (error instanceof Error) {
-        console.error(`[Inquiry] Network/General Error: ${error.message}`);
         if (error.message.includes('fetch')) {
           errorTitle = "Bağlantı Hatası";
           errorMessage = "Sunucuya bağlanılamıyor. İnternet bağlantınızı kontrol edin.";
@@ -250,10 +238,11 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-6">
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-medium">
+                      <label htmlFor="full_name" className="mb-2 block text-sm font-medium">
                         Ad Soyad *
                       </label>
                       <Input
+                        id="full_name"
                         {...register("full_name")}
                         placeholder="Adınız ve soyadınız"
                         className="rounded-sm"
@@ -265,10 +254,11 @@ export default function ContactPage() {
                       )}
                     </div>
                     <div>
-                      <label className="mb-2 block text-sm font-medium">
+                      <label htmlFor="email" className="mb-2 block text-sm font-medium">
                         E-posta *
                       </label>
                       <Input
+                        id="email"
                         {...register("email")}
                         type="email"
                         placeholder="info@gastrotech.com.tr"
@@ -284,10 +274,11 @@ export default function ContactPage() {
 
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
-                      <label className="mb-2 block text-sm font-medium">
+                      <label htmlFor="phone" className="mb-2 block text-sm font-medium">
                         Telefon
                       </label>
                       <Input
+                        id="phone"
                         {...register("phone")}
                         type="tel"
                         placeholder="+90 5XX XXX XX XX"
@@ -295,10 +286,11 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label className="mb-2 block text-sm font-medium">
+                      <label htmlFor="company" className="mb-2 block text-sm font-medium">
                         Firma
                       </label>
                       <Input
+                        id="company"
                         {...register("company")}
                         placeholder="Firma adınız"
                         className="rounded-sm"
@@ -307,10 +299,11 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-sm font-medium">
+                    <label htmlFor="message" className="mb-2 block text-sm font-medium">
                       Mesajınız
                     </label>
                     <textarea
+                      id="message"
                       {...register("message")}
                       rows={4}
                       className="w-full rounded-sm border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -409,7 +402,7 @@ export default function ContactPage() {
 
                 {/* Address Section */}
                 <div className="relative flex items-start gap-4 group/item">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover/item:bg-primary group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-primary/20">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-primary/10 text-primary transition-colors duration-300 group-hover/item:bg-primary group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-primary/20">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div className="space-y-1">
@@ -424,7 +417,7 @@ export default function ContactPage() {
 
                 {/* Phone Section */}
                 <div className="relative flex items-start gap-4 group/item">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors duration-300 group-hover/item:bg-primary group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-primary/20">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-primary/10 text-primary transition-colors duration-300 group-hover/item:bg-primary group-hover/item:text-white group-hover/item:shadow-lg group-hover/item:shadow-primary/20">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div className="space-y-1">
@@ -441,7 +434,7 @@ export default function ContactPage() {
                     href="https://www.google.com/maps/dir//GASTROTECH+END%C3%9CSTR%C4%B0YEL+DEMO+%26+STORE/@41.030924,28.962194,15z"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:bg-primary/90 hover:-translate-y-0.5"
+                    className="flex w-full items-center justify-center gap-2 rounded-sm bg-primary py-3.5 text-sm font-bold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:bg-primary/90"
                   >
                     <Navigation className="h-4 w-4" />
                     Yol Tarifi Al

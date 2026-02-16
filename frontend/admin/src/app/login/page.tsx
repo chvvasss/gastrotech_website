@@ -166,12 +166,7 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          {/* Dev hint */}
-          {isDev && (
-            <p className="mt-5 text-xs text-stone-400 text-center">
-              Dev: admin@gastrotech.com / admin123
-            </p>
-          )}
+
         </CardContent>
       </Card>
 

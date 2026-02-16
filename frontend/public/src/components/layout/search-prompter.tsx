@@ -59,7 +59,7 @@ export function SearchPrompter({ onSearch }: SearchPrompterProps) {
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     className="fixed top-24 right-4 sm:right-8 z-40 w-[90vw] sm:w-[380px] max-w-[380px]"
                 >
-                    <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-white/90 backdrop-blur-md shadow-2xl shadow-primary/10 p-4 sm:p-5">
+                    <div className="relative overflow-hidden rounded-sm border border-primary/20 bg-white/90 backdrop-blur-md shadow-2xl shadow-primary/10 p-4 sm:p-5">
                         {/* Glossy Effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-white via-white/80 to-transparent z-[-1]" />
                         <div className="absolute -top-10 -right-10 h-32 w-32 bg-primary/10 blur-3xl rounded-full pointer-events-none" />
@@ -89,7 +89,7 @@ export function SearchPrompter({ onSearch }: SearchPrompterProps) {
 
                                 <Button
                                     onClick={handleSearchClick}
-                                    className="w-full text-xs sm:text-sm font-semibold h-9 rounded-sm shadow-md shadow-primary/10 hover:shadow-primary/20 transition-all hover:-translate-y-0.5"
+                                    className="w-full text-xs sm:text-sm font-semibold h-9 rounded-sm shadow-md shadow-primary/10 hover:shadow-primary/20 transition-all"
                                 >
                                     Hemen Ara
                                     <ArrowRight className="ml-2 h-3.5 w-3.5" />

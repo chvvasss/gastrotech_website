@@ -60,9 +60,16 @@ export default function CorporatePage() {
               </div>
             </div>
             <div className="relative aspect-square lg:aspect-[4/5] overflow-hidden rounded-sm group shadow-2xl border border-border/50">
-              <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/5 transition-colors duration-500" />
-              <div className="flex h-full w-full items-center justify-center text-muted-foreground bg-muted font-medium">
-                Fabrika & Üretim Görseli
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900" />
+              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
+              <div className="flex h-full w-full items-center justify-center relative z-10">
+                  <div className="text-center space-y-3">
+                      <div className="h-16 w-16 rounded-sm bg-white/10 flex items-center justify-center mx-auto">
+                          <Building2 className="h-8 w-8 text-white/30" />
+                      </div>
+                      <p className="text-white/30 text-xs font-bold uppercase tracking-[0.2em]">Gastrotech Üretim</p>
+                  </div>
               </div>
             </div>
           </div>
@@ -135,7 +142,7 @@ export default function CorporatePage() {
             {VALUES.map((value) => (
               <div
                 key={value.title}
-                className="relative group rounded-sm border bg-card p-10 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/30"
+                className="relative group rounded-sm border bg-card p-10 shadow-sm transition-all duration-300 hover:shadow-xl hover:border-primary/30"
               >
                 <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-sm bg-primary/10 text-primary">
                   <value.icon className="h-6 w-6" />

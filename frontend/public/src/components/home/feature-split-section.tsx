@@ -131,7 +131,7 @@ export function FeatureSplitSection({
                   <Button
                     asChild
                     size="lg"
-                    className="rounded-none h-12 px-8 font-semibold text-base shadow-lg shadow-primary/10 hover:translate-y-0"
+                    className="rounded-sm h-12 px-8 font-semibold text-base shadow-lg shadow-primary/15"
                   >
                     <Link href={ctaHref}>
                       {ctaLabel}

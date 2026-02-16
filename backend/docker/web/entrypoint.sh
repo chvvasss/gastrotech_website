@@ -62,6 +62,25 @@ else
     echo "Production mode - skipping dev admin creation"
 fi
 
+# Seed data if SEED_DATA is set (first-time setup)
+# Usage: SEED_DATA=1 docker compose up
+# Optional: SEED_SKIP_IMAGES=1 to skip image upload (faster)
+#           SEED_SKIP_PDFS=1 to skip PDF import
+if [ "$SEED_DATA" = "1" ] || [ "$SEED_DATA" = "true" ] || [ "$SEED_DATA" = "True" ]; then
+    echo ""
+    echo "=== SEED_DATA enabled - running full database setup ==="
+    SEED_ARGS=""
+    if [ "$SEED_SKIP_IMAGES" = "1" ]; then
+        SEED_ARGS="$SEED_ARGS --skip-images"
+    fi
+    if [ "$SEED_SKIP_PDFS" = "1" ]; then
+        SEED_ARGS="$SEED_ARGS --skip-pdfs"
+    fi
+    python manage.py setup_full $SEED_ARGS
+    echo "=== Seed data complete ==="
+    echo ""
+fi
+
 # Collect static files
 echo "Collecting static files..."
 python manage.py collectstatic --noinput --clear

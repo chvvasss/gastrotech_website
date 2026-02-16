@@ -64,9 +64,9 @@ export function Pagination({
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={!hasPrev}
                 className={cn(
-                    "flex h-10 w-10 items-center justify-center rounded-md border transition-colors",
+                    "flex h-10 w-10 items-center justify-center rounded-sm border transition-colors",
                     hasPrev
-                        ? "border-border bg-card text-foreground hover:border-destructive hover:bg-destructive hover:text-white"
+                        ? "border-border bg-card text-foreground hover:border-primary hover:bg-primary hover:text-white"
                         : "cursor-not-allowed border-border/50 bg-muted text-muted-foreground"
                 )}
                 aria-label="Önceki sayfa"
@@ -89,10 +89,10 @@ export function Pagination({
                             key={page}
                             onClick={() => onPageChange(page)}
                             className={cn(
-                                "flex h-10 w-10 items-center justify-center rounded-md border text-sm font-medium transition-all",
+                                "flex h-10 w-10 items-center justify-center rounded-sm border text-sm font-medium transition-all",
                                 page === currentPage
-                                    ? "border-destructive bg-destructive text-white shadow-md shadow-destructive/25"
-                                    : "border-border bg-card text-foreground hover:border-destructive/50 hover:bg-destructive/10"
+                                    ? "border-primary bg-primary text-white shadow-md shadow-primary/25"
+                                    : "border-border bg-card text-foreground hover:border-primary/50 hover:bg-primary/10"
                             )}
                             aria-current={page === currentPage ? "page" : undefined}
                         >
@@ -107,9 +107,9 @@ export function Pagination({
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={!hasNext}
                 className={cn(
-                    "flex h-10 w-10 items-center justify-center rounded-md border transition-colors",
+                    "flex h-10 w-10 items-center justify-center rounded-sm border transition-colors",
                     hasNext
-                        ? "border-border bg-card text-foreground hover:border-destructive hover:bg-destructive hover:text-white"
+                        ? "border-border bg-card text-foreground hover:border-primary hover:bg-primary hover:text-white"
                         : "cursor-not-allowed border-border/50 bg-muted text-muted-foreground"
                 )}
                 aria-label="Sonraki sayfa"

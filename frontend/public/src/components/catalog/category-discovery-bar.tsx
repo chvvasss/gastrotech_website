@@ -60,7 +60,7 @@ export function CategoryDiscoveryBar({ categories }: CategoryDiscoveryBarProps) 
                                     >
                                         <Link
                                             href={`/kategori/${category.slug}`}
-                                            className="group/card flex flex-col items-center p-4 bg-white border border-border rounded-sm transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:-translate-y-1"
+                                            className="group/card flex flex-col items-center p-4 bg-white border border-border rounded-sm transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
                                         >
                                             {/* Category Image */}
                                             <div className="relative h-16 w-16 mb-3 rounded-sm overflow-hidden bg-muted">

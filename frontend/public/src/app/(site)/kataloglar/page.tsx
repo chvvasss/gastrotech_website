@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FileText, Download, Eye, BookOpen, FolderOpen } from "lucide-react";
 import { fetchCatalogAssets, fetchAllCategoryCatalogs } from "@/lib/api";
@@ -7,6 +8,83 @@ import { getMediaUrl } from "@/lib/utils";
 import { Container } from "@/components/layout";
 import type { CatalogAsset, CategoryCatalog } from "@/lib/api/schemas";
 
+/* ── PDF.js Loader (singleton) ─────────────────────── */
+let pdfJsLoadingPromise: Promise<void> | null = null;
+
+const ensurePdfJs = (): Promise<void> => {
+  if (typeof window !== "undefined" && (window as any).pdfjsLib) return Promise.resolve();
+  if (pdfJsLoadingPromise) return pdfJsLoadingPromise;
+
+  pdfJsLoadingPromise = new Promise((resolve, reject) => {
+    if (document.getElementById("pdfjs-lib-script")) {
+      const check = setInterval(() => {
+        if ((window as any).pdfjsLib) { clearInterval(check); resolve(); }
+      }, 100);
+      return;
+    }
+    const s = document.createElement("script");
+    s.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js";
+    s.id = "pdfjs-lib-script";
+    s.onload = () => {
+      if ((window as any).pdfjsLib) {
+        (window as any).pdfjsLib.GlobalWorkerOptions.workerSrc =
+          "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+        resolve();
+      } else reject("PDF.js object missing");
+    };
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+  return pdfJsLoadingPromise;
+};
+
+/* ── PDF Thumbnail ─────────────────────────────────── */
+function PDFThumbnail({ url, className }: { url: string; className?: string }) {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!url) return;
+    let cancelled = false;
+    ensurePdfJs().then(async () => {
+      if (cancelled || !(window as any).pdfjsLib) return;
+      try {
+        const doc = await (window as any).pdfjsLib.getDocument(url).promise;
+        const page = await doc.getPage(1);
+        const viewport = page.getViewport({ scale: 0.8 });
+        const canvas = canvasRef.current;
+        if (canvas && !cancelled) {
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+            await page.render({ canvasContext: ctx, viewport }).promise;
+            if (!cancelled) setLoaded(true);
+          }
+        }
+      } catch { }
+    });
+    return () => { cancelled = true; };
+  }, [url]);
+
+  return (
+    <div className={`relative overflow-hidden bg-stone-100 ${className || ""}`}>
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="h-5 w-5 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
+        </div>
+      )}
+      <canvas
+        ref={canvasRef}
+        className={`w-full h-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+      />
+    </div>
+  );
+}
+
+/* ── Helpers ───────────────────────────────────────── */
 function formatFileSize(bytes: number | null): string {
   if (!bytes) return "";
   if (bytes < 1024) return `${bytes} B`;
@@ -14,81 +92,86 @@ function formatFileSize(bytes: number | null): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-function CatalogCard({ title, fileUrl, fileSize, description, isPrimary }: {
+/* ── Catalog Card with PDF Preview ─────────────────── */
+function CatalogCard({ title, fileUrl, fileSize, description, isPrimary, categoryName }: {
   title: string;
   fileUrl: string | null;
   fileSize: number | null;
   description?: string | null;
   isPrimary?: boolean;
+  categoryName?: string;
 }) {
+  const mediaUrl = fileUrl ? getMediaUrl(fileUrl) : null;
+
   return (
-    <div className="group relative bg-white border border-border/50 rounded-sm p-5 hover:shadow-md hover:border-primary/30 transition-all duration-200">
-      <div className="flex items-start gap-3 mb-3">
-        <div className="flex-shrink-0 h-10 w-10 rounded-sm bg-red-50 text-red-600 flex items-center justify-center">
-          <FileText className="h-5 w-5" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <h3 className="font-semibold text-foreground text-sm leading-snug line-clamp-2">
-              {title}
-            </h3>
-            {isPrimary && (
-              <span className="flex-shrink-0 px-1.5 py-0.5 text-[10px] font-bold bg-primary/10 text-primary rounded-sm">
-                ANA
-              </span>
-            )}
+    <div
+      className="group relative flex flex-col cursor-pointer"
+      onClick={() => { if (mediaUrl) window.open(mediaUrl, "_blank"); }}
+    >
+      {/* PDF Preview Thumbnail */}
+      <div className="relative aspect-[1/1.4] w-full overflow-hidden rounded-sm shadow-sm bg-stone-100 border border-stone-200 group-hover:shadow-lg transition-all duration-300">
+        {mediaUrl ? (
+          <PDFThumbnail url={mediaUrl} className="w-full h-full" />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center text-stone-300">
+            <FileText className="h-12 w-12" />
+          </div>
+        )}
+
+        {/* Primary badge */}
+        {isPrimary && (
+          <div className="absolute top-2 left-2 z-10">
+            <span className="px-2 py-0.5 text-[10px] font-bold bg-primary text-white rounded shadow-sm">
+              ANA KATALOG
+            </span>
+          </div>
+        )}
+
+        {/* Category label */}
+        {categoryName && (
+          <div className="absolute top-2 right-2 z-10">
+            <span className="px-2 py-0.5 text-[10px] font-medium bg-black/50 text-white rounded backdrop-blur-sm">
+              {categoryName}
+            </span>
+          </div>
+        )}
+
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
+          <div className="flex items-center gap-2 transform translate-y-3 group-hover:translate-y-0 transition-all duration-300">
+            <span className="bg-white/95 backdrop-blur rounded-full p-2.5 shadow-lg hover:bg-white transition-colors">
+              <Eye className="h-4 w-4 text-stone-700" />
+            </span>
+            <a
+              href={mediaUrl || "#"}
+              download
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white/95 backdrop-blur rounded-full p-2.5 shadow-lg hover:bg-white transition-colors"
+            >
+              <Download className="h-4 w-4 text-stone-700" />
+            </a>
           </div>
         </div>
       </div>
 
-      {description && (
-        <p className="text-xs text-muted-foreground line-clamp-2 mb-3">
-          {description}
-        </p>
-      )}
-
-      {fileSize && (
-        <p className="text-[10px] text-muted-foreground/70 mb-3">
-          PDF - {formatFileSize(fileSize)}
-        </p>
-      )}
-
-      <div className="flex items-center gap-2">
-        {fileUrl && (
-          <>
-            <a
-              href={getMediaUrl(fileUrl)}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm bg-primary text-white text-xs font-medium hover:bg-primary/90 transition-colors"
-            >
-              <Eye className="h-3.5 w-3.5" />
-              Goruntule
-            </a>
-            <a
-              href={getMediaUrl(fileUrl)}
-              download
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-border text-foreground text-xs font-medium hover:bg-muted transition-colors"
-            >
-              <Download className="h-3.5 w-3.5" />
-              Indir
-            </a>
-          </>
+      {/* Title & Info */}
+      <div className="mt-3 text-center px-1">
+        <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+          {title}
+        </h3>
+        {description && (
+          <p className="text-xs text-muted-foreground mt-1 line-clamp-1">{description}</p>
+        )}
+        {fileSize && (
+          <p className="text-[11px] text-muted-foreground/60 mt-1">
+            PDF &middot; {formatFileSize(fileSize)}
+          </p>
         )}
       </div>
     </div>
   );
 }
 
-function SkeletonGrid({ count }: { count: number }) {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {Array.from({ length: count }).map((_, i) => (
-        <div key={i} className="h-40 animate-pulse rounded-sm bg-muted/50 border border-border/30" />
-      ))}
-    </div>
-  );
-}
 
 export default function KataloglarPage() {
   const { data: assets = [], isLoading: loadingAssets } = useQuery({
@@ -103,26 +186,14 @@ export default function KataloglarPage() {
     staleTime: 5 * 60 * 1000,
   });
 
-  // Group category catalogs by category
-  const catalogsByCategory = categoryCatalogs.reduce<Record<string, { name: string; catalogs: CategoryCatalog[] }>>((acc, catalog) => {
-    const key = catalog.category_slug;
-    if (!acc[key]) {
-      acc[key] = { name: catalog.category_name, catalogs: [] };
-    }
-    acc[key].catalogs.push(catalog);
-    return acc;
-  }, {});
-
-  // Sort catalogs within each category
-  Object.values(catalogsByCategory).forEach((group) => {
-    group.catalogs.sort((a, b) => a.order - b.order);
-  });
-
   // Sort assets by order
   const sortedAssets = [...assets].sort((a, b) => a.order - b.order);
 
+  // Sort category catalogs by order
+  const sortedCategoryCatalogs = [...categoryCatalogs].sort((a, b) => a.order - b.order);
+
   const hasAssets = sortedAssets.length > 0;
-  const hasCategoryCatalogs = Object.keys(catalogsByCategory).length > 0;
+  const hasCategoryCatalogs = sortedCategoryCatalogs.length > 0;
   const isLoading = loadingAssets || loadingCategoryCatalogs;
 
   return (
@@ -138,12 +209,12 @@ export default function KataloglarPage() {
         <Container className="relative text-center z-10">
           <h1 className="text-3xl font-bold text-white lg:text-5xl">Kataloglar</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
-            Urun kataloglarimizi indirerek tum urun yelpazemizi detayli inceleyebilirsiniz.
+            Ürün kataloglarımızı indirerek tüm ürün yelpazemizi detaylı inceleyebilirsiniz.
           </p>
         </Container>
       </section>
 
-      {/* General Catalog Assets Section */}
+      {/* Genel Kataloglar - Full width top */}
       <section className="py-12 lg:py-16 border-b">
         <Container>
           <div className="mb-8 flex items-center gap-4">
@@ -153,15 +224,22 @@ export default function KataloglarPage() {
                 Genel Kataloglar
               </h2>
               <p className="text-muted-foreground mt-1 text-sm">
-                Tum urun gruplarina ait ana katalog dosyalari
+                Tüm ürün gruplarına ait ana katalog dosyaları
               </p>
             </div>
           </div>
 
           {loadingAssets ? (
-            <SkeletonGrid count={3} />
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              {Array.from({ length: 5 }).map((_, i) => (
+                <div key={i} className="flex flex-col gap-2">
+                  <div className="aspect-[1/1.4] animate-pulse rounded-sm bg-muted/50 border border-border/30" />
+                  <div className="h-3 animate-pulse rounded bg-muted/40 w-3/4 mx-auto" />
+                </div>
+              ))}
+            </div>
           ) : hasAssets ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
               {sortedAssets.map((asset) => (
                 <CatalogCard
                   key={asset.id}
@@ -174,68 +252,57 @@ export default function KataloglarPage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="h-14 w-14 rounded-full bg-muted/50 flex items-center justify-center mb-3">
-                <BookOpen className="h-7 w-7 text-muted-foreground/50" />
-              </div>
+              <BookOpen className="h-8 w-8 text-muted-foreground/40 mb-2" />
               <p className="text-sm text-muted-foreground">
-                Henuz genel katalog yuklenmemistir.
+                Henüz genel katalog yüklenmemiştir.
               </p>
             </div>
           )}
         </Container>
       </section>
 
-      {/* Category Catalogs Section */}
+      {/* Kategori Katalogları - Groups side by side */}
       <section className="py-12 lg:py-16">
         <Container>
           <div className="mb-8 flex items-center gap-4">
             <div className="h-10 w-1.5 rounded-sm bg-primary shadow-sm" />
             <div>
               <h2 className="text-2xl font-bold lg:text-3xl text-foreground tracking-tight">
-                Kategori Kataloglari
+                Kategori Katalogları
               </h2>
               <p className="text-muted-foreground mt-1 text-sm">
-                Urun kategorilerine ozel katalog dosyalari
+                Ürün kategorilerine özel katalog dosyaları
               </p>
             </div>
           </div>
 
           {loadingCategoryCatalogs ? (
-            <SkeletonGrid count={6} />
-          ) : hasCategoryCatalogs ? (
-            <div className="space-y-10">
-              {Object.entries(catalogsByCategory).map(([slug, group]) => (
-                <div key={slug}>
-                  <div className="flex items-center gap-2 mb-4">
-                    <FolderOpen className="h-5 w-5 text-primary" />
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {group.name}
-                    </h3>
-                    <span className="text-xs text-muted-foreground">
-                      ({group.catalogs.length} katalog)
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {group.catalogs.map((catalog) => (
-                      <CatalogCard
-                        key={catalog.id}
-                        title={catalog.title_tr}
-                        fileUrl={catalog.file_url}
-                        fileSize={catalog.file_size}
-                        description={catalog.description}
-                      />
-                    ))}
-                  </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div key={i} className="flex flex-col gap-2">
+                  <div className="aspect-[1/1.4] animate-pulse rounded-sm bg-muted/50 border border-border/30" />
+                  <div className="h-3 animate-pulse rounded bg-muted/40 w-3/4 mx-auto" />
                 </div>
+              ))}
+            </div>
+          ) : hasCategoryCatalogs ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+              {sortedCategoryCatalogs.map((catalog) => (
+                <CatalogCard
+                  key={catalog.id}
+                  title={catalog.title_tr}
+                  fileUrl={catalog.file_url}
+                  fileSize={catalog.file_size}
+                  description={catalog.description}
+                  categoryName={catalog.category_name}
+                />
               ))}
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="h-14 w-14 rounded-full bg-muted/50 flex items-center justify-center mb-3">
-                <FolderOpen className="h-7 w-7 text-muted-foreground/50" />
-              </div>
+              <FolderOpen className="h-8 w-8 text-muted-foreground/40 mb-2" />
               <p className="text-sm text-muted-foreground">
-                Henuz kategori katalogu yuklenmemistir.
+                Henüz kategori kataloğu yüklenmemiştir.
               </p>
             </div>
           )}
@@ -251,10 +318,10 @@ export default function KataloglarPage() {
                 <BookOpen className="h-10 w-10 text-muted-foreground/40" />
               </div>
               <h3 className="text-xl font-semibold text-foreground/70 mb-2">
-                Katalog Bulunamadi
+                Katalog Bulunamadı
               </h3>
               <p className="text-sm text-muted-foreground max-w-md">
-                Katalog dosyalari yakinda eklenecektir. Daha sonra tekrar kontrol edebilirsiniz.
+                Katalog dosyaları yakında eklenecektir. Daha sonra tekrar kontrol edebilirsiniz.
               </p>
             </div>
           </Container>

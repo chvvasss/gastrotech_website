@@ -64,12 +64,12 @@ export function MobileFilterDrawer({
             {/* Trigger Button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground shadow-sm transition-all hover:border-destructive/50 hover:shadow-md lg:hidden"
+                className="flex items-center gap-2 rounded-sm border border-border bg-card px-4 py-2.5 text-sm font-medium text-foreground shadow-sm transition-all hover:border-primary/50 hover:shadow-md lg:hidden"
             >
                 <SlidersHorizontal className="h-4 w-4" />
                 Filtrele
                 {activeFilterCount > 0 && (
-                    <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-destructive px-1.5 text-xs font-semibold text-white">
+                    <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-primary px-1.5 text-xs font-semibold text-white">
                         {activeFilterCount}
                     </span>
                 )}
@@ -93,17 +93,17 @@ export function MobileFilterDrawer({
                 {/* Header */}
                 <div className="flex items-center justify-between border-b border-border px-4 py-4">
                     <div className="flex items-center gap-2">
-                        <SlidersHorizontal className="h-5 w-5 text-destructive" />
+                        <SlidersHorizontal className="h-5 w-5 text-primary" />
                         <span className="text-lg font-bold text-foreground">Filtreler</span>
                         {activeFilterCount > 0 && (
-                            <span className="rounded-full bg-destructive px-2 py-0.5 text-xs font-semibold text-white">
+                            <span className="rounded-full bg-primary px-2 py-0.5 text-xs font-semibold text-white">
                                 {activeFilterCount}
                             </span>
                         )}
                     </div>
                     <button
                         onClick={() => setIsOpen(false)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-destructive hover:text-white"
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                     >
                         <X className="h-4 w-4" />
                     </button>
@@ -134,14 +134,14 @@ export function MobileFilterDrawer({
                             onClick={() => {
                                 onClearAll();
                             }}
-                            className="w-full rounded-lg border border-destructive/30 bg-destructive/10 py-2.5 text-sm font-medium text-destructive transition-colors hover:bg-destructive/20"
+                            className="w-full rounded-sm border border-primary/30 bg-primary/10 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/20"
                         >
                             Tüm Filtreleri Temizle
                         </button>
                     )}
                     <button
                         onClick={() => setIsOpen(false)}
-                        className="w-full rounded-lg bg-destructive py-3 text-sm font-semibold text-white transition-colors hover:bg-destructive/90"
+                        className="w-full rounded-sm bg-primary py-3 text-sm font-semibold text-white transition-colors hover:bg-primary/90"
                     >
                         {totalProducts.toLocaleString("tr-TR")} Ürün Göster
                     </button>

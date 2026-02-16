@@ -51,7 +51,7 @@ function FacetSection({
         <div className="border-b border-border py-4 first:pt-0 last:border-0">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex w-full items-center justify-between text-sm font-bold uppercase tracking-wider text-foreground hover:text-destructive transition-colors py-1"
+                className="flex w-full items-center justify-between text-sm font-bold uppercase tracking-wider text-foreground hover:text-primary transition-colors py-1"
             >
                 {title}
                 {isOpen ? (
@@ -91,7 +91,7 @@ export function CheckboxItem({
                 className={cn(
                     "flex h-4.5 w-4.5 flex-shrink-0 items-center justify-center border transition-all rounded-sm",
                     checked
-                        ? "border-destructive bg-destructive text-white"
+                        ? "border-primary bg-primary text-white"
                         : "border-muted-foreground/30 bg-white group-hover:border-foreground"
                 )}
             >
@@ -100,7 +100,7 @@ export function CheckboxItem({
 
             {/* Optional Image */}
             {imageUrl && (
-                <div className="relative h-10 w-16 flex-shrink-0 overflow-hidden rounded-md bg-white border border-border/50 shadow-sm p-0.5">
+                <div className="relative h-10 w-16 flex-shrink-0 overflow-hidden rounded-sm bg-white border border-border/50 shadow-sm p-0.5">
                     <img
                         src={imageUrl}
                         alt={label}
@@ -180,17 +180,17 @@ export function FilterSidebar({
     }
 
     return (
-        <aside className="w-full space-y-1 bg-card rounded-lg border border-border/50 p-4 shadow-sm">
+        <aside className="w-full space-y-1 bg-card rounded-sm border border-border/50 p-4 shadow-sm">
             {/* Header with clear button */}
             <div className="flex items-center justify-between border-b border-border pb-3 mb-2">
-                <div className="flex items-center gap-2 text-sm font-bold text-destructive">
-                    <Filter className="h-4 w-4 text-destructive" />
+                <div className="flex items-center gap-2 text-sm font-bold text-primary">
+                    <Filter className="h-4 w-4 text-primary" />
                     Filtreler
                 </div>
                 {hasActiveFilters && (
                     <button
                         onClick={onClearAll}
-                        className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-destructive hover:text-destructive/80 transition-colors bg-destructive/5 px-2 py-1 rounded-full"
+                        className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-primary hover:text-primary/80 transition-colors bg-primary/5 px-2 py-1 rounded-full"
                     >
                         <X className="h-3 w-3" />
                         Temizle
@@ -207,7 +207,7 @@ export function FilterSidebar({
                             <button
                                 key={brandSlug}
                                 onClick={() => onToggleBrand(brandSlug)}
-                                className="flex items-center gap-1 rounded-full bg-destructive/10 px-2.5 py-0.5 text-[10px] font-semibold text-destructive hover:bg-destructive/20 transition-colors border border-destructive/10"
+                                className="flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-semibold text-primary hover:bg-primary/20 transition-colors border border-primary/10"
                             >
                                 {brand?.name ?? brandSlug}
                                 <X className="h-2.5 w-2.5" />
@@ -221,7 +221,7 @@ export function FilterSidebar({
                                 setPriceMaxInput("");
                                 onPriceChange(null, null);
                             }}
-                            className="flex items-center gap-1 rounded-full bg-destructive/10 px-2.5 py-0.5 text-[10px] font-semibold text-destructive hover:bg-destructive/20 transition-colors border border-destructive/10"
+                            className="flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-0.5 text-[10px] font-semibold text-primary hover:bg-primary/20 transition-colors border border-primary/10"
                         >
                             {selectedPriceMin ?? 0} TL - {selectedPriceMax ?? "∞"}
                             <X className="h-2.5 w-2.5" />
@@ -237,13 +237,13 @@ export function FilterSidebar({
                     onClick={onStockToggle}
                     className="flex w-full cursor-pointer items-center justify-between mb-1"
                 >
-                    <span className={cn("text-sm font-semibold transition-colors", inStockOnly ? "text-destructive" : "text-muted-foreground")}>
+                    <span className={cn("text-sm font-semibold transition-colors", inStockOnly ? "text-primary" : "text-muted-foreground")}>
                         Sadece Stoktakiler
                     </span>
                     <div
                         className={cn(
                             "relative h-5 w-9 rounded-full transition-colors",
-                            inStockOnly ? "bg-destructive" : "bg-muted"
+                            inStockOnly ? "bg-primary" : "bg-muted"
                         )}
                     >
                         <div
@@ -282,7 +282,7 @@ export function FilterSidebar({
                                 placeholder="ARA..."
                                 value={brandSearch}
                                 onChange={(e) => setBrandSearch(e.target.value)}
-                                className="w-full text-xs font-medium border-b border-border bg-transparent px-0 py-2 focus:border-destructive outline-none transition-all placeholder:text-muted-foreground/50 uppercase tracking-widest text-destructive"
+                                className="w-full text-xs font-medium border-b border-border bg-transparent px-0 py-2 focus:border-primary outline-none transition-all placeholder:text-muted-foreground/50 uppercase tracking-widest text-primary"
                             />
                         </div>
                     )}
@@ -292,7 +292,7 @@ export function FilterSidebar({
                                 <CheckboxItem
                                     key={brand.id}
                                     label={brand.name}
-                                    count={0} // Hidden in component
+                                    count={brand.count}
                                     checked={selectedBrands.includes(brand.slug)}
                                     onChange={() => onToggleBrand(brand.slug)}
                                     imageUrl={brand.logo_url}
@@ -317,7 +317,7 @@ export function FilterSidebar({
                                 <CheckboxItem
                                     key={series.id}
                                     label={series.name}
-                                    count={0}
+                                    count={series.count}
                                     checked={checked || false}
                                     onChange={() => onToggleSeries(series.slug)}
                                 />
@@ -337,7 +337,7 @@ export function FilterSidebar({
                                 <CheckboxItem
                                     key={option.value}
                                     label={option.label}
-                                    count={0}
+                                    count={option.count}
                                     checked={isSelected}
                                     onChange={() => onToggleAttribute?.(facet.key, option.value)}
                                 />

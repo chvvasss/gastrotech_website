@@ -72,7 +72,7 @@ export function BrandGrid({ brands, onSelect, isLoading = false }: BrandGridProp
                             </p>
                         )}
 
-                        <div className="flex items-center gap-1.5 text-sm font-medium text-destructive transition-colors group-hover:text-destructive/80">
+                        <div className="flex items-center gap-1.5 text-sm font-medium text-primary transition-colors group-hover:text-primary/80">
                             Ürünleri Gör
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"

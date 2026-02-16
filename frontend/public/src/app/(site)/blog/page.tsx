@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/layout";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { fetchBlogPosts, fetchBlogCategories } from "@/lib/api/client";
 import { Metadata } from "next";
 
@@ -35,10 +35,14 @@ export default async function BlogPage({
   return (
     <>
       {/* Header */}
-      <section className="bg-muted/30 py-16 lg:py-20">
+      <section className="bg-muted/30 py-16 lg:py-20 border-b">
         <Container className="text-center">
-          <h1 className="text-3xl font-bold lg:text-5xl">Blog & Medya</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-10 w-1 rounded-sm bg-primary" />
+            <h1 className="text-3xl font-bold lg:text-5xl tracking-tight">Blog & Medya</h1>
+            <div className="h-10 w-1 rounded-sm bg-primary" />
+          </div>
+          <p className="mx-auto mt-2 max-w-2xl text-lg text-muted-foreground">
             Sektör haberleri, ipuçları ve endüstriyel mutfak dünyasından güncel içerikler
           </p>
         </Container>
@@ -143,48 +147,31 @@ export default async function BlogPage({
             </div>
           )}
 
-          {/* Load More (Pagination) - Simplified for now */}
-          {postsData.next && (
-            <div className="mt-12 text-center">
-              <Link
-                href={`/blog?${new URLSearchParams({ ...(category ? { category } : {}), page: ((page ? parseInt(page) : 1) + 1).toString() }).toString()}`}
-                className="rounded-sm border bg-card px-6 py-3 font-medium transition-colors hover:bg-muted inline-block"
-              >
-                Sonraki Sayfa
-              </Link>
+          {(postsData.previous || postsData.next) && (
+            <div className="mt-12 flex items-center justify-center gap-4">
+              {postsData.previous && (
+                <Link
+                  href={`/blog?${new URLSearchParams({ ...(category ? { category } : {}), page: ((page ? parseInt(page) : 1) - 1).toString() }).toString()}`}
+                  className="rounded-sm border bg-card px-6 py-3 font-medium transition-colors hover:bg-muted inline-flex items-center gap-2"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                  Önceki
+                </Link>
+              )}
+              <span className="text-sm text-muted-foreground font-medium">
+                Sayfa {page ? parseInt(page) : 1}
+              </span>
+              {postsData.next && (
+                <Link
+                  href={`/blog?${new URLSearchParams({ ...(category ? { category } : {}), page: ((page ? parseInt(page) : 1) + 1).toString() }).toString()}`}
+                  className="rounded-sm border bg-card px-6 py-3 font-medium transition-colors hover:bg-muted inline-flex items-center gap-2"
+                >
+                  Sonraki
+                  <ChevronRight className="h-4 w-4" />
+                </Link>
+              )}
             </div>
           )}
-        </Container>
-      </section>
-
-      {/* Newsletter */}
-      <section className="border-t bg-muted/30 py-12">
-        <Container>
-          <div className="mx-auto max-w-xl text-center">
-            <h2 className="text-xl font-bold">Bültenimize Abone Olun</h2>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Sektör haberleri ve özel içerikler için e-posta listemize katılın.
-            </p>
-            <div className="mt-4 flex gap-2">
-              <input
-                type="email"
-                placeholder="E-posta adresiniz"
-                disabled
-                className="flex-1 rounded-sm border bg-background px-4 py-2 text-sm opacity-60 cursor-not-allowed"
-              />
-              <button
-                type="button"
-                disabled
-                className="rounded-sm bg-primary px-6 py-2 text-sm font-medium text-primary-foreground opacity-60 cursor-not-allowed"
-                title="Bu özellik yakında aktif olacak"
-              >
-                Yakında
-              </button>
-            </div>
-            <p className="mt-2 text-xs text-muted-foreground">
-              Bu özellik yakında aktif olacak.
-            </p>
-          </div>
         </Container>
       </section>
     </>

@@ -63,8 +63,8 @@ const TRUST_BADGES = [
 export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t bg-white">
-      {/* Red accent band with gradient - Thinner & Sharper */}
-      <div className="h-[2px] bg-gradient-to-r from-primary via-primary to-primary/60" />
+      {/* Red accent band */}
+      <div className="h-[2px] bg-gradient-to-r from-primary/80 via-primary to-primary/80" />
 
       {/* Trust Badges Section - Sharp */}
       <div className="border-b border-border/40 bg-white/50 backdrop-blur-sm">
@@ -77,7 +77,7 @@ export function Footer() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-center justify-center sm:justify-start gap-4 rounded-sm border border-border/50 bg-white/60 p-3 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300 w-full max-w-[300px]"
+                className="flex items-center justify-center sm:justify-start gap-3.5 rounded-sm border border-border/40 bg-white/80 p-3.5 shadow-soft hover:shadow-elevated hover:border-primary/20 transition-all duration-300 w-full max-w-[300px]"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-primary/10 text-primary">
                   <badge.icon className="h-5 w-5" />
@@ -122,7 +122,6 @@ export function Footer() {
                     "bg-white text-muted-foreground",
                     "transition-all duration-200",
                     "hover:bg-primary hover:text-white hover:border-primary hover:shadow-md",
-                    "hover:-translate-y-0.5"
                   )}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -171,7 +170,7 @@ export function Footer() {
                         href={link.href}
                         className={cn(
                           "group inline-flex items-center gap-2 text-sm text-muted-foreground",
-                          "transition-colors duration-200 hover:text-foreground hover:translate-x-1"
+                          "transition-colors duration-200 hover:text-foreground"
                         )}
                       >
                         <span className="h-1 w-1 rounded-sm bg-border group-hover:bg-primary transition-colors" />
@@ -209,7 +208,7 @@ export function Footer() {
       </div>
 
       {/* Brand Red Bottom Bar */}
-      <div className="h-3 bg-primary" />
+      <div className="h-1.5 bg-gradient-to-r from-primary/90 via-primary to-primary/90" />
     </footer>
   );
 }

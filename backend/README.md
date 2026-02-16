@@ -31,76 +31,132 @@ Production-grade Django REST API for B2B product catalog management. Built with 
 ## Project Structure
 
 ```
-repo_root/
+backend/
 ├── apps/
-│   ├── common/          # Shared models and utilities
-│   ├── accounts/        # Custom user model and auth
-│   ├── catalog/         # Product catalog (placeholder)
-│   ├── orders/          # Order management (placeholder)
-│   └── api/             # API routing and versioning
+│   ├── common/          # Shared models (SiteSetting), utilities, slugify
+│   ├── accounts/        # Custom User model (email-based), JWT auth
+│   ├── catalog/         # Products, categories, brands, series, media, specs
+│   ├── orders/          # Cart system (anonymous + authenticated)
+│   ├── inquiries/       # Lead capture, quote composition, honeypot
+│   ├── blog/            # Blog posts, categories, tags
+│   ├── ops/             # Operational scripts and bulk imports
+│   └── api/             # API routing and versioning (v1)
 ├── config/
 │   ├── settings/
-│   │   ├── base.py      # Base settings
+│   │   ├── base.py      # Base settings (shared)
 │   │   ├── dev.py       # Development settings
-│   │   └── prod.py      # Production settings
+│   │   └── prod.py      # Production settings (hardened)
 │   ├── urls.py
-│   ├── asgi.py
-│   └── wsgi.py
+│   ├── asgi.py          # Requires explicit DJANGO_SETTINGS_MODULE
+│   └── wsgi.py          # Requires explicit DJANGO_SETTINGS_MODULE
+├── fixtures/
+│   ├── catalog_metadata.json    # Category definitions
+│   ├── catalog_pdfs/            # 14 PDF catalog files
+│   └── full_site_data.json       # Full data export (via export_full_data v2.0)
 ├── docker/
 │   └── web/
 │       ├── Dockerfile
-│       └── entrypoint.sh
+│       ├── Dockerfile.prod
+│       └── entrypoint.sh        # Auto-migration + optional SEED_DATA
+├── Gastrotech_Tum_Veriler.xlsx  # Product data source
+├── urunlerfotoupload/           # 2900+ product images (PNG)
 ├── manage.py
 ├── requirements.txt
-├── docker-compose.yml
+├── docker-compose.yml           # Development (runserver)
+├── docker-compose.prod.yml      # Production (gunicorn + nginx)
 ├── .env.example
 └── README.md
 ```
 
-## How to Run
+## Quick Start (Docker)
 
 ### Prerequisites
 
 - Docker and Docker Compose installed
-- Git (optional)
+- Git
 
-### Quick Start
+### Full Setup (with all product data, images, catalogs)
 
-1. **Copy environment file**
+```bash
+# 1. Clone and enter directory
+git clone <repo-url>
+cd gastrotech_website-main/backend
 
-   ```bash
-   cp .env.example .env
-   ```
+# 2. Copy environment file
+cp .env.example .env
 
-2. **Start all services**
+# 3. Start all services
+docker compose up --build
 
-   ```bash
-   docker compose up --build
-   ```
+# 4. Run full setup (categories, brands, products, images, catalogs, admin user)
+docker compose exec web python manage.py setup_full
 
-   This will:
-   - Start PostgreSQL database
-   - Start Redis cache
-   - Build and start the Django application
-   - Run database migrations
-   - Collect static files
+# 5. Access the application
+#    Backend API:  http://localhost:8000
+#    Swagger UI:   http://localhost:8000/api/v1/docs/
+#    Django Admin:  http://localhost:8000/admin/
+#    Health Check:  http://localhost:8000/api/v1/health/
+```
 
-3. **Create a superuser**
+**Admin login:** admin@gastrotech.com / admin123
 
-   In a new terminal:
+### Quick Setup (skip images for speed)
 
-   ```bash
-   docker compose exec web python manage.py createsuperuser
-   ```
+```bash
+docker compose exec web python manage.py setup_full --skip-images
+```
 
-   Enter your email and password when prompted.
+### Auto-Seed on Docker Startup
 
-4. **Access the application**
+Add `SEED_DATA=1` to docker-compose environment for automatic first-time setup:
 
-   - **Swagger UI**: http://localhost:8000/api/v1/docs/
-   - **OpenAPI Schema**: http://localhost:8000/api/v1/schema/
-   - **Django Admin**: http://localhost:8000/admin/
-   - **Health Check**: http://localhost:8000/api/v1/health
+```yaml
+environment:
+  - SEED_DATA=1           # Run setup_full on startup
+  - SEED_SKIP_IMAGES=1    # Optional: skip images for speed
+```
+
+### What `setup_full` Does
+
+1. Runs database migrations
+2. Loads categories from `fixtures/catalog_metadata.json`
+3. Imports catalog PDFs from `fixtures/catalog_pdfs/`
+4. Seeds master hierarchy (brands, series, logo groups)
+5. Imports products from `Gastrotech_Tum_Veriler.xlsx`
+6. Uploads product images from `urunlerfotoupload/`
+7. Syncs spec keys from imported data
+8. Sets default site settings
+9. Creates dev admin user
+10. Clears cache
+
+### Data Export/Import (Full Site Reconstruction)
+
+The export/import system covers ALL site data — media (images, PDFs, logos, favicons),
+categories, brands, products, variants, blog posts, settings, and more (22 data sections).
+
+```bash
+# Export EVERYTHING including binary media (images, PDFs, logos)
+python manage.py export_full_data
+# Output: fixtures/full_site_data.json (includes binary data by default)
+
+# Export metadata only (much smaller file, no images/PDFs)
+python manage.py export_full_data --skip-media-bytes
+
+# Import full site data (idempotent — safe to re-run)
+python manage.py import_full_data
+# Or from specific file:
+python manage.py import_full_data --file fixtures/full_site_data.json
+
+# Dry run (preview what would be imported)
+python manage.py import_full_data --dry-run
+```
+
+### Access Points
+
+- **Swagger UI**: http://localhost:8000/api/v1/docs/
+- **OpenAPI Schema**: http://localhost:8000/api/v1/schema/
+- **Django Admin**: http://localhost:8000/admin/
+- **Health Check**: http://localhost:8000/api/v1/health/
 
 ### Testing Protected Endpoints in Swagger UI
 
@@ -679,45 +735,27 @@ Response includes resolved items and a formatted Turkish message:
 
 ### Running without Docker
 
-1. Create a virtual environment:
+```bash
+# 1. Prerequisites: Python 3.12+, PostgreSQL 16+, Redis 7+
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   # or
-   .\venv\Scripts\activate  # Windows
-   ```
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate   # Linux/Mac
+.\venv\Scripts\activate    # Windows
 
-2. Install dependencies:
+# 3. Install dependencies
+pip install -r requirements.txt
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+# 4. Configure environment
+cp .env.example .env
+# Edit .env: set DATABASE_URL to your local PostgreSQL, REDIS_URL to local Redis
 
-3. Set up environment variables:
+# 5. Full setup (migrations + data + admin)
+python manage.py setup_full
 
-   ```bash
-   cp .env.example .env
-   # Edit .env with your database and Redis URLs
-   ```
-
-4. Run migrations:
-
-   ```bash
-   python manage.py migrate
-   ```
-
-5. Create superuser:
-
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-6. Run the development server:
-
-   ```bash
-   python manage.py runserver
-   ```
+# 6. Run development server
+python manage.py runserver
+```
 
 ### Running Tests
 
@@ -727,47 +765,73 @@ docker compose exec web python manage.py test
 
 # Without Docker
 python manage.py test
+
+# Run full database audit
+python manage.py full_database_audit
 ```
+
+### Management Commands Reference
+
+| Command | Description |
+|---------|-------------|
+| `setup_full` | Complete one-command setup (categories, brands, products, images, specs, admin) |
+| `setup_full --skip-images` | Setup without image upload (faster) |
+| `setup_full --dry-run` | Preview what would be done |
+| `setup_db` | Categories + catalog PDFs + admin user only |
+| `seed_master_hierarchy` | Brands, series, logo groups |
+| `upload_product_images` | Bulk image upload from Excel mapping |
+| `seed_specs_from_data` | Sync SpecKeys from existing product data |
+| `export_full_data` | Export ALL site data to JSON (22 sections, media included) |
+| `export_full_data --skip-media-bytes` | Export metadata only (no binary) |
+| `import_full_data` | Import full site data from JSON (idempotent) |
+| `full_database_audit` | Run data consistency checks |
+| `ensure_dev_admin` | Create/update dev admin user (dev mode only) |
 
 ## Production Deployment
 
-### Using Gunicorn
+### Using docker-compose.prod.yml
 
 ```bash
-gunicorn config.wsgi:application \
-  --bind 0.0.0.0:8000 \
-  --workers 4 \
-  --threads 2 \
-  --worker-class gthread \
-  --access-logfile - \
-  --error-logfile -
+# 1. Create production .env
+cp .env.example .env.prod
+# Edit .env.prod with production values:
+#   DJANGO_SECRET_KEY=<strong-random-key>
+#   DJANGO_ALLOWED_HOSTS=gastrotech.com
+#   POSTGRES_PASSWORD=<secure-password>
+#   CORS_ALLOWED_ORIGINS=https://gastrotech.com
+
+# 2. Start production stack
+docker compose -f docker-compose.prod.yml up -d
+
+# 3. First-time data setup
+docker compose -f docker-compose.prod.yml exec web python manage.py setup_full
+
+# 4. Create production admin user
+docker compose -f docker-compose.prod.yml exec web python manage.py createsuperuser
 ```
 
 ### Production Checklist
 
-1. Set `DJANGO_SETTINGS_MODULE=config.settings.prod`
-2. Set a strong `DJANGO_SECRET_KEY`
-3. Set `DJANGO_DEBUG=0`
-4. Configure proper `DJANGO_ALLOWED_HOSTS`
-5. Use a proper PostgreSQL database
-6. Configure Redis for production
-7. Set up HTTPS and configure `SECURE_SSL_REDIRECT`
-8. Configure email settings if needed
-9. Consider adding Sentry for error tracking
+1. `DJANGO_SETTINGS_MODULE=config.settings.prod` (enforced in docker-compose.prod.yml)
+2. Strong `DJANGO_SECRET_KEY` (generate with `python -c "..."`)
+3. `DJANGO_DEBUG=0`
+4. Proper `DJANGO_ALLOWED_HOSTS` with your domain
+5. PostgreSQL with secure password
+6. Redis with maxmemory policy
+7. HTTPS via Nginx reverse proxy
+8. `SECURE_SSL_REDIRECT=1`
+9. Configure email settings for notifications
+10. Set up Sentry for error tracking (optional)
 
-### Docker Production Command
+### Security Notes
 
-Override the default command in `docker-compose.yml`:
-
-```yaml
-web:
-  command: >
-    gunicorn config.wsgi:application
-    --bind 0.0.0.0:8000
-    --workers 4
-    --threads 2
-    --worker-class gthread
-```
+- WSGI/ASGI require explicit `DJANGO_SETTINGS_MODULE` - app will NOT start without it
+- Cart tokens include IP binding for session security
+- Cart operations use `select_for_update()` to prevent race conditions
+- Search input limited to 200 characters to prevent abuse
+- Blog content is HTML-sanitized (script, iframe, event handlers stripped)
+- Honeypot protection on all public form endpoints
+- Rate limiting: 60/min anonymous, 300/min authenticated
 
 ## User Roles
 

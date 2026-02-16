@@ -78,7 +78,7 @@ const buttonVariants = cva(
         
         // Glass: For use on images/dark backgrounds
         glass: [
-          "glass border-white/20 text-foreground",
+          "bg-white/80 backdrop-blur-sm border border-white/20 text-foreground shadow-sm",
           "hover:bg-white/90",
           "active:scale-[0.98]",
         ].join(" "),

@@ -558,8 +558,8 @@ class CartService:
             raise InvalidQuantityError("Quantity must be positive")
         
         # Lock cart
-        Cart.objects.filter(id=cart.id).select_for_update()
-        
+        Cart.objects.select_for_update().get(id=cart.id)
+
         # Get variant with related product
         try:
             variant = Variant.objects.select_related("product").get(id=variant_id)
@@ -665,8 +665,8 @@ class CartService:
             raise InvalidQuantityError("Quantity cannot be negative")
         
         # Lock cart
-        Cart.objects.filter(id=cart.id).select_for_update()
-        
+        Cart.objects.select_for_update().get(id=cart.id)
+
         try:
             item = cart.items.select_related("variant__product").select_for_update().get(id=item_id)
         except CartItem.DoesNotExist:
@@ -719,8 +719,8 @@ class CartService:
         if not cart.is_open:
             raise CartNotOpenError("Cannot remove items from a non-open cart")
         
-        Cart.objects.filter(id=cart.id).select_for_update()
-        
+        Cart.objects.select_for_update().get(id=cart.id)
+
         deleted_count, _ = cart.items.filter(id=item_id).delete()
         
         if deleted_count > 0:
@@ -748,8 +748,8 @@ class CartService:
         if not cart.is_open:
             raise CartNotOpenError("Cannot clear a non-open cart")
         
-        Cart.objects.filter(id=cart.id).select_for_update()
-        
+        Cart.objects.select_for_update().get(id=cart.id)
+
         deleted_count, _ = cart.items.all().delete()
         logger.info(f"Cleared cart {cart.token.hex[:8]}: {deleted_count} items removed")
         return deleted_count

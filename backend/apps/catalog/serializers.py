@@ -961,29 +961,50 @@ class NavSeriesSerializer(serializers.ModelSerializer):
         """Return visibility status."""
         return self.get_products_count(obj) >= 2 or getattr(obj, 'is_visible', False)
 
-    def get_single_product_slug(self, obj):
-        """Return product slug if series contains exactly one active product."""
+    def _get_single_product(self, obj):
+        """
+        Return the single active product if count == 1, else None.
+
+        Caches the result on the serializer instance to avoid
+        repeated queries for slug, name, and image URL fields.
+        """
+        cache_attr = f"_cached_single_product_{obj.pk}"
+        if hasattr(self, cache_attr):
+            return getattr(self, cache_attr)
+
+        product = None
         count = self.get_products_count(obj)
         if count == 1:
-            product = obj.products.filter(status='active').first()
-            return product.slug if product else None
-        return None
+            # Use prefetched products if available
+            prefetched = getattr(obj, '_prefetched_objects_cache', {})
+            if 'products' in prefetched:
+                active = [p for p in prefetched['products'] if p.status == 'active']
+                product = active[0] if active else None
+            else:
+                product = obj.products.filter(status='active').only(
+                    'slug', 'title_tr', 'name'
+                ).first()
+
+        setattr(self, cache_attr, product)
+        return product
+
+    def get_single_product_slug(self, obj):
+        """Return product slug if series contains exactly one active product."""
+        product = self._get_single_product(obj)
+        return product.slug if product else None
 
     def get_single_product_name(self, obj):
         """Return product name if series contains exactly one active product."""
-        count = self.get_products_count(obj)
-        if count == 1:
-            product = obj.products.filter(status='active').first()
-            return product.title_tr or product.name if product else None
-        return None
+        product = self._get_single_product(obj)
+        return (product.title_tr or product.name) if product else None
 
     def get_single_product_image_url(self, obj):
         """Return product primary image URL if series contains exactly one active product."""
-        count = self.get_products_count(obj)
-        if count == 1:
-            product = obj.products.filter(status='active').first()
-            if product and product.primary_image:
-                 return f"/api/v1/media/{product.primary_image.id}/file/"
+        product = self._get_single_product(obj)
+        if product:
+            img = product.primary_image
+            if img:
+                return f"/api/v1/media/{img.id}/file/"
         return None
 
 

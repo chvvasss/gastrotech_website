@@ -48,7 +48,7 @@ export function TopBrandBar({
                 {hasSelection && (
                     <button
                         onClick={onClearAll}
-                        className="flex flex-shrink-0 items-center gap-2 rounded-sm border border-destructive/40 bg-destructive/10 px-5 py-2.5 text-sm font-semibold text-destructive transition-all hover:bg-destructive/20"
+                        className="flex flex-shrink-0 items-center gap-2 rounded-sm border border-primary/40 bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition-all hover:bg-primary/20"
                     >
                         <X className="h-4 w-4" />
                         Temizle
@@ -68,8 +68,8 @@ export function TopBrandBar({
                                 "group relative flex flex-shrink-0 items-center gap-3 rounded-sm border px-5 py-2.5 transition-all",
                                 // Selected state - BRAND RED
                                 isSelected
-                                    ? "border-destructive/50 bg-destructive/10 shadow-sm"
-                                    : "border-border bg-card hover:border-destructive/30 hover:bg-muted/50",
+                                    ? "border-primary/50 bg-primary/10 shadow-sm"
+                                    : "border-border bg-card hover:border-primary/30 hover:bg-muted/50",
                             )}
                         >
                             {/* Brand Logo if available */}
@@ -84,19 +84,21 @@ export function TopBrandBar({
                                 </div>
                             )}
 
-                            {/* Brand Name */}
-                            <span
-                                className={cn(
-                                    "text-sm font-semibold transition-colors",
-                                    isSelected ? "text-destructive" : "text-foreground group-hover:text-destructive",
-                                )}
-                            >
-                                {brand.name}
-                            </span>
+                            {/* Brand Name - hidden when logo exists */}
+                            {!brand.logo_url && (
+                                <span
+                                    className={cn(
+                                        "text-sm font-semibold transition-colors",
+                                        isSelected ? "text-primary" : "text-foreground group-hover:text-primary",
+                                    )}
+                                >
+                                    {brand.name}
+                                </span>
+                            )}
 
                             {/* Checkmark for selected */}
                             {isSelected && (
-                                <Check className="h-4 w-4 flex-shrink-0 text-destructive" />
+                                <Check className="h-4 w-4 flex-shrink-0 text-primary" />
                             )}
                         </button>
                     );

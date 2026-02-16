@@ -98,9 +98,15 @@ export function Header() {
 
   return (
     <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:rounded-sm focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg"
+      >
+        Ana içeriğe git
+      </a>
       <header
         ref={headerRef}
-        className="sticky top-0 z-50 w-full border-b bg-white shadow-sm transition-all duration-300"
+        className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300"
       >
         <Container>
           <div className="relative flex h-16 items-center justify-between gap-2 sm:gap-4 transition-all duration-300">
@@ -120,7 +126,7 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation - Standard Flow to prevent overlap */}
-            <nav ref={navRef} className="hidden 2xl:flex items-center gap-1 mx-auto px-4">
+            <nav ref={navRef} className="hidden xl:flex items-center gap-1 mx-auto px-4">
               {NAV_ITEMS.map((item) => (
                 <div
                   key={item.href}
@@ -214,7 +220,7 @@ export function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="2xl:hidden rounded-sm hover:bg-primary/5 h-9 w-9"
+                    className="xl:hidden rounded-sm hover:bg-primary/5 h-9 w-9"
                     aria-label="Menü"
                   >
                     <Menu className="h-5 w-5" />
@@ -303,10 +309,10 @@ export function Header() {
           <Button
             variant="outline"
             onClick={() => setIsSearchOpen(true)}
-            className="w-full justify-start text-muted-foreground border-primary/20 bg-muted/30 h-11 rounded-sm shadow-inner"
+            className="w-full justify-start text-muted-foreground border-border/60 bg-muted/20 h-10 rounded-sm"
           >
-            <Search className="mr-3 h-5 w-5 text-primary" />
-            <span className="text-sm font-medium">Ne aramak istersiniz?</span>
+            <Search className="mr-2.5 h-4 w-4 text-primary/70" />
+            <span className="text-sm">Ürün veya kategori arayın...</span>
           </Button>
         </div>
 

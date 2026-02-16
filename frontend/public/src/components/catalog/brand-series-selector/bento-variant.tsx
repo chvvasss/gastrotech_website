@@ -135,7 +135,7 @@ export function BentoVariant({
                                     onClick={() => onBrandSelect(brand.slug)}
                                     className={cn(
                                         "group relative flex flex-col items-center justify-center p-3 h-28 rounded-sm border border-border bg-card transition-all duration-200",
-                                        "hover:border-primary/50 hover:shadow-md hover:-translate-y-0.5"
+                                        "hover:border-primary/50 hover:shadow-md"
                                     )}
                                 >
                                     {/* Logo Area */}

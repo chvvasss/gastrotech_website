@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Download, FileText, Check, Sparkles, ZoomIn, Ruler, Weight, Share2, Printer } from "lucide-react";
+import { ChevronLeft, ChevronRight, Download, FileText, Check, Sparkles, ZoomIn, Ruler, Weight, Share2, Printer, ImageOff, X } from "lucide-react";
 import { fetchProductDetail } from "@/lib/api";
 import { Container } from "@/components/layout";
 import { Button } from "@/components/ui/button";
@@ -17,6 +17,7 @@ import { getMediaUrl, formatPrice, cn } from "@/lib/utils";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { PriceDisplay } from "@/components/catalog/price-display";
 import { useSiteSettings } from "@/hooks/use-site-settings";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -25,6 +26,7 @@ export default function ProductDetailPage() {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
   const { showPrices, catalogMode } = useSiteSettings();
+  const { toast } = useToast();
 
   const { data: product, isLoading, error } = useQuery({
     queryKey: ["product", slug],
@@ -92,12 +94,7 @@ export default function ProductDetailPage() {
       if (!selectedVariant) return;
 
       // Find image linked to this variant
-      console.log("Debug Variant Switch:", { selectedVariantId: selectedVariant.id, images });
-
       const linkedImageIndex = images.findIndex((img) => {
-        // @ts-ignore
-        console.log(`Img ${img.id} variant: ${img.variant_id} vs ${selectedVariant.id}`);
-        // @ts-ignore
         return img.variant_id === selectedVariant.id;
       });
 
@@ -185,7 +182,7 @@ export default function ProductDetailPage() {
         {/* Gallery Section - Immersive & Interactive */}
         <div className="space-y-3 w-full lg:sticky lg:top-24 flex flex-col self-start">
           <div
-            className="group relative aspect-square w-full overflow-hidden rounded-lg border border-border/50 bg-white shadow-sm hover:shadow-md transition-all duration-300"
+            className="group relative aspect-square w-full overflow-hidden rounded-sm border border-border/50 bg-white shadow-sm hover:shadow-md transition-all duration-300"
             onClick={() => setIsZoomed(true)}
           >
             {selectedImage ? (
@@ -207,7 +204,7 @@ export default function ProductDetailPage() {
             ) : (
               <div className="flex h-full w-full items-center justify-center text-muted-foreground/40 bg-muted/5">
                 <div className="text-center">
-                  <div className="mb-2">📷</div>
+                  <ImageOff className="h-8 w-8 mb-2 text-muted-foreground/30" />
                   <span className="text-sm font-medium">Görsel Yok</span>
                 </div>
               </div>
@@ -236,9 +233,7 @@ export default function ProductDetailPage() {
                     const newIndex = selectedImageIndex > 0 ? selectedImageIndex - 1 : images.length - 1;
                     setSelectedImageIndex(newIndex);
                     const media = images[newIndex];
-                    // @ts-ignore
                     if (media && media.variant_id) {
-                      // @ts-ignore
                       const variantIndex = variants.findIndex(v => v.id === media.variant_id);
                       if (variantIndex !== -1) setSelectedVariantIndex(variantIndex);
                     }
@@ -253,9 +248,7 @@ export default function ProductDetailPage() {
                     const newIndex = selectedImageIndex < images.length - 1 ? selectedImageIndex + 1 : 0;
                     setSelectedImageIndex(newIndex);
                     const media = images[newIndex];
-                    // @ts-ignore
                     if (media && media.variant_id) {
-                      // @ts-ignore
                       const variantIndex = variants.findIndex(v => v.id === media.variant_id);
                       if (variantIndex !== -1) setSelectedVariantIndex(variantIndex);
                     }
@@ -293,15 +286,13 @@ export default function ProductDetailPage() {
                   key={media.id}
                   onClick={() => {
                     setSelectedImageIndex(index);
-                    // @ts-ignore
                     if (media.variant_id) {
-                      // @ts-ignore
                       const variantIndex = variants.findIndex(v => v.id === media.variant_id);
                       if (variantIndex !== -1) setSelectedVariantIndex(variantIndex);
                     }
                   }}
                   className={cn(
-                    "relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border-2 bg-white transition-all duration-200",
+                    "relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-sm border-2 bg-white transition-all duration-200",
                     selectedImageIndex === index
                       ? "border-primary ring-2 ring-primary/20 shadow-md scale-105 z-10"
                       : "border-transparent hover:border-gray-200 opacity-70 hover:opacity-100 grayscale hover:grayscale-0"
@@ -325,7 +316,7 @@ export default function ProductDetailPage() {
             {/* Header */}
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2">
-                <Link href={`/urunler/${product.category_slug}/${product.series_slug}/${product.brand_slug}`} className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-[10px] sm:text-xs font-bold hover:from-primary/20 hover:to-primary/10 transition-all border border-primary/10">
+                <Link href={`/urunler/${product.category_slug}/${product.series_slug}/${product.brand_slug}`} className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-sm bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-[10px] sm:text-xs font-bold hover:from-primary/20 hover:to-primary/10 transition-all border border-primary/10">
                   {product.brand_logo && (
                     <div className="relative h-6 w-6 sm:h-8 sm:w-8 flex-shrink-0">
                       <Image
@@ -367,14 +358,14 @@ export default function ProductDetailPage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group relative overflow-hidden rounded-md bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-2 hover:border-primary/40 transition-all duration-300 hover:shadow-md hover:shadow-primary/10 hover:-translate-y-0.5"
+                      className="group relative overflow-hidden rounded-sm bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-2 hover:border-primary/40 transition-all duration-300 hover:shadow-md hover:shadow-primary/10"
                     >
                       {/* Glossy overlay effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
                       <div className="relative flex items-start gap-2">
                         {/* Icon with gradient background */}
-                        <div className="flex-shrink-0 h-5 w-5 rounded-md bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:shadow-primary/30 transition-all duration-300">
+                        <div className="flex-shrink-0 h-5 w-5 rounded-sm bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:shadow-primary/30 transition-all duration-300">
                           <Check className="h-3 w-3 text-white" strokeWidth={2.5} />
                         </div>
 
@@ -397,7 +388,7 @@ export default function ProductDetailPage() {
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-6 sm:h-7 text-[9px] sm:text-[10px] text-muted-foreground hover:text-foreground px-1.5 sm:px-2"
+                className="h-9 text-xs text-muted-foreground hover:text-foreground px-1.5 sm:px-2"
                 onClick={async () => {
                   const shareData = {
                     title: product.title_tr || product.slug,
@@ -413,14 +404,14 @@ export default function ProductDetailPage() {
                   } else {
                     // Fallback: copy URL to clipboard
                     await navigator.clipboard.writeText(window.location.href);
-                    alert('Link kopyalandı!');
+                    toast({ description: "Link kopyalandı!" });
                   }
                 }}
               >
                 <Share2 className="mr-1 h-3 w-3" />
                 Paylaş
               </Button>
-              <Button variant="ghost" size="sm" className="h-6 sm:h-7 text-[9px] sm:text-[10px] text-muted-foreground hover:text-foreground px-1.5 sm:px-2" onClick={() => window.print()}>
+              <Button variant="ghost" size="sm" className="h-9 text-xs text-muted-foreground hover:text-foreground px-1.5 sm:px-2" onClick={() => window.print()}>
                 <Printer className="mr-1 h-2.5 w-2.5 sm:h-3 sm:w-3" />
                 <span className="hidden xs:inline">Yazdır</span>
                 <span className="xs:hidden">Print</span>
@@ -449,7 +440,7 @@ export default function ProductDetailPage() {
                     key={variant.model_code}
                     onClick={() => setSelectedVariantIndex(index)}
                     className={cn(
-                      "group relative flex flex-col p-2 rounded-md border-2 cursor-pointer transition-all duration-200 hover:shadow-sm",
+                      "group relative flex flex-col p-2 rounded-sm border-2 cursor-pointer transition-all duration-200 hover:shadow-sm",
                       selectedVariantIndex === index
                         ? "border-primary bg-primary/5 z-10"
                         : "border-transparent bg-muted/30 hover:bg-muted/50 hover:border-border"
@@ -498,7 +489,7 @@ export default function ProductDetailPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.2 }}
-                className="bg-card rounded-xl border shadow-sm overflow-hidden"
+                className="bg-card rounded-sm border shadow-sm overflow-hidden"
               >
                 {/* Price Header */}
                 <div className="px-4 py-3 bg-muted/30 border-b flex flex-wrap items-center justify-between gap-3">
@@ -523,7 +514,7 @@ export default function ProductDetailPage() {
                   {/* Key Specs Grid */}
                   <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-3">
                     {selectedVariant.dimensions && (
-                      <div className="bg-muted/20 p-2.5 rounded-lg border border-border/50">
+                      <div className="bg-muted/20 p-2.5 rounded-sm border border-border/50">
                         <div className="flex items-center gap-1.5 text-muted-foreground mb-1">
                           <Ruler className="h-3.5 w-3.5" />
                           <span className="text-[10px] font-semibold uppercase">Boyutlar</span>
@@ -532,7 +523,7 @@ export default function ProductDetailPage() {
                       </div>
                     )}
                     {selectedVariant.weight_kg && (
-                      <div className="bg-muted/20 p-2.5 rounded-lg border border-border/50">
+                      <div className="bg-muted/20 p-2.5 rounded-sm border border-border/50">
                         <div className="flex items-center gap-1.5 text-muted-foreground mb-1">
                           <Weight className="h-3.5 w-3.5" />
                           <span className="text-[10px] font-semibold uppercase">Ağırlık</span>
@@ -546,7 +537,7 @@ export default function ProductDetailPage() {
                     <AddToCartButton
                       variantId={selectedVariant.id}
                       size="lg"
-                      className="w-full sm:flex-1 font-bold text-xs sm:text-sm shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all hover:-translate-y-0.5"
+                      className="w-full sm:flex-1 font-bold text-xs sm:text-sm shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
                     />
                     <Button variant="outline" size="lg" className="w-full sm:flex-1 border-2 font-semibold hover:bg-muted text-xs sm:text-sm" asChild>
                       <Link href="/iletisim">
@@ -607,7 +598,7 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          <div className="rounded-xl border border-border/50 overflow-hidden shadow-sm bg-white/50 backdrop-blur-sm">
+          <div className="rounded-sm border border-border/50 overflow-hidden shadow-sm bg-white/50 backdrop-blur-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-xs">
                 <thead className="bg-muted/30 border-b border-border/50">
@@ -720,7 +711,7 @@ export default function ProductDetailPage() {
                 onClick={() => setIsZoomed(false)}
                 className="absolute top-4 right-4 text-muted-foreground hover:text-foreground bg-muted/20 hover:bg-muted p-2 rounded-sm transition-colors"
               >
-                <XIcon className="h-6 w-6" />
+                <X className="h-6 w-6" />
               </button>
             </div>
           </motion.div>
@@ -732,10 +723,3 @@ export default function ProductDetailPage() {
   );
 }
 
-function XIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d="M18 6 6 18" /><path d="m6 6 18 18" />
-    </svg>
-  )
-}

@@ -54,13 +54,13 @@ function PLPPageContent({ categorySlug }: PLPPageContentProps) {
             <nav className="mb-6 px-4 lg:px-8">
                 <ol className="flex items-center gap-1.5 text-sm text-muted-foreground">
                     <li>
-                        <Link href="/" className="hover:text-destructive transition-colors">
+                        <Link href="/" className="hover:text-primary transition-colors">
                             Ana Sayfa
                         </Link>
                     </li>
                     <ChevronRight className="h-3.5 w-3.5" />
                     <li>
-                        <Link href="/kategori" className="hover:text-destructive transition-colors">
+                        <Link href="/kategori" className="hover:text-primary transition-colors">
                             Kategoriler
                         </Link>
                     </li>
@@ -72,7 +72,7 @@ function PLPPageContent({ categorySlug }: PLPPageContentProps) {
                             ) : (
                                 <Link
                                     href={`/kategori/${crumb.slug}`}
-                                    className="hover:text-destructive transition-colors"
+                                    className="hover:text-primary transition-colors"
                                 >
                                     {crumb.name}
                                 </Link>
@@ -143,7 +143,7 @@ function PLPPageContent({ categorySlug }: PLPPageContentProps) {
                             {hasActiveFilters && (
                                 <button
                                     onClick={clearAllFilters}
-                                    className="ml-2 text-destructive hover:text-destructive/80 font-medium transition-colors"
+                                    className="ml-2 text-primary hover:text-primary/80 font-medium transition-colors"
                                 >
                                     Filtreleri temizle
                                 </button>
@@ -237,7 +237,7 @@ function PLPPageLoading() {
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
                             <div
                                 key={i}
-                                className="aspect-[3/4] animate-pulse rounded-lg border bg-muted"
+                                className="aspect-[3/4] animate-pulse rounded-sm border bg-muted"
                             />
                         ))}
                     </div>

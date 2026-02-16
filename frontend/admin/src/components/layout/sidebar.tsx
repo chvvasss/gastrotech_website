@@ -21,6 +21,7 @@ import {
   FileText,
   List,
   FileCode,
+  QrCode,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -138,6 +139,11 @@ const opsNavigation: NavigationItem[] = [
     name: "İşlem Geçmişi",
     href: "/ops/audit-logs",
     icon: ClipboardList,
+  },
+  {
+    name: "QR Kod Üretici",
+    href: "/qr-generator",
+    icon: QrCode,
   },
 ];
 

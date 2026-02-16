@@ -6,11 +6,46 @@ Provides serializers for:
 - Admin CRUD operations
 """
 
+import re
+
 from rest_framework import serializers
 
 from apps.catalog.serializers import MediaMetadataSerializer
 
 from .models import BlogCategory, BlogPost, BlogTag
+
+
+# ── HTML Sanitization ────────────────────────────────
+# Strip dangerous tags from blog content while allowing safe HTML.
+# Blog content is admin-only but defense-in-depth is good practice.
+_DANGEROUS_TAGS_RE = re.compile(
+    r'<\s*/?(?:script|iframe|object|embed|applet|form|input|textarea|button|select|meta|link|base)\b[^>]*>',
+    re.IGNORECASE | re.DOTALL,
+)
+_EVENT_HANDLERS_RE = re.compile(
+    r'\s+on\w+\s*=\s*["\'][^"\']*["\']',
+    re.IGNORECASE,
+)
+_JAVASCRIPT_URLS_RE = re.compile(
+    r'(?:href|src|action)\s*=\s*["\']?\s*javascript:',
+    re.IGNORECASE,
+)
+
+
+def sanitize_html(html_content: str) -> str:
+    """
+    Remove dangerous HTML elements from blog content.
+
+    Strips: <script>, <iframe>, <object>, <embed>, <applet>, <form>,
+    <input>, <textarea>, <button>, <select>, <meta>, <link>, <base> tags,
+    inline event handlers (onclick, onload, etc.), and javascript: URLs.
+    """
+    if not html_content:
+        return html_content
+    result = _DANGEROUS_TAGS_RE.sub('', html_content)
+    result = _EVENT_HANDLERS_RE.sub('', result)
+    result = _JAVASCRIPT_URLS_RE.sub('href="', result)
+    return result
 
 
 class BlogCategorySerializer(serializers.ModelSerializer):
@@ -173,6 +208,10 @@ class BlogPostAdminSerializer(serializers.ModelSerializer):
             return obj.author.get_full_name() or obj.author.email
         return None
     
+    def validate_content(self, value):
+        """Sanitize HTML content to strip dangerous tags."""
+        return sanitize_html(value)
+
     def create(self, validated_data):
         """Create blog post with category and tags."""
         category_id = validated_data.pop("category_id", None)

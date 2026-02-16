@@ -18,6 +18,7 @@ from .admin_api import (
     JsonImportUndoView,
 )
 from .admin_search import AdminSearchView
+from .qr_api import ProductInfoSheetViewSet
 from .admin_viewsets import (
     AdminBrandViewSet,
     AdminCatalogAssetViewSet,
@@ -49,6 +50,7 @@ router.register(r"spec-keys", AdminSpecKeyViewSet, basename="admin-spec-keys")
 router.register(r"bulk-upload", BulkUploadViewSet, basename="admin-bulk-upload")
 router.register(r"catalog-assets", AdminCatalogAssetViewSet, basename="admin-catalog-assets")
 router.register(r"category-catalogs", AdminCategoryCatalogViewSet, basename="admin-category-catalogs")
+router.register(r"info-sheets", ProductInfoSheetViewSet, basename="admin-info-sheets")
 
 
 urlpatterns = [

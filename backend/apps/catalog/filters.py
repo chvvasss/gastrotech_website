@@ -131,7 +131,7 @@ class ProductFilter(django_filters.FilterSet):
         if not value:
             return queryset
         
-        search_term = value.strip()
+        search_term = value.strip()[:200]
         if not search_term:
             return queryset
         

@@ -40,7 +40,7 @@ export function SortingDropdown({
         <div ref={dropdownRef} className="relative">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-destructive/50 hover:bg-card/80"
+                className="flex items-center gap-2 rounded-sm border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/50 hover:bg-card/80"
             >
                 <span className="text-muted-foreground">Sıralama:</span>
                 <span className="font-semibold">{currentOption?.label ?? "Seçiniz"}</span>
@@ -54,7 +54,7 @@ export function SortingDropdown({
 
             {/* Dropdown menu */}
             {isOpen && (
-                <div className="absolute right-0 z-20 mt-1 min-w-[200px] rounded-md border border-border bg-card shadow-lg">
+                <div className="absolute right-0 z-20 mt-1 min-w-[200px] rounded-sm border border-border bg-card shadow-lg">
                     <div className="py-1">
                         {sortOptions.map((option) => {
                             const isSelected = option.key === currentSort;
@@ -68,7 +68,7 @@ export function SortingDropdown({
                                     className={cn(
                                         "flex w-full items-center justify-between px-4 py-2 text-sm transition-colors",
                                         isSelected
-                                            ? "bg-destructive/10 text-destructive font-medium"
+                                            ? "bg-primary/10 text-primary font-medium"
                                             : "text-foreground hover:bg-muted"
                                     )}
                                 >

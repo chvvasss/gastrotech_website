@@ -15,7 +15,7 @@ function PLPProductCard({ product }: { product: PLPProduct }) {
     return (
         <Link
             href={`/urun/${product.slug}`}
-            className="group relative flex flex-col bg-white rounded-lg border border-border/40 hover:border-destructive/50 hover:shadow-xl transition-all duration-300 overflow-hidden"
+            className="group relative flex flex-col bg-white rounded-sm border border-border/40 hover:border-primary/50 hover:shadow-xl transition-all duration-300 overflow-hidden"
         >
             {/* Stock badge */}
             {product.in_stock && (
@@ -53,12 +53,12 @@ function PLPProductCard({ product }: { product: PLPProduct }) {
                 )}
 
                 {/* Title - BOLD and DISTINCT */}
-                <h3 className="mb-2 line-clamp-2 text-sm font-bold leading-tight text-foreground min-h-[2.5em] group-hover:text-destructive transition-colors">
+                <h3 className="mb-2 line-clamp-2 text-sm font-bold leading-tight text-foreground min-h-[2.5em] group-hover:text-primary transition-colors">
                     {product.title_tr ?? product.name}
                 </h3>
 
                 {/* Separator - Red accent on hover */}
-                <div className="w-12 h-0.5 bg-border mx-auto my-1.5 group-hover:bg-destructive/20 transition-colors" />
+                <div className="w-12 h-0.5 bg-border mx-auto my-1.5 group-hover:bg-primary/20 transition-colors" />
 
                 {/* Price hidden - Catalog mode always active */}
             </div>
@@ -73,7 +73,7 @@ export function PLPProductGrid({ products, isLoading = false }: PLPProductGridPr
         return (
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
                 {Array.from({ length: 8 }).map((_, i) => (
-                    <div key={i} className="aspect-[3/5] rounded-md bg-muted/10 animate-pulse" />
+                    <div key={i} className="aspect-[3/5] rounded-sm bg-muted/10 animate-pulse" />
                 ))}
             </div>
         );
@@ -81,9 +81,9 @@ export function PLPProductGrid({ products, isLoading = false }: PLPProductGridPr
 
     if (products.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center py-24 text-center border rounded-lg border-dashed border-border bg-muted/5">
+            <div className="flex flex-col items-center justify-center py-24 text-center border rounded-sm border-dashed border-border bg-muted/5">
                 <div className="h-16 w-16 mb-4 flex items-center justify-center bg-white rounded-full shadow-sm border border-border">
-                    <Package className="h-8 w-8 text-destructive/50" />
+                    <Package className="h-8 w-8 text-primary/50" />
                 </div>
                 <h3 className="text-base font-bold text-foreground">
                     Ürün Bulunamadı

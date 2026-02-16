@@ -2,6 +2,7 @@ import { Header, Footer } from "@/components/layout";
 import { SiteSettingsInitializer } from "@/components/common/site-settings-initializer";
 import { PageLoader } from "@/components/layout/page-loader";
 import { WhatsAppButton } from "@/components/common/whatsapp-button";
+import { InstagramButton } from "@/components/common/instagram-button";
 import { Suspense } from "react";
 
 export default function SiteLayout({
@@ -17,8 +18,9 @@ export default function SiteLayout({
       </Suspense>
       <Header />
       {/* FIXED: Added padding-bottom to ensure content never touches footer */}
-      <main className="flex-1 pb-16">{children}</main>
+      <main id="main-content" className="flex-1 pb-16">{children}</main>
       <WhatsAppButton />
+      <InstagramButton />
       <Footer />
     </div>
   );

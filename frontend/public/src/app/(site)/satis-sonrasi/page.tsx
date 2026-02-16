@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/layout";
 import { Button } from "@/components/ui/button";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import {
   Wrench,
   Package,
@@ -111,7 +112,7 @@ export default function ServicePage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-gradient-to-br from-primary to-rose-700 py-16 lg:py-24 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-primary to-primary/70 py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
         <Container className="text-center relative">
           <h1 className="text-4xl font-bold text-white lg:text-6xl tracking-tight">Satış Sonrası Hizmetler</h1>
@@ -192,21 +193,27 @@ export default function ServicePage() {
             <h2 className="text-3xl font-bold lg:text-4xl mb-4 tracking-tight">Sıkça Sorulan Sorular</h2>
             <p className="text-lg text-muted-foreground">Hizmetlerimiz ve süreçlerimiz hakkında merak edilenler</p>
           </div>
-          <div className="mx-auto max-w-4xl space-y-4">
+          <Accordion type="single" collapsible className="mx-auto max-w-4xl space-y-2">
             {FAQ.map((item, index) => (
-              <div key={index} className="rounded-sm border bg-card p-6 transition-all hover:border-primary/40 hover:bg-muted/5">
-                <h3 className="flex items-start gap-4 text-base font-bold">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-primary/10 text-xs font-bold text-primary">
-                    {index + 1}
-                  </span>
-                  {item.question}
-                </h3>
-                <p className="mt-3 pl-10 text-muted-foreground leading-relaxed text-sm">
+              <AccordionItem
+                key={index}
+                value={`faq-${index}`}
+                className="rounded-sm border bg-card px-6 transition-all hover:border-primary/40 data-[state=open]:border-primary/30 data-[state=open]:shadow-sm"
+              >
+                <AccordionTrigger className="py-5 text-base font-bold text-left hover:no-underline gap-4">
+                  <div className="flex items-start gap-4">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-sm bg-primary/10 text-xs font-bold text-primary">
+                      {index + 1}
+                    </span>
+                    <span className="text-left">{item.question}</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="pl-10 text-muted-foreground leading-relaxed">
                   {item.answer}
-                </p>
-              </div>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
           <div className="mt-16 text-center bg-muted/20 rounded-sm p-10 max-w-3xl mx-auto border border-border/50">
             <h3 className="text-xl font-bold mb-4">Başka bir sorunuz mu var?</h3>
             <p className="text-muted-foreground mb-8">

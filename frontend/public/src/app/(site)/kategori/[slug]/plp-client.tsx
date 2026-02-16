@@ -9,7 +9,7 @@
 
 import { Suspense } from "react";
 import Link from "next/link";
-import { ChevronRight, Filter, LayoutGrid, Package, SlidersHorizontal, ChevronDown, Check, X } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { usePLPQuery } from "@/hooks/use-plp-query";
 import {
     TopBrandBar,
@@ -17,7 +17,6 @@ import {
     SortingDropdown,
     PLPProductGrid,
     // Pagination, // Removed
-    MobileFilterDrawer,
 } from "@/components/catalog/plp";
 import { CategoryCatalogViewer } from "@/components/catalog/category-catalog-viewer";
 
@@ -137,13 +136,13 @@ function PLPContent({ categorySlug, categoryName, categoryDescription }: PLPClie
                 <nav className="mb-4 px-4 lg:px-6" aria-label="Breadcrumb">
                     <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
                         <li>
-                            <Link href="/" className="hover:text-destructive transition-colors">
+                            <Link href="/" className="hover:text-primary transition-colors">
                                 Ana Sayfa
                             </Link>
                         </li>
                         <ChevronRight className="h-3.5 w-3.5 flex-shrink-0" />
                         <li>
-                            <Link href="/kategori" className="hover:text-destructive transition-colors">
+                            <Link href="/kategori" className="hover:text-primary transition-colors">
                                 Kategoriler
                             </Link>
                         </li>
@@ -155,7 +154,7 @@ function PLPContent({ categorySlug, categoryName, categoryDescription }: PLPClie
                                 ) : (
                                     <Link
                                         href={`/kategori/${crumb.slug}`}
-                                        className="hover:text-destructive transition-colors"
+                                        className="hover:text-primary transition-colors"
                                     >
                                         {crumb.name}
                                     </Link>
@@ -191,13 +190,13 @@ function PLPContent({ categorySlug, categoryName, categoryDescription }: PLPClie
             <nav className="mb-4 px-4 lg:px-6" aria-label="Breadcrumb">
                 <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
                     <li>
-                        <Link href="/" className="hover:text-destructive transition-colors">
+                        <Link href="/" className="hover:text-primary transition-colors">
                             Ana Sayfa
                         </Link>
                     </li>
                     <ChevronRight className="h-3.5 w-3.5 flex-shrink-0" />
                     <li>
-                        <Link href="/kategori" className="hover:text-destructive transition-colors">
+                        <Link href="/kategori" className="hover:text-primary transition-colors">
                             Kategoriler
                         </Link>
                     </li>
@@ -209,7 +208,7 @@ function PLPContent({ categorySlug, categoryName, categoryDescription }: PLPClie
                             ) : (
                                 <Link
                                     href={`/kategori/${crumb.slug}`}
-                                    className="hover:text-destructive transition-colors"
+                                    className="hover:text-primary transition-colors"
                                 >
                                     {crumb.name}
                                 </Link>
@@ -302,7 +301,7 @@ function PLPContent({ categorySlug, categoryName, categoryDescription }: PLPClie
                                     <div className="flex flex-wrap gap-2">
                                         <button
                                             onClick={clearAllFilters}
-                                            className="text-xs font-bold text-destructive hover:underline uppercase"
+                                            className="text-xs font-bold text-primary hover:underline uppercase"
                                         >
                                             Temizle
                                         </button>
@@ -353,7 +352,6 @@ function InfiniteScrollTrigger({ onIntersect, isLoading }: { onIntersect: () => 
 
     return (
         <div
-            // @ts-ignore
             ref={observerRef}
             className="flex flex-col items-center gap-2 text-muted-foreground w-full"
         >

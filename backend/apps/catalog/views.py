@@ -1442,9 +1442,6 @@ class CategoryCatalogListView(generics.ListAPIView):
     pagination_class = None
 
     def get_queryset(self):
-        if not get_catalog_mode():
-            return CategoryCatalog.objects.none()
-
         qs = (
             CategoryCatalog.objects
             .filter(published=True)

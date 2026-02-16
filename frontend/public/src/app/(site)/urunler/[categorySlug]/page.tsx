@@ -39,18 +39,6 @@ export default function CategorySeriesPage() {
     const series = allSeries.filter(s => s.is_visible !== false && (s.products_count ?? 0) >= 2);
     const hasDirectSeries = series.length > 0;
 
-    // Debug logging
-    console.log('[CategoryPage Debug]', {
-        categorySlug,
-        allSeries: allSeries.length,
-        filteredSeries: series.length,
-        hasSubcategories,
-        hasLogoGroups,
-        hasDirectSeries,
-        seriesData: series.map(s => ({ name: s.name, slug: s.slug, products_count: s.products_count }))
-    });
-
-
     const handleSeriesSelect = (seriesSlug: string) => {
         router.push(`/urunler/${categorySlug}/${seriesSlug}`);
     };
