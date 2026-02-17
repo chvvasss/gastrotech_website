@@ -162,7 +162,7 @@ export default function ProductDetailPage() {
   return (
     <Container className="py-6 lg:py-8">
       {/* Breadcrumb - Clean & Minimal */}
-      <nav className="mb-4 flex items-center gap-1.5 text-[11px] text-muted-foreground overflow-x-auto whitespace-nowrap pb-1 scrollbar-hide">
+      <nav className="mb-4 flex items-center gap-1.5 text-[11px] text-muted-foreground overflow-x-auto whitespace-nowrap pb-1 scrollbar-hide max-w-full">
         <Link href="/" className="hover:text-primary transition-colors font-medium">Ana Sayfa</Link>
         <ChevronRight className="h-3 w-3 text-muted-foreground/40" />
         <Link href={`/urunler/${product.category_slug}`} className="hover:text-primary transition-colors font-medium">{product.category_name}</Link>
@@ -178,9 +178,9 @@ export default function ProductDetailPage() {
         <span className="text-foreground font-semibold truncate">{product.title_tr}</span>
       </nav>
 
-      <div className="grid gap-6 lg:gap-12 lg:grid-cols-[1fr_1fr] items-start pb-20 lg:pb-0">
+      <div className="grid gap-6 lg:gap-12 lg:grid-cols-[1fr_1fr] items-start pb-4 lg:pb-0 overflow-hidden">
         {/* Gallery Section - Immersive & Interactive */}
-        <div className="space-y-3 w-full lg:sticky lg:top-24 flex flex-col self-start">
+        <div className="space-y-3 w-full min-w-0 lg:sticky lg:top-24 flex flex-col self-start overflow-hidden">
           <div
             className="group relative aspect-square w-full overflow-hidden rounded-sm border border-border/50 bg-white shadow-sm hover:shadow-md transition-all duration-300"
             onClick={() => setIsZoomed(true)}
@@ -278,40 +278,42 @@ export default function ProductDetailPage() {
             )}
           </div>
 
-          {/* Thumbnails - Horizontal Scroll */}
+          {/* Thumbnails - Horizontal Scroll with constrained width */}
           {images.length > 1 && (
-            <div className="flex gap-2.5 overflow-x-auto pb-2 pt-1 scrollbar-hide px-1">
-              {images.map((media, index) => (
-                <button
-                  key={media.id}
-                  onClick={() => {
-                    setSelectedImageIndex(index);
-                    if (media.variant_id) {
-                      const variantIndex = variants.findIndex(v => v.id === media.variant_id);
-                      if (variantIndex !== -1) setSelectedVariantIndex(variantIndex);
-                    }
-                  }}
-                  className={cn(
-                    "relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-sm border-2 bg-white transition-all duration-200",
-                    selectedImageIndex === index
-                      ? "border-primary ring-2 ring-primary/20 shadow-md scale-105 z-10"
-                      : "border-transparent hover:border-gray-200 opacity-70 hover:opacity-100 grayscale hover:grayscale-0"
-                  )}
-                >
-                  <Image
-                    src={getMediaUrl(media.file_url)}
-                    alt=""
-                    fill
-                    className="object-contain p-1"
-                  />
-                </button>
-              ))}
+            <div className="w-full overflow-hidden">
+              <div className="flex gap-2 overflow-x-auto pb-2 pt-1 scrollbar-hide px-1 max-w-full">
+                {images.map((media, index) => (
+                  <button
+                    key={media.id}
+                    onClick={() => {
+                      setSelectedImageIndex(index);
+                      if (media.variant_id) {
+                        const variantIndex = variants.findIndex(v => v.id === media.variant_id);
+                        if (variantIndex !== -1) setSelectedVariantIndex(variantIndex);
+                      }
+                    }}
+                    className={cn(
+                      "relative h-14 w-14 sm:h-16 sm:w-16 flex-shrink-0 overflow-hidden rounded-sm border-2 bg-white transition-all duration-200",
+                      selectedImageIndex === index
+                        ? "border-primary ring-2 ring-primary/20 shadow-md scale-105 z-10"
+                        : "border-transparent hover:border-gray-200 opacity-70 hover:opacity-100 grayscale hover:grayscale-0"
+                    )}
+                  >
+                    <Image
+                      src={getMediaUrl(media.file_url)}
+                      alt=""
+                      fill
+                      className="object-contain p-1"
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>
 
         {/* Product Details Section */}
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-6 w-full min-w-0 overflow-hidden">
           <div className="space-y-3">
             {/* Header */}
             <div className="space-y-2">
@@ -589,7 +591,7 @@ export default function ProductDetailPage() {
 
       {/* Full Spec Table */}
       {variants.length > 0 && (
-        <div className="mt-16 space-y-6">
+        <div className="mt-16 space-y-6 overflow-hidden">
           <div className="flex items-center gap-3">
             <div className="h-8 w-1 bg-primary rounded-full shadow-sm" />
             <div>
@@ -661,34 +663,54 @@ export default function ProductDetailPage() {
         </div>
       )}
 
-      {/* Mobile Sticky Bar - Glassmorphism */}
+      {/* Mobile Sticky Bar - Premium & Tall */}
       <AnimatePresence>
         {selectedVariant && (
           <motion.div
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}
-            className="fixed bottom-0 left-0 right-0 z-50 p-2 sm:p-3 lg:hidden safe-area-bottom"
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed bottom-0 left-0 right-0 z-40 lg:hidden safe-area-bottom"
           >
-            <div className="absolute inset-0 bg-white/90 backdrop-blur-md shadow-[0_-8px_30px_rgba(0,0,0,0.12)] border-t border-white/20" />
-            <div className="relative flex items-center gap-2">
-              <div className="flex-1 min-w-0">
-                <p className="text-[8px] sm:text-[9px] text-muted-foreground uppercase font-bold tracking-wider truncate">Seçili: {selectedVariant.model_code}</p>
-                <PriceDisplay
-                  price={selectedVariant.list_price}
-                  className="text-sm sm:text-base font-bold text-primary"
-                />
+            {/* Background */}
+            <div className="absolute inset-0 bg-white/95 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.1)] border-t border-border/40" />
+
+            {/* Content */}
+            <div className="relative px-4 py-3 sm:py-4">
+              <div className="flex items-center gap-3">
+                {/* Product info */}
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] sm:text-xs text-muted-foreground font-semibold uppercase tracking-wide truncate mb-0.5">
+                    {selectedVariant.model_code}
+                  </p>
+                  <PriceDisplay
+                    price={selectedVariant.list_price}
+                    className="text-base sm:text-lg font-bold text-primary"
+                  />
+                </div>
+
+                {/* Actions */}
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <Button variant="outline" size="sm" className="h-10 sm:h-11 px-3 sm:px-4 rounded-sm border-primary/20 text-xs font-semibold hover:bg-primary/5" asChild>
+                    <Link href="/iletisim">
+                      <FileText className="mr-1.5 h-3.5 w-3.5" />
+                      <span className="hidden xs:inline">Teklif</span>
+                    </Link>
+                  </Button>
+                  <AddToCartButton
+                    variantId={selectedVariant.id}
+                    className="shadow-lg shadow-primary/20 text-xs sm:text-sm px-4 sm:px-6 h-10 sm:h-11 rounded-sm whitespace-nowrap font-bold"
+                  />
+                </div>
               </div>
-              <AddToCartButton
-                variantId={selectedVariant.id}
-                className="shadow-lg shadow-primary/20 text-[9px] sm:text-[10px] px-3 sm:px-5 h-8 sm:h-9 rounded-sm whitespace-nowrap"
-              />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="h-24 lg:hidden" />
+      {/* Spacer for mobile sticky bar */}
+      <div className="h-20 sm:h-24 lg:hidden" />
 
       {/* Lightbox */}
       <AnimatePresence>
