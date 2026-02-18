@@ -37,11 +37,10 @@ export const useSiteSettings = create<SiteSettingsState>()(
                         if (typeof response.data.catalog_mode === 'boolean') {
                             updates.catalogMode = response.data.catalog_mode;
                         }
-                        console.log("Fetched Site Settings:", updates);
                         set(updates);
                     }
-                } catch (error) {
-                    console.error('Failed to fetch site settings:', error);
+                } catch {
+                    // Settings fetch failed — use cached/default values
                 } finally {
                     set({ isLoading: false });
                 }

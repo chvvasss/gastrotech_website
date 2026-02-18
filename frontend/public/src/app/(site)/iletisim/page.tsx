@@ -11,11 +11,9 @@ import { Input } from "@/components/ui/input";
 import { useCart } from "@/hooks/use-cart";
 import { useToast } from "@/hooks/use-toast";
 import { createInquiry, InquiryCreateSchema, InquiryCreate, ApiError } from "@/lib/api";
-import { Mail, Phone, MapPin, Clock, Loader2, Send, Navigation, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Loader2, Send, Navigation } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-// cn removed as unused
-
 // Extend schema for client-side validation
 const FormSchema = InquiryCreateSchema.extend({
   consent: z.literal(true, {
@@ -46,8 +44,7 @@ export default function ContactPage() {
       phone: "",
       company: "",
       message: "",
-      // @ts-expect-error -- Default value false vs schema true mismatch
-      consent: false,
+      consent: false as unknown as true,
     },
   });
 

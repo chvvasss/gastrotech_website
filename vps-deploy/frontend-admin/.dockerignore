@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+*.md
+.env*
+.claude
+.cursor
+.vscode
+coverage
+.turbo

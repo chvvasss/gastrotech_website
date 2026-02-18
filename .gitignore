@@ -12,8 +12,11 @@ Thumbs.db
 .env.*
 !.env.example
 !.env.sample
+!.env.*.example
 *.pem
 *.key
+deploy_key
+deploy_key.pub
 
 # === Windows reserved name ===
 nul

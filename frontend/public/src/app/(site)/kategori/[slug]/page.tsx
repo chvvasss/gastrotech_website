@@ -61,8 +61,7 @@ async function fetchCategoryData(slug: string): Promise<CategoryResponse | null>
 
     const data = await response.json();
     return data.category || null;
-  } catch (error) {
-    console.error("Failed to fetch category:", error);
+  } catch {
     return null;
   }
 }

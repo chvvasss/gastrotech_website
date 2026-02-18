@@ -58,6 +58,8 @@ services:
     build:
       context: ./frontend/public
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://api.gastrotech.com.tr}
     restart: unless-stopped
     env_file: .env.prod
     ports:
@@ -69,6 +71,8 @@ services:
     build:
       context: ./frontend/admin
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://api.gastrotech.com.tr}
     restart: unless-stopped
     env_file: .env.prod
     ports:

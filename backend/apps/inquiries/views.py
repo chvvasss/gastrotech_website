@@ -2,12 +2,18 @@
 Views for inquiries API.
 """
 
+import logging
+
+from django.conf import settings
+from django.core.mail import send_mail
 from drf_spectacular.utils import extend_schema, OpenApiExample
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle
 from rest_framework.views import APIView
+
+logger = logging.getLogger(__name__)
 
 from apps.catalog.models import SpecKey, Variant
 from .serializers import (
@@ -89,10 +95,26 @@ class InquiryCreateView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         inquiry = serializer.save()
-        
-        # TODO: Send email notification here
-        # send_inquiry_notification(inquiry)
-        
+
+        # Send email notification
+        try:
+            items_count = inquiry.items.count()
+            send_mail(
+                subject=f"Yeni Teklif Talebi #{inquiry.id}",
+                message=(
+                    f"Yeni teklif talebi alındı.\n\n"
+                    f"Ad: {inquiry.full_name}\n"
+                    f"E-posta: {inquiry.email}\n"
+                    f"Firma: {inquiry.company or '-'}\n"
+                    f"Ürün sayısı: {items_count}"
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[settings.DEFAULT_FROM_EMAIL],
+                fail_silently=True,
+            )
+        except Exception:
+            logger.exception("Failed to send inquiry notification email")
+
         response_data = {
             "id": inquiry.id,
             "status": "received",
