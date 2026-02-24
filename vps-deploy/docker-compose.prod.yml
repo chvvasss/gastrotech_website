@@ -39,7 +39,7 @@ services:
 
   backend:
     build:
-      context: ./backend
+      context: ./repo/backend
       dockerfile: docker/web/Dockerfile.prod
     restart: unless-stopped
     volumes:
@@ -56,7 +56,7 @@ services:
 
   frontend-public:
     build:
-      context: ./frontend/public
+      context: ./repo/frontend/public
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://api.gastrotech.com.tr}
@@ -69,7 +69,7 @@ services:
 
   frontend-admin:
     build:
-      context: ./frontend/admin
+      context: ./repo/frontend/admin
       dockerfile: Dockerfile
       args:
         NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://api.gastrotech.com.tr}
