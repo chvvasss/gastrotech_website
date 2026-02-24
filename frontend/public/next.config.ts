@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 // Gateway URL'ler - Tek domain stratejisi için
-const DJANGO_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
-const ADMIN_URL = process.env.ADMIN_INTERNAL_URL || "http://127.0.0.1:3001";
+const DJANGO_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://backend:8000";
+const ADMIN_URL = process.env.ADMIN_INTERNAL_URL || "http://frontend-admin:3001";
 
 // Security headers for all routes
 const securityHeaders = [
