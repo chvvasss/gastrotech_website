@@ -69,10 +69,14 @@ const nextConfig: NextConfig = {
       },
 
       // =====================
-      // DJANGO API PROXY - HANDLED BY MIDDLEWARE
-      // middleware.ts proxies /api/* to Django with proper trailing slashes
-      // Next.js rewrites strip trailing slashes, causing Django 404
+      // DJANGO API PROXY
+      // trailingSlash: true ensures URLs have trailing slashes for Django
+      // Rewrites use Node.js runtime (not Edge sandbox) so Docker DNS works
       // =====================
+      {
+        source: "/api/:path*",
+        destination: `http://backend:8000/api/:path*`,
+      },
 
       // =====================
       // DJANGO STATIC/MEDIA PROXY
