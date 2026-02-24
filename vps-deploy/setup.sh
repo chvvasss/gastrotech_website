@@ -60,11 +60,9 @@ ln -sf /etc/nginx/sites-available/admin.gastrotech.com.tr /etc/nginx/sites-enabl
 rm -f /etc/nginx/sites-enabled/default
 
 # 9. Setup Environment
-if [ ! -f "/opt/gastrotech/.env.prod" ]; then
-    echo "--- Creating .env.prod ---"
-    cp /opt/gastrotech/repo/vps-deploy/.env.prod /opt/gastrotech/.env.prod
-    echo "WARNING: Please edit /opt/gastrotech/.env.prod and set secrets!"
-fi
+echo "--- Recreating .env.prod from template ---"
+cp -f /opt/gastrotech/repo/vps-deploy/.env.prod /opt/gastrotech/.env.prod
+echo "WARNING: Please edit /opt/gastrotech/.env.prod and set secrets!"
 
 # Ensure Internal Docker Network URLs are used instead of localhost
 echo "--- Fixing internal network URLs in .env.prod ---"
@@ -80,9 +78,14 @@ if [ -f "/opt/gastrotech/backups/media.zip" ]; then
 fi
 
 # 11. Start Stack
-echo "--- Starting Docker Stack ---"
+echo "--- Cleaning up stale containers and Next.js cache ---"
 cd /opt/gastrotech
-docker compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml down --remove-orphans || true
+docker system prune -f
+
+echo "--- Starting Docker Stack (Forced Rebuild) ---"
+docker compose -f docker-compose.prod.yml build --no-cache
+docker compose -f docker-compose.prod.yml up -d --force-recreate
 
 # 12. Database Restore (if dump exists)
 if [ -f "/opt/gastrotech/backups/gastrotech_final.dump" ]; then

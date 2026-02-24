@@ -16,6 +16,7 @@ COPY . .
 # Environment variables must be present at build time for Next.js public vars
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+ENV DJANGO_URL="http://backend:8000"
 
 RUN npm run build
 
@@ -40,8 +41,5 @@ USER nextjs
 EXPOSE 3001
 ENV PORT=3001
 ENV HOSTNAME="0.0.0.0"
-
-# Inject internal Docker DNS addresses for SSR
-ENV DJANGO_URL="http://backend:8000"
 
 CMD ["node", "server.js"]
