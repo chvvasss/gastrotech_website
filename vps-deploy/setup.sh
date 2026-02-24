@@ -61,7 +61,12 @@ rm -f /etc/nginx/sites-enabled/default
 
 # 9. Setup Environment
 echo "--- Recreating .env.prod from template ---"
-cp -f /opt/gastrotech/repo/vps-deploy/.env.prod /opt/gastrotech/.env.prod
+if [ ! -f "/opt/gastrotech/.env.prod" ]; then
+    cp -f /opt/gastrotech/repo/vps-deploy/.env.prod.example /opt/gastrotech/.env.prod
+else
+    # Sadece eksik olabilecek yeni değişkenleri tamamla veya kullanıcıyı uyar
+    echo "Using existing /opt/gastrotech/.env.prod"
+fi
 echo "WARNING: Please edit /opt/gastrotech/.env.prod and set secrets!"
 
 # Ensure Internal Docker Network URLs are used instead of localhost
