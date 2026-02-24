@@ -41,4 +41,7 @@ EXPOSE 3001
 ENV PORT=3001
 ENV HOSTNAME="0.0.0.0"
 
+# Inject internal Docker DNS addresses for SSR
+ENV DJANGO_URL="http://backend:8000"
+
 CMD ["node", "server.js"]
