@@ -59,14 +59,13 @@ const nextConfig: NextConfig = {
       // =====================
       // ADMIN PANEL PROXY
       // /admin/* -> ADMIN Next.js (3000)
-      // =====================
       {
         source: "/admin",
-        destination: `${ADMIN_URL}/admin`,
+        destination: `http://frontend-admin:3001/admin`,
       },
       {
         source: "/admin/:path*",
-        destination: `${ADMIN_URL}/admin/:path*`,
+        destination: `http://frontend-admin:3001/admin/:path*`,
       },
 
       // =====================
@@ -81,11 +80,11 @@ const nextConfig: NextConfig = {
       // =====================
       {
         source: "/static/:path*",
-        destination: `${DJANGO_URL}/static/:path*`,
+        destination: `http://backend:8000/static/:path*`,
       },
       {
         source: "/media/:path*",
-        destination: `${DJANGO_URL}/media/:path*`,
+        destination: `http://backend:8000/media/:path*`,
       },
     ];
   },
