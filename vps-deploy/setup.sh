@@ -2,9 +2,10 @@
 set -euo pipefail
 
 # Gastrotech VPS Setup Script
-# Run this on the VPS as root
+# Run this on the VPS as root for FIRST TIME SETUP only
+# For subsequent deploys, use: bash /opt/gastrotech/repo/vps-deploy/update.sh
 
-echo "=== 🚀 Starting Gastrotech VPS Setup ==="
+echo "=== Gastrotech VPS Setup ==="
 
 # 1. Update System
 echo "--- Updating System ---"
@@ -36,11 +37,7 @@ mkdir -p /opt/gastrotech/backups
 mkdir -p /opt/gastrotech/media
 mkdir -p /opt/gastrotech/backend/staticfiles
 
-# 6. Deployment Files
-# Assuming this script is run from /opt/gastrotech/vpsc-deploy or similar
-# We expect the repo content at /opt/gastrotech/repo
-
-# 7. Clone/Pull Repo
+# 6. Clone/Pull Repo
 if [ -d "/opt/gastrotech/repo" ]; then
     echo "--- Pulling latest code ---"
     cd /opt/gastrotech/repo
@@ -50,67 +47,81 @@ else
     git clone https://github.com/chvvasss/gastrotech_website.git /opt/gastrotech/repo
 fi
 
-# 8. Copy Config Files
+# 7. Copy Config Files
 echo "--- Copying Configuration ---"
 cp /opt/gastrotech/repo/vps-deploy/docker-compose.prod.yml /opt/gastrotech/docker-compose.prod.yml
-cp /opt/gastrotech/repo/vps-deploy/nginx/* /etc/nginx/sites-available/
+
+# Copy nginx configs (only if they don't exist yet - preserve certbot SSL)
+for conf in gastrotech.com.tr api.gastrotech.com.tr admin.gastrotech.com.tr; do
+    if [ ! -f "/etc/nginx/sites-available/$conf" ]; then
+        cp "/opt/gastrotech/repo/vps-deploy/nginx/$conf" "/etc/nginx/sites-available/$conf"
+        echo "  Created nginx config: $conf"
+    else
+        echo "  Nginx config exists, preserving: $conf"
+    fi
+done
+
 ln -sf /etc/nginx/sites-available/gastrotech.com.tr /etc/nginx/sites-enabled/
 ln -sf /etc/nginx/sites-available/api.gastrotech.com.tr /etc/nginx/sites-enabled/
 ln -sf /etc/nginx/sites-available/admin.gastrotech.com.tr /etc/nginx/sites-enabled/
 rm -f /etc/nginx/sites-enabled/default
 
-# 9. Setup Environment
-echo "--- Recreating .env.prod from template ---"
+# 8. Setup Environment
+echo "--- Setting up .env.prod ---"
 if [ ! -f "/opt/gastrotech/.env.prod" ]; then
-    cp -f /opt/gastrotech/repo/vps-deploy/.env.prod.example /opt/gastrotech/.env.prod
+    cp /opt/gastrotech/repo/vps-deploy/.env.prod /opt/gastrotech/.env.prod
+    echo "  Created .env.prod from template"
+    echo "  WARNING: Review and update secrets in /opt/gastrotech/.env.prod!"
 else
-    # Sadece eksik olabilecek yeni değişkenleri tamamla veya kullanıcıyı uyar
-    echo "Using existing /opt/gastrotech/.env.prod"
+    echo "  Using existing /opt/gastrotech/.env.prod"
 fi
-echo "WARNING: Please edit /opt/gastrotech/.env.prod and set secrets!"
 
-# Ensure Internal Docker Network URLs are used instead of localhost
-echo "--- Fixing internal network URLs in .env.prod ---"
-sed -i 's|http://127.0.0.1:8000|http://backend:8000|g' /opt/gastrotech/.env.prod
-sed -i 's|http://127.0.0.1:3001|http://frontend-admin:3001|g' /opt/gastrotech/.env.prod
-
-# 10. Restore Backups (if present)
+# 9. Restore Backups (if present)
 if [ -f "/opt/gastrotech/backups/media.zip" ]; then
     echo "--- Restoring Media ---"
     unzip -o /opt/gastrotech/backups/media.zip -d /opt/gastrotech/
-    # If zip contains 'media' folder, it might double nest. Ensure contents are in /opt/gastrotech/media
-    # Assuming backups/media.zip contains 'media/...'
 fi
 
-# 11. Start Stack
-echo "--- Cleaning up stale containers and Next.js cache ---"
+# 10. Start Stack
+echo "--- Cleaning up stale containers ---"
 cd /opt/gastrotech
 docker compose -f docker-compose.prod.yml down --remove-orphans || true
 docker system prune -f
 
 echo "--- Starting Docker Stack (Forced Rebuild) ---"
-docker compose -f docker-compose.prod.yml build --no-cache
+docker compose -f docker-compose.prod.yml build --no-cache --parallel
 docker compose -f docker-compose.prod.yml up -d --force-recreate
 
-# 12. Database Restore (if dump exists)
+# 11. Database Restore (if dump exists)
 if [ -f "/opt/gastrotech/backups/gastrotech_final.dump" ]; then
-    echo "--- Restoring Database (Waiting 10s for DB to be ready) ---"
-    sleep 10
-    # Create DB if not exists
-    docker compose -f docker-compose.prod.yml exec -T db psql -U postgres -c "CREATE DATABASE gastrotech;" || true
-    # Restore
-    docker compose -f docker-compose.prod.yml exec -T db pg_restore -U postgres -d gastrotech --clean --if-exists /opt/gastrotech/app/backups/gastrotech_final.dump || \
-    # If the file is on host, we need to copy it into container or mount valid volume
-    # easier: cat dump | docker exec ...
-    cat /opt/gastrotech/backups/gastrotech_final.dump | docker compose -f docker-compose.prod.yml exec -T db pg_restore -U postgres -d gastrotech --clean --if-exists
-    
+    echo "--- Restoring Database (Waiting 15s for DB to be ready) ---"
+    sleep 15
+    docker compose -f docker-compose.prod.yml exec -T db psql -U gastrotech -c "SELECT 1;" 2>/dev/null || \
+        echo "WARNING: Database not ready yet, you may need to run restore manually"
+
+    cat /opt/gastrotech/backups/gastrotech_final.dump | \
+        docker compose -f docker-compose.prod.yml exec -T db pg_restore -U gastrotech -d gastrotech --clean --if-exists 2>/dev/null || \
+        echo "WARNING: DB restore had issues - check manually"
+
     echo "--- Running Migrations ---"
     docker compose -f docker-compose.prod.yml exec -T backend python manage.py migrate --noinput
 fi
 
-# 13. SSL Setup (Interactive - run manually if needed)
+# 12. Nginx
 echo "--- Checking Nginx Config ---"
 nginx -t && systemctl reload nginx
 
+echo ""
 echo "=== Setup Complete! ==="
-echo "If DNS is ready, run: certbot --nginx -d gastrotech.com.tr -d www.gastrotech.com.tr -d api.gastrotech.com.tr -d admin.gastrotech.com.tr"
+echo ""
+echo "NEXT STEPS:"
+echo "1. Review /opt/gastrotech/.env.prod and update secrets"
+echo "2. Set up SSL certificates:"
+echo "   certbot --nginx -d gastrotech.com.tr -d www.gastrotech.com.tr -d api.gastrotech.com.tr -d admin.gastrotech.com.tr"
+echo "3. After SSL is set up, update /opt/gastrotech/.env.prod:"
+echo "   SECURE_SSL_REDIRECT=True"
+echo "   SESSION_COOKIE_SECURE=True"
+echo "   CSRF_COOKIE_SECURE=True"
+echo "4. Restart backend: cd /opt/gastrotech && docker compose -f docker-compose.prod.yml restart backend"
+echo ""
+echo "For future updates, use: bash /opt/gastrotech/repo/vps-deploy/update.sh"

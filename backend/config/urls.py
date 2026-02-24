@@ -8,9 +8,26 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.http import JsonResponse
 from django.urls import include, path
 
+
+def api_root(request):
+    """Root URL handler - returns API info instead of 404."""
+    return JsonResponse({
+        "service": "Gastrotech API",
+        "version": "1.0.0",
+        "endpoints": {
+            "api": "/api/v1/",
+            "health": "/api/v1/health/",
+            "docs": "/api/v1/docs/",
+        },
+    })
+
+
 urlpatterns = [
+    # Root URL - API info
+    path("", api_root),
     # Django Admin
     path("admin/", admin.site.urls),
     # API v1

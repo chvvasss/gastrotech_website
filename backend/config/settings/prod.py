@@ -110,9 +110,10 @@ CSRF_COOKIE_SAMESITE = "Lax"
 # Toggle SSL redirect via env (default True in prod)
 SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT", default=True)  # noqa: F405
 
-# Cookie security (always secure in prod)
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Cookie security - configurable for environments where SSL terminates at proxy
+# Set to False ONLY if running behind a reverse proxy without SSL (e.g. initial setup)
+SESSION_COOKIE_SECURE = env.bool("SESSION_COOKIE_SECURE", default=True)  # noqa: F405
+CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE", default=True)  # noqa: F405
 
 # HSTS (only when SSL redirect is enabled)
 if SECURE_SSL_REDIRECT:

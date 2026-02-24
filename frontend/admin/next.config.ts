@@ -59,7 +59,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "api.gastrotech.com",
+        hostname: "api.gastrotech.com.tr",
         pathname: "/api/v1/media/**",
       },
       {

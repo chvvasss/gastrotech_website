@@ -4,7 +4,7 @@ services:
   # ============================================================================
   # Infrastructure Services
   # ============================================================================
-  
+
   db:
     image: postgres:16-alpine
     restart: unless-stopped
@@ -12,9 +12,11 @@ services:
       - pgdata:/var/lib/postgresql/data
     env_file: .env.prod
     ports:
-      - "127.0.0.1:5432:5432"  # Internal access only
+      - "127.0.0.1:5432:5432"
+    networks:
+      - gastrotech
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d gastrotech"]
+      test: ["CMD-SHELL", "pg_isready -d gastrotech"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -25,7 +27,9 @@ services:
     volumes:
       - redisdata:/data
     ports:
-      - "127.0.0.1:6379:6379"  # Internal access only
+      - "127.0.0.1:6379:6379"
+    networks:
+      - gastrotech
     command: redis-server --appendonly yes
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
@@ -48,44 +52,66 @@ services:
     env_file: .env.prod
     ports:
       - "127.0.0.1:8000:8000"
+    networks:
+      - gastrotech
     depends_on:
       db:
         condition: service_healthy
       redis:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health/"]
+      interval: 30s
+      timeout: 10s
+      start_period: 40s
+      retries: 3
 
   frontend-public:
     build:
       context: ./repo/frontend/public
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://api.gastrotech.com.tr}
+        # Hardcoded - do NOT use variable substitution (requires .env file)
+        NEXT_PUBLIC_API_URL: https://api.gastrotech.com.tr
     restart: unless-stopped
     env_file: .env.prod
     environment:
       - PORT=3000
+      - HOSTNAME=0.0.0.0
       - NEXT_PUBLIC_API_BASE_URL=http://backend:8000
       - ADMIN_INTERNAL_URL=http://frontend-admin:3001
     ports:
       - "127.0.0.1:3000:3000"
+    networks:
+      - gastrotech
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
   frontend-admin:
     build:
       context: ./repo/frontend/admin
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://api.gastrotech.com.tr}
+        NEXT_PUBLIC_API_URL: https://api.gastrotech.com.tr
     restart: unless-stopped
     env_file: .env.prod
     environment:
       - PORT=3001
+      - HOSTNAME=0.0.0.0
       - DJANGO_URL=http://backend:8000
+      - NEXT_PUBLIC_BACKEND_URL=
     ports:
       - "127.0.0.1:3001:3001"
+    networks:
+      - gastrotech
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
+
+networks:
+  gastrotech:
+    driver: bridge
 
 volumes:
   pgdata:
@@ -96,5 +122,4 @@ volumes:
     driver_opts:
       type: none
       o: bind
-      # This bind mount allows easy access from host for backups
       device: /opt/gastrotech/media
