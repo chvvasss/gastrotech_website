@@ -66,6 +66,11 @@ if [ ! -f "/opt/gastrotech/.env.prod" ]; then
     echo "WARNING: Please edit /opt/gastrotech/.env.prod and set secrets!"
 fi
 
+# Ensure Internal Docker Network URLs are used instead of localhost
+echo "--- Fixing internal network URLs in .env.prod ---"
+sed -i 's|http://127.0.0.1:8000|http://backend:8000|g' /opt/gastrotech/.env.prod
+sed -i 's|http://127.0.0.1:3001|http://frontend-admin:3001|g' /opt/gastrotech/.env.prod
+
 # 10. Restore Backups (if present)
 if [ -f "/opt/gastrotech/backups/media.zip" ]; then
     echo "--- Restoring Media ---"
