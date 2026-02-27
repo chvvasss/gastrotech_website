@@ -99,9 +99,11 @@ function buildCategoryTree(categories: AdminCategory[]): (AdminCategory & { chil
     return buildTree(null);
 }
 
-const getMediaUrl = (id?: string | null) => {
+import { getMediaUrl as buildMediaUrl } from "@/lib/media-url";
+
+const getMediaUrlById = (id?: string | null) => {
     if (!id) return undefined;
-    return `${process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000"}/api/v1/media/${id}/file/`;
+    return buildMediaUrl(`/api/v1/media/${id}/file/`);
 };
 
 interface CategoryNodeProps {
@@ -145,7 +147,7 @@ function CategoryNode({ category, level, onEdit, onDelete, onAddChild }: Categor
                 {category.cover_media && (
                     <div className="h-6 w-6 rounded overflow-hidden flex-shrink-0 border border-stone-200">
                         <img
-                            src={getMediaUrl(category.cover_media)}
+                            src={getMediaUrlById(category.cover_media)}
                             alt={category.name}
                             className="h-full w-full object-cover"
                         />
@@ -494,7 +496,7 @@ export default function CategoriesPage() {
                                 <ImageUpload
                                     value={formData.cover_media || undefined}
                                     onChange={(val) => setFormData({ ...formData, cover_media: val })}
-                                    currentImageUrl={getMediaUrl(formData.cover_media)}
+                                    currentImageUrl={getMediaUrlById(formData.cover_media)}
                                 />
                             </div>
                         </div>

@@ -25,6 +25,7 @@ import {
     useRegenerateQr,
 } from "@/hooks/use-admin-qr";
 import { useToast } from "@/hooks/use-toast";
+import { getDjangoMediaUrl } from "@/lib/media-url";
 import type { InfoSheet } from "@/lib/api/admin-qr";
 
 // ============================================================================
@@ -134,8 +135,9 @@ export default function QrGeneratorPage() {
 
     const handleDownloadQr = async (sheet: InfoSheet) => {
         if (!sheet.qr_url) return;
+        const qrFullUrl = getDjangoMediaUrl(sheet.qr_url);
         try {
-            const response = await fetch(sheet.qr_url);
+            const response = await fetch(qrFullUrl);
             const blob = await response.blob();
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
@@ -147,7 +149,7 @@ export default function QrGeneratorPage() {
             URL.revokeObjectURL(url);
         } catch {
             // Fallback: direct link
-            window.open(sheet.qr_url, "_blank");
+            window.open(qrFullUrl, "_blank");
         }
     };
 
@@ -340,7 +342,7 @@ export default function QrGeneratorPage() {
                             >
                                 {sheet.qr_url ? (
                                     <img
-                                        src={sheet.qr_url}
+                                        src={getDjangoMediaUrl(sheet.qr_url)}
                                         alt={`QR kod: ${sheet.title}`}
                                         className="h-40 w-40 object-contain"
                                     />
@@ -372,7 +374,7 @@ export default function QrGeneratorPage() {
                                             variant="outline"
                                             size="sm"
                                             className="gap-1.5 text-xs h-8"
-                                            onClick={() => window.open(sheet.pdf_url!, "_blank")}
+                                            onClick={() => window.open(getDjangoMediaUrl(sheet.pdf_url), "_blank")}
                                         >
                                             <ExternalLink className="h-3.5 w-3.5" />
                                             PDF
@@ -448,7 +450,7 @@ export default function QrGeneratorPage() {
                         <div className="flex justify-center p-4 bg-white border border-stone-100">
                             {previewSheet.qr_url ? (
                                 <img
-                                    src={previewSheet.qr_url}
+                                    src={getDjangoMediaUrl(previewSheet.qr_url)}
                                     alt={`QR kod: ${previewSheet.title}`}
                                     className="h-64 w-64 object-contain"
                                 />
@@ -479,7 +481,7 @@ export default function QrGeneratorPage() {
                                 <Button
                                     variant="outline"
                                     className="gap-2"
-                                    onClick={() => window.open(previewSheet.pdf_url!, "_blank")}
+                                    onClick={() => window.open(getDjangoMediaUrl(previewSheet.pdf_url), "_blank")}
                                 >
                                     <ExternalLink className="h-4 w-4" />
                                     PDF&apos;i Aç

@@ -29,11 +29,5 @@ export function getInitials(name: string): string {
     .slice(0, 2);
 }
 
-export function getMediaUrl(path: string | null | undefined): string {
-  if (!path) return "/placeholder.svg";
-  if (path.startsWith("http")) return path;
-  // Gateway üzerinden same-origin kullan (relative path)
-  // Env yoksa boş string = relative path
-  const base = process.env.NEXT_PUBLIC_API_BASE_URL || "";
-  return `${base}${path}`;
-}
+// Re-export from canonical source
+export { getMediaUrl, getDjangoMediaUrl } from "./media-url";

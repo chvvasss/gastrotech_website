@@ -70,6 +70,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
+import { getMediaUrl as buildMediaUrl } from "@/lib/media-url";
 import { useNav } from "@/hooks/use-navigation";
 import { useTaxonomyTree, useGenerateProductsFromLeafNodes } from "@/hooks/use-taxonomy";
 import {
@@ -538,9 +539,9 @@ export default function TaxonomyPage() {
 
   const isNodePending = createNodeMutation.isPending || updateNodeMutation.isPending;
 
-  const getMediaUrl = (id?: string | null) => {
+  const getMediaUrlById = (id?: string | null) => {
     if (!id) return null;
-    return `${process.env.NEXT_PUBLIC_API_URL || ""}/media/${id}/`;
+    return buildMediaUrl(`/api/v1/media/${id}/file/`);
   };
 
   return (

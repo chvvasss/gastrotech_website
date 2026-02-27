@@ -65,9 +65,11 @@ import {
 } from "@/hooks/use-admin-brands";
 import type { AdminBrand, CreateBrandPayload, UpdateBrandPayload } from "@/lib/api/admin-brands";
 
-const getMediaUrl = (id?: string | null) => {
+import { getMediaUrl as buildMediaUrl } from "@/lib/media-url";
+
+const getMediaUrlById = (id?: string | null) => {
     if (!id) return undefined;
-    return `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/v1/media/${id}/file/`;
+    return buildMediaUrl(`/api/v1/media/${id}/file/`);
 };
 
 export default function BrandsPage() {
@@ -230,7 +232,7 @@ export default function BrandsPage() {
                                             {brand.logo_media_url ? (
                                                 <div className="h-10 w-10 rounded overflow-hidden border border-stone-200">
                                                     <img
-                                                        src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${brand.logo_media_url}`}
+                                                        src={buildMediaUrl(brand.logo_media_url)}
                                                         alt={brand.name}
                                                         className="h-full w-full object-contain"
                                                     />
@@ -376,7 +378,7 @@ export default function BrandsPage() {
                                 <ImageUpload
                                     value={formData.logo_media || undefined}
                                     onChange={(val) => setFormData({ ...formData, logo_media: val })}
-                                    currentImageUrl={getMediaUrl(formData.logo_media)}
+                                    currentImageUrl={getMediaUrlById(formData.logo_media)}
                                 />
                             </div>
                         </div>

@@ -22,7 +22,7 @@ export default function ProductDetailPage() {
 
   const { data: product, isLoading, error } = useProductDetail(slug);
 
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
 
   if (isLoading) {
     return (

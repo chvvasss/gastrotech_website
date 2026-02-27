@@ -34,6 +34,7 @@ import type { ProductStatus } from "@/types/api";
 import type { AdminProductListItem } from "@/lib/api/admin-products";
 import { adminProductsApi } from "@/lib/api/admin-products";
 import { useToast } from "@/hooks/use-toast";
+import { getMediaUrl } from "@/lib/media-url";
 
 const ALL_STATUS = "_all";
 
@@ -218,12 +219,11 @@ export function ProductsTable({ scope = "all", scopeId, showFilters = true }: Pr
             header: "",
             cell: ({ row }) => {
                 const imageUrl = row.original.primary_image_url;
-                const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
                 return (
                     <div className="w-12 h-12 rounded-lg bg-stone-100 overflow-hidden border border-stone-200">
                         {imageUrl ? (
                             <img
-                                src={`${backendUrl}${imageUrl}`}
+                                src={getMediaUrl(imageUrl)}
                                 alt={row.original.title_tr}
                                 className="w-full h-full object-cover"
                             />
@@ -290,7 +290,7 @@ export function ProductsTable({ scope = "all", scopeId, showFilters = true }: Pr
         {
             id: "actions",
             cell: ({ row }) => {
-                const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+                const djangoAdminUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
                 return (
                     <div className="flex items-center gap-1">
                         <Button variant="ghost" size="sm" className="text-stone-500 hover:text-stone-900 h-8" asChild>
@@ -300,7 +300,7 @@ export function ProductsTable({ scope = "all", scopeId, showFilters = true }: Pr
                         </Button>
                         <Button variant="ghost" size="icon" className="text-stone-400 hover:text-stone-900 h-8 w-8" asChild>
                             <a
-                                href={`${backendUrl}/admin/catalog/product/${row.original.slug}/change/`}
+                                href={`${djangoAdminUrl}/admin/catalog/product/${row.original.slug}/change/`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 title="Django Admin'de Aç"

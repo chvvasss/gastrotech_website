@@ -62,9 +62,11 @@ import {
 } from "@/hooks/use-admin-taxonomy";
 import type { AdminSeries, CreateSeriesPayload, UpdateSeriesPayload } from "@/lib/api/admin-taxonomy";
 
-const getMediaUrl = (id?: string | null) => {
+import { getMediaUrl as buildMediaUrl } from "@/lib/media-url";
+
+const getMediaUrlById = (id?: string | null) => {
     if (!id) return undefined;
-    return `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}/api/v1/media/${id}/file/`;
+    return buildMediaUrl(`/api/v1/media/${id}/file/`);
 };
 
 export default function SeriesPage() {
@@ -247,7 +249,7 @@ export default function SeriesPage() {
                                     <div className="w-14 h-14 rounded-lg bg-stone-100 flex items-center justify-center overflow-hidden border border-stone-200">
                                         {s.cover_media ? (
                                             <img
-                                                src={getMediaUrl(s.cover_media)}
+                                                src={getMediaUrlById(s.cover_media)}
                                                 alt={s.name}
                                                 className="w-full h-full object-cover"
                                             />
@@ -399,7 +401,7 @@ export default function SeriesPage() {
                                 <ImageUpload
                                     value={formData.cover_media || undefined}
                                     onChange={(val) => setFormData({ ...formData, cover_media: val })}
-                                    currentImageUrl={getMediaUrl(formData.cover_media)}
+                                    currentImageUrl={getMediaUrlById(formData.cover_media)}
                                 />
                             </div>
                         </div>

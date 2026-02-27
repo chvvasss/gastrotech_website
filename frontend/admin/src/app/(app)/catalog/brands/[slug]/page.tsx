@@ -40,6 +40,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { catalogApi } from "@/lib/api/catalog";
+import { getMediaUrl } from "@/lib/media-url";
 import type { BrandDetail, BrandCategory, Category } from "@/types/api";
 
 export default function BrandDetailPage({
@@ -313,7 +314,7 @@ export default function BrandDetailPage({
                   <Label className="text-stone-600 text-sm">Logo</Label>
                   <div className="mt-2">
                     <img
-                      src={`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000"}${brand.logo_url}`}
+                      src={getMediaUrl(brand.logo_url)}
                       alt={brand.name}
                       className="h-20 w-auto object-contain border rounded p-2"
                     />

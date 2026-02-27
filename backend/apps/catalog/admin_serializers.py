@@ -23,6 +23,11 @@ from .models import (
     TaxonomyNode,
     Variant,
 )
+from .serializers import (
+    ProductMediaSerializer,
+    SpecKeySerializer,
+    VariantSerializer,
+)
 
 
 # =============================================================================
@@ -67,7 +72,7 @@ class AdminBrandSerializer(serializers.ModelSerializer):
     
     def get_logo_media_url(self, obj):
         if obj.logo_media_id:
-            return f"/api/v1/media/{obj.logo_media_id}/file"
+            return f"/api/v1/media/{obj.logo_media_id}/file/"
         return None
 
     def create(self, validated_data):
@@ -158,7 +163,7 @@ class AdminCategorySerializer(serializers.ModelSerializer):
     
     def get_cover_media_url(self, obj):
         if obj.cover_media_id:
-            return f"/api/v1/media/{obj.cover_media_id}/file"
+            return f"/api/v1/media/{obj.cover_media_id}/file/"
         return None
 
 
@@ -198,7 +203,7 @@ class AdminSeriesSerializer(serializers.ModelSerializer):
     
     def get_cover_media_url(self, obj):
         if obj.cover_media_id:
-            return f"/api/v1/media/{obj.cover_media_id}/file"
+            return f"/api/v1/media/{obj.cover_media_id}/file/"
         return None
         
 class AdminCategoryDetailSerializer(AdminCategorySerializer):
@@ -378,13 +383,13 @@ class AdminProductListSerializer(serializers.ModelSerializer):
     def get_primary_image_url(self, obj):
         primary = obj.primary_image
         if primary:
-            return f"/api/v1/media/{primary.id}/file"
+            return f"/api/v1/media/{primary.id}/file/"
         return None
 
 
 class AdminProductDetailSerializer(serializers.ModelSerializer):
     """Full product serializer for detail/update views."""
-    
+
     series_slug = serializers.SlugRelatedField(
         source="series",
         slug_field="slug",
@@ -413,7 +418,10 @@ class AdminProductDetailSerializer(serializers.ModelSerializer):
         queryset=TaxonomyNode.objects.all(),
         required=False,
     )
-    
+    spec_keys_resolved = serializers.SerializerMethodField()
+    variants = VariantSerializer(many=True, read_only=True)
+    product_media = ProductMediaSerializer(many=True, read_only=True)
+
     class Meta:
         model = Product
         fields = [
@@ -438,6 +446,9 @@ class AdminProductDetailSerializer(serializers.ModelSerializer):
             "general_features",
             "notes",
             "spec_layout",
+            "spec_keys_resolved",
+            "variants",
+            "product_media",
             "pdf_ref",
             "short_specs",
             "long_description",
@@ -463,6 +474,11 @@ class AdminProductDetailSerializer(serializers.ModelSerializer):
                 )
         return value
     
+    def get_spec_keys_resolved(self, obj):
+        """Return ordered SpecKey objects based on spec_layout."""
+        spec_keys = obj.get_spec_keys()
+        return SpecKeySerializer(spec_keys, many=True).data
+
     def validate_status(self, value):
         """Validate status is in allowed values."""
         allowed = [choice[0] for choice in Product.Status.choices]

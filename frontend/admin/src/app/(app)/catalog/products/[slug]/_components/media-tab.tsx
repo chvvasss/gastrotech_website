@@ -24,6 +24,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useProductMediaUpload, useProductMediaReorder, useProductMediaDelete } from "@/hooks/use-catalog-products";
+import { getMediaUrl } from "@/lib/media-url";
 import type { ProductDetail, ProductMedia } from "@/types/api";
 
 interface MediaTabProps {
@@ -52,8 +53,6 @@ function SortableMediaItem({ media, onDelete, onSetPrimary, isDeleting }: Sortab
     transition,
     opacity: isDragging ? 0.5 : 1,
   };
-
-  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
 
   const getIcon = () => {
     switch (media.kind) {
@@ -87,7 +86,7 @@ function SortableMediaItem({ media, onDelete, onSetPrimary, isDeleting }: Sortab
       <div className="w-16 h-16 rounded-lg bg-stone-100 overflow-hidden flex-shrink-0 flex items-center justify-center">
         {media.kind === "image" ? (
           <img
-            src={`${backendUrl}${media.file_url}`}
+            src={getMediaUrl(media.file_url)}
             alt={media.alt || media.filename}
             className="w-full h-full object-cover"
           />
