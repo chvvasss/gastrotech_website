@@ -44,6 +44,7 @@ const nextConfig: NextConfig = {
 
   // Ngrok için gerekli image domain'leri
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "http",

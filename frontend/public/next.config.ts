@@ -28,6 +28,9 @@ const nextConfig: NextConfig = {
   output: "standalone",
 
   images: {
+    // Disable server-side image optimization in Docker standalone mode
+    // sharp on Alpine causes 400 errors; serve raw images instead
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "http",
@@ -46,7 +49,6 @@ const nextConfig: NextConfig = {
         hostname: "api.gastrotech.com.tr",
         pathname: "/api/v1/media/**",
       },
-      // Ngrok domain için
       {
         protocol: "https",
         hostname: "*.ngrok-free.dev",
