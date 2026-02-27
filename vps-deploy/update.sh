@@ -28,27 +28,38 @@ echo "[2/7] Updating docker-compose.prod.yml..."
 cp "$REPO_DIR/vps-deploy/docker-compose.prod.yml" "$DEPLOY_DIR/docker-compose.prod.yml"
 echo "  OK"
 
-# 3. Update .env.prod - merge new vars without overwriting existing
+# 3. Update .env.prod - merge new vars from EXAMPLE template without overwriting existing
+TEMPLATE_FILE="$REPO_DIR/vps-deploy/.env.prod.example"
 echo ""
 echo "[3/7] Checking .env.prod for new variables..."
 if [ -f "$DEPLOY_DIR/.env.prod" ]; then
-    # Add any new variables from template that don't exist yet
-    while IFS= read -r line; do
-        # Skip comments and empty lines
-        [[ "$line" =~ ^#.*$ ]] && continue
-        [[ -z "$line" ]] && continue
-        # Extract variable name
-        var_name=$(echo "$line" | cut -d'=' -f1)
-        # If variable doesn't exist in current .env.prod, add it
-        if ! grep -q "^${var_name}=" "$DEPLOY_DIR/.env.prod" 2>/dev/null; then
-            echo "$line" >> "$DEPLOY_DIR/.env.prod"
-            echo "  Added new var: $var_name"
-        fi
-    done < "$REPO_DIR/vps-deploy/.env.prod"
+    if [ -f "$TEMPLATE_FILE" ]; then
+        # Add any new variables from template that don't exist yet
+        while IFS= read -r line; do
+            # Skip comments and empty lines
+            [[ "$line" =~ ^#.*$ ]] && continue
+            [[ -z "$line" ]] && continue
+            # Extract variable name
+            var_name=$(echo "$line" | cut -d'=' -f1)
+            # If variable doesn't exist in current .env.prod, add it
+            if ! grep -q "^${var_name}=" "$DEPLOY_DIR/.env.prod" 2>/dev/null; then
+                echo "$line" >> "$DEPLOY_DIR/.env.prod"
+                echo "  Added new var: $var_name"
+            fi
+        done < "$TEMPLATE_FILE"
+    else
+        echo "  No template found, skipping variable merge"
+    fi
     echo "  OK - Existing .env.prod preserved"
 else
-    cp "$REPO_DIR/vps-deploy/.env.prod" "$DEPLOY_DIR/.env.prod"
-    echo "  WARNING: Created new .env.prod - check secrets!"
+    if [ -f "$TEMPLATE_FILE" ]; then
+        cp "$TEMPLATE_FILE" "$DEPLOY_DIR/.env.prod"
+        echo "  WARNING: Created new .env.prod from template - UPDATE SECRETS!"
+    else
+        echo "  ERROR: No .env.prod and no template found!"
+        echo "  Create $DEPLOY_DIR/.env.prod manually before continuing."
+        exit 1
+    fi
 fi
 
 # 4. Update nginx configs (PRESERVE certbot SSL modifications)
