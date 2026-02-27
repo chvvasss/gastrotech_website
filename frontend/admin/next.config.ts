@@ -82,7 +82,7 @@ const nextConfig: NextConfig = {
       // explicitly add it back in the destination.
       {
         source: "/api/:path*",
-        destination: `${DJANGO_URL}/api/:path*`,
+        destination: `${DJANGO_URL}/api/:path*/`,
       },
     ];
   },
