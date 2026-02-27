@@ -1,16 +1,15 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+const DJANGO_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://127.0.0.1:8000";
+
 /**
- * Middleware for URL redirects and fixes.
- *
- * NOTE: API proxying is handled by next.config.ts rewrites (not middleware)
- * because Next.js middleware runs in Edge sandbox which cannot resolve
- * Docker internal DNS hostnames (e.g., http://backend:8000).
- * Rewrites use Node.js runtime and work correctly with Docker networking.
+ * Middleware to proxy API requests to Django
+ * This bypasses Next.js rewrites which strip trailing slashes
+ * Django requires trailing slashes on all endpoints
  */
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, search } = request.nextUrl;
   const normalizedPath =
     pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
@@ -40,13 +39,77 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Only process /api/* requests for Django proxy
+  if (pathname.startsWith("/api/")) {
+    if (process.env.NODE_ENV === "development") {
+      console.log(`[Middleware] Proxying to Django: ${pathname}`);
+    }
+    // Ensure trailing slash for Django for all endpoints (including /file), except static files with extensions
+    let djangoPath = pathname;
+    if (!djangoPath.endsWith("/") && !djangoPath.includes(".")) {
+      djangoPath = `${djangoPath}/`;
+    }
+
+    const djangoUrl = `${DJANGO_URL}${djangoPath}${search}`;
+
+    // Get request body for non-GET requests
+    let body: string | undefined;
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      try {
+        body = await request.text();
+      } catch {
+        body = undefined;
+      }
+    }
+
+    // Forward headers (excluding host)
+    const headers: Record<string, string> = {};
+    request.headers.forEach((value, key) => {
+      if (key.toLowerCase() !== "host") {
+        headers[key] = value;
+      }
+    });
+
+    try {
+      const response = await fetch(djangoUrl, {
+        method: request.method,
+        headers: headers,
+        body: body,
+      });
+
+      // Get response body
+      // Using streaming response below
+
+      // Create response with Django's response
+      const responseHeaders = new Headers();
+      response.headers.forEach((value, key) => {
+        // Skip headers that Next.js manages
+        if (!["transfer-encoding", "connection", "content-length", "content-encoding"].includes(key.toLowerCase())) {
+          responseHeaders.set(key, value);
+        }
+      });
+
+      return new NextResponse(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: responseHeaders,
+      });
+    } catch (error) {
+      console.error("Django proxy error:", error);
+      return NextResponse.json(
+        { error: "Backend unavailable" },
+        { status: 502 }
+      );
+    }
+  }
+
   return NextResponse.next();
 }
 
-// Only match routes that need middleware processing
-// API proxying is handled by next.config.ts rewrites
+// Run middleware on API routes AND double admin paths
 export const config = {
   matcher: [
+    "/api/:path*",
     "/admin/admin/:path*",
     "/kategori/:path*"
   ],

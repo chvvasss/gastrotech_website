@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.meta_title || post.title || "Blog Detay",
       description: post.meta_description || post.excerpt,
     };
-  } catch {
+  } catch (error) {
+    console.error(error);
     return {
       title: "Blog Yazısı Bulunamadı",
     };
@@ -35,7 +36,8 @@ export default async function BlogPostPage({ params }: Props) {
 
   try {
     post = await fetchBlogPost(slug);
-  } catch {
+  } catch (error) {
+    console.error(error);
     notFound();
   }
 

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Gastrotech",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/assets/favicon.png",
   },
 };
 

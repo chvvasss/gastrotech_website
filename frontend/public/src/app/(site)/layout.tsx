@@ -17,7 +17,8 @@ export default function SiteLayout({
         <PageLoader />
       </Suspense>
       <Header />
-      <main id="main-content" className="flex-1">{children}</main>
+      {/* FIXED: Added padding-bottom to ensure content never touches footer */}
+      <main id="main-content" className="flex-1 pb-16">{children}</main>
       <WhatsAppButton />
       <InstagramButton />
       <Footer />

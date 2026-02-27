@@ -137,6 +137,8 @@ export function useCart() {
       });
     },
     onError: (error) => {
+      console.error("[useCart] Add item error:", error);
+
       if (error instanceof ApiError && error.isConflict) {
         toast({
           title: "Stok yetersiz",
@@ -144,6 +146,8 @@ export function useCart() {
           variant: "destructive",
         });
       } else if (error instanceof ApiError) {
+        // Log detailed API error
+        console.error(`[useCart] API Error ${error.status}:`, error.body);
         toast({
           title: "Hata",
           description: error.body || `Ürün eklenirken bir hata oluştu (${error.status}).`,

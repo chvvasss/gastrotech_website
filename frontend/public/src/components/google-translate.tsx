@@ -87,16 +87,16 @@ export function GoogleTranslateScript() {
                     pointer-events: none !important;
                 }
                 
-                /* Keep html as scroll container so sticky positioning works */
-                html {
-                    overflow-x: clip !important;
-                    overflow-y: auto !important;
-                }
-
                 /* Keep body at top, prevent shift */
                 body {
                     top: 0px !important;
                     position: static !important;
+                }
+
+                /* Prevent Google Translate from breaking sticky navbar */
+                html {
+                    overflow-x: clip !important;
+                    overflow-y: auto !important;
                 }
                 
                 /* Hide the -MOST and other Google injected text */

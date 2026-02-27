@@ -87,7 +87,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section - Rotating Background */}
-      <section className="relative min-h-[55vh] sm:min-h-[60vh] lg:min-h-[75vh] flex flex-col justify-center overflow-hidden bg-black">
+      <section className="relative min-h-[60vh] lg:min-h-[75vh] flex flex-col justify-center overflow-hidden bg-black">
         {/* Background Images */}
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
@@ -110,32 +110,32 @@ export default function HomePage() {
             </motion.div>
           </AnimatePresence>
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Content */}
-        <Container className="relative z-10 py-12 sm:py-20 flex-1 flex flex-col justify-center items-center">
+        <Container className="relative z-10 py-20 flex-1 flex flex-col justify-center items-center">
           <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-[1.75rem] leading-[1.2] sm:text-5xl lg:text-6xl font-bold text-white tracking-tight sm:leading-tight mb-3 sm:mb-6 drop-shadow-lg">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-6 drop-shadow-lg">
               Profesyonel <span className="text-primary">Mutfak Çözümleri</span>
             </h1>
 
-            <p className="text-sm sm:text-xl text-gray-200 max-w-2xl mx-auto font-normal leading-relaxed mb-6 sm:mb-10 drop-shadow-md px-2">
+            <p className="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto font-normal leading-relaxed mb-10 drop-shadow-md">
               1985&apos;ten bu yana endüstriyel mutfak sektöründe kalite öncüsü.
               <br className="hidden sm:block" />
               Size özel projelendirme ve üretim seçenekleriyle.
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-2 sm:px-0">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button
                 asChild
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white rounded-sm h-12 px-8 text-sm sm:text-base font-semibold tracking-wide shadow-lg shadow-primary/20"
+                className="bg-primary hover:bg-primary/90 text-white rounded-sm h-12 px-8 text-base font-semibold tracking-wide shadow-lg shadow-primary/20"
               >
                 <Link href="/iletisim">
                   Hemen Teklif Al
@@ -146,7 +146,7 @@ export default function HomePage() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="bg-white/10 border-2 border-white/30 text-white hover:bg-white hover:text-black rounded-sm h-12 px-8 text-sm sm:text-base font-semibold tracking-wide backdrop-blur-sm"
+                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black rounded-sm h-12 px-8 text-base font-semibold tracking-wide"
               >
                 <Link href="/kategori">
                   Ürünleri İncele
@@ -157,9 +157,9 @@ export default function HomePage() {
         </Container>
 
         {/* Bottom Section: Indicators & Stats */}
-        <div className="relative z-10 w-full border-t border-white/10 bg-black/40 backdrop-blur-md">
+        <div className="relative z-10 w-full border-t border-white/10 bg-black/30 backdrop-blur-md">
           <Container>
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 py-4 sm:py-5">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-5">
 
               {/* Square Indicators */}
               <div className="flex gap-2.5 order-2 sm:order-1">
@@ -167,7 +167,7 @@ export default function HomePage() {
                   <button
                     key={idx}
                     onClick={() => setCurrentImageIndex(idx)}
-                    className={`h-2 sm:h-2.5 transition-all duration-300 rounded-sm ${idx === currentImageIndex ? "bg-primary w-7 sm:w-8" : "bg-white/30 hover:bg-white/50 w-2 sm:w-2.5"
+                    className={`h-2.5 transition-all duration-300 rounded-sm ${idx === currentImageIndex ? "bg-primary w-8" : "bg-white/30 hover:bg-white/50 w-2.5"
                       }`}
                     aria-label={`Go to slide ${idx + 1}`}
                   />
@@ -175,13 +175,13 @@ export default function HomePage() {
               </div>
 
               {/* Stats - Linear Layout with Dividers */}
-              <div className="flex items-center gap-4 sm:gap-8 order-1 sm:order-2">
+              <div className="flex items-center gap-6 sm:gap-8 order-1 sm:order-2">
                 {HERO_STATS.map((stat, i) => (
-                  <div key={i} className={`flex items-center gap-2 sm:gap-3 ${i !== 0 ? "border-l border-white/20 pl-4 sm:pl-8" : ""}`}>
-                    <stat.icon className="h-4 w-4 sm:h-7 sm:w-7 text-primary/90 stroke-[1.5] flex-shrink-0 hidden sm:block" />
+                  <div key={i} className={`flex items-center gap-3 ${i !== 0 ? "border-l border-white/20 pl-6 sm:pl-8" : ""}`}>
+                    <stat.icon className="h-6 w-6 sm:h-7 sm:w-7 text-primary/90 stroke-[1.5]" />
                     <div>
-                      <div className="text-base sm:text-2xl font-bold text-white leading-none tracking-tight">{stat.value}</div>
-                      <div className="text-[8px] sm:text-xs text-gray-400 uppercase tracking-wider mt-0.5 whitespace-nowrap">{stat.label}</div>
+                      <div className="text-xl sm:text-2xl font-bold text-white leading-none tracking-tight">{stat.value}</div>
+                      <div className="text-[10px] sm:text-xs text-gray-300 uppercase tracking-wider mt-0.5">{stat.label}</div>
                     </div>
                   </div>
                 ))}
@@ -192,8 +192,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Categories Grid Section */}
-      <section className="py-10 sm:py-16 lg:py-24 border-b bg-gray-50/50 relative overflow-hidden">
+      {/* Categories Grid Section - Reverted to Standard Grid */}
+      <section className="py-16 lg:py-24 border-b bg-gray-50/50 relative overflow-hidden">
         {/* Subtle decorative elements */}
         <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-sm translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 left-0 w-56 h-56 bg-primary/5 rounded-sm -translate-x-1/2 translate-y-1/2" />
@@ -201,12 +201,12 @@ export default function HomePage() {
         <div className="absolute bottom-20 right-8 w-2 h-16 bg-primary/10 hidden lg:block" />
 
         <Container className="relative z-10">
-          <div className="mb-8 sm:mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4">
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div className="h-8 sm:h-10 w-1 sm:w-1.5 rounded-sm bg-primary shadow-sm" />
+          <div className="mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="h-10 w-1.5 rounded-sm bg-primary shadow-sm" />
               <div>
-                <h2 className="text-xl sm:text-2xl font-bold lg:text-3xl text-foreground tracking-tight">Kategorilerimiz</h2>
-                <p className="text-muted-foreground mt-0.5 sm:mt-1 text-xs sm:text-sm lg:text-base">
+                <h2 className="text-2xl font-bold lg:text-3xl text-foreground tracking-tight">Kategorilerimiz</h2>
+                <p className="text-muted-foreground mt-1 text-sm sm:text-base">
                   Profesyonel ihtiyaçlarınız için geniş ürün yelpazesi
                 </p>
               </div>
@@ -259,17 +259,17 @@ export default function HomePage() {
       />
 
       {/* Photo Gallery Section */}
-      <section className="py-10 sm:py-16 lg:py-24 bg-white">
+      <section className="py-16 lg:py-24 bg-white">
         <Container>
           <motion.div
-            className="mb-8 sm:mb-12 text-center"
+            className="mb-12 text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight mb-3 sm:mb-4">Projelerimizden Görüntüler</h2>
-            <div className="h-1 w-16 sm:w-20 bg-primary mx-auto rounded-sm mb-4 sm:mb-6"></div>
-            <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-2">
+            <h2 className="text-2xl lg:text-3xl font-bold tracking-tight mb-4">Projelerimizden Görüntüler</h2>
+            <div className="h-1 w-20 bg-primary mx-auto rounded-sm mb-6"></div>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Yurt içi ve yurt dışında gerçekleştirdiğimiz anahtar teslim mutfak projelerinden seçkiler.
             </p>
           </motion.div>
@@ -279,7 +279,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section - Light & Clean */}
-      <section className="py-10 sm:py-16 lg:py-24 relative overflow-hidden bg-primary/5">
+      <section className="py-16 lg:py-24 relative overflow-hidden bg-primary/5">
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #000000 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
 
@@ -293,7 +293,7 @@ export default function HomePage() {
 
         <Container className="relative z-10">
           <motion.div
-            className="rounded-sm border border-border/50 bg-white p-6 sm:p-8 lg:p-16 text-center shadow-2xl shadow-primary/5 overflow-hidden relative"
+            className="rounded-sm border border-border/50 bg-white p-8 lg:p-16 text-center shadow-2xl shadow-primary/5 overflow-hidden relative"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -302,10 +302,10 @@ export default function HomePage() {
             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-500/10 blur-[120px] rounded-sm pointer-events-none"></div>
 
             <div className="relative z-10 max-w-2xl mx-auto">
-              <h2 className="text-2xl sm:text-3xl font-bold lg:text-4xl mb-4 sm:mb-6 text-foreground tracking-tight">
+              <h2 className="text-3xl font-bold lg:text-4xl mb-6 text-foreground tracking-tight">
                 Projeniz için Özel Çözümler
               </h2>
-              <p className="text-sm sm:text-lg text-muted-foreground mb-6 sm:mb-8 leading-relaxed">
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 İster yeni bir işletme kuruyor olun, ister mevcut mutfağınızı yenileyin.
                 Uzman ekibimiz ücretsiz keşif ve projelendirme için hazır.
               </p>

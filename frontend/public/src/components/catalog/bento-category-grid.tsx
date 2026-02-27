@@ -30,7 +30,7 @@ export function BentoCategoryGrid({
         const bottomCategories = categories.slice(6);     // Rest for 3-col grid
 
         return (
-            <div className="space-y-4 md:origin-top md:scale-[0.85]">
+            <div className="space-y-4 origin-top scale-[0.85]">
                 {/* Cinematic 5-Grid (Tall Middle) */}
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 auto-rows-[280px] md:h-[600px]">
                     {topCategories.map((category, index) => {
@@ -123,20 +123,18 @@ export function BentoCategoryGrid({
     return (
         <div className="mx-auto w-full">
             {/* Mobile: Horizontal Snap Scroll Carousel */}
-            <div className="md:hidden -mx-1 overflow-hidden">
-                <div className="overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory flex gap-3 px-1">
+            <div className="md:hidden overflow-hidden -mx-6">
+                <div className="px-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory flex gap-4">
                     {categories.slice(0, 5).map((cat) => (
-                        <div key={cat.id} className="snap-center shrink-0 w-[75vw] max-w-[280px]">
-                            <LargeCard category={cat} height="h-[240px] sm:h-[280px]" />
+                        <div key={cat.id} className="snap-center shrink-0 w-[85vw] max-w-[320px]">
+                            <LargeCard category={cat} height="h-[300px]" />
                         </div>
                     ))}
                     {showMoreCard && (
-                        <div className="snap-center shrink-0 w-[120px] sm:w-[140px]">
+                        <div className="snap-center shrink-0 w-[150px]">
                             <MoreCard remainingCount={Math.max(0, categories.length - 5)} />
                         </div>
                     )}
-                    {/* End spacer for safe scrolling */}
-                    <div className="shrink-0 w-1" />
                 </div>
             </div>
 

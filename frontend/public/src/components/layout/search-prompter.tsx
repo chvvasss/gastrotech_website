@@ -57,42 +57,42 @@ export function SearchPrompter({ onSearch }: SearchPrompterProps) {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -20, scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    className="fixed top-[120px] sm:top-24 left-3 right-3 sm:left-auto sm:right-8 z-40 sm:w-[380px] sm:max-w-[380px]"
+                    className="fixed top-24 right-4 sm:right-8 z-40 w-[90vw] sm:w-[380px] max-w-[380px]"
                 >
-                    <div className="relative overflow-hidden rounded-sm border border-primary/20 bg-white/95 backdrop-blur-md shadow-2xl shadow-primary/10 p-3 sm:p-5">
+                    <div className="relative overflow-hidden rounded-sm border border-primary/20 bg-white/90 backdrop-blur-md shadow-2xl shadow-primary/10 p-4 sm:p-5">
                         {/* Glossy Effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-white via-white/80 to-transparent z-[-1]" />
                         <div className="absolute -top-10 -right-10 h-32 w-32 bg-primary/10 blur-3xl rounded-full pointer-events-none" />
 
                         <button
                             onClick={handleDismiss}
-                            className="absolute top-2 right-2 text-muted-foreground/50 hover:text-foreground transition-colors p-1.5 z-10"
+                            className="absolute top-2 right-2 text-muted-foreground/50 hover:text-foreground transition-colors p-1"
                         >
                             <X className="h-4 w-4" />
                         </button>
 
-                        <div className="flex gap-3 sm:gap-4">
+                        <div className="flex gap-4">
                             <div className="flex-shrink-0">
-                                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg shadow-primary/20">
-                                    <Search className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                                <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg shadow-primary/20">
+                                    <Search className="h-6 w-6 text-white" />
                                 </div>
                             </div>
 
-                            <div className="flex-1 min-w-0 pr-4">
-                                <h4 className="font-bold text-foreground text-xs sm:text-base flex items-center gap-1.5 sm:gap-2 mb-1">
-                                    <span className="truncate">Aradığınızı Bulamadınız mı?</span>
-                                    <Sparkles className="h-3 w-3 text-amber-500 animate-pulse flex-shrink-0" />
+                            <div className="flex-1 min-w-0">
+                                <h4 className="font-bold text-foreground text-sm sm:text-base flex items-center gap-2 mb-1">
+                                    Aradığınızı Bulamadınız mı?
+                                    <Sparkles className="h-3 w-3 text-amber-500 animate-pulse" />
                                 </h4>
-                                <p className="text-[11px] sm:text-sm text-muted-foreground leading-snug mb-2 sm:mb-3">
-                                    Binlerce ürün arasında size yardımcı olalım.
+                                <p className="text-xs sm:text-sm text-muted-foreground leading-snug mb-3">
+                                    Binlerce endüstriyel mutfak ürünü arasında size yardımcı olalım.
                                 </p>
 
                                 <Button
                                     onClick={handleSearchClick}
-                                    className="w-full text-xs sm:text-sm font-semibold h-8 sm:h-9 rounded-sm shadow-md shadow-primary/10 hover:shadow-primary/20 transition-all"
+                                    className="w-full text-xs sm:text-sm font-semibold h-9 rounded-sm shadow-md shadow-primary/10 hover:shadow-primary/20 transition-all"
                                 >
                                     Hemen Ara
-                                    <ArrowRight className="ml-2 h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                                    <ArrowRight className="ml-2 h-3.5 w-3.5" />
                                 </Button>
                             </div>
                         </div>
