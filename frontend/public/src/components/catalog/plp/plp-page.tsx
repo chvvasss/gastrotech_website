@@ -37,9 +37,11 @@ function PLPPageContent({ categorySlug }: PLPPageContentProps) {
         setPriceRange,
         toggleInStock,
         setSort,
-        setPage,
         clearAllFilters,
         clearBrands,
+        hasNextPage,
+        fetchNextPage,
+        isFetchingNextPage,
     } = usePLPQuery({ categorySlug });
 
     const hasActiveFilters =
@@ -136,7 +138,7 @@ function PLPPageContent({ categorySlug }: PLPPageContentProps) {
                             <LayoutGrid className="h-4 w-4" />
                             <span>
                                 <strong className="text-foreground">
-                                    {pagination.total.toLocaleString("tr-TR")}
+                                    {pagination?.total.toLocaleString("tr-TR") || 0}
                                 </strong>{" "}
                                 ürün bulundu
                             </span>
@@ -165,7 +167,7 @@ function PLPPageContent({ categorySlug }: PLPPageContentProps) {
                                 onPriceChange={setPriceRange}
                                 onStockToggle={toggleInStock}
                                 onClearAll={clearAllFilters}
-                                totalProducts={pagination.total}
+                                totalProducts={pagination?.total || 0}
                                 isLoading={isLoading}
                             />
 
@@ -182,15 +184,16 @@ function PLPPageContent({ categorySlug }: PLPPageContentProps) {
                     <PLPProductGrid products={products} isLoading={isLoading} />
 
                     {/* Pagination */}
-                    {pagination.total_pages > 1 && (
+                    {/* Infinite Scroll / Load More */}
+                    {hasNextPage && (
                         <div className="mt-10 flex justify-center">
-                            <Pagination
-                                currentPage={pagination.page}
-                                totalPages={pagination.total_pages}
-                                hasNext={pagination.has_next}
-                                hasPrev={pagination.has_prev}
-                                onPageChange={setPage}
-                            />
+                            <button
+                                onClick={() => fetchNextPage()}
+                                disabled={isFetchingNextPage}
+                                className="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"
+                            >
+                                {isFetchingNextPage ? "Yükleniyor..." : "Daha Fazla Göster"}
+                            </button>
                         </div>
                     )}
                 </main>
