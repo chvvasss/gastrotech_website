@@ -33,10 +33,10 @@ const REFERENCES = [
 
 // Hero background images from gallery
 const HERO_BACKGROUND_IMAGES = [
-  "/assets/hero-bg.png",
-  "/assets/hero-bg-2.png",
-  "/assets/hero-bg-3.png",
-  "/assets/hero-bg-4.png",
+  "/projects/IMG_6015.jpg",
+  "/projects/IMG_6041.jpg",
+  "/projects/IMG_6053.jpg",
+  "/projects/IMG_8421.jpg",
 ];
 
 // Stats for hero section
