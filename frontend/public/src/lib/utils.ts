@@ -21,22 +21,25 @@ export function formatPrice(price: number | string | null | undefined, currency 
 export function getMediaUrl(path: string | null | undefined): string {
   if (!path) return "/placeholder.svg";
 
-  // If running on client, strip backend absolute URLs (localhost) to use relative proxy path
-  // This fixes images not loading on mobile/ngrok when backend returns absolute localhost URLs
-  if (typeof window !== "undefined" && path.startsWith("http")) {
-    const cleanPath = path.replace(/^http:\/\/(localhost|127\.0\.0\.1):8000/, "");
-    // Only use the clean path if we actually stripped the domain (it implies it was a backend URL)
-    // and the result is a path starting with /
-    if (cleanPath !== path && cleanPath.startsWith("/")) {
-      return cleanPath;
+  const isServer = typeof window === "undefined";
+
+  // Client-side: strip any absolute backend URL to use relative proxy path
+  // This ensures images go through Next.js rewrites instead of hitting
+  // unreachable Docker-internal hostnames like http://backend:8000
+  if (!isServer && path.startsWith("http")) {
+    try {
+      const url = new URL(path);
+      return url.pathname + url.search;
+    } catch {
+      return path;
     }
   }
 
   if (path.startsWith("http")) return path;
 
-  // For relative paths, prepend base url (which is empty on client, absolute on server)
-  // This logic relies on endpoints.ts or env vars setting the base correctly
-  const base = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+  // Server-side: prepend base URL for direct backend access (Docker internal)
+  // Client-side: use relative URL so Next.js rewrites proxy to backend
+  const base = isServer ? (process.env.NEXT_PUBLIC_API_BASE_URL || "") : "";
   return `${base}${path}`;
 }
 

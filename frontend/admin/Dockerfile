@@ -17,6 +17,8 @@ COPY . .
 # NEXT_PUBLIC_* vars are baked into the client bundle during build
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+# Gateway mode: empty NEXT_PUBLIC_BACKEND_URL = use relative URLs via basePath
+ENV NEXT_PUBLIC_BACKEND_URL=""
 # Server-side env var used in next.config.ts rewrites (baked at build time)
 ENV DJANGO_URL="http://backend:8000"
 
@@ -38,6 +40,10 @@ COPY --from=builder /app/public ./public
 # Automatically leverage output traces to reduce image size
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+# Sharp for Next.js image optimization on Alpine (musl)
+COPY --from=builder /app/node_modules/sharp ./node_modules/sharp
+COPY --from=builder /app/node_modules/@img ./node_modules/@img
 
 USER nextjs
 
