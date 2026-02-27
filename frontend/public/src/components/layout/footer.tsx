@@ -25,13 +25,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-primary text-primary-foreground overflow-hidden">
+    <footer className="relative bg-zinc-950 text-zinc-300 overflow-hidden">
       {/* Top accent line */}
-      <div className="h-1 w-full bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+      <div className="h-1 w-full bg-gradient-to-r from-transparent via-primary to-transparent" />
 
       {/* Subtle background pattern */}
       <div
-        className="absolute inset-0 opacity-[0.05]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
           backgroundSize: "24px 24px",
@@ -59,7 +59,7 @@ export function Footer() {
                   />
                 </div>
               </Link>
-              <p className="text-sm text-primary-foreground/90 leading-relaxed">
+              <p className="text-sm text-zinc-400 leading-relaxed">
                 1985&apos;ten bu yana endüstriyel mutfak sektöründe kalite ve inovasyonun öncüsü.
                 Profesyonel mutfak ekipmanları üretim ve satışında Türkiye&apos;nin lider markası.
               </p>
@@ -70,7 +70,7 @@ export function Footer() {
                   href="https://www.instagram.com/gastrotech.tr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-sm bg-black/10 text-white hover:bg-white hover:text-primary transition-all duration-200 shadow-sm"
+                  className="flex h-9 w-9 items-center justify-center rounded-sm bg-zinc-800/80 text-zinc-400 hover:bg-primary hover:text-white transition-all duration-200"
                   aria-label="Instagram"
                 >
                   <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
@@ -81,7 +81,7 @@ export function Footer() {
                   href="https://wa.me/902122379055"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-sm bg-black/10 text-white hover:bg-[#25D366] hover:text-white transition-all duration-200 shadow-sm"
+                  className="flex h-9 w-9 items-center justify-center rounded-sm bg-zinc-800/80 text-zinc-400 hover:bg-[#25D366] hover:text-white transition-all duration-200"
                   aria-label="WhatsApp"
                 >
                   <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current">
@@ -96,7 +96,7 @@ export function Footer() {
               {/* Quick Links */}
               <div>
                 <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <span className="h-px w-4 bg-white/50" />
+                  <span className="h-px w-4 bg-primary" />
                   Hızlı Erişim
                 </h3>
                 <ul className="space-y-2.5">
@@ -104,9 +104,9 @@ export function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="group flex items-center gap-1.5 text-sm text-primary-foreground/80 hover:text-white transition-colors"
+                        className="group flex items-center gap-1.5 text-sm text-zinc-400 hover:text-white transition-colors"
                       >
-                        <ChevronRight className="h-3 w-3 text-white/50 group-hover:text-white transition-colors" />
+                        <ChevronRight className="h-3 w-3 text-zinc-600 group-hover:text-primary transition-colors" />
                         {link.label}
                       </Link>
                     </li>
@@ -117,7 +117,7 @@ export function Footer() {
               {/* Services */}
               <div>
                 <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <span className="h-px w-4 bg-white/50" />
+                  <span className="h-px w-4 bg-primary" />
                   Hizmetler
                 </h3>
                 <ul className="space-y-2.5">
@@ -125,9 +125,9 @@ export function Footer() {
                     <li key={i}>
                       <Link
                         href={link.href}
-                        className="group flex items-center gap-1.5 text-sm text-primary-foreground/80 hover:text-white transition-colors"
+                        className="group flex items-center gap-1.5 text-sm text-zinc-400 hover:text-white transition-colors"
                       >
-                        <ChevronRight className="h-3 w-3 text-white/50 group-hover:text-white transition-colors" />
+                        <ChevronRight className="h-3 w-3 text-zinc-600 group-hover:text-primary transition-colors" />
                         {link.label}
                       </Link>
                     </li>
@@ -138,34 +138,34 @@ export function Footer() {
               {/* Contact Info */}
               <div className="col-span-2 sm:col-span-1">
                 <h3 className="text-xs font-bold text-white uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <span className="h-px w-4 bg-white/50" />
+                  <span className="h-px w-4 bg-primary" />
                   İletişim
                 </h3>
                 <ul className="space-y-3">
                   <li>
                     <a
                       href="tel:+902122379055"
-                      className="flex items-start gap-2.5 text-sm text-primary-foreground/80 hover:text-white transition-colors group"
+                      className="flex items-start gap-2.5 text-sm text-zinc-400 hover:text-white transition-colors group"
                     >
-                      <Phone className="h-4 w-4 mt-0.5 text-white/70 flex-shrink-0" />
+                      <Phone className="h-4 w-4 mt-0.5 text-primary/70 flex-shrink-0" />
                       <span>+90 (212) 237 90 55</span>
                     </a>
                   </li>
                   <li>
                     <a
                       href="mailto:info@gastrotech.com.tr"
-                      className="flex items-start gap-2.5 text-sm text-primary-foreground/80 hover:text-white transition-colors group"
+                      className="flex items-start gap-2.5 text-sm text-zinc-400 hover:text-white transition-colors group"
                     >
-                      <Mail className="h-4 w-4 mt-0.5 text-white/70 flex-shrink-0" />
+                      <Mail className="h-4 w-4 mt-0.5 text-primary/70 flex-shrink-0" />
                       <span>info@gastrotech.com.tr</span>
                     </a>
                   </li>
-                  <li className="flex items-start gap-2.5 text-sm text-primary-foreground/80">
-                    <MapPin className="h-4 w-4 mt-0.5 text-white/70 flex-shrink-0" />
+                  <li className="flex items-start gap-2.5 text-sm text-zinc-400">
+                    <MapPin className="h-4 w-4 mt-0.5 text-primary/70 flex-shrink-0" />
                     <span>İkitelli OSB, İstanbul</span>
                   </li>
-                  <li className="flex items-start gap-2.5 text-sm text-primary-foreground/80">
-                    <Clock className="h-4 w-4 mt-0.5 text-white/70 flex-shrink-0" />
+                  <li className="flex items-start gap-2.5 text-sm text-zinc-400">
+                    <Clock className="h-4 w-4 mt-0.5 text-primary/70 flex-shrink-0" />
                     <span>Pzt-Cmt: 08:30 - 18:00</span>
                   </li>
                 </ul>
@@ -176,18 +176,18 @@ export function Footer() {
       </Container>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10 bg-black/10">
+      <div className="border-t border-zinc-800/80">
         <Container>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 py-5">
-            <p className="text-xs text-primary-foreground/60 text-center sm:text-left">
+            <p className="text-xs text-zinc-500 text-center sm:text-left">
               &copy; {currentYear} Gastrotech. Tüm hakları saklıdır.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="/gizlilik-politikasi" className="text-xs text-primary-foreground/60 hover:text-white transition-colors">
+              <Link href="/gizlilik-politikasi" className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors">
                 Gizlilik Politikası
               </Link>
-              <span className="text-white/20">|</span>
-              <Link href="/kvkk" className="text-xs text-primary-foreground/60 hover:text-white transition-colors">
+              <span className="text-zinc-700">|</span>
+              <Link href="/kvkk" className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors">
                 KVKK
               </Link>
             </div>
@@ -196,7 +196,7 @@ export function Footer() {
       </div>
 
       {/* Decorative corner accent */}
-      <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-tl-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 rounded-tl-full pointer-events-none" />
     </footer>
   );
 }
