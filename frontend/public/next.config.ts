@@ -55,47 +55,42 @@ const nextConfig: NextConfig = {
     ],
   },
   async rewrites() {
-    return {
+    return [
       // =====================
-      // ADMIN PANEL PROXY (beforeFiles)
-      // Must be beforeFiles so they run BEFORE the App Router filesystem check.
-      // With trailingSlash: true, /admin becomes /admin/ via redirect.
-      // If admin rewrites are in afterFiles, the App Router renders not-found.tsx
-      // before the rewrite ever runs, causing a 404.
-      // =====================
-      beforeFiles: [
-        {
-          source: "/admin",
-          destination: `${ADMIN_URL}/admin`,
-        },
-        {
-          source: "/admin/:path*",
-          destination: `${ADMIN_URL}/admin/:path*`,
-        },
-      ],
+      // ADMIN PANEL PROXY
+      // /admin/* -> ADMIN Next.js (3000)
+      {
+        source: "/admin",
+        destination: `http://frontend-admin:3001/admin`,
+      },
+      {
+        source: "/admin/:path*",
+        destination: `http://frontend-admin:3001/admin/:path*`,
+      },
 
       // =====================
-      // DJANGO API & STATIC/MEDIA PROXY (afterFiles)
-      // Rewrites use Node.js runtime (not Edge sandbox) so Docker DNS works.
-      // trailingSlash: true ensures URLs have trailing slashes for Django.
+      // DJANGO API PROXY
+      // trailingSlash: true ensures URLs have trailing slashes for Django
+      // Rewrites use Node.js runtime (not Edge sandbox) so Docker DNS works
       // =====================
-      afterFiles: [
-        {
-          source: "/api/:path*",
-          destination: `${DJANGO_URL}/api/:path*/`,
-        },
-        {
-          source: "/static/:path*",
-          destination: `${DJANGO_URL}/static/:path*`,
-        },
-        {
-          source: "/media/:path*",
-          destination: `${DJANGO_URL}/media/:path*`,
-        },
-      ],
+      {
+        source: "/api/:path*",
+        destination: `http://backend:8000/api/:path*/`,
+      },
 
-      fallback: [],
-    };
+      // =====================
+      // DJANGO STATIC/MEDIA PROXY
+      // /static/* ve /media/* -> Django (8000)
+      // =====================
+      {
+        source: "/static/:path*",
+        destination: `http://backend:8000/static/:path*`,
+      },
+      {
+        source: "/media/:path*",
+        destination: `http://backend:8000/media/:path*`,
+      },
+    ];
   },
   async redirects() {
     return [
