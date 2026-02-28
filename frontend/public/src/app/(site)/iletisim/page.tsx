@@ -368,7 +368,7 @@ export default function ContactPage() {
       {/* Centered Logo */}
       <div className="py-10 flex items-center justify-center bg-white">
         <Image
-          src="/assets/logo.png"
+          src="/assets/logo.webp"
           alt="Gastrotech"
           width={180}
           height={45}

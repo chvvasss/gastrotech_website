@@ -16,7 +16,7 @@ echo "============================================"
 
 # 1. Pull latest code
 echo ""
-echo "[1/7] Pulling latest code..."
+echo "[1/8] Pulling latest code..."
 cd "$REPO_DIR"
 git fetch origin main
 git reset --hard origin/main
@@ -24,14 +24,14 @@ echo "  OK - Code updated to $(git rev-parse --short HEAD)"
 
 # 2. Copy docker-compose (always update)
 echo ""
-echo "[2/7] Updating docker-compose.prod.yml..."
+echo "[2/8] Updating docker-compose.prod.yml..."
 cp "$REPO_DIR/vps-deploy/docker-compose.prod.yml" "$DEPLOY_DIR/docker-compose.prod.yml"
 echo "  OK"
 
 # 3. Update .env.prod - merge new vars from EXAMPLE template without overwriting existing
 TEMPLATE_FILE="$REPO_DIR/vps-deploy/.env.prod.example"
 echo ""
-echo "[3/7] Checking .env.prod for new variables..."
+echo "[3/8] Checking .env.prod for new variables..."
 if [ -f "$DEPLOY_DIR/.env.prod" ]; then
     if [ -f "$TEMPLATE_FILE" ]; then
         # Add any new variables from template that don't exist yet
@@ -64,7 +64,7 @@ fi
 
 # 4. Update nginx configs (PRESERVE certbot SSL modifications)
 echo ""
-echo "[4/7] Updating nginx configs (preserving SSL)..."
+echo "[4/8] Updating nginx configs (preserving SSL)..."
 for conf in gastrotech.com.tr api.gastrotech.com.tr admin.gastrotech.com.tr; do
     NGINX_FILE="/etc/nginx/sites-available/$conf"
     REPO_FILE="$REPO_DIR/vps-deploy/nginx/$conf"
@@ -95,23 +95,30 @@ nginx -t 2>/dev/null && echo "  Nginx config OK" || echo "  WARNING: Nginx confi
 
 # 5. Stop old containers
 echo ""
-echo "[5/7] Stopping old containers..."
+echo "[5/8] Stopping old containers..."
 cd "$DEPLOY_DIR"
 docker compose -f "$COMPOSE_FILE" down --remove-orphans 2>/dev/null || true
 echo "  OK"
 
 # 6. Rebuild and start (NO CACHE - ensures fresh builds)
 echo ""
-echo "[6/7] Building Docker images (no cache)..."
+echo "[6/8] Building Docker images (no cache)..."
 docker compose -f "$COMPOSE_FILE" build --no-cache --parallel
 echo "  OK - All images rebuilt"
 
 echo ""
-echo "[7/7] Starting services..."
+echo "[7/8] Starting services..."
 docker compose -f "$COMPOSE_FILE" up -d --force-recreate
 echo "  OK"
 
-# 7. Wait and verify
+# 8. Cleanup old Docker resources
+echo ""
+echo "[8/8] Cleaning up old Docker images and build cache..."
+docker image prune -af --filter "until=24h" 2>/dev/null || true
+docker builder prune -af --filter "until=24h" 2>/dev/null || true
+echo "  OK - Old images and cache cleaned"
+
+# Wait and verify
 echo ""
 echo "Waiting for services to start..."
 sleep 15

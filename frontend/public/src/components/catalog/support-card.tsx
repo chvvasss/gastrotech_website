@@ -38,7 +38,7 @@ export function SupportCard() {
                 <div className="relative mt-4 pt-4 border-t border-border/50 w-full flex justify-center opacity-80 grayscale hover:grayscale-0 transition-all">
                     <div className="relative h-6 w-32">
                         <Image
-                            src="/assets/logo.png"
+                            src="/assets/logo.webp"
                             alt="GastroTech"
                             fill
                             className="object-contain"

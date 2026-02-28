@@ -116,7 +116,7 @@ export function Header() {
               className="relative flex-shrink-0 h-9 w-[140px] sm:w-[160px] transition-all duration-300 hover:opacity-80"
             >
               <Image
-                src="/assets/logo.png"
+                src="/assets/logo.webp"
                 alt="Gastrotech"
                 fill
                 className="object-contain object-left"

@@ -69,7 +69,7 @@ export function PageLoader() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/assets/logo.png"
+                  src="/assets/logo.webp"
                   alt="Gastrotech"
                   width={180}
                   height={60}

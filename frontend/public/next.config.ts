@@ -28,9 +28,8 @@ const nextConfig: NextConfig = {
   output: "standalone",
 
   images: {
-    // Disable server-side image optimization in Docker standalone mode
-    // sharp on Alpine causes 400 errors; serve raw images instead
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       {
         protocol: "http",

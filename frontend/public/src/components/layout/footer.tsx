@@ -98,7 +98,7 @@ export function Footer() {
               className="relative inline-block h-10 w-[160px] transition-opacity hover:opacity-80"
             >
               <Image
-                src="/assets/footer_logo.png"
+                src="/assets/footer_logo.webp"
                 alt="Gastrotech"
                 fill
                 className="object-contain object-left"

@@ -69,7 +69,7 @@ export default function CategoriesPage() {
                 {/* Center Logo Area */}
                 <div className="bg-white px-8 md:px-20 py-6 flex items-center justify-center z-20 relative min-w-[200px]">
                     <Image
-                        src="/assets/footer_logo.png"
+                        src="/assets/footer_logo.webp"
                         alt="Gastrotech"
                         width={200}
                         height={50}
