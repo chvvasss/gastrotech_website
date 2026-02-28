@@ -76,11 +76,12 @@ from .services import create_product_for_leaf_node
 )
 class AdminBrandViewSet(viewsets.ModelViewSet):
     """CRUD ViewSet for brands."""
-    
+
     permission_classes = [IsAdminOrEditor]
     serializer_class = AdminBrandSerializer
     queryset = Brand.objects.all().select_related("logo_media")
     lookup_field = "slug"
+    pagination_class = None
     
     def get_queryset(self):
         queryset = super().get_queryset().annotate(products_count=Count("products"))
@@ -106,10 +107,11 @@ class AdminBrandViewSet(viewsets.ModelViewSet):
 )
 class AdminCategoryViewSet(viewsets.ModelViewSet):
     """CRUD ViewSet for categories."""
-    
+
     permission_classes = [IsAdminOrEditor]
     queryset = Category.objects.all().select_related("parent", "cover_media")
     lookup_field = "slug"
+    pagination_class = None
     
     def get_serializer_class(self):
         if self.action == "retrieve":
@@ -154,11 +156,12 @@ class AdminCategoryViewSet(viewsets.ModelViewSet):
 )
 class AdminSeriesViewSet(viewsets.ModelViewSet):
     """CRUD ViewSet for series."""
-    
+
     permission_classes = [IsAdminOrEditor]
     serializer_class = AdminSeriesSerializer
     queryset = Series.objects.all().select_related("category", "cover_media")
     lookup_field = "slug"
+    pagination_class = None
     
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -188,11 +191,12 @@ class AdminSeriesViewSet(viewsets.ModelViewSet):
 )
 class AdminTaxonomyNodeViewSet(viewsets.ModelViewSet):
     """CRUD ViewSet for taxonomy nodes."""
-    
+
     permission_classes = [IsAdminOrEditor]
     serializer_class = AdminTaxonomyNodeSerializer
     queryset = TaxonomyNode.objects.all().select_related("series", "parent")
     lookup_field = "id"
+    pagination_class = None
     
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -236,11 +240,12 @@ class AdminTaxonomyNodeViewSet(viewsets.ModelViewSet):
 )
 class AdminSpecKeyViewSet(viewsets.ModelViewSet):
     """CRUD ViewSet for specification keys."""
-    
+
     permission_classes = [IsAdminOrEditor]
     serializer_class = AdminSpecKeySerializer
     queryset = SpecKey.objects.all()
     lookup_field = "slug"
+    pagination_class = None
     
     def get_queryset(self):
         return super().get_queryset().order_by("sort_order", "label_tr")
@@ -261,11 +266,12 @@ class AdminSpecKeyViewSet(viewsets.ModelViewSet):
 )
 class AdminSpecTemplateViewSet(viewsets.ModelViewSet):
     """CRUD ViewSet for spec templates."""
-    
+
     permission_classes = [IsAdminOrEditor]
     serializer_class = AdminSpecTemplateSerializer
     queryset = SpecTemplate.objects.all().select_related("applies_to_series")
     lookup_field = "id"
+    pagination_class = None
     
     def get_queryset(self):
         queryset = super().get_queryset()

@@ -192,7 +192,7 @@ export function Footer() {
             <p className="font-medium">
               © {new Date().getFullYear()} Gastrotech. Tüm hakları saklıdır.
             </p>
-            <div className="flex gap-6">
+            <div className="flex items-center gap-6">
               <Link href="/gizlilik" className="hover:text-foreground transition-colors hover:underline">
                 Gizlilik Politikası
               </Link>
@@ -202,6 +202,15 @@ export function Footer() {
               <Link href="/kvkk" className="hover:text-foreground transition-colors hover:underline">
                 KVKK
               </Link>
+              <span className="hidden sm:inline text-border">|</span>
+              <a
+                href="https://mackatech.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors"
+              >
+                Designed by <span className="font-semibold">Mackatech</span>
+              </a>
             </div>
           </div>
         </Container>
