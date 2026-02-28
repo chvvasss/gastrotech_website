@@ -106,7 +106,7 @@ export function Header() {
       </a>
       <header
         ref={headerRef}
-        className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300"
+        className="sticky top-0 z-50 w-full border-b bg-white shadow-sm transition-all duration-300"
       >
         <Container>
           <div className="relative flex h-16 items-center justify-between gap-2 sm:gap-4 transition-all duration-300">
