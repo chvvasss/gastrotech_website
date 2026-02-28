@@ -83,12 +83,12 @@ const nextConfig: NextConfig = {
       // explicitly add it back in the destination.
       {
         source: "/api/:path*",
-        destination: `${DJANGO_URL}/api/:path*`,
+        destination: `${DJANGO_URL}/api/:path*/`,
       },
       // Django media files proxy (for QR codes, PDFs, and other FileField uploads)
       {
         source: "/media/:path*",
-        destination: `${DJANGO_URL}/media/:path*`,
+        destination: `${DJANGO_URL}/media/:path*/`,
       },
     ];
   },

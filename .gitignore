@@ -89,7 +89,8 @@ urunlerfotoupload/
 Yeni klasör/
 ceysonlar/
 ciktilar/
-assets/
+/assets/
+!frontend/public/public/assets/
 
 # === Root-level temp scripts & reports ===
 analyze_orphans.py
