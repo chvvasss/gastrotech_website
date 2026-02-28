@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCategoriesWithCounts } from "@/hooks/use-catalog-categories";
+import { getMediaUrl } from "@/lib/media-url";
 
 export default function CategoriesListPage() {
   const [search, setSearch] = useState("");
@@ -85,7 +86,7 @@ export default function CategoriesListPage() {
                   {category.cover_media_url && (
                     <div className="ml-3 flex-shrink-0">
                       <img
-                        src={category.cover_media_url}
+                        src={getMediaUrl(category.cover_media_url)}
                         alt={category.name}
                         className="w-16 h-16 object-cover rounded border border-stone-200"
                       />

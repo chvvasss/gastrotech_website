@@ -30,6 +30,7 @@ import {
 import { useBlogPosts, useDeleteBlogPost, useBlogCategories } from "@/hooks/use-blog";
 import { useDebounce } from "@/hooks/use-debounce";
 import type { BlogPost } from "@/lib/api/blog";
+import { getMediaUrl } from "@/lib/media-url";
 
 const STATUS_Map: Record<string, { label: string; variant: "default" | "secondary" | "outline" | "destructive" }> = {
     published: { label: "Yayında", variant: "default" },
@@ -73,7 +74,7 @@ export default function BlogListPage() {
                     {row.original.cover_url ? (
                         <div className="h-10 w-16 flex-shrink-0 overflow-hidden rounded bg-muted">
                             <img
-                                src={row.original.cover_url}
+                                src={getMediaUrl(row.original.cover_url)}
                                 alt=""
                                 className="h-full w-full object-cover"
                             />

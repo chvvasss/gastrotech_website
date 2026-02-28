@@ -8,7 +8,13 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL ?? "";
 
 // basePath: "/admin" olduğu için relative API path'lerinin başına eklenmeli
 const BASE_PATH = "/admin";
-const API_BASE_URL = BACKEND_URL ? `${BACKEND_URL}/api/v1` : `${BASE_PATH}/api/v1`;
+const isServer = typeof window === "undefined";
+
+// Client-side: always use relative paths through basePath rewrites
+// This avoids mixed-content errors and localhost connection failures in production
+const API_BASE_URL = isServer && BACKEND_URL
+  ? `${BACKEND_URL}/api/v1`
+  : `${BASE_PATH}/api/v1`;
 
 /**
  * Django APPEND_SLASH=True ile uyumluluk için trailing slash garantisi
