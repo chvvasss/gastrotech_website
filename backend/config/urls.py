@@ -35,7 +35,8 @@ urlpatterns = [
     path("api/v1/common/", include("apps.common.api.urls")),
 ]
 
-# Serve media files in development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Serve media files (QR codes, PDFs, etc.)
+# In production, nginx proxies /media/ to Django since there is no
+# separate nginx container — gunicorn handles media serving directly.
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
