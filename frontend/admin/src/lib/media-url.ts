@@ -49,33 +49,39 @@ export function getMediaUrl(relativePath: string | null | undefined): string {
 /**
  * Build a displayable URL for Django /media/ paths (e.g. /media/info_sheets/qrcodes/xxx.png).
  * Use this for FileField/ImageField URLs that go through Django's MEDIA_URL.
+ *
+ * Unlike getMediaUrl(), this does NOT prepend basePath (/admin) on the client.
+ * Nginx serves /media/ directly from Django, so the browser must request
+ * /media/... (not /admin/media/...) for nginx to match its location block.
+ * In development, the Next.js rewrite with basePath:false handles the proxy.
  */
 export function getDjangoMediaUrl(relativePath: string | null | undefined): string {
   if (!relativePath) return "";
 
   const isServer = typeof window === "undefined";
 
-  // Client-side: strip any absolute backend URL to use relative proxy path
+  // Client-side: strip any absolute backend URL to a relative /media/ path
   if (!isServer && relativePath.startsWith("http")) {
     try {
       const url = new URL(relativePath);
-      return `${BASE_PATH}${url.pathname}${url.search}`;
+      return `${url.pathname}${url.search}`;
     } catch {
       // fall through
     }
   }
 
-  // Client-side: always use relative paths through basePath rewrites
+  // Client-side: return path as-is (no basePath prefix)
+  // Nginx location /media/ handles the proxy to Django directly
   if (!isServer) {
     if (relativePath.startsWith("/")) {
-      return `${BASE_PATH}${relativePath}`;
+      return relativePath;
     }
-    return `${BASE_PATH}/${relativePath}`;
+    return `/${relativePath}`;
   }
 
   // Server-side: use absolute URL for direct backend access
   if (BACKEND_URL) {
     return `${BACKEND_URL}${relativePath}`;
   }
-  return `${BASE_PATH}${relativePath}`;
+  return relativePath;
 }

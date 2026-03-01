@@ -86,10 +86,12 @@ const nextConfig: NextConfig = {
         destination: `${DJANGO_URL}/api/:path*/`,
       },
       // Django media files proxy (for QR codes, PDFs, and other FileField uploads)
-      // NOTE: No trailing slash — unlike API routes, static files must not end with /
+      // basePath:false → matches /media/* directly (not /admin/media/*)
+      // In production nginx handles this, but in dev Next.js proxies it
       {
         source: "/media/:path*",
         destination: `${DJANGO_URL}/media/:path*`,
+        basePath: false,
       },
     ];
   },
