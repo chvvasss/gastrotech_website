@@ -27,11 +27,9 @@ const nextConfig: NextConfig = {
   // Enable standalone output for Docker
   output: "standalone",
 
-  // Image optimization disabled - API-served images (/api/v1/media/*) go
-  // through Next.js rewrites to the Django backend. The /_next/image optimizer
-  // rejects local /api/* URLs with 400. Static assets are already WebP.
   images: {
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
   async rewrites() {
     return [
@@ -45,6 +43,17 @@ const nextConfig: NextConfig = {
       {
         source: "/admin/:path*",
         destination: `http://frontend-admin:3001/admin/:path*`,
+      },
+
+      // =====================
+      // MEDIA PROXY for Image Optimization
+      // /_next/image rejects local /api/* URLs (400 Bad Request).
+      // getMediaUrl() rewrites /api/v1/media/* to /media-proxy/* so the
+      // Image Optimization API accepts it. This rule maps it back to Django.
+      // =====================
+      {
+        source: "/media-proxy/:path*",
+        destination: `http://backend:8000/api/v1/media/:path*/`,
       },
 
       // =====================
