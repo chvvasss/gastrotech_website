@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http",
+        hostname: "backend",
+        port: "8000",
+        pathname: "/api/v1/media/**",
+      },
+      {
+        protocol: "http",
         hostname: "localhost",
         port: "8000",
         pathname: "/api/v1/media/**",

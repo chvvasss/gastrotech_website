@@ -76,7 +76,7 @@ export function TopBrandBar({
                             {brand.logo_url && (
                                 <div className="relative h-12 w-24 flex-shrink-0 overflow-hidden rounded-sm bg-white/50">
                                     <Image
-                                        src={brand.logo_url}
+                                        src={getMediaUrl(brand.logo_url)}
                                         alt={brand.name}
                                         fill
                                         className="object-contain p-0.5"

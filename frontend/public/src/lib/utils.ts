@@ -21,12 +21,11 @@ export function formatPrice(price: number | string | null | undefined, currency 
 export function getMediaUrl(path: string | null | undefined): string {
   if (!path) return "/placeholder.svg";
 
-  const isServer = typeof window === "undefined";
-
-  // Client-side: strip any absolute backend URL to use relative proxy path
-  // This ensures images go through Next.js rewrites instead of hitting
-  // unreachable Docker-internal hostnames like http://backend:8000
-  if (!isServer && path.startsWith("http")) {
+  // If absolute URL, extract just the pathname so the request goes through
+  // Next.js rewrites (which proxy /api/* to the Django backend).
+  // This avoids hitting unreachable Docker-internal hostnames like
+  // http://backend:8000 from the browser or from the Image Optimization API.
+  if (path.startsWith("http")) {
     try {
       const url = new URL(path);
       return url.pathname + url.search;
@@ -35,12 +34,8 @@ export function getMediaUrl(path: string | null | undefined): string {
     }
   }
 
-  if (path.startsWith("http")) return path;
-
-  // Server-side: prepend base URL for direct backend access (Docker internal)
-  // Client-side: use relative URL so Next.js rewrites proxy to backend
-  const base = isServer ? (process.env.NEXT_PUBLIC_API_BASE_URL || "") : "";
-  return `${base}${path}`;
+  // Relative paths are returned as-is; Next.js rewrites handle proxying
+  return path;
 }
 
 export function slugify(text: string): string {
