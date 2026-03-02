@@ -26,7 +26,7 @@ export function SecondaryCategoryGrid({ categories }: SecondaryCategoryGridProps
                 >
                     <Link
                         href={`/kategori/${category.slug}`}
-                        className="group flex items-center h-20 bg-white border border-border/50 rounded-sm hover:border-primary/50 hover:shadow-sm transition-all overflow-hidden"
+                        className="group flex items-center h-20 bg-white border border-border/50 rounded-sm hover:border-primary/50 transition-all overflow-hidden"
                     >
                         {/* Image Section */}
                         <div className="relative w-20 h-full bg-muted/5 border-r border-border/50 p-2 shrink-0">

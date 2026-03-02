@@ -357,7 +357,7 @@ function CatalogCard({ category, className }: { category: NavCategory, className
         <Link
             href={`/kategori/${category.slug}`}
             className={cn(
-                "group block bg-white border border-border/50 rounded-sm hover:border-primary/50 hover:shadow-md transition-all duration-300 overflow-hidden h-full flex flex-col",
+                "group block bg-white border border-border/50 rounded-sm hover:border-primary/50 transition-all duration-300 overflow-hidden h-full flex flex-col",
                 className
             )}
         >
@@ -398,7 +398,7 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
         <Link
             href={`/kategori/${category.slug}`}
             className={cn(
-                "group relative flex flex-col overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all hover:shadow-lg",
+                "group relative flex flex-col overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all",
                 height
             )}
         >
@@ -435,7 +435,7 @@ function SmallCard({ category }: { category: NavCategory }) {
     return (
         <Link
             href={`/kategori/${category.slug}`}
-            className="group relative flex flex-row items-center h-full overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all hover:shadow-md"
+            className="group relative flex flex-row items-center h-full overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all"
         >
             <div className="relative w-1/3 h-full bg-white p-2">
                 {category.cover_media_url ? (
