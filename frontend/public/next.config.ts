@@ -28,8 +28,12 @@ const nextConfig: NextConfig = {
   output: "standalone",
 
   images: {
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60 * 60 * 24 * 30,
+    // unoptimized: bypass _next/image handler entirely.
+    // _next/image rejects rewritten proxy URLs (400 Bad Request) because
+    // the internal fetch targets Docker-internal hostnames (backend:8000).
+    // With unoptimized:true, <Image> renders a plain <img> tag and the
+    // browser fetches /api/v1/media/* directly through Next.js rewrites.
+    unoptimized: true,
   },
   async rewrites() {
     return [
@@ -43,17 +47,6 @@ const nextConfig: NextConfig = {
       {
         source: "/admin/:path*",
         destination: `http://frontend-admin:3001/admin/:path*`,
-      },
-
-      // =====================
-      // MEDIA PROXY for Image Optimization
-      // /_next/image rejects local /api/* URLs (400 Bad Request).
-      // getMediaUrl() rewrites /api/v1/media/* to /media-proxy/* so the
-      // Image Optimization API accepts it. This rule maps it back to Django.
-      // =====================
-      {
-        source: "/media-proxy/:path*",
-        destination: `http://backend:8000/api/v1/media/:path*/`,
       },
 
       // =====================

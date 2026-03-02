@@ -21,21 +21,16 @@ export function formatPrice(price: number | string | null | undefined, currency 
 export function getMediaUrl(path: string | null | undefined): string {
   if (!path) return "/placeholder.svg";
 
-  // If absolute URL, extract just the pathname
+  // Client-side: strip absolute backend URL to use relative proxy path.
+  // This ensures images go through Next.js rewrites instead of hitting
+  // unreachable Docker-internal hostnames like http://backend:8000
   if (path.startsWith("http")) {
     try {
       const url = new URL(path);
-      path = url.pathname + url.search;
+      return url.pathname + url.search;
     } catch {
       return path;
     }
-  }
-
-  // Rewrite /api/v1/media/* to /media-proxy/* so Next.js Image Optimization
-  // accepts it. The /_next/image handler rejects local /api/* URLs (400).
-  // A dedicated rewrite rule maps /media-proxy/* back to the Django backend.
-  if (path.startsWith("/api/v1/media/")) {
-    return path.replace("/api/v1/media/", "/media-proxy/");
   }
 
   return path;
