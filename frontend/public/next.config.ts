@@ -28,13 +28,14 @@ const nextConfig: NextConfig = {
   output: "standalone",
 
   images: {
+    // Custom loader: converts /api/v1/media/* to absolute backend URLs
+    // for _next/image server-side optimization. Browser only sees
+    // /_next/image?url=... (same-origin, no mixed content).
+    loaderFile: "./src/lib/image-loader.ts",
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
     deviceSizes: [640, 750, 828, 1080, 1200],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    // _next/image runs server-side so it CAN reach backend:8000 in Docker.
-    // Images must use absolute backend URLs (not relative /api/* paths)
-    // so the handler fetches directly without going through rewrites.
     remotePatterns: [
       {
         protocol: "http",

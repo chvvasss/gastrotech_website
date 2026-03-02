@@ -18,26 +18,21 @@ export function formatPrice(price: number | string | null | undefined, currency 
   }).format(numPrice);
 }
 
-// Backend base URL for image optimization.
-// _next/image handler runs server-side and CAN reach backend:8000 in Docker.
-// The browser never fetches this directly — it goes through /_next/image?url=...
-const BACKEND_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "http://backend:8000";
-
 export function getMediaUrl(path: string | null | undefined): string {
   if (!path) return "/placeholder.svg";
 
-  // Already an absolute URL — use as-is (remotePatterns will validate)
+  // Absolute URL from backend (e.g. http://backend:8000/api/v1/media/...)
+  // Strip to relative so the browser fetches via Next.js rewrite proxy
   if (path.startsWith("http")) {
-    return path;
+    try {
+      const url = new URL(path);
+      return url.pathname + url.search;
+    } catch {
+      return path;
+    }
   }
 
-  // Relative API path (e.g. /api/v1/media/uuid/file/) — make absolute so
-  // _next/image can fetch directly from backend without going through rewrites
-  if (path.startsWith("/api/v1/media/")) {
-    return `${BACKEND_BASE_URL}${path}`;
-  }
-
+  // Already relative (e.g. /api/v1/media/uuid/file/) — return as-is
   return path;
 }
 
