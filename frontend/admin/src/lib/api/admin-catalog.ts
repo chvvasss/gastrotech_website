@@ -12,13 +12,14 @@ export const adminCatalogApi = {
     const formData = new FormData();
     formData.append("file", file);
 
-    // IMPORTANT: Trailing slash for DRF
+    // Do NOT set Content-Type explicitly for FormData.
+    // The browser must set it automatically with the correct boundary.
     const response = await http.post<MediaUploadResponse>(
       "/admin/media/upload/",
       formData,
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": undefined as unknown as string,
         },
       }
     );
@@ -38,13 +39,13 @@ export const adminCatalogApi = {
     if (options?.alt) formData.append("alt", options.alt);
     if (options?.is_primary) formData.append("is_primary", "true");
 
-    // IMPORTANT: Trailing slash for DRF
+    // Do NOT set Content-Type explicitly for FormData.
     const response = await http.post<ProductMediaUploadResponse>(
       `/admin/products/${productId}/media/upload/`,
       formData,
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": undefined as unknown as string,
         },
       }
     );
@@ -107,10 +108,10 @@ export const adminCatalogApi = {
     formData.append("file", file);
     formData.append("dry_run", String(dryRun));
 
-    // IMPORTANT: Trailing slash for DRF
+    // Do NOT set Content-Type explicitly for FormData.
     const response = await http.post("/admin/bulk-upload/", formData, {
       headers: {
-        "Content-Type": "multipart/form-data",
+        "Content-Type": undefined as unknown as string,
       },
     });
     return response.data;

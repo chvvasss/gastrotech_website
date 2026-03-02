@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Upload, X, Loader2 } from "lucide-react";
 import { useMediaUpload } from "@/hooks/use-media";
@@ -17,6 +17,11 @@ export function ImageUpload({ value, onChange, currentImageUrl, className }: Ima
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [preview, setPreview] = useState<string | null>(currentImageUrl || null);
     const uploadMutation = useMediaUpload();
+
+    // Sync preview when currentImageUrl prop changes (e.g. opening edit for a different item)
+    useEffect(() => {
+        setPreview(currentImageUrl || null);
+    }, [currentImageUrl]);
 
     const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];

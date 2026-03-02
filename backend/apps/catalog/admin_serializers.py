@@ -155,12 +155,12 @@ class AdminCategorySerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
-        read_only_fields = ["id", "created_at", "updated_at", "cover_media_url", "products_count", "series_count"]
+        read_only_fields = ["id", "created_at", "updated_at", "cover_media_url", "parent", "products_count", "series_count"]
         extra_kwargs = {
             "slug": {"required": False, "allow_blank": True},
         }
         validators = []  # Disable implicit UniqueTogetherValidator due to field aliasing
-    
+
     def get_cover_media_url(self, obj):
         if obj.cover_media_id:
             return f"/api/v1/media/{obj.cover_media_id}/file/"
@@ -169,7 +169,7 @@ class AdminCategorySerializer(serializers.ModelSerializer):
 
 class AdminSeriesSerializer(serializers.ModelSerializer):
     """Full CRUD serializer for series."""
-    
+
     cover_media_url = serializers.SerializerMethodField(read_only=True)
     category_slug = serializers.SlugRelatedField(
         source="category",
@@ -177,7 +177,7 @@ class AdminSeriesSerializer(serializers.ModelSerializer):
         queryset=Category.objects.all(),
     )
     products_count = serializers.IntegerField(read_only=True, required=False)
-    
+
     class Meta:
         model = Series
         fields = [
