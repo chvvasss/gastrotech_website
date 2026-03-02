@@ -27,39 +27,11 @@ const nextConfig: NextConfig = {
   // Enable standalone output for Docker
   output: "standalone",
 
+  // Image optimization disabled - API-served images (/api/v1/media/*) go
+  // through Next.js rewrites to the Django backend. The /_next/image optimizer
+  // rejects local /api/* URLs with 400. Static assets are already WebP.
   images: {
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60 * 60 * 24 * 30,
-    remotePatterns: [
-      {
-        protocol: "http",
-        hostname: "backend",
-        port: "8000",
-        pathname: "/api/v1/media/**",
-      },
-      {
-        protocol: "http",
-        hostname: "localhost",
-        port: "8000",
-        pathname: "/api/v1/media/**",
-      },
-      {
-        protocol: "http",
-        hostname: "127.0.0.1",
-        port: "8000",
-        pathname: "/api/v1/media/**",
-      },
-      {
-        protocol: "https",
-        hostname: "api.gastrotech.com.tr",
-        pathname: "/api/v1/media/**",
-      },
-      {
-        protocol: "https",
-        hostname: "*.ngrok-free.dev",
-        pathname: "/api/v1/media/**",
-      },
-    ],
+    unoptimized: true,
   },
   async rewrites() {
     return [
