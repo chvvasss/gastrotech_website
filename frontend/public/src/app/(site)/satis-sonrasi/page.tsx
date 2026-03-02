@@ -112,11 +112,26 @@ export default function ServicePage() {
   return (
     <>
       {/* Header */}
-      <section className="bg-gradient-to-br from-primary to-primary/70 py-16 lg:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-        <Container className="text-center relative">
-          <h1 className="text-4xl font-bold text-white lg:text-6xl tracking-tight">Satış Sonrası Hizmetler</h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-white/90 leading-relaxed font-light">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary to-primary/90 py-16 lg:py-24">
+        {/* Decorative elements - Blurred circles */}
+        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-sm bg-white/10 blur-[100px]" />
+        <div className="absolute -bottom-20 -left-20 h-64 w-64 rounded-sm bg-black/20 blur-[100px]" />
+
+        {/* Geometric shapes */}
+        <div className="absolute top-8 left-8 w-20 h-20 border-2 border-white/20 rounded-sm hidden lg:block" />
+        <div className="absolute top-12 left-12 w-12 h-12 border border-white/10 rounded-sm hidden lg:block" />
+        <div className="absolute bottom-8 right-8 w-24 h-24 border-2 border-white/15 rounded-sm hidden lg:block" />
+        <div className="absolute top-1/2 right-16 w-4 h-4 bg-white/20 rotate-45 -translate-y-1/2 hidden md:block" />
+        <div className="absolute bottom-16 left-1/4 w-6 h-6 bg-white/10 rounded-sm hidden md:block" />
+
+        {/* Lines */}
+        <div className="absolute top-0 left-1/3 w-px h-16 bg-gradient-to-b from-transparent via-white/20 to-transparent hidden lg:block" />
+        <div className="absolute bottom-0 right-1/3 w-px h-16 bg-gradient-to-t from-transparent via-white/20 to-transparent hidden lg:block" />
+        <div className="absolute top-1/2 left-4 w-12 h-0.5 bg-white/15 -translate-y-1/2 hidden md:block" />
+
+        <Container className="relative text-center z-10">
+          <h1 className="text-3xl font-bold text-white lg:text-5xl">Satış Sonrası Hizmetler</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
             Yatırımınızın uzun ömürlü ve verimli çalışması için satış sonrası süreci titizlikle yönetiyoruz.
             Kurulum, bakım, arıza tespiti ve orijinal yedek parça desteği.
           </p>

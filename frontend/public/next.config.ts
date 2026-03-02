@@ -28,12 +28,38 @@ const nextConfig: NextConfig = {
   output: "standalone",
 
   images: {
-    // unoptimized: bypass _next/image handler entirely.
-    // _next/image rejects rewritten proxy URLs (400 Bad Request) because
-    // the internal fetch targets Docker-internal hostnames (backend:8000).
-    // With unoptimized:true, <Image> renders a plain <img> tag and the
-    // browser fetches /api/v1/media/* directly through Next.js rewrites.
-    unoptimized: true,
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    // _next/image runs server-side so it CAN reach backend:8000 in Docker.
+    // Images must use absolute backend URLs (not relative /api/* paths)
+    // so the handler fetches directly without going through rewrites.
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "backend",
+        port: "8000",
+        pathname: "/api/v1/media/**",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "8000",
+        pathname: "/api/v1/media/**",
+      },
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        port: "8000",
+        pathname: "/api/v1/media/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.gastrotech.com.tr",
+        pathname: "/api/v1/media/**",
+      },
+    ],
   },
   async rewrites() {
     return [
