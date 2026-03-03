@@ -63,13 +63,13 @@ export function CategoryDiscoveryBar({ categories }: CategoryDiscoveryBarProps) 
                                             className="group/card flex flex-col items-center p-4 bg-white border border-border rounded-sm transition-all duration-300 hover:border-primary/40 hover:shadow-lg"
                                         >
                                             {/* Category Image */}
-                                            <div className="relative h-16 w-16 mb-3 rounded-sm overflow-hidden bg-muted">
+                                            <div className="relative h-16 w-16 mb-3 rounded-sm overflow-hidden bg-zinc-100">
                                                 {category.cover_media_url ? (
                                                     <Image
                                                         src={getMediaUrl(category.cover_media_url)}
                                                         alt={category.name}
                                                         fill
-                                                        className="object-cover transition-transform duration-300 group-hover/card:scale-110"
+                                                        className="object-contain p-1 transition-transform duration-300 group-hover/card:scale-110"
                                                     />
                                                 ) : (
                                                     <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-zinc-100 to-zinc-200 text-lg font-bold text-muted-foreground">

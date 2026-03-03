@@ -235,6 +235,7 @@ export default function CategoriesPage() {
         order: 0,
         is_featured: false,
         cover_media: null,
+        shadow_color: "",
     });
 
     const { data: categories, isLoading } = useCategories();
@@ -256,6 +257,7 @@ export default function CategoriesPage() {
             is_featured: false,
             cover_media: null,
             parent_slug: parentSlug || null,
+            shadow_color: "",
         });
         setFormOpen(true);
     };
@@ -272,6 +274,7 @@ export default function CategoriesPage() {
             is_featured: category.is_featured,
             cover_media: category.cover_media,
             parent_slug: category.parent_slug,
+            shadow_color: category.shadow_color || "",
         });
         setFormOpen(true);
     };
@@ -498,6 +501,48 @@ export default function CategoriesPage() {
                                     onChange={(val) => setFormData({ ...formData, cover_media: val })}
                                     currentImageUrl={getMediaUrlById(formData.cover_media)}
                                 />
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label htmlFor="shadow_color">Gölge Rengi</Label>
+                                <div className="flex items-center gap-3">
+                                    <input
+                                        type="color"
+                                        id="shadow_color_picker"
+                                        value={formData.shadow_color || "#000000"}
+                                        onChange={(e) => setFormData({ ...formData, shadow_color: e.target.value })}
+                                        className="h-10 w-14 cursor-pointer rounded border border-stone-200 p-1"
+                                    />
+                                    <Input
+                                        id="shadow_color"
+                                        value={formData.shadow_color || ""}
+                                        onChange={(e) => setFormData({ ...formData, shadow_color: e.target.value })}
+                                        placeholder="#FF6B35"
+                                        className="flex-1 font-mono"
+                                        maxLength={7}
+                                    />
+                                    {formData.shadow_color && (
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="sm"
+                                            onClick={() => setFormData({ ...formData, shadow_color: "" })}
+                                            className="text-xs text-stone-500"
+                                        >
+                                            Kaldır
+                                        </Button>
+                                    )}
+                                </div>
+                                {formData.shadow_color && (
+                                    <div
+                                        className="h-3 w-full rounded-full"
+                                        style={{
+                                            boxShadow: `0 4px 14px -2px ${formData.shadow_color}66, 0 2px 6px -2px ${formData.shadow_color}33`,
+                                            backgroundColor: formData.shadow_color + "22",
+                                        }}
+                                    />
+                                )}
+                                <p className="text-xs text-stone-500">Kart gölgesinin rengi. Boş bırakılırsa varsayılan gölge kullanılır.</p>
                             </div>
                         </div>
                     </div>

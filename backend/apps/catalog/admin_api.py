@@ -201,7 +201,7 @@ def validate_image_content(content: bytes) -> Tuple[bool, Optional[int], Optiona
         img.load()
 
         # Check dimensions are reasonable
-        if img.width > 10000 or img.height > 10000:
+        if img.width > 25000 or img.height > 25000:
             return False, None, None
 
         return True, img.width, img.height

@@ -250,10 +250,10 @@ class CategoryLogoGroupSerializer(serializers.ModelSerializer):
 
 class CategoryListSerializer(serializers.ModelSerializer):
     """Category list serializer with cover media URL."""
-    
+
     cover_media_url = serializers.SerializerMethodField()
     parent_slug = serializers.SerializerMethodField()
-    
+
     class Meta:
         model = Category
         fields = [
@@ -266,6 +266,7 @@ class CategoryListSerializer(serializers.ModelSerializer):
             "is_featured",
             "cover_media_url",
             "parent_slug",
+            "shadow_color",
         ]
     
     def get_cover_media_url(self, obj):
@@ -303,6 +304,7 @@ class CategoryTreeSerializer(serializers.ModelSerializer):
             "is_featured",
             "cover_media_url",
             "parent_slug",
+            "shadow_color",
             "is_leaf",
             "products_count",
             "subcategory_count",
@@ -359,6 +361,7 @@ class CategoryChildrenSerializer(serializers.ModelSerializer):
             "is_featured",
             "cover_media_url",
             "parent_slug",
+            "shadow_color",
             "products_count",
         ]
 
@@ -1029,6 +1032,7 @@ class NavCategorySerializer(serializers.ModelSerializer):
             "order",
             "is_featured",
             "cover_media_url",
+            "shadow_color",
             "series",
             "visible_series",
             "children",

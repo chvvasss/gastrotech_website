@@ -216,13 +216,13 @@ export function BentoVariant({
                                                 onClick={() => onSeriesSelect(s.slug)}
                                                 className="group relative overflow-hidden rounded-sm border border-border bg-card transition-all hover:border-primary/50 hover:shadow-md text-left"
                                             >
-                                                <div className="relative aspect-[16/9] w-full bg-muted">
+                                                <div className="relative aspect-[16/9] w-full bg-zinc-50">
                                                     {s.cover_media_url ? (
                                                         <Image
                                                             src={getMediaUrl(s.cover_media_url)}
                                                             alt={s.name}
                                                             fill
-                                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                            className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
                                                         />
                                                     ) : (
                                                         <div className="flex h-full w-full items-center justify-center">

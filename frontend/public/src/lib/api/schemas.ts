@@ -68,6 +68,7 @@ export const NavCategorySchema: z.ZodType<NavCategory> = z.lazy(() =>
     order: z.number(),
     is_featured: z.boolean(),
     cover_media_url: z.string().nullable(),
+    shadow_color: z.string().optional(),
     series: z.array(NavSeriesSchema),
     visible_series: z.array(NavSeriesSchema).optional(),
     children: z.array(NavCategorySchema).optional(),
@@ -83,6 +84,7 @@ export interface NavCategory {
   order: number;
   is_featured: boolean;
   cover_media_url: string | null;
+  shadow_color?: string;
   series: NavSeries[];
   visible_series?: NavSeries[];
   children?: NavCategory[];
@@ -105,6 +107,7 @@ export const CategorySchema: z.ZodType<Category> = z.lazy(() =>
     is_featured: z.boolean().optional(),
     cover_media_url: z.string().nullable(),
     parent_slug: z.string().nullable().optional(),
+    shadow_color: z.string().optional(),
     is_leaf: z.boolean().optional(),
     products_count: z.number().optional(),
     subcategory_count: z.number().optional(),
@@ -122,6 +125,7 @@ export interface Category {
   is_featured?: boolean;
   cover_media_url: string | null;
   parent_slug?: string | null;
+  shadow_color?: string;
   is_leaf?: boolean;
   products_count?: number;
   subcategory_count?: number;

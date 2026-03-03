@@ -165,9 +165,25 @@ export function MediaTab({ product }: MediaTabProps) {
     })
   );
 
+  const MAX_FILE_SIZE_MB = 100;
+  const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
+
   const handleFileSelect = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (!files || files.length === 0) return;
+
+    // Client-side file size validation
+    const oversizedFiles = Array.from(files).filter(f => f.size > MAX_FILE_SIZE_BYTES);
+    if (oversizedFiles.length > 0) {
+      const names = oversizedFiles.map(f => `${f.name} (${(f.size / (1024 * 1024)).toFixed(1)} MB)`).join(", ");
+      toast({
+        title: "Dosya çok büyük",
+        description: `Maksimum ${MAX_FILE_SIZE_MB} MB yüklenebilir. Büyük dosyalar: ${names}`,
+        variant: "destructive",
+      });
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
 
     setUploading(true);
 
@@ -179,10 +195,11 @@ export function MediaTab({ product }: MediaTabProps) {
         title: "Yükleme tamamlandı",
         description: `${files.length} dosya yüklendi`,
       });
-    } catch {
+    } catch (error: any) {
+      const backendMsg = error?.response?.data?.error;
       toast({
         title: "Yükleme hatası",
-        description: "Bazı dosyalar yüklenemedi",
+        description: backendMsg || "Bazı dosyalar yüklenemedi",
         variant: "destructive",
       });
     } finally {

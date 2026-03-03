@@ -7,10 +7,11 @@ export function useMediaUpload() {
 
     return useMutation({
         mutationFn: mediaApi.upload,
-        onError: () => {
+        onError: (error: any) => {
+            const backendMsg = error?.response?.data?.error;
             toast({
-                title: "Hata",
-                description: "Dosya yüklenirken bir sorun oluştu.",
+                title: "Yükleme başarısız",
+                description: backendMsg || "Dosya yüklenirken bir sorun oluştu.",
                 variant: "destructive",
             });
         },

@@ -13,6 +13,7 @@ export interface AdminCategory extends Category {
     id: string;
     parent: string | null;
     cover_media: string | null;
+    shadow_color: string;
     products_count?: number;
     series_count?: number;
     series?: AdminSeries[];
@@ -29,6 +30,7 @@ export interface CreateCategoryPayload {
     is_featured?: boolean;
     cover_media?: string | null;
     parent_slug?: string | null;
+    shadow_color?: string;
 }
 
 export interface UpdateCategoryPayload extends Partial<CreateCategoryPayload> { }

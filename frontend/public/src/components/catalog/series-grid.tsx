@@ -53,13 +53,13 @@ export function SeriesGrid({ series, onSelect, isLoading = false }: SeriesGridPr
                     onClick={() => handleSelect(item)}
                 >
                     {/* Image Area */}
-                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+                    <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-50">
                         {item.single_product_image_url || item.cover_media_url ? (
                             <Image
                                 src={getMediaUrl(item.single_product_image_url || item.cover_media_url)}
                                 alt={item.single_product_name || item.name}
                                 fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         ) : (

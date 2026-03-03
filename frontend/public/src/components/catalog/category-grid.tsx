@@ -76,37 +76,41 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
     mouseY.set(clientY - top);
   }
 
+  const shadowColor = category.shadow_color || "";
+  const cardShadow = shadowColor
+    ? { boxShadow: `0 8px 24px -4px ${shadowColor}55, 0 4px 12px -4px ${shadowColor}33` }
+    : {};
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative h-full w-full overflow-hidden rounded-sm bg-muted"
+      className="group relative h-full w-full overflow-hidden rounded-sm bg-zinc-900"
+      style={cardShadow}
       onMouseMove={handleMouseMove}
     >
       <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
         {/* Background Image */}
-        <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
+        <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">
           {category.cover_media_url ? (
             <Image
               src={getMediaUrl(category.cover_media_url)}
               alt={category.name}
               fill
-              className="object-cover"
+              className="object-contain p-4"
               sizes={isTall ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, 25vw"}
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-zinc-900">
-              <span className="text-7xl font-black text-white/5 opacity-50 select-none">
-                {category.name.charAt(0)}
-              </span>
-            </div>
+            <span className="text-7xl font-black text-white/5 opacity-50 select-none">
+              {category.name.charAt(0)}
+            </span>
           )}
         </div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 opacity-60 transition-opacity duration-300 group-hover:opacity-75" />
 
         {/* Spotlight Effect */}
         <motion.div

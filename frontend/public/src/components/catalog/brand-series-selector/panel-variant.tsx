@@ -211,13 +211,13 @@ export function PanelVariant({
                                             )}
                                         >
                                             {/* Thumbnail */}
-                                            <div className="relative h-14 w-20 shrink-0 rounded-sm overflow-hidden bg-muted">
+                                            <div className="relative h-14 w-20 shrink-0 rounded-sm overflow-hidden bg-zinc-50">
                                                 {s.cover_media_url ? (
                                                     <Image
                                                         src={getMediaUrl(s.cover_media_url)}
                                                         alt={s.name}
                                                         fill
-                                                        className="object-cover"
+                                                        className="object-contain p-1"
                                                         sizes="80px"
                                                     />
                                                 ) : (

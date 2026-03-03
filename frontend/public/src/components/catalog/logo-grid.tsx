@@ -211,13 +211,13 @@ export function LogoGrid({ logoGroups, onSeriesSelect, selectedBrandSlug }: Logo
                                 className="group relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-md"
                             >
                                 {/* Image Area */}
-                                <div className="absolute inset-0 bg-muted">
+                                <div className="absolute inset-0 bg-zinc-50">
                                     {group.heading.cover_media_url ? (
                                         <Image
                                             src={getMediaUrl(group.heading.cover_media_url)}
                                             alt={group.heading.series_name}
                                             fill
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                                         />
                                     ) : (
                                         <div className="flex h-full w-full items-center justify-center bg-primary/5">
@@ -269,13 +269,13 @@ function SeriesCard({ series, index, onSelect }: { series: LogoGroupSeries, inde
             onClick={onSelect}
             className="group relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-border bg-card transition-all duration-300 hover:border-primary/50 hover:shadow-md"
         >
-            <div className="absolute inset-0 bg-muted">
+            <div className="absolute inset-0 bg-zinc-50">
                 {series.cover_media_url ? (
                     <Image
                         src={getMediaUrl(series.cover_media_url)}
                         alt={series.series_name}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
                     />
                 ) : (
                     <div className="flex h-full w-full items-center justify-center bg-secondary/10">

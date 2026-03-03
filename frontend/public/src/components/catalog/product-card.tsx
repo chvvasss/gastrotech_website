@@ -26,7 +26,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
       className="group relative flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-all duration-300 hover:shadow-xl hover:border-primary"
     >
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted block">
+      <div className="relative aspect-[4/3] w-full overflow-hidden bg-white block">
         <Link href={productUrl} className="absolute inset-0 z-0 h-full w-full block">
           {hasImage ? (
             <>
@@ -35,7 +35,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 alt={product.title_tr || product.slug}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-contain p-3 transition-transform duration-500 group-hover:scale-105"
                 priority={priority}
               />
               {/* Subtle Gradient Overlay on Hover for text contrast if needed */}

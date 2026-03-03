@@ -227,6 +227,13 @@ class Category(TimeStampedUUIDModel):
         help_text="Controls series requirement for products: disabled (no series), optional (default), required",
     )
 
+    shadow_color = models.CharField(
+        max_length=7,
+        blank=True,
+        default="",
+        help_text="Hex color for card shadow (e.g. #FF6B35). Empty = no colored shadow.",
+    )
+
     class Meta:
         verbose_name = "category"
         verbose_name_plural = "categories"

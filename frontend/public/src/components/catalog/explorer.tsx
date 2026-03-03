@@ -541,13 +541,13 @@ export function Explorer() {
                           href={`/urun/${product.slug}`}
                           className="flex items-center gap-3 rounded-sm bg-background p-3 transition-all hover:bg-background/80 hover:scale-[1.02] shadow-sm group border border-border/50"
                         >
-                          <div className="relative h-14 w-14 overflow-hidden rounded-sm bg-muted flex-shrink-0 border border-border">
+                          <div className="relative h-14 w-14 overflow-hidden rounded-sm bg-white flex-shrink-0 border border-border">
                             {product.primary_image_url ? (
                               <Image
                                 src={getMediaUrl(product.primary_image_url)}
                                 alt={product.title_tr || product.slug}
                                 fill
-                                className="object-cover transition-transform group-hover:scale-110"
+                                className="object-contain p-1 transition-transform group-hover:scale-110"
                               />
                             ) : (
                               <div className="flex h-full w-full items-center justify-center text-xs text-muted-foreground">

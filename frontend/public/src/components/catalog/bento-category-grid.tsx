@@ -7,6 +7,12 @@ import { Grid3X3, ChevronsRight, ArrowRight, Sparkles } from "lucide-react";
 import { NavCategory } from "@/lib/api/schemas";
 import { getMediaUrl, cn } from "@/lib/utils";
 
+// Shadow style helper
+function getShadowStyle(color?: string) {
+    if (!color) return {};
+    return { boxShadow: `0 8px 24px -4px ${color}55, 0 4px 12px -4px ${color}33` };
+}
+
 interface BentoCategoryGridProps {
     categories: NavCategory[];
     maxVisible?: number;
@@ -197,31 +203,30 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
 
     return (
         <div
-            className="group relative h-full w-full overflow-hidden rounded-sm bg-muted"
+            className="group relative h-full w-full overflow-hidden rounded-sm bg-zinc-900"
+            style={getShadowStyle(category.shadow_color)}
             onMouseMove={handleMouseMove}
         >
             <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
                 {/* Background Image */}
-                <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
+                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">
                     {category.cover_media_url ? (
                         <Image
                             src={getMediaUrl(category.cover_media_url)}
                             alt={category.name}
                             fill
-                            className="object-cover"
+                            className="object-contain p-4"
                             sizes={isTall ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, 33vw"}
                         />
                     ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-zinc-900">
-                            <span className="text-9xl font-black text-white/5 opacity-50 select-none">
-                                {category.name.charAt(0)}
-                            </span>
-                        </div>
+                        <span className="text-9xl font-black text-white/5 opacity-50 select-none">
+                            {category.name.charAt(0)}
+                        </span>
                     )}
                 </div>
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 transition-opacity duration-300 group-hover:opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 opacity-60 transition-opacity duration-300 group-hover:opacity-75" />
 
                 {/* Spotlight Effect */}
                 <motion.div
@@ -280,26 +285,25 @@ function WideCard({ category }: { category: NavCategory }) {
 
     return (
         <div
-            className="group relative h-[280px] md:h-[260px] w-full overflow-hidden rounded-sm bg-muted"
+            className="group relative h-[280px] md:h-[260px] w-full overflow-hidden rounded-sm bg-zinc-900"
+            style={getShadowStyle(category.shadow_color)}
             onMouseMove={handleMouseMove}
         >
             <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
                 {/* Background Image */}
-                <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-105">
+                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">
                     {category.cover_media_url ? (
                         <Image
                             src={getMediaUrl(category.cover_media_url)}
                             alt={category.name}
                             fill
-                            className="object-cover"
+                            className="object-contain p-6"
                             sizes="100vw"
                         />
                     ) : (
-                        <div className="flex h-full w-full items-center justify-center bg-zinc-900">
-                            <span className="text-9xl font-black text-white/5 opacity-50 select-none">
-                                {category.name.charAt(0)}
-                            </span>
-                        </div>
+                        <span className="text-9xl font-black text-white/5 opacity-50 select-none">
+                            {category.name.charAt(0)}
+                        </span>
                     )}
                 </div>
 
@@ -360,6 +364,7 @@ function CatalogCard({ category, className }: { category: NavCategory, className
                 "group block bg-white border border-border/50 rounded-sm hover:border-primary/50 transition-all duration-300 overflow-hidden h-full flex flex-col",
                 className
             )}
+            style={getShadowStyle(category.shadow_color)}
         >
             <div className="relative flex-1 bg-white p-4 min-h-[140px]">
                 {category.cover_media_url ? (
@@ -398,11 +403,12 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
         <Link
             href={`/kategori/${category.slug}`}
             className={cn(
-                "group relative flex flex-col overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all",
+                "group relative flex flex-col overflow-hidden rounded-sm bg-zinc-900 border border-border/40 hover:border-primary/50 transition-all",
                 height
             )}
+            style={getShadowStyle(category.shadow_color)}
         >
-            <div className="absolute inset-0 bg-white p-6">
+            <div className="absolute inset-0 flex items-center justify-center p-6">
                 {category.cover_media_url ? (
                     <Image
                         src={getMediaUrl(category.cover_media_url)}
@@ -412,13 +418,11 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
                         sizes="(max-width: 768px) 100vw, 33vw"
                     />
                 ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-primary/5">
-                        <span className="text-8xl font-black text-primary/10">{category.name.charAt(0)}</span>
-                    </div>
+                    <span className="text-8xl font-black text-white/5">{category.name.charAt(0)}</span>
                 )}
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 opacity-60 group-hover:opacity-75 transition-opacity duration-300" />
 
             <div className="relative mt-auto p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                 <h3 className="text-2xl font-bold leading-tight mb-2">{category.menu_label || category.name}</h3>
@@ -436,8 +440,9 @@ function SmallCard({ category }: { category: NavCategory }) {
         <Link
             href={`/kategori/${category.slug}`}
             className="group relative flex flex-row items-center h-full overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all"
+            style={getShadowStyle(category.shadow_color)}
         >
-            <div className="relative w-1/3 h-full bg-white p-2">
+            <div className="relative w-1/3 h-full bg-gray-50 p-2">
                 {category.cover_media_url ? (
                     <Image
                         src={getMediaUrl(category.cover_media_url)}

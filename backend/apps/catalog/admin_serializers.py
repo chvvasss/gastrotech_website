@@ -148,6 +148,7 @@ class AdminCategorySerializer(serializers.ModelSerializer):
             "is_featured",
             "cover_media",
             "cover_media_url",
+            "shadow_color",
             "parent",
             "parent_slug",
             "products_count",

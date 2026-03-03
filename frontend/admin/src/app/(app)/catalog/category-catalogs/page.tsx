@@ -123,11 +123,23 @@ export default function CategoryCatalogsPage() {
         }
     };
 
+    const MAX_PDF_SIZE_MB = 100;
+    const MAX_PDF_SIZE_BYTES = MAX_PDF_SIZE_MB * 1024 * 1024;
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
             if (file.type !== "application/pdf") {
                 toast({ title: "Hata", description: "Sadece PDF dosyalari yuklenebilir", variant: "destructive" });
+                return;
+            }
+            if (file.size > MAX_PDF_SIZE_BYTES) {
+                const sizeMB = (file.size / (1024 * 1024)).toFixed(1);
+                toast({
+                    title: "Dosya çok büyük",
+                    description: `Dosya boyutu ${sizeMB} MB. Maksimum ${MAX_PDF_SIZE_MB} MB yüklenebilir.`,
+                    variant: "destructive",
+                });
                 return;
             }
             setSelectedFile(file);
@@ -152,8 +164,13 @@ export default function CategoryCatalogsPage() {
             try {
                 const uploadResult = await adminCatalogApi.mediaUpload(selectedFile);
                 mediaId = uploadResult.id;
-            } catch {
-                toast({ title: "Hata", description: "Dosya yukleme basarisiz", variant: "destructive" });
+            } catch (err: any) {
+                const backendMsg = err?.response?.data?.error;
+                toast({
+                    title: "Yükleme başarısız",
+                    description: backendMsg || "Dosya yükleme başarısız oldu",
+                    variant: "destructive",
+                });
                 setIsUploading(false);
                 return;
             }

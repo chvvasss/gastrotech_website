@@ -168,7 +168,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # Media upload settings
-MAX_MEDIA_UPLOAD_BYTES = env("MAX_MEDIA_UPLOAD_BYTES")  # Default 10MB
+MAX_MEDIA_UPLOAD_BYTES = env("MAX_MEDIA_UPLOAD_BYTES")  # Default 100MB
 
 # App version (for health checks and debugging)
 APP_VERSION = env("APP_VERSION", default="dev")
