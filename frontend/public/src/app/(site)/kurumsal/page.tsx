@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Award, Globe, Target, Zap, Building2 } from "lucide-react";
@@ -60,17 +61,15 @@ export default function CorporatePage() {
               </div>
             </div>
             <div className="relative aspect-square lg:aspect-[4/5] overflow-hidden rounded-sm group shadow-2xl border border-border/50">
-              <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900" />
-              <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+              <Image
+                src="/images/kurumsal/team-expo.png"
+                alt="Gastrotech ekibi fuar standında"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
               <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
-              <div className="flex h-full w-full items-center justify-center relative z-10">
-                  <div className="text-center space-y-3">
-                      <div className="h-16 w-16 rounded-sm bg-white/10 flex items-center justify-center mx-auto">
-                          <Building2 className="h-8 w-8 text-white/30" />
-                      </div>
-                      <p className="text-white/30 text-xs font-bold uppercase tracking-[0.2em]">Gastrotech Üretim</p>
-                  </div>
-              </div>
             </div>
           </div>
         </Container>
@@ -160,14 +159,29 @@ export default function CorporatePage() {
       {/* Global Reach */}
       <section className="py-20 bg-muted/20 border-t">
         <Container>
-          <div className="bg-white border rounded-sm p-12 lg:p-20 text-center max-w-5xl mx-auto relative overflow-hidden shadow-lg">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-[2px] bg-primary" />
-            <Globe className="h-16 w-16 text-primary mx-auto mb-8 opacity-20" />
-            <h2 className="text-3xl font-bold mb-6">Uluslararası Faaliyet</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Şirket merkezimiz ve fabrikalarımız Ankara’da olup, ayrıca Ukrayna’da da faaliyet göstererek
-              küresel pazarda gücümüzü artırmaya devam ediyoruz.
-            </p>
+          <div className="grid gap-10 lg:grid-cols-2 max-w-6xl mx-auto items-center">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-sm shadow-lg border border-border/50 group">
+              <Image
+                src="/images/kurumsal/showroom-training.png"
+                alt="Gastrotech showroom ve eğitim alanı"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
+            </div>
+            <div className="bg-white border rounded-sm p-10 lg:p-14 relative overflow-hidden shadow-lg">
+              <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
+              <Globe className="h-12 w-12 text-primary mb-6 opacity-20" />
+              <h2 className="text-3xl font-bold mb-4">Dağıtım Ağı & Showroom</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
+                Şirket merkezimiz ve fabrikalarımız Ankara&apos;da olup, ayrıca Ukrayna&apos;da da faaliyet göstererek
+                küresel pazarda gücümüzü artırmaya devam ediyoruz.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                81 ilde satış ağımız ve showroom alanlarımızla müşterilerimize yerinde deneyim sunuyoruz.
+              </p>
+            </div>
           </div>
         </Container>
       </section>

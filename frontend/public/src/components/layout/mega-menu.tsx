@@ -74,15 +74,15 @@ export function MegaMenuPanel({
                 onClick={onClose}
                 className="group flex items-start gap-3 rounded-sm border border-transparent p-2 transition-all hover:bg-muted/50 hover:border-border/50 hover:shadow-sm"
               >
-                {/* Larger Thumbnail (80px) */}
-                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-sm bg-zinc-100 shadow-sm border border-border/20">
+                {/* Category Thumbnail */}
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-sm bg-white shadow-sm border border-border/20">
                   {category.cover_media_url ? (
                     <Image
                       src={getMediaUrl(category.cover_media_url)}
                       alt={category.name}
                       fill
-                      className="object-contain p-1.5 transition-transform duration-500 group-hover:scale-110 transform-gpu"
-                      sizes="80px"
+                      className="object-contain p-2 transition-transform duration-500 group-hover:scale-110 transform-gpu"
+                      sizes="96px"
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-muted/30 text-muted-foreground">
