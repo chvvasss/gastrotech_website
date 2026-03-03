@@ -282,7 +282,15 @@ class MediaUploadView(APIView):
     )
     def post(self, request):
         client_ip = get_client_ip(request)
-        file = request.FILES.get("file")
+
+        try:
+            file = request.FILES.get("file")
+        except Exception as e:
+            logger.error(f"Failed to parse uploaded file: {e}", exc_info=True)
+            return Response(
+                {"error": f"Dosya alınamadı: {str(e)}", "code": "FILE_PARSE_ERROR"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         if not file:
             return Response(
@@ -308,7 +316,14 @@ class MediaUploadView(APIView):
         safe_filename = sanitize_filename(file.name)
 
         # 3. Read file content
-        file_content = file.read()
+        try:
+            file_content = file.read()
+        except Exception as e:
+            logger.error(f"Failed to read file content: {e}", exc_info=True)
+            return Response(
+                {"error": f"Dosya okunamadı: {str(e)}", "code": "FILE_READ_ERROR"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         # 4. Detect and validate content type
         declared_type = file.content_type or ""
@@ -391,16 +406,26 @@ class MediaUploadView(APIView):
                 )
 
         # 9. Create media object
-        media = Media.objects.create(
-            kind=kind,
-            filename=safe_filename,
-            content_type=detected_type,
-            bytes=file_content,
-            size_bytes=len(file_content),
-            width=width,
-            height=height,
-            checksum_sha256=hashlib.sha256(file_content).hexdigest(),
-        )
+        try:
+            media = Media.objects.create(
+                kind=kind,
+                filename=safe_filename,
+                content_type=detected_type,
+                bytes=file_content,
+                size_bytes=len(file_content),
+                width=width,
+                height=height,
+                checksum_sha256=hashlib.sha256(file_content).hexdigest(),
+            )
+        except Exception as e:
+            logger.error(
+                f"Failed to save media to database: {e} (file: {safe_filename}, size: {len(file_content)} bytes)",
+                exc_info=True,
+            )
+            return Response(
+                {"error": f"Dosya veritabanına kaydedilemedi: {str(e)}", "code": "DB_SAVE_ERROR"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
 
         logger.info(
             f"Media uploaded successfully: {media.id} ({safe_filename}, {detected_type}, {len(file_content)} bytes)",
