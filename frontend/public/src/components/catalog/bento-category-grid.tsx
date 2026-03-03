@@ -203,7 +203,7 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
 
     return (
         <div
-            className="group relative h-full w-full overflow-hidden rounded-sm bg-zinc-900"
+            className="group relative h-full w-full overflow-hidden rounded-sm bg-white border border-border/50"
             style={getShadowStyle(category.shadow_color)}
             onMouseMove={handleMouseMove}
         >
@@ -215,18 +215,18 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
                             src={getMediaUrl(category.cover_media_url)}
                             alt={category.name}
                             fill
-                            className="object-contain p-4"
+                            className="object-contain p-6"
                             sizes={isTall ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, 33vw"}
                         />
                     ) : (
-                        <span className="text-9xl font-black text-white/5 opacity-50 select-none">
+                        <span className="text-9xl font-black text-zinc-100 select-none">
                             {category.name.charAt(0)}
                         </span>
                     )}
                 </div>
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 opacity-60 transition-opacity duration-300 group-hover:opacity-75" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
 
                 {/* Spotlight Effect */}
                 <motion.div
@@ -235,7 +235,7 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
                         background: useMotionTemplate`
                             radial-gradient(
                                 600px circle at ${mouseX}px ${mouseY}px,
-                                rgba(255,255,255,0.1),
+                                rgba(0,0,0,0.03),
                                 transparent 80%
                             )
                         `,
@@ -245,7 +245,7 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                     {category.is_featured && (
-                        <div className="absolute right-4 top-4 rounded-sm bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+                        <div className="absolute right-4 top-4 rounded-sm bg-primary/10 px-3 py-1 text-xs font-semibold text-primary backdrop-blur-md">
                             <Sparkles className="mr-1 inline-block h-3 w-3" />
                             Öne Çıkan
                         </div>
@@ -253,13 +253,13 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
 
                     <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
                         <h3 className={cn(
-                            "font-bold text-white leading-tight drop-shadow-md",
+                            "font-bold text-foreground leading-tight",
                             isTall ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"
                         )}>
                             {category.menu_label || category.name}
                         </h3>
 
-                        <div className="mt-3 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-white/90 text-sm font-medium">
+                        <div className="mt-3 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-primary text-sm font-medium">
                             <span>İncele</span>
                             <ArrowRight className="h-4 w-4" />
                         </div>
@@ -285,7 +285,7 @@ function WideCard({ category }: { category: NavCategory }) {
 
     return (
         <div
-            className="group relative h-[280px] md:h-[260px] w-full overflow-hidden rounded-sm bg-zinc-900"
+            className="group relative h-[280px] md:h-[260px] w-full overflow-hidden rounded-sm bg-white border border-border/50"
             style={getShadowStyle(category.shadow_color)}
             onMouseMove={handleMouseMove}
         >
@@ -301,14 +301,14 @@ function WideCard({ category }: { category: NavCategory }) {
                             sizes="100vw"
                         />
                     ) : (
-                        <span className="text-9xl font-black text-white/5 opacity-50 select-none">
+                        <span className="text-9xl font-black text-zinc-100 select-none">
                             {category.name.charAt(0)}
                         </span>
                     )}
                 </div>
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-85" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
 
                 {/* Spotlight Effect */}
                 <motion.div
@@ -317,7 +317,7 @@ function WideCard({ category }: { category: NavCategory }) {
                         background: useMotionTemplate`
                             radial-gradient(
                                 800px circle at ${mouseX}px ${mouseY}px,
-                                rgba(255,255,255,0.08),
+                                rgba(0,0,0,0.03),
                                 transparent 70%
                             )
                         `,
@@ -327,17 +327,17 @@ function WideCard({ category }: { category: NavCategory }) {
                 {/* Content */}
                 <div className="absolute inset-0 flex items-center p-8">
                     <div className="transform transition-transform duration-300 group-hover:translate-x-2">
-                        <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight drop-shadow-md">
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
                             {category.menu_label || category.name}
                         </h3>
 
                         {category.children && category.children.length > 0 && (
-                            <p className="mt-1 text-sm text-white/60">
+                            <p className="mt-1 text-sm text-muted-foreground">
                                 {category.children.length} alt kategori
                             </p>
                         )}
 
-                        <div className="mt-3 flex items-center gap-2 text-white/90 text-sm font-medium">
+                        <div className="mt-3 flex items-center gap-2 text-primary text-sm font-medium">
                             <span>Ürünleri İncele</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
@@ -403,7 +403,7 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
         <Link
             href={`/kategori/${category.slug}`}
             className={cn(
-                "group relative flex flex-col overflow-hidden rounded-sm bg-zinc-900 border border-border/40 hover:border-primary/50 transition-all",
+                "group relative flex flex-col overflow-hidden rounded-sm bg-white border border-border/50 hover:border-primary/50 transition-all",
                 height
             )}
             style={getShadowStyle(category.shadow_color)}
@@ -418,15 +418,15 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
                         sizes="(max-width: 768px) 100vw, 33vw"
                     />
                 ) : (
-                    <span className="text-8xl font-black text-white/5">{category.name.charAt(0)}</span>
+                    <span className="text-8xl font-black text-zinc-100">{category.name.charAt(0)}</span>
                 )}
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 opacity-60 group-hover:opacity-75 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
 
-            <div className="relative mt-auto p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+            <div className="relative mt-auto p-6 text-foreground transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                 <h3 className="text-2xl font-bold leading-tight mb-2">{category.menu_label || category.name}</h3>
-                <div className="flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0 delay-75">
+                <div className="flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0 delay-75">
                     <span>İncele</span>
                     <ArrowRight className="h-4 w-4" />
                 </div>

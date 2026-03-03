@@ -87,7 +87,7 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative h-full w-full overflow-hidden rounded-sm bg-zinc-900"
+      className="group relative h-full w-full overflow-hidden rounded-sm bg-white border border-border/50"
       style={cardShadow}
       onMouseMove={handleMouseMove}
     >
@@ -99,18 +99,18 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
               src={getMediaUrl(category.cover_media_url)}
               alt={category.name}
               fill
-              className="object-contain p-4"
+              className="object-contain p-6"
               sizes={isTall ? "(max-width: 768px) 100vw, 33vw" : "(max-width: 768px) 100vw, 25vw"}
             />
           ) : (
-            <span className="text-7xl font-black text-white/5 opacity-50 select-none">
+            <span className="text-7xl font-black text-zinc-100 select-none">
               {category.name.charAt(0)}
             </span>
           )}
         </div>
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 opacity-60 transition-opacity duration-300 group-hover:opacity-75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
 
         {/* Spotlight Effect */}
         <motion.div
@@ -119,7 +119,7 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
             background: useMotionTemplate`
               radial-gradient(
                 600px circle at ${mouseX}px ${mouseY}px,
-                rgba(255,255,255,0.1),
+                rgba(0,0,0,0.03),
                 transparent 80%
               )
             `,
@@ -129,7 +129,7 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
         {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-end p-5">
           {category.is_featured && (
-            <div className="absolute right-4 top-4 rounded-sm bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+            <div className="absolute right-4 top-4 rounded-sm bg-primary/10 px-3 py-1 text-xs font-semibold text-primary backdrop-blur-md">
               <Sparkles className="mr-1 inline-block h-3 w-3" />
               Öne Çıkan
             </div>
@@ -137,13 +137,13 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
 
           <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
             <h3 className={cn(
-              "font-bold text-white leading-tight drop-shadow-md",
+              "font-bold text-foreground leading-tight",
               isTall ? "text-3xl md:text-4xl" : "text-lg md:text-xl"
             )}>
               {category.menu_label || category.name}
             </h3>
 
-            <div className="mt-2 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-white/90 text-sm font-medium">
+            <div className="mt-2 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-primary text-sm font-medium">
               <span>İncele</span>
               <ArrowRight className="h-4 w-4" />
             </div>
