@@ -48,6 +48,16 @@ BRAND_SLUG_MAP = {
     "gtech": "gastrotech",
 }
 
+# Category slug mapping (JSON value -> DB value)
+CATEGORY_SLUG_MAP = {
+    "bulasik": "bulasik-makineleri",
+    "hazirlik": "hazirlik-ekipmanlari",
+    "kafeterya": "kafeterya-ekipmanlari",
+    "pisirme": "pisirme-uniteleri",
+    "sogutma": "sogutma-uniteleri",
+    "tamamlayici": "tamamlayici-ekipmanlar",
+}
+
 
 @contextmanager
 def disabled_signals():
@@ -265,8 +275,13 @@ class Command(BaseCommand):
                     )
                 seen_model_codes.add(mc)
 
-        # Check category references against DB
-        cat_slugs = {item.get("category") for item in data if item.get("category")}
+        # Check category references against DB (apply mapping first)
+        cat_slugs = set()
+        for item in data:
+            raw = item.get("category", "")
+            mapped = CATEGORY_SLUG_MAP.get(raw, raw)
+            if mapped:
+                cat_slugs.add(mapped)
         existing_cats = set(
             Category.objects.filter(slug__in=cat_slugs).values_list("slug", flat=True)
         )
@@ -307,7 +322,8 @@ class Command(BaseCommand):
         info: Dict[str, Set[str]] = {}
         for item in data:
             series_raw = (item.get("series") or "").strip()
-            cat_slug = item.get("category", "")
+            cat_raw = item.get("category", "")
+            cat_slug = CATEGORY_SLUG_MAP.get(cat_raw, cat_raw)
             if not series_raw:
                 # Per-category default key
                 key = ("", cat_slug)
@@ -556,7 +572,8 @@ class Command(BaseCommand):
 
         for item in data:
             slug = item["slug"]
-            cat_slug = item.get("category", "")
+            cat_raw = item.get("category", "")
+            cat_slug = CATEGORY_SLUG_MAP.get(cat_raw, cat_raw)
             brand_raw = item.get("brand", "")
             brand_slug = BRAND_SLUG_MAP.get(brand_raw, brand_raw)
 
@@ -685,7 +702,8 @@ class Command(BaseCommand):
         for item in data:
             brand_raw = item.get("brand", "")
             brand_slug = BRAND_SLUG_MAP.get(brand_raw, brand_raw)
-            cat_slug = item.get("category", "")
+            cat_raw = item.get("category", "")
+            cat_slug = CATEGORY_SLUG_MAP.get(cat_raw, cat_raw)
 
             brand = brands.get(brand_slug)
             category = categories.get(cat_slug)
@@ -721,7 +739,8 @@ class Command(BaseCommand):
         """Resolve series for a product item, handling empty series per-category."""
         series_raw = (item.get("series") or "").strip()
         if not series_raw:
-            cat_slug = item.get("category", "")
+            cat_raw = item.get("category", "")
+            cat_slug = CATEGORY_SLUG_MAP.get(cat_raw, cat_raw)
             return series_map.get(("", cat_slug))
         return series_map.get(series_raw)
 
