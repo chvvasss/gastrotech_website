@@ -165,10 +165,24 @@ export default function CategoryCatalogsPage() {
                 const uploadResult = await adminCatalogApi.mediaUpload(selectedFile);
                 mediaId = uploadResult.id;
             } catch (err: any) {
-                const backendMsg = err?.response?.data?.error;
+                const backendMsg = err?.response?.data?.error
+                    || err?.response?.data?.detail
+                    || err?.response?.data?.message;
+                const statusCode = err?.response?.status;
+                const isTimeout = err?.code === "ECONNABORTED" || err?.message?.includes("timeout");
+                const isNetwork = err?.message === "Network Error";
+
+                let description = backendMsg || "Dosya yükleme başarısız oldu";
+                if (isTimeout) description = "Yükleme zaman aşımına uğradı. Dosya çok büyük olabilir veya bağlantı yavaş.";
+                else if (isNetwork) description = "Ağ hatası. İnternet bağlantınızı kontrol edin.";
+                else if (statusCode === 413) description = "Dosya sunucu limiti aşıyor. Daha küçük bir dosya deneyin.";
+                else if (statusCode === 502 || statusCode === 504) description = "Sunucu yanıt vermedi. Tekrar deneyin.";
+                else if (statusCode) description = `Sunucu hatası (${statusCode}): ${backendMsg || "Bilinmeyen hata"}`;
+
+                console.error("Upload error:", { status: statusCode, message: err?.message, data: err?.response?.data });
                 toast({
                     title: "Yükleme başarısız",
-                    description: backendMsg || "Dosya yükleme başarısız oldu",
+                    description,
                     variant: "destructive",
                 });
                 setIsUploading(false);

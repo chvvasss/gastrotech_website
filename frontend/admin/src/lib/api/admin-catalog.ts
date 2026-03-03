@@ -21,6 +21,9 @@ export const adminCatalogApi = {
         headers: {
           "Content-Type": undefined as unknown as string,
         },
+        timeout: 300000, // 5 min timeout for large file uploads
+        maxBodyLength: 150 * 1024 * 1024, // 150MB
+        maxContentLength: 150 * 1024 * 1024,
       }
     );
     return response.data;
@@ -47,6 +50,9 @@ export const adminCatalogApi = {
         headers: {
           "Content-Type": undefined as unknown as string,
         },
+        timeout: 300000, // 5 min timeout for large file uploads
+        maxBodyLength: 150 * 1024 * 1024,
+        maxContentLength: 150 * 1024 * 1024,
       }
     );
     return response.data;

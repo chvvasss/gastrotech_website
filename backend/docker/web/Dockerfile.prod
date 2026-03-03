@@ -92,7 +92,7 @@ CMD ["gunicorn", "config.wsgi:application", \
      "--threads", "2", \
      "--worker-class", "gthread", \
      "--worker-tmp-dir", "/dev/shm", \
-     "--timeout", "30", \
+     "--timeout", "120", \
      "--keep-alive", "5", \
      "--max-requests", "1000", \
      "--max-requests-jitter", "100", \
