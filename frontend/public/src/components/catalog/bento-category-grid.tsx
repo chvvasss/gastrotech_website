@@ -7,10 +7,10 @@ import { Grid3X3, ChevronsRight, ArrowRight, Sparkles } from "lucide-react";
 import { NavCategory } from "@/lib/api/schemas";
 import { getMediaUrl, cn } from "@/lib/utils";
 
-// Shadow style helper
-function getShadowStyle(color?: string) {
-    if (!color) return {};
-    return { boxShadow: `0 8px 24px -4px ${color}55, 0 4px 12px -4px ${color}33` };
+// Colored gradient style helper - used behind text at bottom of cards
+function getGradientStyle(color?: string, direction: string = "to top") {
+    if (!color) return null;
+    return { background: `linear-gradient(${direction}, ${color}CC, ${color}55 50%, transparent)` };
 }
 
 interface BentoCategoryGridProps {
@@ -201,10 +201,12 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
         mouseY.set(clientY - top);
     }
 
+    const sc = category.shadow_color || "";
+    const gradStyle = getGradientStyle(sc);
+
     return (
         <div
             className="group relative h-full w-full overflow-hidden rounded-sm bg-white border border-border/50"
-            style={getShadowStyle(category.shadow_color)}
             onMouseMove={handleMouseMove}
         >
             <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
@@ -225,8 +227,12 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
                     )}
                 </div>
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+                {/* Colored Gradient Overlay */}
+                {gradStyle ? (
+                    <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradStyle} />
+                ) : (
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+                )}
 
                 {/* Spotlight Effect */}
                 <motion.div
@@ -245,7 +251,10 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
                 {/* Content */}
                 <div className="absolute inset-0 flex flex-col justify-end p-6">
                     {category.is_featured && (
-                        <div className="absolute right-4 top-4 rounded-sm bg-primary/10 px-3 py-1 text-xs font-semibold text-primary backdrop-blur-md">
+                        <div className={cn(
+                            "absolute right-4 top-4 rounded-sm px-3 py-1 text-xs font-semibold backdrop-blur-md",
+                            sc ? "bg-white/20 text-white" : "bg-primary/10 text-primary"
+                        )}>
                             <Sparkles className="mr-1 inline-block h-3 w-3" />
                             Öne Çıkan
                         </div>
@@ -253,13 +262,17 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
 
                     <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
                         <h3 className={cn(
-                            "font-bold text-foreground leading-tight",
+                            "font-bold leading-tight",
+                            sc ? "text-white drop-shadow-md" : "text-foreground",
                             isTall ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"
                         )}>
                             {category.menu_label || category.name}
                         </h3>
 
-                        <div className="mt-3 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-primary text-sm font-medium">
+                        <div className={cn(
+                            "mt-3 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium",
+                            sc ? "text-white/90" : "text-primary"
+                        )}>
                             <span>İncele</span>
                             <ArrowRight className="h-4 w-4" />
                         </div>
@@ -283,10 +296,12 @@ function WideCard({ category }: { category: NavCategory }) {
         mouseY.set(clientY - top);
     }
 
+    const sc = category.shadow_color || "";
+    const gradStyle = getGradientStyle(sc, "to right");
+
     return (
         <div
             className="group relative h-[280px] md:h-[260px] w-full overflow-hidden rounded-sm bg-white border border-border/50"
-            style={getShadowStyle(category.shadow_color)}
             onMouseMove={handleMouseMove}
         >
             <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
@@ -307,8 +322,12 @@ function WideCard({ category }: { category: NavCategory }) {
                     )}
                 </div>
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+                {/* Colored Gradient Overlay */}
+                {gradStyle ? (
+                    <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradStyle} />
+                ) : (
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+                )}
 
                 {/* Spotlight Effect */}
                 <motion.div
@@ -327,17 +346,23 @@ function WideCard({ category }: { category: NavCategory }) {
                 {/* Content */}
                 <div className="absolute inset-0 flex items-center p-8">
                     <div className="transform transition-transform duration-300 group-hover:translate-x-2">
-                        <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
+                        <h3 className={cn(
+                            "text-2xl md:text-3xl font-bold leading-tight",
+                            sc ? "text-white drop-shadow-md" : "text-foreground"
+                        )}>
                             {category.menu_label || category.name}
                         </h3>
 
                         {category.children && category.children.length > 0 && (
-                            <p className="mt-1 text-sm text-muted-foreground">
+                            <p className={cn("mt-1 text-sm", sc ? "text-white/70" : "text-muted-foreground")}>
                                 {category.children.length} alt kategori
                             </p>
                         )}
 
-                        <div className="mt-3 flex items-center gap-2 text-primary text-sm font-medium">
+                        <div className={cn(
+                            "mt-3 flex items-center gap-2 text-sm font-medium",
+                            sc ? "text-white/90" : "text-primary"
+                        )}>
                             <span>Ürünleri İncele</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
@@ -357,14 +382,16 @@ function WideCard({ category }: { category: NavCategory }) {
    EXISTING CARDS (kept for bento/grid variants)
    ============================================ */
 function CatalogCard({ category, className }: { category: NavCategory, className?: string }) {
+    const sc = category.shadow_color || "";
+    const gradStyle = getGradientStyle(sc);
+
     return (
         <Link
             href={`/kategori/${category.slug}`}
             className={cn(
-                "group block bg-white border border-border/50 rounded-sm hover:border-primary/50 transition-all duration-300 overflow-hidden h-full flex flex-col",
+                "group block bg-white border border-border/50 rounded-sm hover:border-primary/50 transition-all duration-300 overflow-hidden h-full flex flex-col relative",
                 className
             )}
-            style={getShadowStyle(category.shadow_color)}
         >
             <div className="relative flex-1 bg-white p-4 min-h-[140px]">
                 {category.cover_media_url ? (
@@ -382,9 +409,17 @@ function CatalogCard({ category, className }: { category: NavCategory, className
                         </span>
                     </div>
                 )}
+
+                {/* Colored Gradient Overlay */}
+                {gradStyle && (
+                    <div className="absolute inset-0 transition-opacity duration-300 opacity-60 group-hover:opacity-75" style={gradStyle} />
+                )}
             </div>
 
-            <div className="px-4 py-3 border-t border-border/50 bg-muted/5">
+            <div className={cn(
+                "px-4 py-3 border-t border-border/50",
+                sc ? "bg-white" : "bg-muted/5"
+            )}>
                 <div className="flex items-center justify-between gap-2">
                     <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide leading-tight">
                         {category.menu_label || category.name}
@@ -399,6 +434,9 @@ function CatalogCard({ category, className }: { category: NavCategory, className
 }
 
 function LargeCard({ category, height = "h-full" }: { category: NavCategory, height?: string }) {
+    const sc = category.shadow_color || "";
+    const gradStyle = getGradientStyle(sc);
+
     return (
         <Link
             href={`/kategori/${category.slug}`}
@@ -406,7 +444,6 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
                 "group relative flex flex-col overflow-hidden rounded-sm bg-white border border-border/50 hover:border-primary/50 transition-all",
                 height
             )}
-            style={getShadowStyle(category.shadow_color)}
         >
             <div className="absolute inset-0 flex items-center justify-center p-6">
                 {category.cover_media_url ? (
@@ -422,11 +459,25 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
                 )}
             </div>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            {/* Colored Gradient Overlay */}
+            {gradStyle ? (
+                <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradStyle} />
+            ) : (
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            )}
 
-            <div className="relative mt-auto p-6 text-foreground transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 className="text-2xl font-bold leading-tight mb-2">{category.menu_label || category.name}</h3>
-                <div className="flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0 delay-75">
+            <div className={cn(
+                "relative mt-auto p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300",
+                sc ? "text-white" : "text-foreground"
+            )}>
+                <h3 className={cn(
+                    "text-2xl font-bold leading-tight mb-2",
+                    sc && "drop-shadow-md"
+                )}>{category.menu_label || category.name}</h3>
+                <div className={cn(
+                    "flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0 delay-75",
+                    sc ? "text-white/90" : "text-primary"
+                )}>
                     <span>İncele</span>
                     <ArrowRight className="h-4 w-4" />
                 </div>
@@ -436,11 +487,13 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
 }
 
 function SmallCard({ category }: { category: NavCategory }) {
+    const sc = category.shadow_color || "";
+    const gradStyle = getGradientStyle(sc, "to right");
+
     return (
         <Link
             href={`/kategori/${category.slug}`}
             className="group relative flex flex-row items-center h-full overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all"
-            style={getShadowStyle(category.shadow_color)}
         >
             <div className="relative w-1/3 h-full bg-gray-50 p-2">
                 {category.cover_media_url ? (
@@ -455,6 +508,11 @@ function SmallCard({ category }: { category: NavCategory }) {
                     <div className="flex h-full w-full items-center justify-center bg-primary/5">
                         <span className="text-3xl font-black text-primary/10">{category.name.charAt(0)}</span>
                     </div>
+                )}
+
+                {/* Colored Gradient Overlay */}
+                {gradStyle && (
+                    <div className="absolute inset-0 transition-opacity duration-300 opacity-50 group-hover:opacity-70" style={gradStyle} />
                 )}
             </div>
 

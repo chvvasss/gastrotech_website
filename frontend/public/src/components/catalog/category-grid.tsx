@@ -76,9 +76,9 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
     mouseY.set(clientY - top);
   }
 
-  const shadowColor = category.shadow_color || "";
-  const cardShadow = shadowColor
-    ? { boxShadow: `0 8px 24px -4px ${shadowColor}55, 0 4px 12px -4px ${shadowColor}33` }
+  const sc = category.shadow_color || "";
+  const gradientStyle = sc
+    ? { background: `linear-gradient(to top, ${sc}CC, ${sc}55 50%, transparent)` }
     : {};
 
   return (
@@ -88,7 +88,6 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group relative h-full w-full overflow-hidden rounded-sm bg-white border border-border/50"
-      style={cardShadow}
       onMouseMove={handleMouseMove}
     >
       <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
@@ -109,8 +108,12 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
           )}
         </div>
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+        {/* Colored Gradient Overlay */}
+        {sc ? (
+          <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradientStyle} />
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+        )}
 
         {/* Spotlight Effect */}
         <motion.div
@@ -129,7 +132,10 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
         {/* Content */}
         <div className="absolute inset-0 flex flex-col justify-end p-5">
           {category.is_featured && (
-            <div className="absolute right-4 top-4 rounded-sm bg-primary/10 px-3 py-1 text-xs font-semibold text-primary backdrop-blur-md">
+            <div className={cn(
+              "absolute right-4 top-4 rounded-sm px-3 py-1 text-xs font-semibold backdrop-blur-md",
+              sc ? "bg-white/20 text-white" : "bg-primary/10 text-primary"
+            )}>
               <Sparkles className="mr-1 inline-block h-3 w-3" />
               Öne Çıkan
             </div>
@@ -137,13 +143,17 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
 
           <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
             <h3 className={cn(
-              "font-bold text-foreground leading-tight",
+              "font-bold leading-tight",
+              sc ? "text-white drop-shadow-md" : "text-foreground",
               isTall ? "text-3xl md:text-4xl" : "text-lg md:text-xl"
             )}>
               {category.menu_label || category.name}
             </h3>
 
-            <div className="mt-2 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-primary text-sm font-medium">
+            <div className={cn(
+              "mt-2 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium",
+              sc ? "text-white/90" : "text-primary"
+            )}>
               <span>İncele</span>
               <ArrowRight className="h-4 w-4" />
             </div>
