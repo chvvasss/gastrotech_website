@@ -29,7 +29,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
   return (
     <div className="space-y-3">
       {/* Main Cinematic 5-Grid */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 auto-rows-[220px] md:h-[500px]">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4 auto-rows-[160px] sm:auto-rows-[200px] md:h-[500px]">
         {mainCategories.map((category, index) => (
           <div key={category.id} className={cn("relative w-full h-full", getGridClass(index))}>
             <CategoryCard
@@ -108,7 +108,7 @@ function CategoryCard({ category, index, isTall }: { category: NavCategory; inde
         )}
 
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-end p-5 z-10">
+        <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5 z-10">
           {category.is_featured && (
             <div className="absolute right-4 top-4 rounded-sm px-3 py-1 text-xs font-semibold bg-primary/10 text-primary backdrop-blur-sm">
               <Sparkles className="mr-1 inline-block h-3 w-3" />
@@ -119,12 +119,12 @@ function CategoryCard({ category, index, isTall }: { category: NavCategory; inde
           <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
             <h3 className={cn(
               "font-bold leading-tight text-foreground",
-              isTall ? "text-3xl md:text-4xl" : "text-lg md:text-xl"
+              isTall ? "text-base sm:text-xl md:text-3xl" : "text-sm sm:text-base md:text-xl"
             )}>
               {category.menu_label || category.name}
             </h3>
 
-            <div className="mt-2 flex items-center gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium text-primary">
+            <div className="mt-1 sm:mt-2 hidden sm:flex items-center gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium text-primary">
               <span>İncele</span>
               <ArrowRight className="h-4 w-4" />
             </div>

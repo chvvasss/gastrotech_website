@@ -19,15 +19,15 @@ function PLPProductCard({ product }: { product: PLPProduct }) {
         >
             {/* Stock badge */}
             {product.in_stock && (
-                <div className="absolute top-3 right-3 z-10">
-                    <span className="inline-flex items-center rounded-sm bg-destructive text-white px-2 py-1 text-[10px] font-bold tracking-wider shadow-sm">
+                <div className="absolute top-1.5 right-1.5 sm:top-3 sm:right-3 z-10">
+                    <span className="inline-flex items-center rounded-sm bg-destructive text-white px-1.5 py-0.5 sm:px-2 sm:py-1 text-[9px] sm:text-[10px] font-bold tracking-wider shadow-sm">
                         STOKTA
                     </span>
                 </div>
             )}
 
             {/* Image Area */}
-            <div className="relative aspect-square w-full bg-white p-4 group-hover:bg-[#fcfcfc] transition-colors duration-300">
+            <div className="relative aspect-square w-full bg-white p-2 sm:p-4 group-hover:bg-[#fcfcfc] transition-colors duration-300">
                 {product.hero_image_url ? (
                     <Image
                         src={getMediaUrl(product.hero_image_url)}
@@ -44,21 +44,21 @@ function PLPProductCard({ product }: { product: PLPProduct }) {
             </div>
 
             {/* Content Area */}
-            <div className="flex flex-1 flex-col p-4 pt-2 text-center">
+            <div className="flex flex-1 flex-col p-2.5 sm:p-4 pt-1.5 sm:pt-2 text-center">
                 {/* Brand - Subtle Grey */}
                 {product.brand && (
-                    <span className="mb-1 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
+                    <span className="mb-0.5 sm:mb-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
                         {product.brand.name}
                     </span>
                 )}
 
                 {/* Title - BOLD and DISTINCT */}
-                <h3 className="mb-2 line-clamp-2 text-sm font-bold leading-tight text-foreground min-h-[2.5em] group-hover:text-primary transition-colors">
+                <h3 className="mb-1 sm:mb-2 line-clamp-2 text-xs sm:text-sm font-bold leading-tight text-foreground min-h-[2em] sm:min-h-[2.5em] group-hover:text-primary transition-colors">
                     {product.title_tr ?? product.name}
                 </h3>
 
                 {/* Separator - Red accent on hover */}
-                <div className="w-12 h-0.5 bg-border mx-auto my-1.5 group-hover:bg-primary/20 transition-colors" />
+                <div className="w-8 sm:w-12 h-0.5 bg-border mx-auto my-1 sm:my-1.5 group-hover:bg-primary/20 transition-colors" />
 
                 {/* Price hidden - Catalog mode always active */}
             </div>
@@ -71,7 +71,7 @@ function PLPProductCard({ product }: { product: PLPProduct }) {
 export function PLPProductGrid({ products, isLoading = false }: PLPProductGridProps) {
     if (isLoading) {
         return (
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 sm:grid-cols-3 lg:grid-cols-4">
                 {Array.from({ length: 8 }).map((_, i) => (
                     <div key={i} className="aspect-[3/5] rounded-sm bg-muted/10 animate-pulse" />
                 ))}
@@ -97,7 +97,7 @@ export function PLPProductGrid({ products, isLoading = false }: PLPProductGridPr
 
     // Grid System
     return (
-        <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-3">
             {products.map((product) => (
                 <PLPProductCard key={product.id} product={product} />
             ))}

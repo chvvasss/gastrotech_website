@@ -16,14 +16,14 @@ export function ProductGrid({
   columns = 4,
 }: ProductGridProps) {
   const gridCols = {
-    2: "grid-cols-1 sm:grid-cols-2",
-    3: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
-    4: "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+    2: "grid-cols-2 gap-3 sm:gap-6",
+    3: "grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3",
+    4: "grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4",
   };
 
   if (isLoading) {
     return (
-      <div className={`grid gap-6 ${gridCols[columns]}`}>
+      <div className={`grid ${gridCols[columns]}`}>
         {Array.from({ length: 8 }).map((_, i) => (
           <ProductCardSkeleton key={i} />
         ))}
@@ -45,7 +45,7 @@ export function ProductGrid({
   }
 
   return (
-    <div className={`grid gap-6 ${gridCols[columns]}`}>
+    <div className={`grid ${gridCols[columns]}`}>
       {products.map((product, index) => (
         <ProductCard key={product.slug} product={product} priority={index < 4} />
       ))}
