@@ -204,11 +204,34 @@ class Command(BaseCommand):
     # ────────────────────────────────────────────────────────────────
 
     def _import_media(self, records, stats):
-        """Import Media records with optional binary data."""
+        """Import Media records with optional binary data.
+
+        Handles duplicate filenames gracefully: deduplicates existing
+        records before upserting (keeps the first, deletes the rest).
+        """
         from apps.catalog.models import Media
 
         count = len(records)
         self.stdout.write(f"  Importing {count} media records...")
+
+        # Deduplicate existing media by filename (keep first, delete rest)
+        from django.db.models import Count
+        dupes = (
+            Media.objects.values("filename")
+            .annotate(cnt=Count("id"))
+            .filter(cnt__gt=1)
+        )
+        dupe_count = 0
+        for d in dupes:
+            extras = Media.objects.filter(filename=d["filename"]).order_by("created_at")[1:]
+            extra_ids = list(extras.values_list("id", flat=True))
+            if extra_ids:
+                Media.objects.filter(id__in=extra_ids).delete()
+                dupe_count += len(extra_ids)
+        if dupe_count:
+            self.stdout.write(
+                self.style.WARNING(f"    Cleaned {dupe_count} duplicate media records")
+            )
 
         for i, r in enumerate(records, 1):
             if i % 200 == 0:
