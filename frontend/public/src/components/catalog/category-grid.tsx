@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { NavCategory } from "@/lib/api/schemas";
-import { getMediaUrl, cn } from "@/lib/utils";
+import { getMediaUrl, cn, hexToRgb } from "@/lib/utils";
 
 interface CategoryGridProps {
   categories: NavCategory[];
@@ -32,7 +32,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2 auto-rows-[220px] md:h-[500px]">
         {mainCategories.map((category, index) => (
           <div key={category.id} className={cn("relative w-full h-full", getGridClass(index))}>
-            <ModernCategoryCard
+            <CategoryCard
               category={category}
               index={index}
               isTall={index === 1}
@@ -41,7 +41,7 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
         ))}
       </div>
 
-      {/* Other Categories - Single CTA Bar */}
+      {/* Other Categories CTA Bar */}
       {otherCategories.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -66,20 +66,8 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
   );
 }
 
-function ModernCategoryCard({ category, index, isTall }: { category: NavCategory; index: number; isTall?: boolean }) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
-  const sc = category.shadow_color || "";
-  const gradientStyle = sc
-    ? { background: `linear-gradient(to top, ${sc}CC, ${sc}55 50%, transparent)` }
-    : {};
+function CategoryCard({ category, index, isTall }: { category: NavCategory; index: number; isTall?: boolean }) {
+  const accentRgb = category.shadow_color ? hexToRgb(category.shadow_color) : null;
 
   return (
     <motion.div
@@ -87,12 +75,12 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative h-full w-full overflow-hidden rounded-sm bg-white border border-border/50"
-      onMouseMove={handleMouseMove}
+      className="category-card group relative h-full w-full overflow-hidden rounded-sm bg-white"
+      style={accentRgb ? { '--card-accent': accentRgb } as React.CSSProperties : undefined}
     >
       <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
-        {/* Background Image */}
-        <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">
+        {/* Product Image — clean, no overlay */}
+        <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.03]">
           {category.cover_media_url ? (
             <Image
               src={getMediaUrl(category.cover_media_url)}
@@ -108,34 +96,21 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
           )}
         </div>
 
-        {/* Colored Gradient Overlay */}
-        {sc ? (
-          <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradientStyle} />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+        {/* White gradient for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
+
+        {/* Subtle color wash — barely visible tint at bottom */}
+        {accentRgb && (
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none opacity-[0.06] group-hover:opacity-[0.1] transition-opacity duration-500"
+            style={{ background: 'linear-gradient(to top, rgb(var(--card-accent)), transparent)' }}
+          />
         )}
 
-        {/* Spotlight Effect */}
-        <motion.div
-          className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
-          style={{
-            background: useMotionTemplate`
-              radial-gradient(
-                600px circle at ${mouseX}px ${mouseY}px,
-                rgba(0,0,0,0.03),
-                transparent 80%
-              )
-            `,
-          }}
-        />
-
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-end p-5">
+        <div className="absolute inset-0 flex flex-col justify-end p-5 z-10">
           {category.is_featured && (
-            <div className={cn(
-              "absolute right-4 top-4 rounded-sm px-3 py-1 text-xs font-semibold backdrop-blur-md",
-              sc ? "bg-white/20 text-white" : "bg-primary/10 text-primary"
-            )}>
+            <div className="absolute right-4 top-4 rounded-sm px-3 py-1 text-xs font-semibold bg-primary/10 text-primary backdrop-blur-sm">
               <Sparkles className="mr-1 inline-block h-3 w-3" />
               Öne Çıkan
             </div>
@@ -143,17 +118,13 @@ function ModernCategoryCard({ category, index, isTall }: { category: NavCategory
 
           <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
             <h3 className={cn(
-              "font-bold leading-tight",
-              sc ? "text-white drop-shadow-md" : "text-foreground",
+              "font-bold leading-tight text-foreground",
               isTall ? "text-3xl md:text-4xl" : "text-lg md:text-xl"
             )}>
               {category.menu_label || category.name}
             </h3>
 
-            <div className={cn(
-              "mt-2 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium",
-              sc ? "text-white/90" : "text-primary"
-            )}>
+            <div className="mt-2 flex items-center gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium text-primary">
               <span>İncele</span>
               <ArrowRight className="h-4 w-4" />
             </div>

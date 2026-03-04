@@ -2,16 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { Grid3X3, ChevronsRight, ArrowRight, Sparkles } from "lucide-react";
 import { NavCategory } from "@/lib/api/schemas";
-import { getMediaUrl, cn } from "@/lib/utils";
-
-// Colored gradient style helper - used behind text at bottom of cards
-function getGradientStyle(color?: string, direction: string = "to top") {
-    if (!color) return null;
-    return { background: `linear-gradient(${direction}, ${color}CC, ${color}55 50%, transparent)` };
-}
+import { getMediaUrl, cn, hexToRgb } from "@/lib/utils";
 
 interface BentoCategoryGridProps {
     categories: NavCategory[];
@@ -31,9 +25,9 @@ export function BentoCategoryGrid({
 
     // Cinematic variant - Like homepage + wide bar + 3-col grid
     if (variant === "cinematic") {
-        const topCategories = categories.slice(0, 5);     // First 5 for cinematic grid
-        const wideCategory = categories[5];               // 6th for wide bar
-        const bottomCategories = categories.slice(6);     // Rest for 3-col grid
+        const topCategories = categories.slice(0, 5);
+        const wideCategory = categories[5];
+        const bottomCategories = categories.slice(6);
 
         return (
             <div className="space-y-4 origin-top scale-[0.85]">
@@ -68,7 +62,7 @@ export function BentoCategoryGrid({
                     </motion.div>
                 )}
 
-                {/* 3-Column Grid - Same cinematic style */}
+                {/* 3-Column Grid */}
                 {bottomCategories.length > 0 && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 auto-rows-[280px]">
                         {bottomCategories.map((category, index) => (
@@ -180,7 +174,7 @@ export function BentoCategoryGrid({
 function getCinematicGridClass(index: number) {
     switch (index) {
         case 0: return "md:col-start-1 md:row-start-1 md:col-span-1 md:row-span-1";
-        case 1: return "md:col-start-2 md:row-start-1 md:col-span-1 md:row-span-2 h-full"; // Tall
+        case 1: return "md:col-start-2 md:row-start-1 md:col-span-1 md:row-span-2 h-full";
         case 2: return "md:col-start-1 md:row-start-2 md:col-span-1 md:row-span-1";
         case 3: return "md:col-start-3 md:row-start-1 md:col-span-1 md:row-span-1";
         case 4: return "md:col-start-3 md:row-start-2 md:col-span-1 md:row-span-1";
@@ -189,29 +183,19 @@ function getCinematicGridClass(index: number) {
 }
 
 /* ============================================
-   CINEMATIC CARD (Like homepage)
+   CINEMATIC CARD — Full-bleed image, accent bar
    ============================================ */
 function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: boolean }) {
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-        const { left, top } = currentTarget.getBoundingClientRect();
-        mouseX.set(clientX - left);
-        mouseY.set(clientY - top);
-    }
-
-    const sc = category.shadow_color || "";
-    const gradStyle = getGradientStyle(sc);
+    const accentRgb = category.shadow_color ? hexToRgb(category.shadow_color) : null;
 
     return (
         <div
-            className="group relative h-full w-full overflow-hidden rounded-sm bg-white border border-border/50"
-            onMouseMove={handleMouseMove}
+            className="category-card group relative h-full w-full overflow-hidden rounded-sm bg-white"
+            style={accentRgb ? { '--card-accent': accentRgb } as React.CSSProperties : undefined}
         >
             <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
-                {/* Background Image */}
-                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">
+                {/* Product Image */}
+                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.03]">
                     {category.cover_media_url ? (
                         <Image
                             src={getMediaUrl(category.cover_media_url)}
@@ -227,34 +211,21 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
                     )}
                 </div>
 
-                {/* Colored Gradient Overlay */}
-                {gradStyle ? (
-                    <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradStyle} />
-                ) : (
-                    <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+                {/* White gradient for text readability */}
+                <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
+
+                {/* Subtle color wash */}
+                {accentRgb && (
+                    <div
+                        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none opacity-[0.06] group-hover:opacity-[0.1] transition-opacity duration-500"
+                        style={{ background: 'linear-gradient(to top, rgb(var(--card-accent)), transparent)' }}
+                    />
                 )}
 
-                {/* Spotlight Effect */}
-                <motion.div
-                    className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
-                    style={{
-                        background: useMotionTemplate`
-                            radial-gradient(
-                                600px circle at ${mouseX}px ${mouseY}px,
-                                rgba(0,0,0,0.03),
-                                transparent 80%
-                            )
-                        `,
-                    }}
-                />
-
                 {/* Content */}
-                <div className="absolute inset-0 flex flex-col justify-end p-6">
+                <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
                     {category.is_featured && (
-                        <div className={cn(
-                            "absolute right-4 top-4 rounded-sm px-3 py-1 text-xs font-semibold backdrop-blur-md",
-                            sc ? "bg-white/20 text-white" : "bg-primary/10 text-primary"
-                        )}>
+                        <div className="absolute right-4 top-4 rounded-sm px-3 py-1 text-xs font-semibold bg-primary/10 text-primary backdrop-blur-sm">
                             <Sparkles className="mr-1 inline-block h-3 w-3" />
                             Öne Çıkan
                         </div>
@@ -262,17 +233,13 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
 
                     <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
                         <h3 className={cn(
-                            "font-bold leading-tight",
-                            sc ? "text-white drop-shadow-md" : "text-foreground",
+                            "font-bold leading-tight text-foreground",
                             isTall ? "text-3xl md:text-4xl" : "text-xl md:text-2xl"
                         )}>
                             {category.menu_label || category.name}
                         </h3>
 
-                        <div className={cn(
-                            "mt-3 flex items-center gap-2 opacity-0 transform translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium",
-                            sc ? "text-white/90" : "text-primary"
-                        )}>
+                        <div className="mt-3 flex items-center gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium text-primary">
                             <span>İncele</span>
                             <ArrowRight className="h-4 w-4" />
                         </div>
@@ -284,29 +251,19 @@ function CinematicCard({ category, isTall }: { category: NavCategory; isTall?: b
 }
 
 /* ============================================
-   WIDE CARD (Full width bar)
+   WIDE CARD — Full width bar
    ============================================ */
 function WideCard({ category }: { category: NavCategory }) {
-    const mouseX = useMotionValue(0);
-    const mouseY = useMotionValue(0);
-
-    function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
-        const { left, top } = currentTarget.getBoundingClientRect();
-        mouseX.set(clientX - left);
-        mouseY.set(clientY - top);
-    }
-
-    const sc = category.shadow_color || "";
-    const gradStyle = getGradientStyle(sc, "to right");
+    const accentRgb = category.shadow_color ? hexToRgb(category.shadow_color) : null;
 
     return (
         <div
-            className="group relative h-[280px] md:h-[260px] w-full overflow-hidden rounded-sm bg-white border border-border/50"
-            onMouseMove={handleMouseMove}
+            className="category-card group relative h-[280px] md:h-[260px] w-full overflow-hidden rounded-sm bg-white"
+            style={accentRgb ? { '--card-accent': accentRgb } as React.CSSProperties : undefined}
         >
             <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
-                {/* Background Image */}
-                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105">
+                {/* Product Image */}
+                <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.03]">
                     {category.cover_media_url ? (
                         <Image
                             src={getMediaUrl(category.cover_media_url)}
@@ -322,76 +279,55 @@ function WideCard({ category }: { category: NavCategory }) {
                     )}
                 </div>
 
-                {/* Colored Gradient Overlay */}
-                {gradStyle ? (
-                    <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradStyle} />
-                ) : (
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/50 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
+                {/* White gradient — left-to-right for wide card */}
+                <div className="absolute inset-y-0 left-0 w-2/5 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none" />
+
+                {/* Subtle color wash */}
+                {accentRgb && (
+                    <div
+                        className="absolute inset-y-0 left-0 w-1/3 pointer-events-none opacity-[0.06] group-hover:opacity-[0.1] transition-opacity duration-500"
+                        style={{ background: 'linear-gradient(to right, rgb(var(--card-accent)), transparent)' }}
+                    />
                 )}
 
-                {/* Spotlight Effect */}
-                <motion.div
-                    className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
-                    style={{
-                        background: useMotionTemplate`
-                            radial-gradient(
-                                800px circle at ${mouseX}px ${mouseY}px,
-                                rgba(0,0,0,0.03),
-                                transparent 70%
-                            )
-                        `,
-                    }}
-                />
-
                 {/* Content */}
-                <div className="absolute inset-0 flex items-center p-8">
+                <div className="absolute inset-0 flex items-center p-8 z-10">
                     <div className="transform transition-transform duration-300 group-hover:translate-x-2">
-                        <h3 className={cn(
-                            "text-2xl md:text-3xl font-bold leading-tight",
-                            sc ? "text-white drop-shadow-md" : "text-foreground"
-                        )}>
+                        <h3 className="text-2xl md:text-3xl font-bold leading-tight text-foreground">
                             {category.menu_label || category.name}
                         </h3>
 
                         {category.children && category.children.length > 0 && (
-                            <p className={cn("mt-1 text-sm", sc ? "text-white/70" : "text-muted-foreground")}>
+                            <p className="mt-1 text-sm text-muted-foreground">
                                 {category.children.length} alt kategori
                             </p>
                         )}
 
-                        <div className={cn(
-                            "mt-3 flex items-center gap-2 text-sm font-medium",
-                            sc ? "text-white/90" : "text-primary"
-                        )}>
+                        <div className="mt-3 flex items-center gap-2 text-sm font-medium text-primary">
                             <span>Ürünleri İncele</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </div>
                     </div>
                 </div>
-
-                {/* Right side decorative accent */}
-                <div className="absolute right-0 top-0 bottom-0 w-1 bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
         </div>
     );
 }
 
-
-
 /* ============================================
-   EXISTING CARDS (kept for bento/grid variants)
+   CATALOG CARD — Image + text bar layout
    ============================================ */
 function CatalogCard({ category, className }: { category: NavCategory, className?: string }) {
-    const sc = category.shadow_color || "";
-    const gradStyle = getGradientStyle(sc);
+    const accentRgb = category.shadow_color ? hexToRgb(category.shadow_color) : null;
 
     return (
         <Link
             href={`/kategori/${category.slug}`}
             className={cn(
-                "group block bg-white border border-border/50 rounded-sm hover:border-primary/50 transition-all duration-300 overflow-hidden h-full flex flex-col relative",
+                "category-card group block rounded-sm overflow-hidden h-full flex flex-col relative bg-white",
                 className
             )}
+            style={accentRgb ? { '--card-accent': accentRgb } as React.CSSProperties : undefined}
         >
             <div className="relative flex-1 bg-white p-4 min-h-[140px]">
                 {category.cover_media_url ? (
@@ -409,17 +345,9 @@ function CatalogCard({ category, className }: { category: NavCategory, className
                         </span>
                     </div>
                 )}
-
-                {/* Colored Gradient Overlay */}
-                {gradStyle && (
-                    <div className="absolute inset-0 transition-opacity duration-300 opacity-60 group-hover:opacity-75" style={gradStyle} />
-                )}
             </div>
 
-            <div className={cn(
-                "px-4 py-3 border-t border-border/50",
-                sc ? "bg-white" : "bg-muted/5"
-            )}>
+            <div className="px-4 py-3 border-t border-border/50 bg-muted/5">
                 <div className="flex items-center justify-between gap-2">
                     <h3 className="text-sm font-semibold text-foreground uppercase tracking-wide leading-tight">
                         {category.menu_label || category.name}
@@ -433,17 +361,20 @@ function CatalogCard({ category, className }: { category: NavCategory, className
     );
 }
 
+/* ============================================
+   LARGE CARD — Full-bleed, vertical
+   ============================================ */
 function LargeCard({ category, height = "h-full" }: { category: NavCategory, height?: string }) {
-    const sc = category.shadow_color || "";
-    const gradStyle = getGradientStyle(sc);
+    const accentRgb = category.shadow_color ? hexToRgb(category.shadow_color) : null;
 
     return (
         <Link
             href={`/kategori/${category.slug}`}
             className={cn(
-                "group relative flex flex-col overflow-hidden rounded-sm bg-white border border-border/50 hover:border-primary/50 transition-all",
+                "category-card group relative flex flex-col overflow-hidden rounded-sm bg-white",
                 height
             )}
+            style={accentRgb ? { '--card-accent': accentRgb } as React.CSSProperties : undefined}
         >
             <div className="absolute inset-0 flex items-center justify-center p-6">
                 {category.cover_media_url ? (
@@ -451,7 +382,7 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
                         src={getMediaUrl(category.cover_media_url)}
                         alt={category.name}
                         fill
-                        className="object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-110"
+                        className="object-contain p-6 transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                         sizes="(max-width: 768px) 100vw, 33vw"
                     />
                 ) : (
@@ -459,25 +390,22 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
                 )}
             </div>
 
-            {/* Colored Gradient Overlay */}
-            {gradStyle ? (
-                <div className="absolute inset-0 transition-opacity duration-300 opacity-70 group-hover:opacity-85" style={gradStyle} />
-            ) : (
-                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            {/* White gradient for text readability */}
+            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
+
+            {/* Subtle color wash */}
+            {accentRgb && (
+                <div
+                    className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none opacity-[0.06] group-hover:opacity-[0.1] transition-opacity duration-500"
+                    style={{ background: 'linear-gradient(to top, rgb(var(--card-accent)), transparent)' }}
+                />
             )}
 
-            <div className={cn(
-                "relative mt-auto p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300",
-                sc ? "text-white" : "text-foreground"
-            )}>
-                <h3 className={cn(
-                    "text-2xl font-bold leading-tight mb-2",
-                    sc && "drop-shadow-md"
-                )}>{category.menu_label || category.name}</h3>
-                <div className={cn(
-                    "flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0 delay-75",
-                    sc ? "text-white/90" : "text-primary"
-                )}>
+            <div className="relative mt-auto p-6 z-10 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                <h3 className="text-2xl font-bold leading-tight mb-2 text-foreground">
+                    {category.menu_label || category.name}
+                </h3>
+                <div className="flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-x-4 group-hover:translate-x-0 delay-75">
                     <span>İncele</span>
                     <ArrowRight className="h-4 w-4" />
                 </div>
@@ -486,14 +414,17 @@ function LargeCard({ category, height = "h-full" }: { category: NavCategory, hei
     );
 }
 
+/* ============================================
+   SMALL CARD — Horizontal layout
+   ============================================ */
 function SmallCard({ category }: { category: NavCategory }) {
-    const sc = category.shadow_color || "";
-    const gradStyle = getGradientStyle(sc, "to right");
+    const accentRgb = category.shadow_color ? hexToRgb(category.shadow_color) : null;
 
     return (
         <Link
             href={`/kategori/${category.slug}`}
-            className="group relative flex flex-row items-center h-full overflow-hidden rounded-sm bg-white border border-border/40 hover:border-primary/50 transition-all"
+            className="category-card group relative flex flex-row items-center h-full overflow-hidden rounded-sm bg-white"
+            style={accentRgb ? { '--card-accent': accentRgb } as React.CSSProperties : undefined}
         >
             <div className="relative w-1/3 h-full bg-gray-50 p-2">
                 {category.cover_media_url ? (
@@ -509,14 +440,9 @@ function SmallCard({ category }: { category: NavCategory }) {
                         <span className="text-3xl font-black text-primary/10">{category.name.charAt(0)}</span>
                     </div>
                 )}
-
-                {/* Colored Gradient Overlay */}
-                {gradStyle && (
-                    <div className="absolute inset-0 transition-opacity duration-300 opacity-50 group-hover:opacity-70" style={gradStyle} />
-                )}
             </div>
 
-            <div className="flex-1 p-4 bg-muted/5 h-full flex items-center justify-between border-l border-border/50 group-hover:bg-primary/5 transition-colors">
+            <div className="flex-1 p-4 h-full flex items-center justify-between border-l border-border/50 group-hover:bg-primary/5 transition-colors">
                 <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors pr-2">
                     {category.menu_label || category.name}
                 </h3>
@@ -528,6 +454,9 @@ function SmallCard({ category }: { category: NavCategory }) {
     );
 }
 
+/* ============================================
+   MORE CARD — See all categories
+   ============================================ */
 function MoreCard({ remainingCount }: { remainingCount: number }) {
     return (
         <Link

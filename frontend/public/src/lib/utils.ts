@@ -36,6 +36,16 @@ export function getMediaUrl(path: string | null | undefined): string {
   return path;
 }
 
+/**
+ * Convert hex color to "R G B" string for CSS custom properties.
+ * e.g. "#BE2328" → "190 35 40"
+ */
+export function hexToRgb(hex: string): string | null {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (!result) return null;
+  return `${parseInt(result[1], 16)} ${parseInt(result[2], 16)} ${parseInt(result[3], 16)}`;
+}
+
 export function slugify(text: string): string {
   return text
     .toString()
