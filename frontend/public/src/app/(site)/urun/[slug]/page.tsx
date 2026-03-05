@@ -107,8 +107,8 @@ export default function ProductDetailPage() {
   if (isLoading) {
     return (
       <Container className="py-6 lg:py-8">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <div className="aspect-square w-full rounded-sm animate-pulse bg-muted/50" />
+        <div className="grid gap-4 sm:gap-6 lg:gap-10 lg:grid-cols-[2fr_3fr]">
+          <div className="aspect-[4/5] w-full rounded-sm animate-pulse bg-muted/50" />
           <div className="space-y-3">
             <div className="h-6 w-32 rounded bg-muted/50" />
             <div className="h-10 w-3/4 rounded bg-muted/50" />
@@ -178,11 +178,11 @@ export default function ProductDetailPage() {
         <span className="text-foreground font-semibold truncate">{product.title_tr}</span>
       </nav>
 
-      <div className="grid gap-6 lg:gap-12 lg:grid-cols-[1fr_1fr] items-start pb-20 lg:pb-0">
-        {/* Gallery Section - Immersive & Interactive */}
-        <div className="space-y-3 w-full lg:sticky lg:top-24 flex flex-col self-start">
+      <div className="grid gap-4 sm:gap-6 lg:gap-10 lg:grid-cols-[2fr_3fr] items-start pb-20 lg:pb-0">
+        {/* Gallery Section */}
+        <div className="space-y-2 sm:space-y-3 w-full lg:sticky lg:top-24 flex flex-col self-start">
           <div
-            className="group relative aspect-square w-full overflow-hidden rounded-sm border border-border/50 bg-white shadow-sm hover:shadow-md transition-all duration-300"
+            className="group relative aspect-[4/5] sm:aspect-[4/4] lg:aspect-[4/5] w-full overflow-hidden rounded-sm border border-border/50 bg-white shadow-sm hover:shadow-md transition-all duration-300"
             onClick={() => setIsZoomed(true)}
           >
             {selectedImage ? (
@@ -197,7 +197,7 @@ export default function ProductDetailPage() {
                   src={getMediaUrl(selectedImage.file_url)}
                   alt={selectedImage.alt || product.title_tr || ""}
                   fill
-                  className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain p-3 sm:p-6 transition-transform duration-500 group-hover:scale-105"
                   priority
                 />
               </motion.div>
@@ -211,12 +211,12 @@ export default function ProductDetailPage() {
             )}
 
             {/* Hover Actions */}
-            <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-10">
+            <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-10">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <button className="h-8 w-8 flex items-center justify-center rounded-full bg-white/90 backdrop-blur shadow-sm hover:bg-white text-muted-foreground hover:text-primary transition-colors border border-border/50">
-                      <ZoomIn className="h-4 w-4" />
+                    <button className="h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center rounded-full bg-white/90 backdrop-blur shadow-sm hover:bg-white text-muted-foreground hover:text-primary transition-colors border border-border/50">
+                      <ZoomIn className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     </button>
                   </TooltipTrigger>
                   <TooltipContent side="left">Büyüt</TooltipContent>
@@ -238,9 +238,9 @@ export default function ProductDetailPage() {
                       if (variantIndex !== -1) setSelectedVariantIndex(variantIndex);
                     }
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 h-8 w-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm hover:bg-white text-foreground/80 hover:text-primary transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm hover:bg-white text-foreground/80 hover:text-primary transition-all opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0"
                 >
-                  <ChevronLeft className="h-5 w-5" />
+                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 <button
                   onClick={(e) => {
@@ -253,18 +253,18 @@ export default function ProductDetailPage() {
                       if (variantIndex !== -1) setSelectedVariantIndex(variantIndex);
                     }
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 h-8 w-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm hover:bg-white text-foreground/80 hover:text-primary transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 h-7 w-7 sm:h-8 sm:w-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm hover:bg-white text-foreground/80 hover:text-primary transition-all opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0"
                 >
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               </>
             )}
 
             {/* Badges */}
-            <div className="absolute top-4 left-4 flex flex-col gap-2">
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex flex-col gap-1.5">
               {product.is_featured && (
-                <Badge className="bg-amber-500 hover:bg-amber-600 text-white border-none px-2.5 py-0.5 text-[10px] font-semibold shadow-sm">
-                  <Sparkles className="mr-1 h-3 w-3" />
+                <Badge className="bg-amber-500 hover:bg-amber-600 text-white border-none px-2 py-0.5 text-[9px] sm:text-[10px] font-semibold shadow-sm">
+                  <Sparkles className="mr-1 h-2.5 w-2.5 sm:h-3 sm:w-3" />
                   Öne Çıkan
                 </Badge>
               )}
@@ -272,16 +272,16 @@ export default function ProductDetailPage() {
 
             {/* Image Counter */}
             {images.length > 1 && (
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-2.5 py-0.5 rounded-full text-[10px] font-medium tracking-wider">
+              <div className="absolute bottom-2 sm:bottom-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-medium tracking-wider">
                 {selectedImageIndex + 1} / {images.length}
               </div>
             )}
           </div>
 
-          {/* Thumbnails - Horizontal Scroll */}
+          {/* Thumbnails - Capped grid on mobile, scroll on desktop */}
           {images.length > 1 && (
-            <div className="flex gap-2.5 overflow-x-auto pb-2 pt-1 scrollbar-hide px-1">
-              {images.map((media, index) => (
+            <div className="grid grid-cols-6 gap-1.5 sm:flex sm:gap-2.5 sm:overflow-x-auto sm:pb-2 sm:pt-1 scrollbar-hide sm:px-1">
+              {images.slice(0, 12).map((media, index) => (
                 <button
                   key={media.id}
                   onClick={() => {
@@ -292,9 +292,9 @@ export default function ProductDetailPage() {
                     }
                   }}
                   className={cn(
-                    "relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-sm border-2 bg-white transition-all duration-200",
+                    "relative aspect-square sm:h-16 sm:w-16 flex-shrink-0 overflow-hidden rounded-sm border-2 bg-white transition-all duration-200",
                     selectedImageIndex === index
-                      ? "border-primary ring-2 ring-primary/20 shadow-md scale-105 z-10"
+                      ? "border-primary ring-1 sm:ring-2 ring-primary/20 shadow-md scale-105 z-10"
                       : "border-transparent hover:border-gray-200 opacity-70 hover:opacity-100 grayscale hover:grayscale-0"
                   )}
                 >
@@ -302,19 +302,27 @@ export default function ProductDetailPage() {
                     src={getMediaUrl(media.file_url)}
                     alt=""
                     fill
-                    className="object-contain p-1"
+                    className="object-contain p-0.5 sm:p-1"
                   />
                 </button>
               ))}
+              {images.length > 12 && (
+                <button
+                  onClick={() => setIsZoomed(true)}
+                  className="relative aspect-square sm:h-16 sm:w-16 flex-shrink-0 overflow-hidden rounded-sm border-2 border-transparent bg-muted/30 flex items-center justify-center text-xs font-bold text-muted-foreground hover:bg-muted/50 transition-colors"
+                >
+                  +{images.length - 12}
+                </button>
+              )}
             </div>
           )}
         </div>
 
         {/* Product Details Section */}
-        <div className="flex flex-col gap-6 w-full">
-          <div className="space-y-3">
+        <div className="flex flex-col gap-4 sm:gap-6 w-full">
+          <div className="space-y-2 sm:space-y-3">
             {/* Header */}
-            <div className="space-y-2">
+            <div className="space-y-1.5 sm:space-y-2">
               <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-2">
                 <Link href={`/urunler/${product.category_slug}/${product.series_slug}/${product.brand_slug}`} className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-sm bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-[10px] sm:text-xs font-bold hover:from-primary/20 hover:to-primary/10 transition-all border border-primary/10">
                   {product.brand_logo && (
@@ -351,32 +359,23 @@ export default function ProductDetailPage() {
                   <div className="h-0.5 w-6 bg-gradient-to-r from-primary to-primary/50 rounded-full"></div>
                   Öne Çıkan Özellikler
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                   {product.general_features.map((feature, i) => (
                     <motion.div
                       key={i}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="group relative overflow-hidden rounded-sm bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-2 hover:border-primary/40 transition-all duration-300 hover:shadow-md hover:shadow-primary/10"
+                      className="group relative overflow-hidden rounded-sm bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 p-1.5 sm:p-2 hover:border-primary/40 transition-all duration-300 hover:shadow-md hover:shadow-primary/10"
                     >
-                      {/* Glossy overlay effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-
-                      <div className="relative flex items-start gap-2">
-                        {/* Icon with gradient background */}
-                        <div className="flex-shrink-0 h-5 w-5 rounded-sm bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-sm group-hover:shadow-md group-hover:shadow-primary/30 transition-all duration-300">
-                          <Check className="h-3 w-3 text-white" strokeWidth={2.5} />
+                      <div className="relative flex items-start gap-1.5 sm:gap-2">
+                        <div className="flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5 rounded-sm bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
+                          <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-white" strokeWidth={2.5} />
                         </div>
-
-                        {/* Feature text */}
-                        <p className="text-xs font-medium text-foreground leading-snug pt-0.5 flex-1">
+                        <p className="text-[11px] sm:text-xs font-medium text-foreground leading-snug pt-0.5 flex-1">
                           {feature}
                         </p>
                       </div>
-
-                      {/* Subtle shine animation */}
-                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"></div>
                     </motion.div>
                   ))}
                 </div>
@@ -432,8 +431,8 @@ export default function ProductDetailPage() {
               </div>
 
               <div className={cn(
-                "grid gap-2",
-                variants.length > 6 ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 max-h-[300px] overflow-y-auto pr-1 custom-scrollbar" : "grid-cols-1 sm:grid-cols-2"
+                "grid gap-1.5 sm:gap-2",
+                variants.length > 6 ? "grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 max-h-[240px] sm:max-h-[300px] overflow-y-auto pr-1 custom-scrollbar" : "grid-cols-2 sm:grid-cols-2"
               )}>
                 {variants.map((variant, index) => (
                   <div
@@ -492,27 +491,27 @@ export default function ProductDetailPage() {
                 className="bg-card rounded-sm border shadow-sm overflow-hidden"
               >
                 {/* Price Header */}
-                <div className="px-4 py-3 bg-muted/30 border-b flex flex-wrap items-center justify-between gap-3">
+                <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-muted/30 border-b flex flex-wrap items-center justify-between gap-2 sm:gap-3">
                   <div>
-                    <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">Seçili Model</p>
-                    <p className="text-base font-bold text-foreground">{selectedVariant.model_code}</p>
+                    <p className="text-[9px] sm:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">Seçili Model</p>
+                    <p className="text-sm sm:text-base font-bold text-foreground">{selectedVariant.model_code}</p>
                   </div>
 
                   {showPrices && (
                     <div className="text-right">
                       <PriceDisplay
                         price={selectedVariant.list_price}
-                        className="text-2xl font-extrabold text-primary tracking-tight"
+                        className="text-lg sm:text-2xl font-extrabold text-primary tracking-tight"
                       />
-                      <p className="text-[10px] text-muted-foreground mt-0.5">+ KDV</p>
+                      <p className="text-[9px] sm:text-[10px] text-muted-foreground mt-0.5">+ KDV</p>
                     </div>
                   )}
                 </div>
 
                 {/* Actions & Specs */}
-                <div className="p-4 space-y-4">
+                <div className="p-3 sm:p-4 space-y-3 sm:space-y-4">
                   {/* Key Specs Grid */}
-                  <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-3">
+                  <div className="grid grid-cols-2 gap-1.5 sm:gap-3">
                     {selectedVariant.dimensions && (
                       <div className="bg-muted/20 p-2.5 rounded-sm border border-border/50">
                         <div className="flex items-center gap-1.5 text-muted-foreground mb-1">
@@ -533,13 +532,13 @@ export default function ProductDetailPage() {
                     )}
                   </div>
 
-                  <div className="flex flex-col gap-2 sm:flex-row sm:gap-2.5">
+                  <div className="flex flex-col gap-1.5 sm:flex-row sm:gap-2.5">
                     <AddToCartButton
                       variantId={selectedVariant.id}
-                      size="lg"
-                      className="w-full sm:flex-1 font-bold text-xs sm:text-sm shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all"
+                      size="default"
+                      className="w-full sm:flex-1 font-bold text-xs sm:text-sm shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all sm:h-11"
                     />
-                    <Button variant="outline" size="lg" className="w-full sm:flex-1 border-2 font-semibold hover:bg-muted text-xs sm:text-sm" asChild>
+                    <Button variant="outline" size="default" className="w-full sm:flex-1 border-2 font-semibold hover:bg-muted text-xs sm:text-sm sm:h-11" asChild>
                       <Link href="/iletisim">
                         <FileText className="mr-2 h-3.5 w-3.5" />
                         Teklif İste
@@ -552,7 +551,7 @@ export default function ProductDetailPage() {
           </AnimatePresence>
 
           {/* Description & Downloads */}
-          <div className="space-y-3 pt-3">
+          <div className="space-y-2 sm:space-y-3 pt-2 sm:pt-3">
             {product.long_description && (
               <div className="prose prose-sm max-w-none">
                 <h4 className="text-foreground font-semibold mb-1.5 text-sm flex items-center gap-2">
@@ -589,32 +588,32 @@ export default function ProductDetailPage() {
 
       {/* Full Spec Table */}
       {variants.length > 0 && (
-        <div className="mt-16 space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="h-8 w-1 bg-primary rounded-full shadow-sm" />
+        <div className="mt-8 sm:mt-16 space-y-3 sm:space-y-6">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="h-6 sm:h-8 w-1 bg-primary rounded-full shadow-sm" />
             <div>
-              <h2 className="text-xl font-bold tracking-tight">Teknik Tablo</h2>
-              <p className="text-xs text-muted-foreground mt-0.5">Tüm modellerin teknik özelliklerini detaylı karşılaştırın.</p>
+              <h2 className="text-base sm:text-xl font-bold tracking-tight">Teknik Tablo</h2>
+              <p className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 hidden sm:block">Tüm modellerin teknik özelliklerini detaylı karşılaştırın.</p>
             </div>
           </div>
 
           <div className="rounded-sm border border-border/50 overflow-hidden shadow-sm bg-white/50 backdrop-blur-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full text-xs">
+            <div className="overflow-x-auto -mx-0">
+              <table className="w-full text-[10px] sm:text-xs min-w-[480px]">
                 <thead className="bg-muted/30 border-b border-border/50">
                   <tr>
-                    <th className="px-4 py-3 text-left font-bold text-foreground text-[11px]">Model</th>
-                    <th className="px-4 py-3 text-left font-semibold text-muted-foreground text-[10px]">Boyutlar</th>
-                    <th className="px-4 py-3 text-left font-semibold text-muted-foreground text-[10px]">Ağırlık</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-left font-bold text-foreground text-[10px] sm:text-[11px] sticky left-0 bg-muted/30 z-10">Model</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-muted-foreground text-[9px] sm:text-[10px]">Boyutlar</th>
+                    <th className="px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-muted-foreground text-[9px] sm:text-[10px]">Ağırlık</th>
                     {specKeys.map(k => (
-                      <th key={k.slug} className="px-4 py-3 text-left font-semibold text-muted-foreground whitespace-nowrap text-[10px]">
+                      <th key={k.slug} className="px-2 sm:px-4 py-2 sm:py-3 text-left font-semibold text-muted-foreground whitespace-nowrap text-[9px] sm:text-[10px]">
                         {k.label_tr}
                       </th>
                     ))}
                     {showPrices && (
-                      <th className="px-6 py-4 text-right font-semibold text-muted-foreground">Fiyat</th>
+                      <th className="px-3 sm:px-6 py-2 sm:py-4 text-right font-semibold text-muted-foreground text-[9px] sm:text-[10px]">Fiyat</th>
                     )}
-                    <th className="px-6 py-4 w-[80px]"></th>
+                    <th className="px-2 sm:px-6 py-2 sm:py-4 w-[40px] sm:w-[80px]"></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border/40">
@@ -627,28 +626,28 @@ export default function ProductDetailPage() {
                       )}
                       onClick={() => setSelectedVariantIndex(i)}
                     >
-                      <td className="px-4 py-3 font-bold text-primary group-hover:underline underline-offset-2 text-xs">{v.model_code}</td>
-                      <td className="px-4 py-3 font-mono text-muted-foreground text-[10px]">{v.dimensions || "-"}</td>
-                      <td className="px-4 py-3 text-muted-foreground text-xs">{v.weight_kg ? `${v.weight_kg} kg` : "-"}</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-primary group-hover:underline underline-offset-2 text-[10px] sm:text-xs sticky left-0 bg-white/95 z-10">{v.model_code}</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 font-mono text-muted-foreground text-[9px] sm:text-[10px]">{v.dimensions || "-"}</td>
+                      <td className="px-2 sm:px-4 py-2 sm:py-3 text-muted-foreground text-[10px] sm:text-xs">{v.weight_kg ? `${v.weight_kg} kg` : "-"}</td>
                       {specKeys.map(k => {
                         const val = v.spec_row?.find(s => s.key === k.slug)?.value;
-                        return <td key={k.slug} className="px-4 py-3 text-foreground/90 text-xs">{val || "-"}</td>;
+                        return <td key={k.slug} className="px-2 sm:px-4 py-2 sm:py-3 text-foreground/90 text-[10px] sm:text-xs">{val || "-"}</td>;
                       })}
                       {showPrices && (
-                        <td className="px-6 py-4 text-right font-bold text-foreground tabular-nums">
+                        <td className="px-3 sm:px-6 py-2 sm:py-4 text-right font-bold text-foreground tabular-nums text-[10px] sm:text-xs">
                           {v.list_price ? formatPrice(v.list_price) : "-"}
                         </td>
                       )}
-                      <td className="px-6 py-4 text-center">
+                      <td className="px-2 sm:px-6 py-2 sm:py-4 text-center">
                         {selectedVariantIndex === i ? (
                           <div className="flex items-center justify-center">
-                            <div className="h-6 w-6 rounded-full bg-primary text-white flex items-center justify-center shadow-md animate-in zoom-in spin-in-12">
-                              <Check className="h-3.5 w-3.5" />
+                            <div className="h-5 w-5 sm:h-6 sm:w-6 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
+                              <Check className="h-2.5 w-2.5 sm:h-3.5 sm:w-3.5" />
                             </div>
                           </div>
                         ) : (
                           <div className="flex items-center justify-center">
-                            <div className="h-4 w-4 rounded-full border-2 border-muted-foreground/30 group-hover:border-primary/50 transition-colors" />
+                            <div className="h-3.5 w-3.5 sm:h-4 sm:w-4 rounded-full border-2 border-muted-foreground/30 group-hover:border-primary/50 transition-colors" />
                           </div>
                         )}
                       </td>
