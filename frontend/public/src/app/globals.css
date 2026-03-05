@@ -122,8 +122,8 @@
 
   .category-card {
     --_a: var(--card-accent, 190 35 40);
-    border: 1px solid rgb(0 0 0 / 0.06);
-    box-shadow: 0 1px 3px rgb(0 0 0 / 0.04);
+    border: 1px solid rgb(0 0 0 / 0.05);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.03), 0 1px 6px -1px rgb(0 0 0 / 0.02);
     transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,29 +131,20 @@
 
   .category-card:hover {
     box-shadow:
-      0 8px 30px -8px rgb(var(--_a) / 0.32),
-      0 2px 8px rgb(0 0 0 / 0.04);
-    border-color: rgb(var(--_a) / 0.18);
+      0 12px 28px -8px rgb(var(--_a) / 0.18),
+      0 4px 12px -4px rgb(0 0 0 / 0.06);
+    border-color: rgb(var(--_a) / 0.12);
     transform: translateY(-3px);
   }
 
-  /* Bottom accent bar */
-  .category-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: rgb(var(--_a) / 0.6);
-    z-index: 20;
-    transition: height 0.3s ease, background 0.3s ease;
-    pointer-events: none;
+  /* Side accent bar inside card info section */
+  .accent-bar {
+    background-color: rgb(var(--_a) / 0.3);
+    transition: background-color 0.3s ease;
   }
 
-  .category-card:hover::after {
-    height: 4px;
-    background: rgb(var(--_a));
+  .category-card:hover .accent-bar {
+    background-color: rgb(var(--_a) / 0.85);
   }
 
   /* ============================================================================
