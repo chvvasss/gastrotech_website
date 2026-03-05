@@ -3,60 +3,65 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles, ChevronRight } from "lucide-react";
 import { NavCategory } from "@/lib/api/schemas";
 import { getMediaUrl, cn, hexToRgb } from "@/lib/utils";
-
-/* ================================================================
-   CategoryGrid — Homepage showcase (max 6 categories + CTA bar)
-   ================================================================ */
 
 interface CategoryGridProps {
   categories: NavCategory[];
 }
 
 export function CategoryGrid({ categories }: CategoryGridProps) {
-  const visible = categories.slice(0, 6);
-  const remaining = categories.length - visible.length;
+  const mainCategories = categories.slice(0, 5);
+  const otherCategories = categories.slice(5);
+
+  const getGridClass = (index: number) => {
+    switch (index) {
+      case 0: return "md:col-start-1 md:row-start-1 md:col-span-1 md:row-span-1";
+      case 1: return "md:col-start-2 md:row-start-1 md:col-span-1 md:row-span-2 h-full";
+      case 2: return "md:col-start-1 md:row-start-2 md:col-span-1 md:row-span-1";
+      case 3: return "md:col-start-3 md:row-start-1 md:col-span-1 md:row-span-1";
+      case 4: return "md:col-start-3 md:row-start-2 md:col-span-1 md:row-span-1";
+      default: return "col-span-1";
+    }
+  };
 
   return (
-    <div className="space-y-3 sm:space-y-4">
-      <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-3 lg:gap-5">
-        {visible.map((category, i) => (
-          <motion.div
-            key={category.id}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.45, delay: i * 0.06 }}
-          >
-            <ShowcaseCard category={category} priority={i < 3} />
-          </motion.div>
+    <div className="space-y-3">
+      {/* Main Cinematic 5-Grid */}
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:grid-rows-2 md:gap-4 auto-rows-[180px] sm:auto-rows-[220px] md:h-[540px]">
+        {mainCategories.map((category, index) => (
+          <div key={category.id} className={cn("relative w-full h-full", getGridClass(index))}>
+            <CategoryCard
+              category={category}
+              index={index}
+              isTall={index === 1}
+            />
+          </div>
         ))}
       </div>
 
-      {remaining > 0 && (
+      {/* Other Categories CTA Bar */}
+      {otherCategories.length > 0 && (
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.25 }}
+          transition={{ duration: 0.4 }}
         >
           <Link
             href="/kategori"
-            className="group flex items-center justify-between px-4 py-3.5 sm:px-6 sm:py-5 bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors overflow-hidden relative"
+            className="group flex items-center justify-between px-5 py-4 sm:px-8 sm:py-5 bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-all duration-300 overflow-hidden relative"
           >
-            {/* Hover accent glow */}
-            <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Accent gradient on hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="flex items-center gap-2.5 relative z-[1]">
-              <div className="h-5 w-[3px] bg-primary rounded-full" />
-              <span className="text-white font-semibold text-sm sm:text-base">
-                Tüm Kategoriler
-              </span>
-              <span className="text-white/40 text-xs">+{remaining}</span>
+            <div className="flex items-center gap-3 relative z-10">
+              <div className="h-7 sm:h-8 w-1 bg-primary rounded-full" />
+              <span className="text-white font-semibold text-sm sm:text-base">Diğer Kategorileri Gör</span>
+              <span className="text-white/40 text-xs sm:text-sm">({otherCategories.length} kategori)</span>
             </div>
-            <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform relative z-[1]" />
+            <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-primary group-hover:translate-x-1 transition-transform relative z-10" />
           </Link>
         </motion.div>
       )}
@@ -64,131 +69,80 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
   );
 }
 
-/* ================================================================
-   ShowcaseCard — Unified category card (exported for reuse)
-   ================================================================ */
-
-interface ShowcaseCardProps {
-  category: NavCategory;
-  priority?: boolean;
-  compact?: boolean;
-}
-
-export function ShowcaseCard({
-  category,
-  priority = false,
-  compact = false,
-}: ShowcaseCardProps) {
-  const accentRgb = category.shadow_color
-    ? hexToRgb(category.shadow_color)
-    : null;
-  const seriesCount =
-    category.visible_series?.length || category.series?.length || 0;
-  const childCount = category.children?.length || 0;
-  const subtitle =
-    seriesCount > 0
-      ? `${seriesCount} ürün serisi`
-      : childCount > 0
-        ? `${childCount} alt kategori`
-        : null;
+function CategoryCard({ category, index, isTall }: { category: NavCategory; index: number; isTall?: boolean }) {
+  const accentRgb = category.shadow_color ? hexToRgb(category.shadow_color) : null;
 
   return (
-    <Link
-      href={`/kategori/${category.slug}`}
-      className="category-card group flex flex-col h-full rounded-lg overflow-hidden bg-white"
-      style={
-        accentRgb
-          ? ({ "--card-accent": accentRgb } as React.CSSProperties)
-          : undefined
-      }
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="category-card group relative h-full w-full overflow-hidden rounded-lg bg-white"
+      style={accentRgb ? { '--card-accent': accentRgb } as React.CSSProperties : undefined}
     >
-      {/* ── Image Area ── */}
-      <div
-        className={cn(
-          "relative overflow-hidden",
-          compact ? "aspect-[5/4]" : "aspect-[4/3]"
-        )}
-      >
-        {/* Radial gradient background — subtle accent tint when available */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: accentRgb
-              ? `radial-gradient(ellipse at 50% 30%, rgb(${accentRgb} / 0.035) 0%, #fafaf9 50%, #f4f4f3 100%)`
-              : "radial-gradient(ellipse at 50% 30%, #fafafa 0%, #f5f5f4 50%, #f0f0ee 100%)",
-          }}
-        />
+      <Link href={`/kategori/${category.slug}`} className="block h-full w-full">
+        {/* Subtle radial gradient background for depth */}
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-50/80 via-white to-zinc-50/40" />
 
-        {/* Subtle inner depth */}
-        <div className="absolute inset-0 z-[2] pointer-events-none rounded-b-none shadow-[inset_0_-1px_2px_rgba(0,0,0,0.02)]" />
-
-        {category.cover_media_url ? (
-          <Image
-            src={getMediaUrl(category.cover_media_url)}
-            alt={category.name}
-            fill
-            priority={priority}
-            className={cn(
-              "object-contain relative z-[1] transition-transform duration-700 ease-out group-hover:scale-[1.06]",
-              compact ? "p-3 sm:p-5 lg:p-6" : "p-4 sm:p-6 lg:p-10"
-            )}
-            sizes={
-              compact
-                ? "(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                : "(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
-            }
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center z-[1]">
-            <span
-              className={cn(
-                "font-black text-zinc-200/60 select-none",
-                compact ? "text-3xl sm:text-5xl" : "text-4xl sm:text-6xl"
-              )}
-            >
+        {/* Product Image */}
+        <div className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-[1.03]">
+          {category.cover_media_url ? (
+            <Image
+              src={getMediaUrl(category.cover_media_url)}
+              alt={category.name}
+              fill
+              className="object-contain p-4 sm:p-6"
+              sizes={isTall ? "(max-width: 768px) 50vw, 33vw" : "(max-width: 768px) 50vw, 25vw"}
+            />
+          ) : (
+            <span className="text-7xl font-black text-zinc-100 select-none">
               {category.name.charAt(0)}
-            </span>
-          </div>
-        )}
-
-        {category.is_featured && (
-          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-[3] bg-primary text-white text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-sm">
-            Öne Çıkan
-          </div>
-        )}
-      </div>
-
-      {/* ── Info Section ── */}
-      <div className="relative flex items-center gap-2 px-3 py-2.5 sm:px-4 sm:py-3 border-t border-zinc-100/80 bg-white">
-        {/* Accent side bar — fully CSS-managed for height + color animation */}
-        <div className="accent-bar" />
-
-        <div className="flex-1 min-w-0 pl-2 sm:pl-2.5">
-          <h3
-            className={cn(
-              "font-bold text-foreground leading-tight truncate",
-              compact
-                ? "text-[11px] sm:text-xs lg:text-sm"
-                : "text-xs sm:text-sm lg:text-[15px] lg:tracking-tight"
-            )}
-          >
-            {category.menu_label || category.name}
-          </h3>
-          {subtitle && (
-            <span className="text-[10px] sm:text-[11px] text-muted-foreground/60 leading-none mt-0.5 hidden sm:block">
-              {subtitle}
             </span>
           )}
         </div>
 
-        {/* Arrow: always visible (muted), with İncele label on lg hover */}
-        <div className="flex items-center gap-1 shrink-0">
-          <span className="text-[11px] font-medium text-primary hidden lg:inline opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-            İncele
-          </span>
-          <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground/25 group-hover:text-primary group-hover:translate-x-0.5 transition-all duration-300" />
+        {/* White gradient for text readability */}
+        <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white via-white/85 to-transparent pointer-events-none" />
+
+        {/* Subtle color wash */}
+        {accentRgb && (
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none opacity-[0.06] group-hover:opacity-[0.12] transition-opacity duration-500"
+            style={{ background: 'linear-gradient(to top, rgb(var(--card-accent)), transparent)' }}
+          />
+        )}
+
+        {/* Content */}
+        <div className="absolute inset-0 flex flex-col justify-end p-3 sm:p-4 md:p-5 z-10">
+          {category.is_featured && (
+            <div className="absolute right-3 top-3 sm:right-4 sm:top-4 rounded-md px-2.5 py-0.5 sm:px-3 sm:py-1 text-[9px] sm:text-xs font-semibold bg-primary/10 text-primary backdrop-blur-sm">
+              <Sparkles className="mr-0.5 sm:mr-1 inline-block h-2.5 w-2.5 sm:h-3 sm:w-3" />
+              Öne Çıkan
+            </div>
+          )}
+
+          <div className="transform transition-transform duration-300 group-hover:-translate-y-1">
+            <h3 className={cn(
+              "font-bold leading-tight tracking-tight text-foreground",
+              isTall ? "text-base sm:text-xl md:text-3xl" : "text-sm sm:text-base md:text-xl"
+            )}>
+              {category.menu_label || category.name}
+            </h3>
+
+            {/* Desktop: slide-in label */}
+            <div className="mt-1 sm:mt-2 hidden sm:flex items-center gap-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-sm font-medium text-primary">
+              <span>İncele</span>
+              <ArrowRight className="h-4 w-4" />
+            </div>
+
+            {/* Mobile: always-visible small arrow */}
+            <div className="mt-0.5 flex sm:hidden items-center gap-1 text-xs text-muted-foreground">
+              <ChevronRight className="h-3.5 w-3.5" />
+            </div>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 }
