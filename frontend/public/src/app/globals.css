@@ -123,9 +123,7 @@
   .category-card {
     --_a: var(--card-accent, 190 35 40);
     border: 1px solid rgb(0 0 0 / 0.06);
-    box-shadow:
-      0 1px 3px rgb(0 0 0 / 0.04),
-      inset 0 1px 0 rgb(255 255 255 / 0.8);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.04);
     transition: box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                 border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                 transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -133,11 +131,9 @@
 
   .category-card:hover {
     box-shadow:
-      0 8px 24px -6px rgb(var(--_a) / 0.28),
-      0 16px 40px -12px rgb(var(--_a) / 0.12),
-      0 2px 6px rgb(0 0 0 / 0.04),
-      inset 0 1px 0 rgb(255 255 255 / 0.8);
-    border-color: rgb(var(--_a) / 0.2);
+      0 8px 30px -8px rgb(var(--_a) / 0.32),
+      0 2px 8px rgb(0 0 0 / 0.04);
+    border-color: rgb(var(--_a) / 0.18);
     transform: translateY(-3px);
   }
 
@@ -149,17 +145,15 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: rgb(var(--_a) / 0.5);
+    background: rgb(var(--_a) / 0.6);
     z-index: 20;
-    transition: height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-                background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: height 0.3s ease, background 0.3s ease;
     pointer-events: none;
-    border-radius: 0 0 var(--radius) var(--radius);
   }
 
   .category-card:hover::after {
     height: 4px;
-    background: rgb(var(--_a) / 0.9);
+    background: rgb(var(--_a));
   }
 
   /* ============================================================================
