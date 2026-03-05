@@ -28,11 +28,24 @@ export default function ProductDetailPage() {
   const { showPrices, catalogMode } = useSiteSettings();
   const { toast } = useToast();
 
-  const { data: product, isLoading, error } = useQuery({
+  const { data: product, isLoading, error, refetch } = useQuery({
     queryKey: ["product", slug],
     queryFn: () => fetchProductDetail(slug),
     enabled: !!slug,
+    retry: 1,
+    retryDelay: 2000,
   });
+
+  // Timeout fallback: if loading takes > 8s, show error state
+  const [loadingTooLong, setLoadingTooLong] = useState(false);
+  useEffect(() => {
+    if (!isLoading) {
+      setLoadingTooLong(false);
+      return;
+    }
+    const timer = setTimeout(() => setLoadingTooLong(true), 8000);
+    return () => clearTimeout(timer);
+  }, [isLoading]);
 
   // Extract data early with safety checks to allow hooks to run unconditionally
   const images = product?.product_media || [];
@@ -107,15 +120,41 @@ export default function ProductDetailPage() {
   if (isLoading) {
     return (
       <Container className="py-6 lg:py-8">
-        <div className="grid gap-4 sm:gap-6 lg:gap-10 lg:grid-cols-[2fr_3fr]">
-          <div className="aspect-[4/5] w-full rounded-sm animate-pulse bg-muted/50" />
-          <div className="space-y-3">
-            <div className="h-6 w-32 rounded bg-muted/50" />
-            <div className="h-10 w-3/4 rounded bg-muted/50" />
-            <div className="h-20 w-full rounded bg-muted/50" />
-            <div className="h-10 w-40 rounded bg-muted/50" />
+        {loadingTooLong ? (
+          <div className="flex flex-col items-center justify-center py-16 text-center">
+            <div className="h-14 w-14 mb-4 flex items-center justify-center rounded-full bg-muted/20 border border-border">
+              <ImageOff className="h-6 w-6 text-muted-foreground/40" />
+            </div>
+            <h2 className="text-base font-bold text-foreground mb-1">Ürün Yüklenemedi</h2>
+            <p className="text-sm text-muted-foreground mb-4 max-w-xs">Sunucuya ulaşılamıyor. Lütfen internet bağlantınızı kontrol edip tekrar deneyin.</p>
+            <div className="flex gap-2">
+              <Button size="sm" onClick={() => { setLoadingTooLong(false); refetch(); }}>
+                Tekrar Dene
+              </Button>
+              <Button size="sm" variant="outline" asChild>
+                <Link href="/kategori">Kategorilere Dön</Link>
+              </Button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="grid gap-4 sm:gap-6 lg:gap-10 lg:grid-cols-[2fr_3fr]">
+            <div className="aspect-[4/5] w-full rounded-sm animate-pulse bg-muted/30" />
+            <div className="space-y-3">
+              <div className="h-5 w-28 rounded bg-muted/30 animate-pulse" />
+              <div className="h-3 w-16 rounded bg-muted/20 animate-pulse" />
+              <div className="h-8 w-3/4 rounded bg-muted/30 animate-pulse" />
+              <div className="grid grid-cols-2 gap-2">
+                <div className="h-12 rounded bg-muted/20 animate-pulse" />
+                <div className="h-12 rounded bg-muted/20 animate-pulse" />
+              </div>
+              <div className="h-24 w-full rounded bg-muted/20 animate-pulse" />
+              <div className="flex gap-2">
+                <div className="h-10 flex-1 rounded bg-muted/30 animate-pulse" />
+                <div className="h-10 flex-1 rounded bg-muted/20 animate-pulse" />
+              </div>
+            </div>
+          </div>
+        )}
       </Container>
     );
   }
@@ -660,34 +699,48 @@ export default function ProductDetailPage() {
         </div>
       )}
 
-      {/* Mobile Sticky Bar - Glassmorphism */}
+      {/* Mobile Sticky Bar */}
       <AnimatePresence>
         {selectedVariant && (
           <motion.div
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}
-            className="fixed bottom-0 left-0 right-0 z-50 p-2 sm:p-3 lg:hidden safe-area-bottom"
+            className="fixed bottom-0 left-0 right-0 z-50 lg:hidden"
           >
-            <div className="absolute inset-0 bg-white/90 backdrop-blur-md shadow-[0_-8px_30px_rgba(0,0,0,0.12)] border-t border-white/20" />
-            <div className="relative flex items-center gap-2">
-              <div className="flex-1 min-w-0">
-                <p className="text-[8px] sm:text-[9px] text-muted-foreground uppercase font-bold tracking-wider truncate">Seçili: {selectedVariant.model_code}</p>
-                <PriceDisplay
-                  price={selectedVariant.list_price}
-                  className="text-sm sm:text-base font-bold text-primary"
-                />
+            <div className="absolute inset-0 bg-white/95 backdrop-blur-md shadow-[0_-4px_20px_rgba(0,0,0,0.10)] border-t border-border/30" />
+            <div className="relative px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+              {/* Model & Price Row */}
+              <div className="flex items-center justify-between mb-2.5">
+                <div className="min-w-0">
+                  <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider truncate">{selectedVariant.model_code}</p>
+                </div>
+                {showPrices && selectedVariant.list_price && (
+                  <PriceDisplay
+                    price={selectedVariant.list_price}
+                    className="text-base font-extrabold text-primary tracking-tight"
+                  />
+                )}
               </div>
-              <AddToCartButton
-                variantId={selectedVariant.id}
-                className="shadow-lg shadow-primary/20 text-[9px] sm:text-[10px] px-3 sm:px-5 h-8 sm:h-9 rounded-sm whitespace-nowrap"
-              />
+              {/* Action Buttons */}
+              <div className="flex gap-2">
+                <AddToCartButton
+                  variantId={selectedVariant.id}
+                  className="flex-1 h-11 font-bold text-sm shadow-md shadow-primary/20 rounded-sm"
+                />
+                <Button variant="outline" className="flex-1 h-11 font-semibold text-sm border-2 rounded-sm" asChild>
+                  <Link href="/iletisim">
+                    <FileText className="mr-1.5 h-4 w-4" />
+                    Teklif İste
+                  </Link>
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="h-24 lg:hidden" />
+      <div className="h-28 lg:hidden" />
 
       {/* Lightbox */}
       <AnimatePresence>
