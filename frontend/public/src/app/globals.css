@@ -139,11 +139,19 @@
 
   /* Side accent bar inside card info section */
   .accent-bar {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 0 9999px 9999px 0;
     background-color: rgb(var(--_a) / 0.3);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, top 0.3s ease, bottom 0.3s ease;
   }
 
   .category-card:hover .accent-bar {
+    top: 4px;
+    bottom: 4px;
     background-color: rgb(var(--_a) / 0.85);
   }
 

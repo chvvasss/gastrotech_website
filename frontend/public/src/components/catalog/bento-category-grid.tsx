@@ -99,7 +99,7 @@ function MoreCard({
       )}
     >
       <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-primary/10 flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform">
-        <Grid3X3 className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+        <Grid3X3 className="h-4 w-4 sm:h-5 sm:w-5 text-primary group-hover:rotate-90 transition-transform duration-300" />
       </div>
       <h3 className="font-semibold text-foreground text-xs sm:text-sm">
         Tümünü Gör

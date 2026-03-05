@@ -44,16 +44,19 @@ export function CategoryGrid({ categories }: CategoryGridProps) {
         >
           <Link
             href="/kategori"
-            className="group flex items-center justify-between px-4 py-3.5 sm:px-6 sm:py-5 bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors"
+            className="group flex items-center justify-between px-4 py-3.5 sm:px-6 sm:py-5 bg-zinc-900 hover:bg-zinc-800 rounded-lg transition-colors overflow-hidden relative"
           >
-            <div className="flex items-center gap-2.5">
+            {/* Hover accent glow */}
+            <div className="absolute right-0 top-0 bottom-0 w-40 bg-gradient-to-l from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="flex items-center gap-2.5 relative z-[1]">
               <div className="h-5 w-[3px] bg-primary rounded-full" />
               <span className="text-white font-semibold text-sm sm:text-base">
                 Tüm Kategoriler
               </span>
               <span className="text-white/40 text-xs">+{remaining}</span>
             </div>
-            <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="h-4 w-4 text-primary group-hover:translate-x-1 transition-transform relative z-[1]" />
           </Link>
         </motion.div>
       )}
@@ -111,10 +114,13 @@ export function ShowcaseCard({
           className="absolute inset-0"
           style={{
             background: accentRgb
-              ? `radial-gradient(ellipse at 50% 35%, rgb(${accentRgb} / 0.04) 0%, #fafaf9 55%, #f3f3f2 100%)`
-              : "radial-gradient(ellipse at 50% 35%, #fafafa 0%, #f5f5f4 55%, #f0f0ee 100%)",
+              ? `radial-gradient(ellipse at 50% 30%, rgb(${accentRgb} / 0.035) 0%, #fafaf9 50%, #f4f4f3 100%)`
+              : "radial-gradient(ellipse at 50% 30%, #fafafa 0%, #f5f5f4 50%, #f0f0ee 100%)",
           }}
         />
+
+        {/* Subtle inner depth */}
+        <div className="absolute inset-0 z-[2] pointer-events-none rounded-b-none shadow-[inset_0_-1px_2px_rgba(0,0,0,0.02)]" />
 
         {category.cover_media_url ? (
           <Image
@@ -124,7 +130,7 @@ export function ShowcaseCard({
             priority={priority}
             className={cn(
               "object-contain relative z-[1] transition-transform duration-700 ease-out group-hover:scale-[1.06]",
-              compact ? "p-3 sm:p-5 lg:p-6" : "p-4 sm:p-6 lg:p-8"
+              compact ? "p-3 sm:p-5 lg:p-6" : "p-4 sm:p-6 lg:p-10"
             )}
             sizes={
               compact
@@ -146,24 +152,24 @@ export function ShowcaseCard({
         )}
 
         {category.is_featured && (
-          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-[2] bg-primary text-white text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full">
+          <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-[3] bg-primary text-white text-[10px] sm:text-xs font-semibold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full shadow-sm">
             Öne Çıkan
           </div>
         )}
       </div>
 
       {/* ── Info Section ── */}
-      <div className="relative flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-3 border-t border-zinc-100/80 bg-white">
-        {/* Accent side bar */}
-        <div className="accent-bar absolute left-0 top-2 bottom-2 w-[3px] rounded-r-full" />
+      <div className="relative flex items-center gap-2 px-3 py-2.5 sm:px-4 sm:py-3 border-t border-zinc-100/80 bg-white">
+        {/* Accent side bar — fully CSS-managed for height + color animation */}
+        <div className="accent-bar" />
 
-        <div className="flex-1 min-w-0 pl-1.5 sm:pl-2">
+        <div className="flex-1 min-w-0 pl-2 sm:pl-2.5">
           <h3
             className={cn(
               "font-bold text-foreground leading-tight truncate",
               compact
                 ? "text-[11px] sm:text-xs lg:text-sm"
-                : "text-xs sm:text-sm lg:text-[15px]"
+                : "text-xs sm:text-sm lg:text-[15px] lg:tracking-tight"
             )}
           >
             {category.menu_label || category.name}
@@ -175,7 +181,13 @@ export function ShowcaseCard({
           )}
         </div>
 
-        <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all duration-300 shrink-0" />
+        {/* Arrow: always visible (muted), with İncele label on lg hover */}
+        <div className="flex items-center gap-1 shrink-0">
+          <span className="text-[11px] font-medium text-primary hidden lg:inline opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            İncele
+          </span>
+          <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-muted-foreground/25 group-hover:text-primary group-hover:translate-x-0.5 transition-all duration-300" />
+        </div>
       </div>
     </Link>
   );
