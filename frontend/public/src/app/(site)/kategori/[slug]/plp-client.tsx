@@ -300,7 +300,7 @@ function PLPContent({ categorySlug, categoryName, categoryDescription }: PLPClie
                                     onPriceChange={setPriceRange}
                                     onStockToggle={toggleInStock}
                                     onClearAll={clearAllFilters}
-                                    totalProducts={pagination.total}
+                                    totalProducts={pagination?.total ?? 0}
                                     isLoading={isLoading}
                                 />
 
