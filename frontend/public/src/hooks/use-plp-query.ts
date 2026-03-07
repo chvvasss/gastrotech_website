@@ -175,7 +175,9 @@ export function usePLPQuery({ categorySlug, initialData }: UsePLPQueryOptions) {
     // Individual filter handlers
     const toggleBrand = useCallback(
         (brandSlug: string) => {
-            const newBrands = filters.brands.includes(brandSlug) ? [] : [brandSlug];
+            const newBrands = filters.brands.includes(brandSlug)
+                ? filters.brands.filter(b => b !== brandSlug)
+                : [...filters.brands, brandSlug];
             updateFilters({ brands: newBrands });
         },
         [filters.brands, updateFilters]
@@ -218,15 +220,19 @@ export function usePLPQuery({ categorySlug, initialData }: UsePLPQueryOptions) {
 
     const toggleSeries = useCallback(
         (seriesSlug: string) => {
-            const newSeries = filters.series.includes(seriesSlug) ? [] : [seriesSlug];
+            const newSeries = filters.series.includes(seriesSlug)
+                ? filters.series.filter(s => s !== seriesSlug)
+                : [...filters.series, seriesSlug];
             updateFilters({ series: newSeries });
         },
         [filters.series, updateFilters]
     );
 
     const toggleCategory = useCallback(
-        (categorySlug: string) => {
-            const newCategories = filters.categories.includes(categorySlug) ? [] : [categorySlug];
+        (catSlug: string) => {
+            const newCategories = filters.categories.includes(catSlug)
+                ? filters.categories.filter(c => c !== catSlug)
+                : [...filters.categories, catSlug];
             updateFilters({ categories: newCategories });
         },
         [filters.categories, updateFilters]

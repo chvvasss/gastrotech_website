@@ -16,6 +16,7 @@ import {
     FilterSidebar,
     SortingDropdown,
     PLPProductGrid,
+    MobileFilterDrawer,
     // Pagination, // Removed
 } from "@/components/catalog/plp";
 import { CategoryCatalogViewer } from "@/components/catalog/category-catalog-viewer";
@@ -286,6 +287,23 @@ function PLPContent({ categorySlug, categoryName, categoryDescription }: PLPClie
 
                             {/* Controls */}
                             <div className="flex items-center justify-between gap-4">
+                                {/* Mobile Filter Button */}
+                                <MobileFilterDrawer
+                                    brandFacets={facets.brands}
+                                    categoryFacets={facets.categories}
+                                    priceFacet={facets.price}
+                                    selectedBrands={filters.brands}
+                                    selectedPriceMin={filters.priceMin}
+                                    selectedPriceMax={filters.priceMax}
+                                    inStockOnly={filters.inStock}
+                                    onToggleBrand={toggleBrand}
+                                    onPriceChange={setPriceRange}
+                                    onStockToggle={toggleInStock}
+                                    onClearAll={clearAllFilters}
+                                    totalProducts={pagination.total}
+                                    isLoading={isLoading}
+                                />
+
                                 {/* Sort */}
                                 <div className="flex items-center gap-2">
                                     <span className="text-sm font-medium text-muted-foreground">Sıralama:</span>

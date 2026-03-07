@@ -1410,7 +1410,7 @@ class BrowseCategoryView(APIView):
             "slug": category.slug,
             "menu_label": category.menu_label,
             "description_short": category.description_short,
-            "cover_media_url": f"/api/v1/media/{category.cover_media_id}/file" if category.cover_media_id else None,
+            "cover_media_url": f"/api/v1/media/{category.cover_media_id}/file/" if category.cover_media_id else None,
         }
 
         return Response({
@@ -1433,7 +1433,8 @@ class CategoryCatalogListView(generics.ListAPIView):
     GET /api/v1/category-catalogs/?category=<slug>
 
     Returns published category catalog PDFs.
-    Returns empty list when catalog_mode is OFF.
+    Returns empty list when catalog_mode is OFF (except on /kataloglar page
+    which always shows catalogs).
     """
 
     authentication_classes = []
@@ -1442,6 +1443,15 @@ class CategoryCatalogListView(generics.ListAPIView):
     pagination_class = None
 
     def get_queryset(self):
+        from apps.common.models import get_catalog_mode
+
+        # If catalog_mode is off and a specific category is requested,
+        # return empty (PLP won't show catalogs). But if no category filter,
+        # return all (for the /kataloglar standalone page).
+        category_slug = self.request.query_params.get('category')
+        if category_slug and not get_catalog_mode():
+            return CategoryCatalog.objects.none()
+
         qs = (
             CategoryCatalog.objects
             .filter(published=True)
@@ -1449,7 +1459,6 @@ class CategoryCatalogListView(generics.ListAPIView):
             .order_by('order', 'title_tr')
         )
 
-        category_slug = self.request.query_params.get('category')
         if category_slug:
             qs = qs.filter(category__slug=category_slug)
 

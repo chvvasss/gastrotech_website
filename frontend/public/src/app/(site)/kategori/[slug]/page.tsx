@@ -49,15 +49,29 @@ interface CategoryResponse {
 
 async function fetchCategoryData(slug: string): Promise<CategoryResponse | null> {
   try {
-    // Fetch minimal category data for metadata
+    // Try category detail endpoint first (works even with 0 products)
+    const catResponse = await fetch(`${API_BASE}/api/v1/categories/${slug}/`, {
+      next: { revalidate: 300 },
+    });
+
+    if (catResponse.ok) {
+      const catData = await catResponse.json();
+      return {
+        id: catData.id,
+        name: catData.name,
+        slug: catData.slug,
+        description_short: catData.description_short,
+        cover_media_url: catData.cover_media_url,
+        breadcrumbs: catData.breadcrumbs,
+      };
+    }
+
+    // Fallback to PLP endpoint
     const response = await fetch(`${API_BASE}/api/v1/plp/?category=${slug}&page_size=1`, {
       next: { revalidate: 300 },
     });
 
-    if (!response.ok) {
-      if (response.status === 404) return null;
-      return null;
-    }
+    if (!response.ok) return null;
 
     const data = await response.json();
     return data.category || null;

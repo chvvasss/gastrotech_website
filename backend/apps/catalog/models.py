@@ -1365,8 +1365,8 @@ class CategoryCatalog(TimeStampedUUIDModel):
         Media,
         on_delete=models.PROTECT,
         related_name="category_catalog_files",
-        limit_choices_to={"kind": "pdf"},
-        help_text="PDF file (must be kind=pdf)",
+        limit_choices_to={"kind__in": ["pdf", "document"]},
+        help_text="PDF file (accepts kind=pdf or kind=document)",
     )
     order = models.PositiveIntegerField(
         default=0,
@@ -1386,6 +1386,12 @@ class CategoryCatalog(TimeStampedUUIDModel):
         indexes = [
             models.Index(fields=["order"]),
             models.Index(fields=["published"]),
+        ]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["category", "media"],
+                name="unique_category_media",
+            ),
         ]
 
     def __str__(self):

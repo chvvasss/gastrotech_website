@@ -748,8 +748,8 @@ class AdminCategoryCatalogSerializer(serializers.ModelSerializer):
     """Full CRUD serializer for category catalogs."""
 
     category = serializers.PrimaryKeyRelatedField(
-        queryset=Category.objects.filter(parent__isnull=True),
-        help_text="Only root (parent) categories are allowed.",
+        queryset=Category.objects.all(),
+        help_text="Category to assign catalog to.",
     )
     category_name = serializers.CharField(source="category.name", read_only=True)
     media_details = serializers.SerializerMethodField(read_only=True)

@@ -42,6 +42,7 @@ const ensurePdfJs = (): Promise<void> => {
 function PDFThumbnail({ url, className }: { url: string; className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!url) return;
@@ -64,16 +65,24 @@ function PDFThumbnail({ url, className }: { url: string; className?: string }) {
             if (!cancelled) setLoaded(true);
           }
         }
-      } catch { }
+      } catch {
+        if (!cancelled) setError(true);
+      }
     });
     return () => { cancelled = true; };
   }, [url]);
 
   return (
     <div className={`relative overflow-hidden bg-stone-100 ${className || ""}`}>
-      {!loaded && (
+      {!loaded && !error && (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="h-5 w-5 animate-spin rounded-full border-2 border-stone-300 border-t-stone-600" />
+        </div>
+      )}
+      {error && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-stone-400 gap-2">
+          <FileText className="h-10 w-10" />
+          <span className="text-xs">Önizleme yüklenemedi</span>
         </div>
       )}
       <canvas
@@ -214,52 +223,47 @@ export default function KataloglarPage() {
         </Container>
       </section>
 
-      {/* Genel Kataloglar - Full width top */}
-      <section className="py-12 lg:py-16 border-b">
-        <Container>
-          <div className="mb-8 flex items-center gap-4">
-            <div className="h-10 w-1.5 rounded-sm bg-primary shadow-sm" />
-            <div>
-              <h2 className="text-2xl font-bold lg:text-3xl text-foreground tracking-tight">
-                Genel Kataloglar
-              </h2>
-              <p className="text-muted-foreground mt-1 text-sm">
-                Tüm ürün gruplarına ait ana katalog dosyaları
-              </p>
+      {/* Genel Kataloglar - Only show if loading or has data */}
+      {(loadingAssets || hasAssets) && (
+        <section className="py-12 lg:py-16 border-b">
+          <Container>
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-10 w-1.5 rounded-sm bg-primary shadow-sm" />
+              <div>
+                <h2 className="text-2xl font-bold lg:text-3xl text-foreground tracking-tight">
+                  Genel Kataloglar
+                </h2>
+                <p className="text-muted-foreground mt-1 text-sm">
+                  Tüm ürün gruplarına ait ana katalog dosyaları
+                </p>
+              </div>
             </div>
-          </div>
 
-          {loadingAssets ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="flex flex-col gap-2">
-                  <div className="aspect-[1/1.4] animate-pulse rounded-sm bg-muted/50 border border-border/30" />
-                  <div className="h-3 animate-pulse rounded bg-muted/40 w-3/4 mx-auto" />
-                </div>
-              ))}
-            </div>
-          ) : hasAssets ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-              {sortedAssets.map((asset) => (
-                <CatalogCard
-                  key={asset.id}
-                  title={asset.title_tr}
-                  fileUrl={asset.file_url}
-                  fileSize={asset.file_size}
-                  isPrimary={asset.is_primary}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <BookOpen className="h-8 w-8 text-muted-foreground/40 mb-2" />
-              <p className="text-sm text-muted-foreground">
-                Henüz genel katalog yüklenmemiştir.
-              </p>
-            </div>
-          )}
-        </Container>
-      </section>
+            {loadingAssets ? (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <div key={i} className="flex flex-col gap-2">
+                    <div className="aspect-[1/1.4] animate-pulse rounded-sm bg-muted/50 border border-border/30" />
+                    <div className="h-3 animate-pulse rounded bg-muted/40 w-3/4 mx-auto" />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                {sortedAssets.map((asset) => (
+                  <CatalogCard
+                    key={asset.id}
+                    title={asset.title_tr}
+                    fileUrl={asset.file_url}
+                    fileSize={asset.file_size}
+                    isPrimary={asset.is_primary}
+                  />
+                ))}
+              </div>
+            )}
+          </Container>
+        </section>
+      )}
 
       {/* Kategori Katalogları - Groups side by side */}
       <section className="py-12 lg:py-16">

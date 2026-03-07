@@ -41,6 +41,7 @@ const ensurePdfJs = (): Promise<void> => {
 function PDFThumbnail({ url, className, scale = 0.6 }: { url: string; className?: string; scale?: number }) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         if (!url) return;
@@ -67,19 +68,27 @@ function PDFThumbnail({ url, className, scale = 0.6 }: { url: string; className?
                         if (!cancelled) setLoaded(true);
                     }
                 }
-            } catch (err) { }
+            } catch (err) {
+                if (!cancelled) setError(true);
+            }
         });
         return () => { cancelled = true; };
     }, [url, scale]);
 
     return (
         <div className={`relative overflow-hidden bg-stone-100 ${className || ""}`}>
-            {!loaded && (
+            {!loaded && !error && (
                 <div className="absolute inset-0 flex items-center justify-center">
                     <div className="flex flex-col items-center gap-3">
                         <div className="h-6 w-6 animate-spin rounded-full border-2 border-stone-300 border-t-primary" />
                         <span className="text-xs text-stone-400 tracking-wide">Yükleniyor</span>
                     </div>
+                </div>
+            )}
+            {error && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-stone-400 gap-2">
+                    <FileText className="h-10 w-10" />
+                    <span className="text-xs">Önizleme yüklenemedi</span>
                 </div>
             )}
             <canvas
@@ -179,7 +188,7 @@ export function CategoryCatalogViewer({ categorySlug, catalogs: initialCatalogs 
                             </span>
 
                             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-stone-900 mb-2">
-                                {catalog.title_tr || (catalog as any).title}
+                                {catalog.title_tr || catalog.title_en}
                             </h2>
 
                             {catalog.description && (
@@ -282,7 +291,7 @@ export function CategoryCatalogViewer({ categorySlug, catalogs: initialCatalogs 
                             {/* Title */}
                             <div className="mt-2.5 px-0.5">
                                 <h3 className="text-sm font-medium text-stone-700 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
-                                    {catalog.title_tr || (catalog as any).title}
+                                    {catalog.title_tr || catalog.title_en}
                                 </h3>
                             </div>
                         </div>
