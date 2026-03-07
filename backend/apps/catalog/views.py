@@ -1443,7 +1443,7 @@ class CategoryCatalogListView(generics.ListAPIView):
     pagination_class = None
 
     def get_queryset(self):
-        from apps.common.models import get_catalog_mode
+        from apps.common.utils import get_catalog_mode
 
         # If catalog_mode is off and a specific category is requested,
         # return empty (PLP won't show catalogs). But if no category filter,
